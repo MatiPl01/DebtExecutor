@@ -1,21 +1,19 @@
 package pl.edu.agh.debtexecutor.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import pl.edu.agh.debtexecutor.group.Group;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-@Table(name = "person")
+@Table(name = "users")
 public class User {
     @Id
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "user_sequence"
-    )
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(
             name = "login",
@@ -34,6 +32,11 @@ public class User {
             nullable = false
     )
     private String lastName;
+
+    @Column(name = "group_id")
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("members")
+    List<Group> groups = new ArrayList<>();
 
     public User() {}
 
@@ -65,5 +68,17 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
+    }
+
+    public void addToGroup(Group group) {
+        groups.add(group);
     }
 }
