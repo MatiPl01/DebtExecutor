@@ -1,0 +1,124 @@
+/*TODO - fix scrollbar*/
+
+* {
+    -fx-c-white: #fff;
+    -fx-c-black: #000;
+
+    /* Gray */
+    -fx-c-gray-light-1: #E0E0E0;
+    -fx-c-gray-light-2: #B0B0BA;
+
+    -fx-c-gray-dark-1: #1B1D21;
+    -fx-c-gray-dark-2: #272727;
+    -fx-c-gray-dark-3: #383838;
+
+    /* Primary */
+    -fx-c-primary: #397C82;
+    -fx-c-primary-dark: #2B545B;
+
+    /* Secondary */
+    -fx-c-secondary: #E0A370;
+    -fx-c-secondary-dark: #C78074;
+}
+
+/*
+ * UTILITY CLASSES
+ */
+.background-secondary {
+    -fx-background-color: -fx-c-primary;
+}
+
+.background-secondary-dark {
+    -fx-background-color: -fx-c-primary-dark;
+}
+
+.background-primary {
+    -fx-background-color: -fx-c-white;
+}
+
+/*
+ * BUTTONS
+ */
+.button-primary {
+    -fx-background-color: -fx-c-white;
+    -fx-text-fill: -fx-c-black;
+}
+
+.button-primary:hover {
+    -fx-background-color: -fx-c-gray-light-1;
+    -fx-text-fill: -fx-c-black;
+}
+
+/*
+ * TYPOGRAPHY
+ */
+.heading-primary {
+    -fx-text-fill: -fx-c-black;
+}
+
+.heading-white {
+    -fx-text-fill: -fx-c-white;
+}
+
+/*
+ * MENU COLORS
+ */
+.menu-row:hover {
+    -fx-background-color: -fx-c-secondary-dark;
+}
+
+.menu-option {
+    -fx-text-fill: -fx-c-gray-light-2;
+}
+
+.menu-row:hover .menu-option {
+    -fx-text-fill: -fx-c-white;
+}
+
+.menu-row-selected {
+    -fx-background-color: -fx-c-secondary;
+}
+
+.menu-row-selected .menu-option {
+    -fx-text-fill: -fx-c-white;
+}
+
+/* TODO - remove temporary style below */
+.menu-image, .user-image {
+    -fx-background-color: -fx-c-secondary;
+}
+
+.image-counter {
+    -fx-background-color: -fx-c-gray-dark-3;
+    -fx-border-color: -fx-c-black;
+}
+
+.image-counter Label {
+    -fx-text-fill: -fx-c-white;
+}
+
+/*
+ * TITLED PANE
+ */
+.titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: transparent, -fx-c-gray-light-2;
+}
+
+.titled-pane:hover {
+    -fx-text-fill: -fx-c-white;
+}
+
+.titled-pane > .title:hover {
+    -fx-background-color: -fx-c-secondary-dark;
+}
+
+.titled-pane > .title:hover > .arrow-button .arrow {
+    -fx-background-color: transparent, -fx-c-white;
+}
+
+/*
+ * OTHERS
+ */
+.separator {
+    -fx-background-color: -fx-c-gray-dark-3;
+}

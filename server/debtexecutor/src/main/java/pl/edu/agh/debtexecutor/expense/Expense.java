@@ -23,12 +23,10 @@ public class Expense {
 
     @ManyToOne
     @JoinColumn(name = "payer_id")
-    @JsonIgnoreProperties({"expenses", "groups"})
     private User payer;
 
     @ManyToOne
     @JoinColumn(name = "payee_id")
-    @JsonIgnoreProperties({"expenses", "groups"})
     private User payee;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -25,11 +25,9 @@ public class Group {
             joinColumns = { @JoinColumn(name = "id") },
             inverseJoinColumns = { @JoinColumn(name = "group_id") }
     )
-    @JsonIgnoreProperties("groups")
     private List<User> members = new ArrayList<>();
 
     @OneToMany(mappedBy = "group")
-    @JsonIgnoreProperties({"payer", "payee"})
     private final List<Expense> expenses = new ArrayList<>();
 
     public Group() {}

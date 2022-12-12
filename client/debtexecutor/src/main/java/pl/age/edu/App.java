@@ -6,16 +6,25 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         setupStage(primaryStage);
 
+        // Load the initial scene
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/InitialScreen.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/Main.fxml"));
         BorderPane borderPane = loader.load();
-
         Scene scene = new Scene(borderPane);
+
+        // Load CSS stylesheet and add to the scene
+        scene.getStylesheets().addAll(
+//            Objects.requireNonNull(getClass().getResource("/css/themes/dark.css")).toExternalForm(),
+            Objects.requireNonNull(getClass().getResource("/css/themes/light.css")).toExternalForm(),
+            Objects.requireNonNull(getClass().getResource("/css/shared.css")).toExternalForm()
+        );
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -25,6 +34,7 @@ public class App extends Application {
         primaryStage.setTitle("Debt Executor");
         primaryStage.setWidth(720);
         primaryStage.setHeight(480);
+        primaryStage.setMinWidth(400);
     }
 
     public static void init(String[] args) {

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.MainController">
+    <top>
+        <AnchorPane prefHeight="36.0">
+            <fx:include source="core/TopBar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        </AnchorPane>
+    </top>
+    <center>
+        <SplitPane dividerPositions="0.3" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane maxWidth="400.0" minHeight="0.0" minWidth="0.0">
+                    <children>
+                        <ScrollPane fitToWidth="true" styleClass="background-secondary" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <content>
+                                <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <fx:include source="core/SidePanel.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           <styleClass>
+                              <String fx:value="background-secondary" />
+                              <String fx:value="no-padding" />
+                           </styleClass>
+                                </AnchorPane>
+                            </content>
+                        </ScrollPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ScrollPane fitToWidth="true" styleClass="background-primary" vbarPolicy="ALWAYS">
+                           <content>
+                              <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <fx:include source="views/SummaryView.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 <styleClass>
+                                    <String fx:value="background-primary" />
+                                    <String fx:value="no-padding" />
+                                 </styleClass>
+                                 <children>
+                           </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                        <HBox alignment="TOP_RIGHT">
+                           <children>
+                               <Pane>
+                                 <children>
+                                      <fx:include source="core/UserPanel.fxml" />
+                                 </children>
+                               </Pane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </StackPane>
+               </children></AnchorPane>
+            </items>
+        </SplitPane>
+    </center>
+</BorderPane>

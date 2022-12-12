@@ -1,0 +1,44 @@
+/*
+ * OVERRIDE DEFAULT STYLES
+ */
+/* Titled pane */
+.titled-pane {
+    -fx-box-border: none;
+}
+
+.titled-pane > .title {
+    -fx-background-color: transparent;
+}
+
+/* Scroll pane */
+.scroll-pane {
+    -fx-background: transparent;
+    -fx-border-width: 0;
+}
+
+/*
+ * UTILITY CLASSES
+ */
+.background-transparent {
+    -fx-background-color: transparent;
+}
+
+.no-padding {
+    -fx-padding: 0;
+}
+
+/*
+ * CUSTOM STYLES
+ */
+.menu-row-selected .menu-option {
+    -fx-font-weight: bold;
+}
+
+.button-primary {
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.heading-primary {
+    -fx-font-size: 14px;
+}

@@ -35,7 +35,6 @@ public class User {
 
     @Column(name = "group_id")
     @ManyToMany(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("members")
     List<Group> groups = new ArrayList<>();
 
     public User() {}
