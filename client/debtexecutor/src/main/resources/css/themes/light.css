@@ -117,6 +117,25 @@
 }
 
 /*
+ * INPUT FIELD
+ */
+.input-field-background-color-blur {
+    -fx-background-color: -fx-c-gray-light-2;
+}
+
+.input-field-background-color-focus {
+    -fx-background-color: -fx-c-primary;
+}
+
+.input-field-text-color-blur {
+    -fx-text-fill: -fx-c-gray-light-2;
+}
+
+.input-field-text-color-focus {
+    -fx-text-fill: -fx-c-primary;
+}
+
+/*
  * OTHERS
  */
 .separator {

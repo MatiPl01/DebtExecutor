@@ -10,18 +10,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/19"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.age.edu.controllers.SidePanelController">
+<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.SidePanelController">
    <children>
       <VBox styleClass="background-transparent">
          <children>
             <HBox styleClass="row">
                <children>
-                  <Button mnemonicParsing="false" styleClass="button-primary" text="Nowy wydatek" />
+                  <Button mnemonicParsing="false" onAction="#onNewExpenseClick" styleClass="button-primary" text="Nowy wydatek" />
                </children>
             </HBox>
-            <HBox>
+            <HBox id="summary-tab" onMouseClicked="#onTabSelect">
                <children>
                   <Label styleClass="menu-option" text="Podsumowanie" />
                </children>
@@ -30,7 +28,7 @@
                   <String fx:value="menu-row-selected" />
                </styleClass>
             </HBox>
-            <HBox styleClass="menu-row">
+            <HBox id="history-tab" onMouseClicked="#onTabSelect" styleClass="menu-row">
                <children>
                   <Label styleClass="menu-option" text="Historia wydatków" />
                </children>
@@ -55,7 +53,8 @@
                               <Label text="Jakub Stępień" />
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="menu-row">
+                        <HBox alignment="CENTER_LEFT" spacing="5.0"
+                              styleClass="menu-row" fx:id="test">
                            <children>
                               <Pane maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" prefHeight="20.0" prefWidth="20.0" styleClass="menu-image" />
                               <Label text="Mateusz Łopaciński" />

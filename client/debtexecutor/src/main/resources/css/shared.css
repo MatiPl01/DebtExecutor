@@ -1,3 +1,7 @@
+.root {
+    -fx-font: 12px "Futura";
+}
+
 /*
  * OVERRIDE DEFAULT STYLES
  */

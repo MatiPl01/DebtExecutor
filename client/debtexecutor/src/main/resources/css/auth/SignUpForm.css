@@ -1,0 +1,27 @@
+.sign-up-form {
+    -fx-padding: 20px 10px;
+}
+
+.sign-up-form__stack-pane {
+    -fx-alignment: CENTER_LEFT;
+}
+
+.sign-up-form__inputs {
+    -fx-spacing: 10px;
+}
+
+.sign-up-form__label {
+    -fx-translate-x: 10px;
+    -fx-font-size: 14px;
+}
+
+.sign-up-form__input,
+.sign-up-form__button {
+    -fx-padding: 10px 5px;
+    -fx-background-radius: 5px;
+    -fx-font-size: 14px;
+}
+
+.sign-up-form__button {
+    -fx-font-weight: bold;
+}

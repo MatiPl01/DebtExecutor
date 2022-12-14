@@ -3,7 +3,7 @@ package pl.age.edu;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -15,8 +15,8 @@ public class App extends Application {
 
         // Load the initial scene
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/Main.fxml"));
-        BorderPane borderPane = loader.load();
+        loader.setLocation(getClass().getResource("/fxml/auth/AuthView.fxml"));
+        AnchorPane borderPane = loader.load();
         Scene scene = new Scene(borderPane);
 
         // Load CSS stylesheet and add to the scene

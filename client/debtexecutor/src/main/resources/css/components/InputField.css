@@ -1,0 +1,36 @@
+.input-field {
+    -fx-padding: 20px 0 0 0;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.input-field__label {
+    -fx-translate-x: 10px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #A7A7A7;
+}
+
+.input-field__label--focus {
+    -fx-text-fill: #448ACD;
+    -fx-opacity: 0;
+}
+
+.input-field__input {
+    -fx-padding: 10px 5px;
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+}
+
+.input-field__input-background {
+    -fx-background-color: #FFF;
+}
+
+.input-field__underline {
+    -fx-background-color: #A7A7A7;
+    -fx-pref-height: 3px;
+}
+
+.input-field__underline--focus {
+    -fx-background-color: #448ACD;
+    -fx-scale-x: 0;
+}

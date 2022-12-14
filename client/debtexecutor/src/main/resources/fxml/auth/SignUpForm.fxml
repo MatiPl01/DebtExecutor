@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import pl.age.edu.components.*?>
+
+<VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.auth.SignUpFormController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="sign-up-form__inputs">
+         <children>
+            <InputField label="Login" />
+            <InputField label="First name" />
+            <InputField label="Last name" />
+         </children>
+      </VBox>
+      <AnchorPane>
+         <children>
+            <Button mnemonicParsing="false" onAction="#onSignUp" styleClass="sign-up-form__button" text="SIGN UP" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../../css/shared.css" />
+      <URL value="@../../css/themes/dark.css" />
+      <URL value="@../../css/auth/SignUpForm.css" />
+   </stylesheets>
+</VBox>
