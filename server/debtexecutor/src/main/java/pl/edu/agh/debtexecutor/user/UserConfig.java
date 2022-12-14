@@ -20,19 +20,16 @@ public class UserConfig {
                                         ExpenseRepository expenseRepository) {
         return args -> {
             User ewa = new User(
-                    "ewa123",
                     "Ewa",
                     "Miklewska"
             );
 
             User kuba = new User(
-                    "kuba123",
                     "Jakub",
                     "Stępień"
             );
 
             User mateusz = new User(
-                    "mateusz123",
                     "Mateusz",
                     "Łopaciński"
             );

@@ -65,6 +65,17 @@ public class Expense {
         this.date = date;
     }
 
+    public Expense(String title,
+                   User payer,
+                   User payee,
+                   BigDecimal amount) {
+        this.title = title;
+        this.payer = payer;
+        this.payee = payee;
+        this.amount = amount;
+        this.date = LocalDateTime.now();
+    }
+
     public String getTitle() {
         return title;
     }

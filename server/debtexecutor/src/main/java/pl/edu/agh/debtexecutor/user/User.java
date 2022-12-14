@@ -14,12 +14,6 @@ public class User {
     private UUID id;
 
     @Column(
-            name = "login",
-            nullable = false
-    )
-    private String login;
-
-    @Column(
             name = "first_name",
             nullable = false
     )
@@ -48,8 +42,7 @@ public class User {
 
     public User() {}
 
-    public User(String login, String firstName, String lastName) {
-        this.login = login;
+    public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -67,10 +60,6 @@ public class User {
 
     public UUID getId() {
         return id;
-    }
-
-    public String getLogin() {
-        return login;
     }
 
     public String getFirstName() {

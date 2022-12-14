@@ -6,6 +6,7 @@ import pl.edu.agh.debtexecutor.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -32,11 +33,12 @@ public class Group {
     public Group() {}
 
     public Group(List<User> members) {
+        this.name = "";
         this.members = members;
     }
 
     public Group(String name, List<User> members) {
-        this.name = name;
+        this.name = Optional.ofNullable(name).orElse("");
         this.members = members;
     }
 
