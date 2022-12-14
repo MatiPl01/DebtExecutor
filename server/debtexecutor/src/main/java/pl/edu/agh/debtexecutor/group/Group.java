@@ -1,6 +1,5 @@
 package pl.edu.agh.debtexecutor.group;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import pl.edu.agh.debtexecutor.expense.Expense;
 import pl.edu.agh.debtexecutor.user.User;
@@ -22,7 +21,7 @@ public class Group {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "Group_User",
-            joinColumns = { @JoinColumn(name = "id") },
+            joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "group_id") }
     )
     private List<User> members = new ArrayList<>();
@@ -39,6 +38,10 @@ public class Group {
     public Group(String name, List<User> members) {
         this.name = name;
         this.members = members;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public List<User> getMembers() {

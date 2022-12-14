@@ -1,7 +1,5 @@
 package pl.edu.agh.debtexecutor.expense;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import pl.edu.agh.debtexecutor.group.Group;
 import pl.edu.agh.debtexecutor.user.User;
@@ -79,24 +77,12 @@ public class Expense {
         return payer;
     }
 
-    public void setPayer(User payer) {
-        this.payer = payer;
-    }
-
     public User getPayee() {
         return payee;
     }
 
-    public void setPayee(User payee) {
-        this.payee = payee;
-    }
-
     public Optional<Group> getGroup() {
         return Optional.ofNullable(group);
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
     }
 
     public BigDecimal getAmount() {

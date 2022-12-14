@@ -1,12 +1,10 @@
 package pl.edu.agh.debtexecutor.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import pl.edu.agh.debtexecutor.group.Group;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.math.BigDecimal;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -33,8 +31,19 @@ public class User {
     )
     private String lastName;
 
-    @Column(name = "group_id")
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ElementCollection
+    @CollectionTable(
+            name = "user_balance",
+            joinColumns = { @JoinColumn(
+                    name = "user_id",
+                    referencedColumnName = "id"
+            ) }
+    )
+    @MapKeyColumn(name = "user_id")
+    @Column(name = "balance")
+    private final Map<User, BigDecimal> balance = new HashMap<>();
+
+    @ManyToMany(mappedBy = "members", fetch = FetchType.LAZY)
     List<Group> groups = new ArrayList<>();
 
     public User() {}
@@ -45,12 +54,23 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getLogin() {
-        return login;
+    @Override
+    public boolean equals(Object obj) {
+        if (!getClass().isInstance(obj)) return false;
+        return id.equals(((User) obj).id);
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getLogin() {
+        return login;
     }
 
     public String getFirstName() {
@@ -73,11 +93,23 @@ public class User {
         return groups;
     }
 
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
     public void addToGroup(Group group) {
         groups.add(group);
+    }
+
+    public Map<User, BigDecimal> getBalance() {
+        return balance;
+    }
+
+    public void changeBalance(User user, BigDecimal amount) {
+        BigDecimal currBalance = amount
+            .add(Optional.ofNullable(balance.get(user))
+            .orElse(BigDecimal.ZERO));
+
+        if (currBalance.equals(BigDecimal.ZERO)) {
+            balance.remove(user);
+        } else {
+            balance.put(user, currBalance);
+        }
     }
 }

@@ -18,7 +18,9 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getUsers() {
-        return userService.getUsers();
+    public List<UserDTO> getUsers() {
+        return userService.getUsers().stream().map(UserDTO::from).toList();
     }
+
+    //TODO loginUser(login) -> user; createUser, createGroup, createExpense, getExpenses, getGroups, getUsers (?)
 }

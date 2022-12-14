@@ -18,7 +18,8 @@ public class ExpenseController {
     }
 
     @GetMapping
-    public List<Expense> getExpenses() {
-        return expenseService.getExpenses();
+    public List<ExpenseDTO> getExpenses() {
+        return expenseService.getExpenses().stream().map(ExpenseDTO::from).toList();
     }
+
 }

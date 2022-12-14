@@ -18,7 +18,7 @@ public class GroupController {
     }
 
     @GetMapping
-    public List<Group> getGroups() {
-        return groupService.getGroups();
+    public List<GroupDTO> getGroups() {
+        return groupService.getGroups().stream().map(GroupDTO::from).toList();
     }
 }

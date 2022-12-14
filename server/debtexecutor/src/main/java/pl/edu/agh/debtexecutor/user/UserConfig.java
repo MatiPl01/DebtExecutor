@@ -10,12 +10,10 @@ import pl.edu.agh.debtexecutor.group.GroupRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.Year;
 import java.util.List;
 
 @Configuration
 public class UserConfig {
-
     @Bean
     CommandLineRunner commandLineRunner(UserRepository userRepository,
                                         GroupRepository groupRepository,
@@ -56,6 +54,9 @@ public class UserConfig {
                     LocalDateTime.of(2022, 12, 8, 14, 15, 0)
             );
 
+            ewa.changeBalance(kuba, BigDecimal.valueOf(2));
+            kuba.changeBalance(ewa, BigDecimal.valueOf(-2));
+
             Expense expenseKubaMateusz = new Expense(
                     "wóda",
                     mateusz,
@@ -65,10 +66,17 @@ public class UserConfig {
                     LocalDateTime.of(2022, 12, 8, 14, 15, 15)
             );
 
+            kuba.changeBalance(mateusz, BigDecimal.valueOf(40));
+            mateusz.changeBalance(kuba, BigDecimal.valueOf(-40));
+
             group.addExpense(expenseKubaMateusz);
 
             groupRepository.save(group);
             expenseRepository.saveAll(List.of(expenseEwaKuba, expenseKubaMateusz));
+
+            userRepository.saveAll(
+                    List.of(ewa, kuba, mateusz)
+            );
         };
     }
 }
