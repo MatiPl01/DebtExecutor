@@ -6,14 +6,17 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import pl.age.edu.api.GroupController;
 import pl.age.edu.controllers.core.ViewController;
 import pl.age.edu.controllers.core.ViewType;
 import pl.age.edu.controls.GroupField;
 import pl.age.edu.controls.UserField;
 import pl.age.edu.models.Group;
 import pl.age.edu.models.User;
+import pl.age.edu.api.UserController;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class SidePanelController implements Initializable {
@@ -41,19 +44,14 @@ public class SidePanelController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO - bind generating labels to data
-        groupsWrapper.getChildren()
-                     .addAll(
-                             new GroupField(new Group()),
-                             new GroupField(new Group()),
-                             new GroupField(new Group())
-                     );
 
-        usersWrapper.getChildren()
-                    .addAll(new UserField(new User()),
-                            new UserField(new User()),
-                            new UserField(new User())
-                    );
+        List<User> users = UserController.getAll();
+
+        users.forEach(user -> usersWrapper.getChildren().add(new UserField(user)));
+
+        List<Group> groups = GroupController.getAll();
+
+        groups.forEach(group -> usersWrapper.getChildren().add(new GroupField(group)));
     }
 
     @FXML

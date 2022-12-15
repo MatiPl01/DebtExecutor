@@ -2,6 +2,7 @@ package pl.edu.agh.debtexecutor.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.edu.agh.debtexecutor.group.Group;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +33,4 @@ public class UserService {
         return userRepository.findAllById(ids);
     }
 
-    public List<User> getUsersByGroupId(UUID groupId) {
-        return userRepository.findAllByGroupId(groupId);
-    }
 }

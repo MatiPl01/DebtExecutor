@@ -30,7 +30,7 @@ public class UserPanelController implements Initializable {
         closePanel();
 
         // TODO - bind user name from the current user to the Label
-        username.setText("Mateusz Łopaciński");
+        username.setText("Mateusz Lopacinski");
 
         // Close the user profile panel on mouse leave
         userPanel.setOnMouseExited(e -> closePanel());

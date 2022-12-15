@@ -15,7 +15,8 @@ public class User {
 
     @Column(
             name = "first_name",
-            nullable = false
+            nullable = false,
+            unique = true
     )
     private String firstName;
 

@@ -29,6 +29,6 @@ public class UserField extends HBox {
         }
 
         // TODO - set labels based on group props
-        userLabel.setText("Test user");
+        userLabel.setText(user.getFirstName() + " " + user.getLastName());
     }
 }

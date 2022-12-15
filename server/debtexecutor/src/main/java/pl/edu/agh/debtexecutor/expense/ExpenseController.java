@@ -23,12 +23,12 @@ public class ExpenseController {
         return expenseService.getExpenses().stream().map(ExpenseDTO::from).toList();
     }
 
-    @PostMapping("add/expense")
+    @PostMapping("/add/expense")
     public void addExpense(@RequestBody CreateExpenseDTO dto) throws IllegalStateException {
         Expense expense = expenseFactory.createExpense(dto);
         expenseService.addExpense(expense);
     }
-    @PostMapping("add/group-expense")
+    @PostMapping("/add/group-expense")
     public void addExpense(@RequestBody CreateGroupExpenseDTO dto) throws IllegalStateException {
         List<Expense> expenses = expenseFactory.createExpense(dto);
         expenseService.addExpenses(expenses);
