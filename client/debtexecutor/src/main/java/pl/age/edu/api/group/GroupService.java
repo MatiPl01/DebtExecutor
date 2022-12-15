@@ -1,7 +1,7 @@
-package pl.age.edu.api;
+package pl.age.edu.api.group;
 
+import pl.age.edu.api.group.GroupController;
 import pl.age.edu.models.Group;
-import pl.age.edu.utils.CreateUserDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -14,5 +14,5 @@ public interface GroupService {
     Call<List<Group>> getGroups();
 
     @POST("api/v1/groups")
-    Call<Void>  addGroup(@Body CreateUserDTO user);
+    Call<Void> addGroup(@Body GroupController.CreateUserDTO user);
 }

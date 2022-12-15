@@ -1,15 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
 <?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<fx:root xmlns="http://javafx.com/javafx"
-         xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.layout.VBox"
-         prefHeight="400.0" prefWidth="600.0">
-    <Label text="TODO - history item"/>
+<fx:root type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: red">
     <stylesheets>
         <URL value="@../../css/controls/HistoryItem.css"/>
     </stylesheets>
+    <Label fx:id="expenseTitle"/>
+    <HBox>
+        <VBox>
+            <Label text="from"/>
+            <Label fx:id="payerName"/>
+        </VBox>
+        <VBox>
+            <Label text="to"/>
+            <Label fx:id="payeeName"/>
+        </VBox>
+    </HBox>
+    <HBox>
+        <Label text="group"/>
+        <Label fx:id="groupName"/>
+    </HBox>
+    <HBox>
+        <Label text="Amount"/>
+        <Label fx:id="amount"/>
+    </HBox>
 </fx:root>

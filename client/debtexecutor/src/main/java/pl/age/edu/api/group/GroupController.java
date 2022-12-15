@@ -1,13 +1,8 @@
-package pl.age.edu.api;
+package pl.age.edu.api.group;
 
+import pl.age.edu.api.RetrofitClient;
 import pl.age.edu.models.Group;
-import pl.age.edu.models.User;
-import pl.age.edu.utils.CreateUserDTO;
-import retrofit2.Call;
 import retrofit2.Response;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -27,4 +22,5 @@ public class GroupController {
         return response.map(Response::body).orElse(Collections.emptyList());
     }
 
+    public static record CreateUserDTO(String firstName, String lastName) {}
 }

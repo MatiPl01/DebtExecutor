@@ -1,11 +1,11 @@
-package pl.age.edu.api;
+package pl.age.edu.api.user;
 
 
+import pl.age.edu.api.group.GroupController;
 import pl.age.edu.models.User;
 
 import java.util.List;
 
-import pl.age.edu.utils.CreateUserDTO;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -16,6 +16,6 @@ public interface UserService {
     Call<List<User>> getUsers();
 
     @POST("api/v1/users")
-    Call<Void>  addUser(@Body CreateUserDTO user);
+    Call<Void>  addUser(@Body GroupController.CreateUserDTO user);
 
 }

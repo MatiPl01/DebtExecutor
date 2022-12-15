@@ -1,5 +1,6 @@
-package pl.age.edu.api;
+package pl.age.edu.api.user;
 
+import pl.age.edu.api.RetrofitClient;
 import pl.age.edu.models.User;
 import retrofit2.Response;
 

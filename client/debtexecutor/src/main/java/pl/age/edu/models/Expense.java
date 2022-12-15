@@ -5,12 +5,12 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public class Expense {
-    String title;
-    ExpenseUserDTO payer;
-    ExpenseUserDTO payee;
-    Optional<ExpenseGroupDTO> group;
-    BigDecimal amount;
-    LocalDateTime date;
+    public String title;
+    public ExpenseUserDTO payer;
+    public ExpenseUserDTO payee;
+    public ExpenseGroupDTO group;
+    public BigDecimal amount;
+    public String date;
 
     public String getTitle() {
         return title;
@@ -24,7 +24,7 @@ public class Expense {
         return payee;
     }
 
-    public Optional<ExpenseGroupDTO> getGroup() {
+    public ExpenseGroupDTO getGroup() {
         return group;
     }
 
@@ -32,16 +32,21 @@ public class Expense {
         return amount;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    private class ExpenseUserDTO {
+    public class ExpenseUserDTO {
         String firstName;
         String lastName;
+
+        @Override
+        public String toString() {
+            return  firstName  + " " + lastName;
+        }
     }
 
-    private class ExpenseGroupDTO {
+    public class ExpenseGroupDTO {
         String name;
     }
 }

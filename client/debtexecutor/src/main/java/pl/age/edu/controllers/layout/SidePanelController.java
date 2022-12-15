@@ -6,14 +6,14 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import pl.age.edu.api.GroupController;
+import pl.age.edu.api.group.GroupController;
 import pl.age.edu.controllers.core.ViewController;
 import pl.age.edu.controllers.core.ViewType;
 import pl.age.edu.controls.GroupField;
 import pl.age.edu.controls.UserField;
 import pl.age.edu.models.Group;
 import pl.age.edu.models.User;
-import pl.age.edu.api.UserController;
+import pl.age.edu.api.user.UserController;
 
 import java.net.URL;
 import java.util.List;
@@ -51,7 +51,7 @@ public class SidePanelController implements Initializable {
 
         List<Group> groups = GroupController.getAll();
 
-        groups.forEach(group -> usersWrapper.getChildren().add(new GroupField(group)));
+        groups.forEach(group -> groupsWrapper.getChildren().add(new GroupField(group)));
     }
 
     @FXML
