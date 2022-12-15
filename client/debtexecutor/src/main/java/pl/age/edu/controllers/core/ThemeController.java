@@ -1,6 +1,7 @@
-package pl.age.edu.utils;
+package pl.age.edu.controllers.core;
 
 import javafx.scene.Scene;
+import pl.age.edu.utils.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;

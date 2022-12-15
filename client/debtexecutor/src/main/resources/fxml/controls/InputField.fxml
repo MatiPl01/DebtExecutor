@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<fx:root prefHeight="58.0" prefWidth="150.0" styleClass="input-field" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="58.0" prefWidth="150.0" styleClass="input-field" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane styleClass="input-field__input-background">
         <Pane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <styleClass>

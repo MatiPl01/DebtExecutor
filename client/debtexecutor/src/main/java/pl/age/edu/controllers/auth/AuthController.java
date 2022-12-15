@@ -6,8 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import pl.age.edu.utils.SceneController;
-import pl.age.edu.utils.SceneType;
+import pl.age.edu.controllers.core.SceneController;
+import pl.age.edu.controllers.core.SceneType;
 
 import java.io.IOException;
 import java.net.URL;

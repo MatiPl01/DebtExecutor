@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.*?>
-<?import java.lang.String?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.MainController">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.MainController">
     <top>
         <AnchorPane prefHeight="36.0">
-            <fx:include source="core/TopBar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include fx:id="topBar" source="layout/TopBar.fxml"
+                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         </AnchorPane>
     </top>
     <center>
@@ -18,46 +26,65 @@
                         <ScrollPane fitToWidth="true" styleClass="background-secondary" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <content>
                                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <fx:include source="core/SidePanel.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           <styleClass>
-                              <String fx:value="background-secondary" />
-                              <String fx:value="no-padding" />
-                           </styleClass>
+                                    <fx:include fx:id="sidePanel"
+                                            source="layout/SidePanel.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <styleClass>
+                                        <String fx:value="background-secondary" />
+                                        <String fx:value="no-padding" />
+                                    </styleClass>
                                 </AnchorPane>
                             </content>
                         </ScrollPane>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
-               <children>
-                  <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <ScrollPane fitToWidth="true" styleClass="background-primary" vbarPolicy="ALWAYS">
-                           <content>
-                              <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                  <fx:include source="views/SummaryView.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 <styleClass>
-                                    <String fx:value="background-primary" />
-                                    <String fx:value="no-padding" />
-                                 </styleClass>
-                                 <children>
-                           </children>
-                              </AnchorPane>
-                           </content>
-                        </ScrollPane>
-                        <HBox alignment="TOP_RIGHT">
+                    <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                        <VBox>
                            <children>
-                               <Pane>
+                              <HBox styleClass="main__view-header">
                                  <children>
-                                      <fx:include source="core/UserPanel.fxml" />
+                                    <Label styleClass="h4" text="#" />
+                                    <Label fx:id="viewLabel" text="Label">
+                                       <styleClass>
+                                          <String fx:value="h4" />
+                                          <String fx:value="main__view--heading" />
+                                       </styleClass>
+                                    </Label>
                                  </children>
-                               </Pane>
+                              </HBox>
+                                      <ScrollPane fitToWidth="true" styleClass="background-primary" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
+                                          <content>
+                                              <AnchorPane fx:id="viewWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                  <fx:include source="views/CreateExpenseView.fxml" />
+                                                  <styleClass>
+                                                      <String fx:value="background-primary" />
+                                                      <String fx:value="no-padding" />
+                                                  </styleClass>
+                                                  <children>
+                                            </children>
+                                              </AnchorPane>
+                                          </content>
+                                      </ScrollPane>
                            </children>
-                        </HBox>
-                     </children>
-                  </StackPane>
-               </children></AnchorPane>
+                        </VBox>
+                                <AnchorPane>
+                                    <children>
+                                        <fx:include fx:id="userPanel"
+                                                source="layout/UserPanel.fxml" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </StackPane>
+                    </children>
+                </AnchorPane>
             </items>
         </SplitPane>
     </center>
+    <stylesheets>
+        <URL value="@../css/shared.css" />
+      <URL value="@../css/themes/light.css" />
+      <URL value="@../css/Main.css" />
+    </stylesheets>
 </BorderPane>

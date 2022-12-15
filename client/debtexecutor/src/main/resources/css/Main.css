@@ -1,0 +1,9 @@
+.main__view-header {
+    -fx-border-width: 2px;
+    -fx-border-style: solid none solid none;
+    -fx-padding: 5px 10px;
+}
+
+.main__view--heading {
+    -fx-padding: 0 5px;
+}

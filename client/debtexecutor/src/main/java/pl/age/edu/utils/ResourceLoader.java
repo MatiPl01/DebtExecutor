@@ -2,6 +2,7 @@ package pl.age.edu.utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import pl.age.edu.controllers.core.ThemeController;
 
 import java.io.IOException;
 import java.util.Objects;

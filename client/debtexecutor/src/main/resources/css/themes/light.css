@@ -44,6 +44,15 @@
     -fx-background-color: -fx-c-primary-dark;
 }
 
+.button--gray {
+    -fx-background-color: -fx-c-white;
+    -fx-text-fill: -fx-c-black;
+}
+
+.button--gray:hover {
+    -fx-background-color: -fx-c-gray-light-2;
+}
+
 .button--transparent-white {
     -fx-border-color: -fx-c-white;
     -fx-text-fill: -fx-c-white;
@@ -173,4 +182,9 @@
 
 .auth__heading--sub {
     -fx-text-fill: -fx-c-gray-light-1;
+}
+
+
+.main__view-header {
+    -fx-border-color: -fx-c-gray-light-2;
 }

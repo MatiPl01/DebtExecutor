@@ -8,7 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox minWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox minWidth="400.0" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pl.age.edu.controllers.views.HistoryViewController">
    <children>
       <HBox alignment="CENTER_LEFT">
          <children>

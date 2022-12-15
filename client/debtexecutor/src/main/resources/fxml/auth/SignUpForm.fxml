@@ -8,7 +8,7 @@
 
 <?import pl.age.edu.controls.InputField?>
 
-<VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/19"
+<VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.age.edu.controllers.auth.SignUpFormController" alignment="CENTER" spacing="20.0">
     <children>

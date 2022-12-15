@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <SplitPane dividerPositions="0.5" minHeight="480.0" prefHeight="480.0"
-           prefWidth="720.0" xmlns="http://javafx.com/javafx/19"
+           prefWidth="720.0" xmlns="http://javafx.com/javafx/17"
            xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="pl.age.edu.controllers.auth.AuthController">
     <items>
