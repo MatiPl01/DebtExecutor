@@ -1,0 +1,13 @@
+.group-image {
+    -fx-background-radius: 5px;
+}
+
+.group-counter {
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+    -fx-border-width: 1px;
+}
+
+.group-counter Label {
+    -fx-font-size: 11px;
+}

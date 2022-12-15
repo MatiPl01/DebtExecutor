@@ -84,25 +84,25 @@
     -fx-text-fill: -fx-c-white;
 }
 
-.menu-row-selected {
+.menu-row.active {
     -fx-background-color: -fx-c-secondary;
 }
 
-.menu-row-selected .menu-option {
+.menu-row.active .menu-option {
     -fx-text-fill: -fx-c-white;
 }
 
 /* TODO - remove temporary style below */
-.menu-image, .user-image {
+.group-image, .user-image {
     -fx-background-color: -fx-c-secondary;
 }
 
-.image-counter {
+.group-counter {
     -fx-background-color: -fx-c-gray-dark-3;
     -fx-border-color: -fx-c-black;
 }
 
-.image-counter Label {
+.group-counter Label {
     -fx-text-fill: -fx-c-white;
 }
 

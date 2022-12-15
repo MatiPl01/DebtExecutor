@@ -34,7 +34,7 @@
 /*
  * CUSTOM STYLES
  */
-.menu-row-selected .menu-option {
+.menu-row.active .menu-option {
     -fx-font-weight: bold;
 }
 

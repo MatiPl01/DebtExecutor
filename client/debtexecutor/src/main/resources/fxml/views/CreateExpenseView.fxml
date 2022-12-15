@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox minWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.views.CreateExpenseViewController">
+<VBox minWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.views.CreateExpenseViewController">
    <stylesheets>
       <URL value="@../../css/themes/light.css" />
       <URL value="@../../css/shared.css" />

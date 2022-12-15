@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import pl.age.edu.controllers.core.ViewController;
-import pl.age.edu.controllers.core.ViewType;
 import pl.age.edu.controllers.layout.SidePanelController;
 import pl.age.edu.controllers.layout.TopBarController;
 import pl.age.edu.controllers.layout.UserPanelController;
@@ -34,6 +33,10 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setUpControllers();
+    }
+
+    private void setUpControllers() {
         viewController = new ViewController(viewWrapper, viewLabel);
         topBarController.setUserPanelController(userPanelController);
         sidePanelController.setViewController(viewController);

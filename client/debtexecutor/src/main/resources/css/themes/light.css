@@ -88,33 +88,37 @@
     -fx-background-color: -fx-c-secondary-dark;
 }
 
-.menu-option {
+.menu-option, .group-label, .user-label {
     -fx-text-fill: -fx-c-gray-light-2;
 }
 
+.menu-row:hover .user-label,
+.menu-row:hover .group-label,
 .menu-row:hover .menu-option {
     -fx-text-fill: -fx-c-white;
 }
 
-.menu-row-selected {
+.menu-row.active {
     -fx-background-color: -fx-c-secondary;
 }
 
-.menu-row-selected .menu-option {
+.menu-row.active .user-label,
+.menu-row.active .group-label,
+.menu-row.active .menu-option {
     -fx-text-fill: -fx-c-white;
 }
 
 /* TODO - remove temporary style below */
-.menu-image, .user-image {
+.group-image, .user-image {
     -fx-background-color: -fx-c-secondary;
 }
 
-.image-counter {
+.group-counter {
     -fx-background-color: -fx-c-gray-dark-3;
     -fx-border-color: -fx-c-black;
 }
 
-.image-counter Label {
+.group-counter Label {
     -fx-text-fill: -fx-c-white;
 }
 

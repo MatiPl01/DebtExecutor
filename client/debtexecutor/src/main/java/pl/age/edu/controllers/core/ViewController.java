@@ -8,20 +8,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ViewController {
+    private final static ViewType INITIAL_VIEW = ViewType.HISTORY;
+
     private final Pane wrapper;
     private final Label label;
     private final Map<ViewType, Pane> views = new HashMap<>();
+    private ViewType activeView;
 
     public ViewController(Pane wrapper, Label label) {
         this.wrapper = wrapper;
         this.label = label;
         loadViews();
+        switchView(INITIAL_VIEW);
+    }
+
+    public ViewType getActiveView() {
+        return activeView;
     }
 
     public void switchView(ViewType newView) {
         wrapper.getChildren().clear();
         wrapper.getChildren().add(views.get(newView));
         label.setText(newView.toString());
+        activeView = newView;
     }
 
     private void loadViews() {

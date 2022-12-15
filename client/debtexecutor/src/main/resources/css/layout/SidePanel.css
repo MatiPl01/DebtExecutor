@@ -5,17 +5,3 @@
 .menu-row {
     -fx-padding: 5px 10px;
 }
-
-.menu-image {
-    -fx-background-radius: 5px;
-}
-
-.image-counter {
-    -fx-background-radius: 3px;
-    -fx-border-radius: 3px;
-    -fx-border-width: 1px;
-}
-
-.image-counter Label {
-    -fx-font-size: 11px;
-}
