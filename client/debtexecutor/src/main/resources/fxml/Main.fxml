@@ -57,13 +57,6 @@
                                       <ScrollPane fitToWidth="true" styleClass="background-primary" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                                           <content>
                                               <AnchorPane fx:id="viewWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                  <fx:include source="views/CreateExpenseView.fxml" />
-                                                  <styleClass>
-                                                      <String fx:value="background-primary" />
-                                                      <String fx:value="no-padding" />
-                                                  </styleClass>
-                                                  <children>
-                                            </children>
                                               </AnchorPane>
                                           </content>
                                       </ScrollPane>

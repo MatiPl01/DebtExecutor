@@ -1,7 +1,7 @@
-package pl.age.edu.api;
+package pl.age.edu.api.expense;
 
+import pl.age.edu.api.RetrofitClient;
 import pl.age.edu.models.Expense;
-import pl.age.edu.models.Group;
 import retrofit2.Response;
 
 import java.io.IOException;

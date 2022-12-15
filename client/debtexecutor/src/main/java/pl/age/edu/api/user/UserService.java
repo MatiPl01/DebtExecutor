@@ -16,6 +16,6 @@ public interface UserService {
     Call<List<User>> getUsers();
 
     @POST("api/v1/users")
-    Call<Void>  addUser(@Body GroupController.CreateUserDTO user);
+    Call<Void>  addUser(@Body CreateUserDTO user);
 
 }

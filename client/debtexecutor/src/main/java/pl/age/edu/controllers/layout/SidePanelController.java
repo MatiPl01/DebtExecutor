@@ -30,7 +30,10 @@ public class SidePanelController implements Initializable {
 
     @FXML
     private Button newExpenseButton;
-
+    @FXML
+    private Button newUserButton;
+    @FXML
+    private Button newGroupButton;
     @FXML
     private VBox menuOptions;
 
@@ -59,6 +62,15 @@ public class SidePanelController implements Initializable {
         viewController.switchView(ViewType.CREATE_EXPENSE);
     }
 
+    @FXML
+    private void onNewUserClick() {
+        viewController.switchView(ViewType.CREATE_USER);
+    }
+
+    @FXML
+    private void onNewGroupClick() {
+        viewController.switchView(ViewType.CREATE_GROUP);
+    }
     @FXML
     private void onTabSelect(MouseEvent mouseEvent) {
         // TODO - improve view switching

@@ -15,6 +15,12 @@
                         <Button fx:id="newExpenseButton" mnemonicParsing="false"
                                 onAction="#onNewExpenseClick"
                                 styleClass="button--gray" text="New expense"/>
+                        <Button fx:id="newUserButton" mnemonicParsing="false"
+                                onAction="#onNewUserClick"
+                                styleClass="button--gray" text="New user"/>
+                        <Button fx:id="newGroupButton" mnemonicParsing="false"
+                                onAction="#onNewGroupClick"
+                                styleClass="button--gray" text="New group"/>
                     </children>
                 </HBox>
                 <VBox fx:id="menuOptions">

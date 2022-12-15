@@ -1,8 +1,6 @@
 package pl.age.edu.models;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.Optional;
 
 public class Expense {
     public String title;

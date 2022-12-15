@@ -14,5 +14,5 @@ public interface GroupService {
     Call<List<Group>> getGroups();
 
     @POST("api/v1/groups")
-    Call<Void> addGroup(@Body GroupController.CreateUserDTO user);
+    Call<Void> addGroup(@Body CreateGroupDTO user);
 }

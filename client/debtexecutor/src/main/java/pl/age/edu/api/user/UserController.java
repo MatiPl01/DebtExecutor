@@ -22,4 +22,13 @@ public class UserController {
         }
         return response.map(Response::body).orElse(Collections.emptyList());
     }
+
+    public static void add(CreateUserDTO user) {
+        UserService service = RetrofitClient.getRetrofitClient().create(UserService.class);
+        try {
+            Optional.of(service.addUser(user).execute());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

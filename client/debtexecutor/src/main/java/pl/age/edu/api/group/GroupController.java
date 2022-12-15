@@ -21,6 +21,4 @@ public class GroupController {
         }
         return response.map(Response::body).orElse(Collections.emptyList());
     }
-
-    public static record CreateUserDTO(String firstName, String lastName) {}
 }

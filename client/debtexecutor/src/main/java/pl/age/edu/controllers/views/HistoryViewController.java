@@ -19,6 +19,6 @@ public class HistoryViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         List<Expense> expenses = ExpenseController.getAll();
 
-        expenses.forEach(expense ->  historyWrapper.getChildren().add(new HistoryItem(expense)));
+        expenses.forEach(expense -> historyWrapper.getChildren().add(new HistoryItem(expense)));
     }
 }

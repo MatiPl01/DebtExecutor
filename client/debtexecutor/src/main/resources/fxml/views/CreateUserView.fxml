@@ -8,27 +8,24 @@
 
 <?import pl.age.edu.controls.InputField?>
 
-<?import javafx.scene.control.ListView?>
 <VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.age.edu.controllers.views.CreateGroupViewController"
-      alignment="CENTER" spacing="20.0">
+      fx:controller="pl.age.edu.controllers.views.CreateUserViewController" alignment="CENTER" spacing="20.0">
     <children>
-        <Label styleClass="h2" text="Create group"/>
-        <VBox styleClass="create-group__inputs">
+        <Label styleClass="h2" text="Sign up"/>
+        <VBox styleClass="sign-up-form__inputs">
             <children>
-                <InputField label="Group name" fx:id="groupNameInput"/>
-                <Label text="Select users"/>
-                <ListView fx:id="userSelectList"/>
+                <InputField label="First name" fx:id="firstNameInput"/>
+                <InputField label="Last name" fx:id="lastNameInput"/>
             </children>
         </VBox>
-        <Button mnemonicParsing="false" onAction="#onSubmit"
-                styleClass="button--primary" text="SUBMIT"
+        <Button mnemonicParsing="false" onAction="#onAddUser"
+                styleClass="button--primary" text="SIGN UP"
                 AnchorPane.bottomAnchor="0.0"
                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                 AnchorPane.topAnchor="0.0"/>
     </children>
     <stylesheets>
-        <URL value="@../../css/views/CreateExpenseView.css"/>
+        <URL value="@../../css/auth/SignUpForm.css"/>
     </stylesheets>
 </VBox>
