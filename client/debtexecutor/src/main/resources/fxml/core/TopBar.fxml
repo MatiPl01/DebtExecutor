@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<HBox alignment="CENTER_RIGHT" spacing="5.0" styleClass="background-secondary-dark" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.TopBarController">
+<HBox alignment="CENTER_RIGHT" spacing="5.0" styleClass="background-secondary-dark" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.core.TopBarController">
    <children>
       <Button fx:id="darkLightSwitch" mnemonicParsing="false" onAction="#onThemeChange" text="Dark/Light" />
       <Pane maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" prefHeight="25.0" prefWidth="25.0" styleClass="user-image" />

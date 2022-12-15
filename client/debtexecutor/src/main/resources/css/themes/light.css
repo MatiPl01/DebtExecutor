@@ -22,6 +22,42 @@
 }
 
 /*
+ * TYPOGRAPHY
+ */
+.heading--white {
+    -fx-text-fill: -fx-c-white;
+}
+
+.heading {
+    -fx-text-fill: -fx-c-black;
+}
+
+/*
+ * BUTTONS
+ */
+.button--primary {
+    -fx-background-color: -fx-c-primary;
+    -fx-text-fill: -fx-c-white;
+}
+
+.button--primary:hover {
+    -fx-background-color: -fx-c-primary-dark;
+}
+
+.button--transparent-white {
+    -fx-border-color: -fx-c-white;
+    -fx-text-fill: -fx-c-white;
+}
+
+.button--transparent-white:hover {
+    -fx-background-color: -fx-c-white;
+    -fx-text-fill: -fx-c-black;
+}
+
+
+
+
+/*
  * UTILITY CLASSES
  */
 .background-secondary {
@@ -34,30 +70,6 @@
 
 .background-primary {
     -fx-background-color: -fx-c-white;
-}
-
-/*
- * BUTTONS
- */
-.button-primary {
-    -fx-background-color: -fx-c-white;
-    -fx-text-fill: -fx-c-black;
-}
-
-.button-primary:hover {
-    -fx-background-color: -fx-c-gray-light-1;
-    -fx-text-fill: -fx-c-black;
-}
-
-/*
- * TYPOGRAPHY
- */
-.heading-primary {
-    -fx-text-fill: -fx-c-black;
-}
-
-.heading-white {
-    -fx-text-fill: -fx-c-white;
 }
 
 /*
@@ -120,19 +132,19 @@
  * INPUT FIELD
  */
 .input-field-background-color-blur {
-    -fx-background-color: -fx-c-gray-light-2;
+    -fx-background-color: -fx-c-gray-light-2 !important;
 }
 
 .input-field-background-color-focus {
-    -fx-background-color: -fx-c-primary;
+    -fx-background-color: -fx-c-primary !important;
 }
 
 .input-field-text-color-blur {
-    -fx-text-fill: -fx-c-gray-light-2;
+    -fx-text-fill: -fx-c-gray-light-2 !important;
 }
 
 .input-field-text-color-focus {
-    -fx-text-fill: -fx-c-primary;
+    -fx-text-fill: -fx-c-primary !important;
 }
 
 /*
@@ -140,4 +152,25 @@
  */
 .separator {
     -fx-background-color: -fx-c-gray-dark-3;
+}
+
+
+.auth__side--left {
+    -fx-background-color: -fx-c-white;
+}
+
+.auth__side--right {
+    -fx-background-color: linear-gradient(to top right, -fx-c-primary, -fx-c-primary-dark);
+}
+
+.auth__heading--left {
+    -fx-text-fill: -fx-c-primary;
+}
+
+.auth__heading--right {
+    -fx-text-fill: -fx-c-white;
+}
+
+.auth__heading--sub {
+    -fx-text-fill: -fx-c-gray-light-1;
 }

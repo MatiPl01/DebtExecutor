@@ -1,4 +1,4 @@
-package pl.age.edu.controllers;
+package pl.age.edu.controllers.core;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

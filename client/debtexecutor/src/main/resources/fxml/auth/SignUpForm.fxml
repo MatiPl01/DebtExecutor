@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import pl.age.edu.components.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.auth.SignUpFormController">
-   <children>
-      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="sign-up-form__inputs">
-         <children>
-            <InputField label="Login" />
-            <InputField label="First name" />
-            <InputField label="Last name" />
-         </children>
-      </VBox>
-      <AnchorPane>
-         <children>
-            <Button mnemonicParsing="false" onAction="#onSignUp" styleClass="sign-up-form__button" text="SIGN UP" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         </children>
-      </AnchorPane>
-   </children>
-   <stylesheets>
-      <URL value="@../../css/shared.css" />
-      <URL value="@../../css/themes/dark.css" />
-      <URL value="@../../css/auth/SignUpForm.css" />
-   </stylesheets>
+<?import pl.age.edu.controls.InputField?>
+
+<VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/19"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pl.age.edu.controllers.auth.SignUpFormController" alignment="CENTER" spacing="20.0">
+    <children>
+        <Label styleClass="h2" text="Sign up"/>
+        <VBox styleClass="sign-up-form__inputs">
+            <children>
+                <InputField label="Login" fx:id="loginInput"/>
+                <InputField label="First name" fx:id="firstNameInput"/>
+                <InputField label="Last name" fx:id="lastNameInput"/>
+            </children>
+        </VBox>
+        <Button mnemonicParsing="false" onAction="#onSignUp"
+                styleClass="button--primary" text="SIGN UP"
+                AnchorPane.bottomAnchor="0.0"
+                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0"/>
+    </children>
+    <stylesheets>
+        <URL value="@../../css/auth/SignUpForm.css"/>
+    </stylesheets>
 </VBox>

@@ -1,32 +1,23 @@
 package pl.age.edu;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.util.Objects;
+import pl.age.edu.utils.SceneController;
+import pl.age.edu.utils.SceneType;
 
 public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         setupStage(primaryStage);
 
-        // Load the initial scene
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/fxml/auth/AuthView.fxml"));
-        AnchorPane borderPane = loader.load();
-        Scene scene = new Scene(borderPane);
+        // Set up the scene controller
+        SceneController sceneController = SceneController.getInstance();
+        sceneController.setStage(primaryStage);
 
-        // Load CSS stylesheet and add to the scene
-        scene.getStylesheets().addAll(
-//            Objects.requireNonNull(getClass().getResource("/css/themes/dark.css")).toExternalForm(),
-            Objects.requireNonNull(getClass().getResource("/css/themes/light.css")).toExternalForm(),
-            Objects.requireNonNull(getClass().getResource("/css/shared.css")).toExternalForm()
-        );
+        // Open the authentication scene
+        sceneController.switchScene(SceneType.AUTH);
 
-        primaryStage.setScene(scene);
+        // Show the primary stage
         primaryStage.show();
     }
 

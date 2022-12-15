@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane dividerPositions="0.5" minHeight="480.0" prefHeight="480.0"
+           prefWidth="720.0" xmlns="http://javafx.com/javafx/19"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="pl.age.edu.controllers.auth.AuthController">
+    <items>
+        <AnchorPane styleClass="auth__side--left">
+            <children>
+                <StackPane AnchorPane.bottomAnchor="0.0"
+                           AnchorPane.leftAnchor="0.0"
+                           AnchorPane.rightAnchor="0.0"
+                           AnchorPane.topAnchor="0.0">
+                    <children>
+                        <AnchorPane>
+                            <children>
+                                <Label text="Debt" AnchorPane.rightAnchor="5.0"
+                                       AnchorPane.topAnchor="25.0">
+                                    <styleClass>
+                                        <String fx:value="h1"/>
+                                        <String fx:value="auth__heading--left"/>
+                                    </styleClass>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                        <StackPane fx:id="formWrapper"/>
+                    </children>
+                </StackPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane styleClass="auth__side--right">
+            <children>
+                <StackPane AnchorPane.bottomAnchor="0.0"
+                           AnchorPane.leftAnchor="0.0"
+                           AnchorPane.rightAnchor="0.0"
+                           AnchorPane.topAnchor="0.0">
+                    <children>
+                        <AnchorPane>
+                            <children>
+                                <Label text="Executor"
+                                       AnchorPane.leftAnchor="5.0"
+                                       AnchorPane.topAnchor="25.0">
+                                    <styleClass>
+                                        <String fx:value="h1"/>
+                                        <String fx:value="auth__heading--right"/>
+                                    </styleClass>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                        <VBox alignment="CENTER" prefHeight="200.0"
+                              prefWidth="100.0" spacing="30.0">
+                            <children>
+                                <Label fx:id="formChangeHeading">
+                                    <styleClass>
+                                        <String fx:value="heading--white"/>
+                                        <String fx:value="h2"/>
+                                    </styleClass>
+                                </Label>
+                                <Label fx:id="formChangeText" prefWidth="250.0">
+                                    <styleClass>
+                                        <String fx:value="heading--white"/>
+                                        <String fx:value="h4"/>
+                                        <String fx:value="wrap-text"/>
+                                        <String fx:value="text-center"/>
+                                        <String fx:value="auth__heading--sub"/>
+                                    </styleClass>
+                                </Label>
+                                <Button fx:id="formChangeButton"
+                                        mnemonicParsing="false"
+                                        onAction="#onFormChange"
+                                        styleClass="button--transparent-white"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </StackPane>
+            </children>
+        </AnchorPane>
+    </items>
+    <stylesheets>
+        <URL value="@../css/auth/Auth.css"/>
+    </stylesheets>
+</SplitPane>

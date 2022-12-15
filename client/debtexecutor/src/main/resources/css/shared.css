@@ -38,11 +38,40 @@
     -fx-font-weight: bold;
 }
 
-.button-primary {
+
+/*
+ * TYPOGRAPHY
+ */
+.heading {
+    -fx-font-weight: bold;
+}
+
+.h1 { -fx-font-size: 32px; }
+.h2 { -fx-font-size: 24px; }
+.h3 { -fx-font-size: 19px; }
+.h4 { -fx-font-size: 16px; }
+.h5 { -fx-font-size: 13px; }
+.h6 { -fx-font-size: 12px; }
+
+.wrap-text {
+    -fx-wrap-text: true;
+}
+
+.text-center {
+    -fx-text-alignment: center;
+}
+
+/*
+ * BUTTONS
+ */
+.button {
     -fx-font-size: 14px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 8px 20px;
     -fx-cursor: hand;
 }
 
-.heading-primary {
-    -fx-font-size: 14px;
+.button--transparent-white {
+    -fx-background-color: transparent;
 }

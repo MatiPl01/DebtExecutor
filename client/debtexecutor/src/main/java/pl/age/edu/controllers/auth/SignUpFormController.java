@@ -1,18 +1,26 @@
 package pl.age.edu.controllers.auth;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXML;
+import pl.age.edu.controls.InputField;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+public class SignUpFormController extends AuthFormController {
+    @FXML
+    private InputField loginInput;
 
-public class SignUpFormController implements Initializable {
+    @FXML
+    private InputField firstNameInput;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    private InputField lastNameInput;
 
-    }
+    @FXML
+    private void onSignUp() {
+        // TODO - make API request to create a user account
+        System.out.println(loginInput.getText());
+        System.out.println(firstNameInput.getText());
+        System.out.println(lastNameInput.getText());
 
-    public void onSignUp(ActionEvent actionEvent) {
+        // Load the main screen if everything is successful
+        parentController.loadMainScreen();
     }
 }

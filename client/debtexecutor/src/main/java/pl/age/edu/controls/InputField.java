@@ -1,4 +1,4 @@
-package pl.age.edu.components;
+package pl.age.edu.controls;
 
 import javafx.animation.*;
 import javafx.beans.NamedArg;
@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InputField extends StackPane implements Initializable {
-    private static final String FXML_PATH = "/fxml/components/InputField.fxml";
+    private static final String FXML_PATH = "/fxml/controls/InputField.fxml";
     private static final Duration TRANSITION_DURATION = Duration.millis(300);
 
     @FXML
@@ -86,7 +86,7 @@ public class InputField extends StackPane implements Initializable {
         // Translate transition
         TranslateTransition translateTransition = new TranslateTransition(TRANSITION_DURATION, labelWrapper);
         translateTransition.setByY(-30);
-        translateTransition.setByX(-20);
+        translateTransition.setByX(-10);
 
         // Scale transition
         ScaleTransition scaleTransition = new ScaleTransition(TRANSITION_DURATION, labelWrapper);
@@ -109,7 +109,7 @@ public class InputField extends StackPane implements Initializable {
         // Translate transition
         TranslateTransition translateTransition = new TranslateTransition(TRANSITION_DURATION, labelWrapper);
         translateTransition.setByY(30);
-        translateTransition.setByX(20);
+        translateTransition.setByX(10);
 
         // Scale transition
         ScaleTransition scaleTransition = new ScaleTransition(TRANSITION_DURATION, labelWrapper);

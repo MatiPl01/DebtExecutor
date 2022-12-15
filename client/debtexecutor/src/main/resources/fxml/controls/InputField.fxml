@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root prefHeight="58.0" prefWidth="150.0" styleClass="input-field" type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane styleClass="input-field__input-background">
+        <Pane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <styleClass>
+            <String fx:value="input-field__underline" />
+            <String fx:value="input-field-background-color-blur" />
+         </styleClass></Pane>
+        <Pane fx:id="underline" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <styleClass>
+                <String fx:value="input-field__underline" />
+                <String fx:value="input-field__underline--focus" />
+            <String fx:value="input-field-background-color-focus" />
+            </styleClass>
+        </Pane>
+       <StackPane fx:id="labelWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <Label fx:id="labelBlur" text="Label" StackPane.alignment="CENTER_LEFT">
+            <styleClass>
+               <String fx:value="input-field__label" />
+               <String fx:value="input-field-text-color-blur" />
+            </styleClass>
+         </Label>
+           <Label fx:id="labelFocus" text="Label" StackPane.alignment="CENTER_LEFT">
+               <styleClass>
+                   <String fx:value="input-field__label" />
+                   <String fx:value="input-field__label--focus" />
+               <String fx:value="input-field-text-color-focus" />
+               </styleClass>
+           </Label>
+       </StackPane>
+    </AnchorPane>
+    <TextField fx:id="input" styleClass="input-field__input" />
+    <stylesheets>
+        <URL value="@../../css/controls/InputField.css" />
+    </stylesheets>
+</fx:root>

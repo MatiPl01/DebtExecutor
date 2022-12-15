@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.UserPanelController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.core.UserPanelController">
    <children>
       <HBox alignment="CENTER_LEFT" spacing="10.0">
          <children>
             <Pane maxHeight="30.0" maxWidth="30.0" minHeight="30.0" minWidth="30.0" prefHeight="30.0" prefWidth="30.0" styleClass="user-image" />
-            <Label styleClass="heading-white" text="Mateusz Łopaciński" />
+            <Label styleClass="heading--white" text="Mateusz Łopaciński" />
          </children>
          <padding>
             <Insets bottom="10.0" top="10.0" />
@@ -24,7 +24,7 @@
       <Separator />
       <HBox alignment="CENTER_LEFT">
          <children>
-            <Button mnemonicParsing="false" styleClass="button-primary" text="Wyloguj się">
+            <Button mnemonicParsing="false" styleClass="button-gray" text="Wyloguj się">
             </Button>
          </children>
          <padding>

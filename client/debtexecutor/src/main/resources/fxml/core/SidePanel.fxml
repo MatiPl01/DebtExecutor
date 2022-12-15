@@ -10,13 +10,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.SidePanelController">
+<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.core.SidePanelController">
    <children>
       <VBox styleClass="background-transparent">
          <children>
             <HBox styleClass="row">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onNewExpenseClick" styleClass="button-primary" text="Nowy wydatek" />
+                  <Button mnemonicParsing="false"
+                          onAction="#onNewExpenseClick"
+                          styleClass="button-gray" text="Nowy wydatek" />
                </children>
             </HBox>
             <HBox id="summary-tab" onMouseClicked="#onTabSelect">

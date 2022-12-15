@@ -1,4 +1,4 @@
-package pl.age.edu.controllers;
+package pl.age.edu.controllers.core;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;

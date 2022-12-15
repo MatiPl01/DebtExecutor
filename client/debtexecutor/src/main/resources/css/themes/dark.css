@@ -40,14 +40,22 @@
 /*
  * BUTTONS
  */
-.button-primary {
+.button-gray {
     -fx-background-color: -fx-c-white;
     -fx-text-fill: -fx-c-black;
 }
 
-.button-primary:hover {
+.button-gray:hover {
     -fx-background-color: -fx-c-gray-light-1;
-    -fx-text-fill: -fx-c-black;
+}
+
+.button-secondary {
+    -fx-background-color: -fx-c-secondary-dark;
+    -fx-text-fill: -fx-c-white;
+}
+
+.button-secondary:hover {
+    -fx-background-color: -fx-c-secondary;
 }
 
 /*
@@ -125,7 +133,7 @@
 }
 
 .input-field-background-color-focus {
-    -fx-background-color: -fx-c-primary;
+    -fx-background-color: -fx-c-secondary;
 }
 
 .input-field-text-color-blur {
@@ -133,7 +141,7 @@
 }
 
 .input-field-text-color-focus {
-    -fx-text-fill: -fx-c-primary;
+    -fx-text-fill: -fx-c-secondary;
 }
 
 /*
@@ -141,4 +149,8 @@
  */
 .separator {
     -fx-background-color: -fx-c-gray-dark-3;
+}
+
+.auth-view__background-gradient {
+    -fx-background-color: linear-gradient(to top right, -fx-c-primary, -fx-c-primary-dark);
 }
