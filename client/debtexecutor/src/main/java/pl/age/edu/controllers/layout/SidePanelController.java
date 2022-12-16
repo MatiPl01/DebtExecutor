@@ -29,7 +29,10 @@ public class SidePanelController implements Initializable {
     private HBox expenseHistoryOption;
 
     @FXML
-    private Button newExpenseButton;
+    private Button newPersonalExpenseButton;
+
+    @FXML
+    private Button newGroupExpenseButton;
     @FXML
     private Button newUserButton;
     @FXML
@@ -58,8 +61,12 @@ public class SidePanelController implements Initializable {
     }
 
     @FXML
-    private void onNewExpenseClick() {
+    private void onNewPersonalExpenseClick() {
         switchView(ViewType.CREATE_EXPENSE);
+    }
+    @FXML
+    private void onNewGroupExpenseClick() {
+        switchView(ViewType.CREATE_GROUP_EXPENSE);
     }
 
     @FXML

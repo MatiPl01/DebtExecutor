@@ -9,17 +9,13 @@ import pl.age.edu.controllers.core.ThemeType;
 public class TopBarController {
     private final ThemeController themeController = ThemeController.getInstance();
 
-    @FXML
-    private Pane userImage;
 
-    @FXML
-    private Button darkLightSwitch;
+
 
     private UserPanelController userPanelController;
 
     @FXML
     private void initialize() {
-        userImage.setOnMouseClicked(e -> openUserPanel());
     }
 
     public void setUserPanelController(UserPanelController userPanelController) {

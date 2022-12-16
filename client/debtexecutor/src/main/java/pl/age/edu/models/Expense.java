@@ -46,5 +46,9 @@ public class Expense {
 
     public class ExpenseGroupDTO {
         String name;
+
+        public String getName() {
+            return name;
+        }
     }
 }

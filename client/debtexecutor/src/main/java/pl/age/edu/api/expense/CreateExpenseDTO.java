@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public record CreateExpenseDTO(
         String title,
-        UUID payer,
-        UUID payee,
+        String payer,
+        String payee,
         BigDecimal amount) {
 }

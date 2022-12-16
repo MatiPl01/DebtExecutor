@@ -20,4 +20,22 @@ public class ExpenseController {
         }
         return response.map(Response::body).orElse(Collections.emptyList());
     }
+
+    public static void addPersonal(CreateExpenseDTO dto) {
+        ExpenseService service = RetrofitClient.getRetrofitClient().create(ExpenseService.class);
+        try {
+            service.addExpense(dto).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void addGroup(CreateGroupExpenseDTO dto) {
+        ExpenseService service = RetrofitClient.getRetrofitClient().create(ExpenseService.class);
+        try {
+            service.addGroupExpense(dto).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

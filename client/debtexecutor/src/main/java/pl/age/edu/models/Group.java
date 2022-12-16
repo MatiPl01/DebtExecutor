@@ -2,6 +2,7 @@ package pl.age.edu.models;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Group {
     UUID id;
@@ -36,4 +37,14 @@ public class Group {
         }
     }
 
+    @Override
+    public String toString() {
+        if (name != "") {
+            return name;
+        } else {
+            AtomicReference<String> s = new AtomicReference<>("");
+            members.forEach(user -> s.set(s + user.firstName + " "));
+            return s.get();
+        }
+    }
 }

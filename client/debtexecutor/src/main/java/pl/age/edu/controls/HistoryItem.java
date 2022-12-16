@@ -46,7 +46,7 @@ public class HistoryItem extends VBox {
         expenseTitle.setText(expense.getTitle());
         payerName.setText(expense.getPayer().toString());
         payeeName.setText(expense.getPayee().toString());
-        if (expense.getGroup() != null) groupName.setText(expense.getGroup().toString());
+        if (expense.getGroup() != null) groupName.setText(expense.getGroup().getName());
         else groupName.getStyleClass().add(HIDDEN_CLASS_NAME);
         expenseAmount.setText(expense.getAmount().toString());
         expenseDate.setText(expense.getDate());
