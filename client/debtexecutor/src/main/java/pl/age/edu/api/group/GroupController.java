@@ -22,4 +22,13 @@ public class GroupController {
         System.out.println(response.map(Response::body).orElse(Collections.emptyList()).stream().map(g -> g.getName()));
         return response.map(Response::body).orElse(Collections.emptyList());
     }
+
+    public static void add(CreateGroupDTO dto) {
+        GroupService service = RetrofitClient.getRetrofitClient().create(GroupService.class);
+        try {
+           service.addGroup(dto).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

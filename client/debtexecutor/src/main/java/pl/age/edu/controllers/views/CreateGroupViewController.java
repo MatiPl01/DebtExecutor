@@ -5,11 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
+import pl.age.edu.api.group.CreateGroupDTO;
+import pl.age.edu.api.group.GroupController;
+import pl.age.edu.api.user.UserController;
 import pl.age.edu.controls.InputField;
 import javafx.scene.control.ListView;
 import pl.age.edu.models.User;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class CreateGroupViewController {
     @FXML
@@ -20,18 +25,22 @@ public class CreateGroupViewController {
 
     @FXML
     private void onSubmit() {
-        // TODO - add post request to create a new group
-        System.out.println(groupNameInput.getText());
-        System.out.println(userSelectList.getSelectionModel().getSelectedItems());
+        String groupName = groupNameInput.getText();
+        List<String> users = userSelectList.getSelectionModel()
+                .getSelectedItems()
+                .stream()
+                .map(User::getId)
+                .toList();
+        CreateGroupDTO dto = new CreateGroupDTO(groupName, users);
+        GroupController.add(dto);
     }
 
     @FXML
     public void initialize() {
-        // TODO - use some state management service
-        ObservableList<User> users = FXCollections.observableArrayList();
-        users.add(new User("0", "Mateusz", "Łopaciński", new ArrayList<>(), new ArrayList<>()));
-        users.add(new User("1", "Ewa", "Miklewska", new ArrayList<>(), new ArrayList<>()));
-        users.add(new User("2", "Jakub", "Stępień", new ArrayList<>(), new ArrayList<>()));
+        List<User> allUsers = UserController.getAll();
+
+        ObservableList<User> users = FXCollections.observableArrayList(allUsers);
+
 
         userSelectList.setItems(users);
         userSelectList.setCellFactory(param -> new ListCell<>() {
