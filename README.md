@@ -1,11 +1,37 @@
 # DebtExecutor
 
-## Side info (14.12.2022):
-- Removed login. Logging in by choosing user from predefined list.
-- To create resource you have to send corresponding DTO (CreateGroupDTO, CreateUserDTO, CreateExpenseDTO).
-- In Group.java when name is not passed to us - give empty string instead of null.
-- Created separate endpoints for adding expense between users (v1/expenses/add/expense).
-- 
+## Changelog:
+1. Endpoints:
+	- add group
+    - get all groups
+    - get user
+    - get all users
+    - get all expenses
+    - add expense (personal)
+    - add expense (group)
+2. GUI:
+	- Left side contains navigation panel:
+    	- adding users/groups/expenses
+        - switching between expense history (all expenses) and expense summary (users balance).
+        - all users list
+        - all groups list
+    - Right side displays content for chosen option from navigation panel.
+    
+## In progress
+
+- styling
+- login
+
+## Requirements
+
+- Postgresql database named "debtexecutor"
+- Java 16 or higher
+
+
+## Running the app
+
+- server: DebtexecutorApplication.main
+- client: Main.main
 
 ## Authors
 
