@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.VBox?>
 
 <fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-    <HBox alignment="CENTER_LEFT" styleClass="card__header">
+    <HBox alignment="CENTER_LEFT">
         <children>
             <VBox>
                 <children>
-                    <Label styleClass="card__label" text="Title" />
-                    <Label fx:id="expenseTitle" minWidth="250.0" text="Dinner in a restaurant" wrapText="true">
+                    <Label styleClass="card__label"/>
+                    <Label fx:id="expenseTitle" minWidth="250.0" wrapText="true">
                   <styleClass>
                      <String fx:value="card__title" />
                      <String fx:value="h4" />
@@ -21,7 +21,7 @@
                 </children>
             </VBox>
             <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="groupName" styleClass="card__group" text="Group name" />
+            <Label fx:id="groupName" styleClass="card__group"/>
         </children>
     </HBox>
     <HBox alignment="BOTTOM_CENTER" spacing="10.0" styleClass="card__body">
@@ -29,7 +29,7 @@
             <VBox>
                 <children>
                     <Label styleClass="card__label" text="Payer" />
-                    <Label fx:id="payerName" text="Mateusz Łopaciński" wrapText="true">
+                    <Label fx:id="payerName" wrapText="true">
                   <styleClass>
                      <String fx:value="card__user" />
                      <String fx:value="h5" />
@@ -39,7 +39,7 @@
             <HBox alignment="BOTTOM_CENTER" spacing="10.0">
                 <children>
                     <Label styleClass="card__label" text="paid" />
-                    <Label fx:id="expenseAmount" text="\$80.75">
+                    <Label fx:id="expenseAmount">
                   <styleClass>
                      <String fx:value="card__amount" />
                      <String fx:value="h4" />
@@ -50,7 +50,7 @@
             <VBox>
                 <children>
                     <Label styleClass="card__label" text="Payee" />
-                    <Label fx:id="payeeName" text="Ewa Miklewska" wrapText="true">
+                    <Label fx:id="payeeName" wrapText="true">
                   <styleClass>
                      <String fx:value="card__user" />
                      <String fx:value="h5" />

@@ -1,6 +1,5 @@
 package pl.age.edu.api.group;
 
-import pl.age.edu.api.group.GroupController;
 import pl.age.edu.models.Group;
 import retrofit2.Call;
 import retrofit2.http.Body;

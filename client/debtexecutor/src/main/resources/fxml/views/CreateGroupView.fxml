@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <?import pl.age.edu.controls.InputField?>
-
-<?import javafx.scene.control.ListView?>
-<VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.age.edu.controllers.views.CreateGroupViewController"
-      alignment="CENTER" spacing="20.0">
+<VBox alignment="CENTER" spacing="20.0" styleClass="create-group" stylesheets="@../../css/views/CreateGroupView.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.views.CreateGroupViewController">
     <children>
-        <Label styleClass="h2" text="Create group"/>
-        <VBox styleClass="create-group__inputs">
+        <Label text="Create group">
+            <styleClass>
+                <String fx:value="heading" />
+                <String fx:value="h2" />
+            </styleClass>
+        </Label>
+        <InputField label="Group name" fx:id="groupNameInput"/>
+        <VBox spacing="10.0">
             <children>
-                <InputField label="Group name" fx:id="groupNameInput"/>
-                <Label text="Select users"/>
-                <ListView fx:id="userSelectList"/>
+                <Label styleClass="color-text-primary" text="Select users" />
+                <ListView fx:id="userSelectList" />
             </children>
         </VBox>
-        <Button mnemonicParsing="false" onAction="#onSubmit"
-                styleClass="button--primary" text="SUBMIT"
-                AnchorPane.bottomAnchor="0.0"
-                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                AnchorPane.topAnchor="0.0"/>
+        <Button mnemonicParsing="false" onAction="#onSubmit" styleClass="button--primary" text="SUBMIT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     </children>
-    <stylesheets>
-        <URL value="@../../css/views/CreateExpenseView.css"/>
-    </stylesheets>
 </VBox>

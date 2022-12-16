@@ -247,3 +247,8 @@
 .balance-item__amount.negative {
     -fx-text-fill: -fx-c-secondary-dark;
 }
+
+
+.color-text-primary {
+    -fx-text-fill: -fx-c-black;
+}

@@ -9,6 +9,10 @@
     -fx-background-radius: 25px;
 }
 
+.card__group.hidden {
+    -fx-opacity: 0;
+}
+
 .card__body {
     -fx-border-style: solid none solid none;
     -fx-padding: 5px 0;

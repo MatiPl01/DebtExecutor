@@ -7,9 +7,9 @@ import javafx.scene.layout.VBox;
 import pl.age.edu.models.Expense;
 
 import java.io.IOException;
-import java.util.Optional;
 
 public class HistoryItem extends VBox {
+    private static final String HIDDEN_CLASS_NAME = "hidden";
     private static final String FXML_PATH = "/fxml/controls/HistoryItem.fxml";
 
     @FXML
@@ -47,6 +47,7 @@ public class HistoryItem extends VBox {
         payerName.setText(expense.getPayer().toString());
         payeeName.setText(expense.getPayee().toString());
         if (expense.getGroup() != null) groupName.setText(expense.getGroup().toString());
+        else groupName.getStyleClass().add(HIDDEN_CLASS_NAME);
         expenseAmount.setText(expense.getAmount().toString());
         expenseDate.setText(expense.getDate());
     }

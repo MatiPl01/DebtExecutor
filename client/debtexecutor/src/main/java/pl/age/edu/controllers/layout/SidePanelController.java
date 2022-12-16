@@ -59,17 +59,17 @@ public class SidePanelController implements Initializable {
 
     @FXML
     private void onNewExpenseClick() {
-        viewController.switchView(ViewType.CREATE_EXPENSE);
+        switchView(ViewType.CREATE_EXPENSE);
     }
 
     @FXML
     private void onNewUserClick() {
-        viewController.switchView(ViewType.CREATE_USER);
+        switchView(ViewType.CREATE_USER);
     }
 
     @FXML
     private void onNewGroupClick() {
-        viewController.switchView(ViewType.CREATE_GROUP);
+        switchView(ViewType.CREATE_GROUP);
     }
     @FXML
     private void onTabSelect(MouseEvent mouseEvent) {
@@ -99,10 +99,10 @@ public class SidePanelController implements Initializable {
 
     private void switchView(ViewType viewType) {
         viewController.switchView(viewType);
+        setOptionsInactive();
 
         // Set the proper option in the menu active
         switch (viewType) {
-            case CREATE_EXPENSE, CREATE_GROUP -> setOptionsInactive();
             case HISTORY -> setOptionActive(expenseHistoryOption);
             case SUMMARY -> setOptionActive(expenseSummaryOption);
         }
