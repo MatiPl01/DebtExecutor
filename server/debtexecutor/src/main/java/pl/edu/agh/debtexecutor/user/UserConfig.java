@@ -44,7 +44,7 @@ public class UserConfig {
             kuba.addToGroup(group);
 
             Expense expenseEwaKuba = new Expense(
-                    "hlep",
+                    "chleb",
                     kuba,
                     ewa,
                     BigDecimal.valueOf(2),
@@ -55,7 +55,7 @@ public class UserConfig {
             kuba.changeBalance(ewa, BigDecimal.valueOf(-2));
 
             Expense expenseKubaMateusz = new Expense(
-                    "wóda",
+                    "woda",
                     mateusz,
                     kuba,
                     group,
