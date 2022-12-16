@@ -1,0 +1,19 @@
+.card {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 15px;
+}
+
+.card__group {
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 25px;
+}
+
+.card__body {
+    -fx-border-style: solid none solid none;
+    -fx-padding: 5px 0;
+}
+
+.card__date {
+    -fx-padding: 10px;
+}

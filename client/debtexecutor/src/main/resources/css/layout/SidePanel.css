@@ -5,3 +5,7 @@
 .menu-row {
     -fx-padding: 5px 10px;
 }
+
+.menu__buttons {
+    -fx-padding: 10px;
+}

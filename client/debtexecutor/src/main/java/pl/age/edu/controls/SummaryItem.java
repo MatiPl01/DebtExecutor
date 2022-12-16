@@ -5,20 +5,27 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import pl.age.edu.models.User;
+import pl.age.edu.models.UserBalance;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class SummaryItem extends VBox {
     private static final String FXML_PATH = "/fxml/controls/SummaryItem.fxml";
+    private static final String NEGATIVE_AMOUNT_CLASS = "negative";
 
     @FXML
     private Label userLabel;
 
     @FXML
-    private VBox balancesWrapper;
+    private Label totalBalanceLabel;
+
+    @FXML
+    private VBox detailsWrapper;
 
     public SummaryItem(User user) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_PATH));
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource(FXML_PATH));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -27,12 +34,22 @@ public class SummaryItem extends VBox {
             throw new RuntimeException(e);
         }
 
-        userLabel.setText(user.getFirstName() + " " + user.getLastName() + " balance:");
+        BigDecimal total = user.getBalance()
+                               .stream()
+                               .map(UserBalance::getBalance)
+                               .reduce(BigDecimal.ZERO, BigDecimal::add);
+        totalBalanceLabel.setText(total.toString());
+        if (total.compareTo(BigDecimal.ZERO) < 0) totalBalanceLabel.getStyleClass().add(NEGATIVE_AMOUNT_CLASS);
 
-        user.getBalance().forEach(balance ->
-                balancesWrapper
-                        .getChildren()
-                        .add(new Label(balance.getFirstName() + " " + balance.getLastName() + ": " + balance.getBalance().toString())));
-
+        userLabel.setText(user.getFirstName() + " " + user.getLastName());
+        user.getBalance().forEach(balance -> {
+            detailsWrapper.getChildren().add(
+                    new SummaryItemBalance(
+                            balance.getFirstName() +
+                            " " +
+                            balance.getLastName(),
+                            balance.getBalance()
+                    ));
+        });
     }
 }

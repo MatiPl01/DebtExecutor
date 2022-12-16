@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+<fx:root styleClass="balance-item" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@../../css/shared.css" />
+      <URL value="@../../css/themes/light.css" />
+      <URL value="@../../css/controls/SummaryItemBalance.css" />
+   </stylesheets>
+   <children>
+      <Label fx:id="userLabel" text="Jakub Stępień">
+         <styleClass>
+            <String fx:value="balance-item__user" />
+            <String fx:value="h5" />
+         </styleClass></Label>
+      <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
+      <HBox alignment="BOTTOM_RIGHT" spacing="5.0">
+         <children>
+            <Label fx:id="owesLabel" styleClass="balance-item__label" text="owes you" />
+            <Label fx:id="amountLabel" text="80">
+               <styleClass>
+                  <String fx:value="balance-item__amount" />
+                  <String fx:value="h5" />
+               </styleClass></Label>
+         </children>
+      </HBox>
+   </children>
+</fx:root>

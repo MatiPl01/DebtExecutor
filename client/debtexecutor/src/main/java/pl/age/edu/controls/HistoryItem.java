@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import pl.age.edu.models.Expense;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class HistoryItem extends VBox {
     private static final String FXML_PATH = "/fxml/controls/HistoryItem.fxml";
@@ -24,7 +25,10 @@ public class HistoryItem extends VBox {
     private Label groupName;
 
     @FXML
-    private Label amount;
+    private Label expenseAmount;
+
+    @FXML
+    private Label expenseDate;
 
     public HistoryItem(Expense expense) {
         // TODO - improve FXML loading
@@ -39,9 +43,11 @@ public class HistoryItem extends VBox {
             throw new RuntimeException(e);
         }
 
-        System.out.println(expense);
-
         expenseTitle.setText(expense.getTitle());
         payerName.setText(expense.getPayer().toString());
+        payeeName.setText(expense.getPayee().toString());
+        if (expense.getGroup() != null) groupName.setText(expense.getGroup().toString());
+        expenseAmount.setText(expense.getAmount().toString());
+        expenseDate.setText(expense.getDate());
     }
 }

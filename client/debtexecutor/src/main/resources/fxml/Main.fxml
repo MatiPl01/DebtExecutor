@@ -8,26 +8,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.MainController">
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.MainController">
     <top>
         <AnchorPane prefHeight="36.0">
-            <fx:include fx:id="topBar" source="layout/TopBar.fxml"
-                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include fx:id="topBar" source="layout/TopBar.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         </AnchorPane>
     </top>
     <center>
-        <SplitPane dividerPositions="0.3" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <SplitPane dividerPositions="0.35" BorderPane.alignment="CENTER">
             <items>
                 <AnchorPane maxWidth="400.0" minHeight="0.0" minWidth="0.0">
                     <children>
-                        <ScrollPane fitToWidth="true" styleClass="background-secondary" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="background-secondary" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <content>
                                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <fx:include fx:id="sidePanel"
-                                            source="layout/SidePanel.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <fx:include fx:id="sidePanel" source="layout/SidePanel.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     <styleClass>
                                         <String fx:value="background-secondary" />
                                         <String fx:value="no-padding" />
@@ -39,37 +36,28 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                     <children>
-                        <StackPane prefHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <children>
-                        <VBox>
+                  <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox styleClass="main__view-header">
                            <children>
-                              <HBox styleClass="main__view-header">
-                                 <children>
-                                    <Label styleClass="h4" text="#" />
-                                    <Label fx:id="viewLabel" text="Label">
-                                       <styleClass>
-                                          <String fx:value="h4" />
-                                          <String fx:value="main__view--heading" />
-                                       </styleClass>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                                      <ScrollPane fitToWidth="true" styleClass="background-primary" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
-                                          <content>
-                                              <AnchorPane fx:id="viewWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                              </AnchorPane>
-                                          </content>
-                                      </ScrollPane>
+                              <Label styleClass="h4" text="#" />
+                              <Label fx:id="viewLabel" text="Label">
+                                 <styleClass>
+                                    <String fx:value="h4" />
+                                    <String fx:value="main__view--heading" />
+                                 </styleClass>
+                              </Label>
                            </children>
-                        </VBox>
-                                <AnchorPane>
-                                    <children>
-                                        <fx:include fx:id="userPanel"
-                                                source="layout/UserPanel.fxml" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                    </children>
-                                </AnchorPane>
-                            </children>
-                        </StackPane>
+                        </HBox>
+                                <ScrollPane fitToWidth="true" styleClass="background-primary" VBox.vgrow="ALWAYS">
+                                    <content>
+                                        <AnchorPane fx:id="viewWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                              </AnchorPane>
+                                    </content>
+                                </ScrollPane>
+                     </children>
+                  </VBox>
+                            <fx:include fx:id="userPanel" source="layout/UserPanel.fxml" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </children>
                 </AnchorPane>
             </items>

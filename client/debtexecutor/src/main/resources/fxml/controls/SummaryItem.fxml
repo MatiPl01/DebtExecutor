@@ -1,17 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.String?>
 <?import java.net.URL?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<fx:root xmlns="http://javafx.com/javafx"
-         xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.layout.VBox"
-         prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: red">
-    <Label fx:id="userLabel"/>
-    <VBox fx:id="balancesWrapper"/>
+<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <HBox styleClass="card__header">
+      <children>
+          <Label fx:id="userLabel" text="Mateusz Łopaciński">
+            <styleClass>
+               <String fx:value="card__user" />
+               <String fx:value="h4" />
+            </styleClass>
+         </Label>
+         <Region HBox.hgrow="ALWAYS" />
+         <HBox alignment="BOTTOM_RIGHT" spacing="5.0">
+            <children>
+               <Label fx:id="totalBalanceLabel" text="+80.00">
+                  <styleClass>
+                     <String fx:value="card__amount" />
+                     <String fx:value="h4" />
+                  </styleClass>
+               </Label>
+               <Label styleClass="card__label" text="in total" />
+            </children>
+         </HBox>
+      </children>
+   </HBox>
+    <VBox fx:id="balancesWrapper" />
+   <TitledPane expanded="false" styleClass="card__details" text="Details">
+     <content>
+       <AnchorPane>
+            <children>
+               <VBox fx:id="detailsWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+         </AnchorPane>
+     </content>
+   </TitledPane>
     <stylesheets>
-        <URL value="@../../css/controls/SummaryItem.css"/>
+        <URL value="@../../css/shared.css" />
+      <URL value="@../../css/themes/light.css" />
+      <URL value="@../../css/controls/SummaryItem.css" />
     </stylesheets>
 </fx:root>

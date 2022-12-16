@@ -5,8 +5,10 @@
     -fx-c-black: #000;
 
     /* Gray */
+    -fx-c-gray-light-0: #F0F0F0;
     -fx-c-gray-light-1: #E0E0E0;
     -fx-c-gray-light-2: #B0B0BA;
+    -fx-c-gray-light-3: #909090;
 
     -fx-c-gray-dark-1: #1B1D21;
     -fx-c-gray-dark-2: #272727;
@@ -168,6 +170,7 @@
 }
 
 
+
 .auth__side--left {
     -fx-background-color: -fx-c-white;
 }
@@ -191,4 +194,56 @@
 
 .main__view-header {
     -fx-border-color: -fx-c-gray-light-2;
+}
+
+
+.history {
+    /*-fx-background-color: -fx-gray-light-2;*/
+}
+
+.card {
+    /*-fx-background-color: -fx-c-white;*/
+    -fx-background-color: -fx-c-gray-light-0;
+}
+
+.card__body {
+    -fx-border-color: -fx-c-gray-light-3;
+}
+
+.card__label, .card__date {
+    -fx-text-fill: -fx-c-gray-light-3;
+}
+
+.card__title, .card__user {
+    -fx-text-fill: -fx-c-black;
+}
+
+.card__amount {
+    -fx-text-fill: -fx-c-primary;
+}
+
+.card__amount.negative {
+    -fx-text-fill: -fx-c-secondary;
+}
+
+.card__group {
+    -fx-background-color: linear-gradient(to top right, -fx-c-primary, -fx-c-primary-dark);
+    -fx-text-fill: -fx-c-white;
+}
+
+
+.balance-item__user {
+    -fx-text-fill: -fx-c-black;
+}
+
+.balance-item__label {
+    -fx-text-fill: -fx-c-gray-light-3;
+}
+
+.balance-item__amount {
+    -fx-text-fill: -fx-c-primary;
+}
+
+.balance-item__amount.negative {
+    -fx-text-fill: -fx-c-secondary-dark;
 }

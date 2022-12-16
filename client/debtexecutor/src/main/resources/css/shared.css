@@ -72,6 +72,11 @@
     -fx-cursor: hand;
 }
 
+.button--small {
+    -fx-font-size: 11px;
+    -fx-padding: 3px 8px;
+}
+
 .button--transparent-white {
     -fx-background-color: transparent;
 }

@@ -1,30 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17"
-         xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: red">
+<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox alignment="CENTER_LEFT" styleClass="card__header">
+        <children>
+            <VBox>
+                <children>
+                    <Label styleClass="card__label" text="Title" />
+                    <Label fx:id="expenseTitle" minWidth="250.0" text="Dinner in a restaurant" wrapText="true">
+                  <styleClass>
+                     <String fx:value="card__title" />
+                     <String fx:value="h4" />
+                  </styleClass></Label>
+                </children>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="groupName" styleClass="card__group" text="Group name" />
+        </children>
+    </HBox>
+    <HBox alignment="BOTTOM_CENTER" spacing="10.0" styleClass="card__body">
+        <children>
+            <VBox>
+                <children>
+                    <Label styleClass="card__label" text="Payer" />
+                    <Label fx:id="payerName" text="Mateusz Łopaciński" wrapText="true">
+                  <styleClass>
+                     <String fx:value="card__user" />
+                     <String fx:value="h5" />
+                  </styleClass></Label>
+                </children>
+            </VBox>
+            <HBox alignment="BOTTOM_CENTER" spacing="10.0">
+                <children>
+                    <Label styleClass="card__label" text="paid" />
+                    <Label fx:id="expenseAmount" text="\$80.75">
+                  <styleClass>
+                     <String fx:value="card__amount" />
+                     <String fx:value="h4" />
+                  </styleClass></Label>
+                    <Label styleClass="card__label" text="for" />
+                </children>
+            </HBox>
+            <VBox>
+                <children>
+                    <Label styleClass="card__label" text="Payee" />
+                    <Label fx:id="payeeName" text="Ewa Miklewska" wrapText="true">
+                  <styleClass>
+                     <String fx:value="card__user" />
+                     <String fx:value="h5" />
+                  </styleClass></Label>
+                </children>
+            </VBox>
+        </children>
+    </HBox>
+    <Label fx:id="expenseDate" styleClass="card__date" text="2022-09-01 22:10:11" />
     <stylesheets>
-        <URL value="@../../css/controls/HistoryItem.css"/>
+        <URL value="@../../css/shared.css" />
+        <URL value="@../../css/themes/light.css" />
+        <URL value="@../../css/controls/HistoryItem.css" />
     </stylesheets>
-    <Label fx:id="expenseTitle"/>
-    <HBox>
-        <VBox>
-            <Label text="from"/>
-            <Label fx:id="payerName"/>
-        </VBox>
-        <VBox>
-            <Label text="to"/>
-            <Label fx:id="payeeName"/>
-        </VBox>
-    </HBox>
-    <HBox>
-        <Label text="group"/>
-        <Label fx:id="groupName"/>
-    </HBox>
-    <HBox>
-        <Label text="Amount"/>
-        <Label fx:id="amount"/>
-    </HBox>
 </fx:root>

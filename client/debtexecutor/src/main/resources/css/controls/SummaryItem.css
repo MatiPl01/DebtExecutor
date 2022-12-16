@@ -1,0 +1,5 @@
+.card {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px 15px;
+}

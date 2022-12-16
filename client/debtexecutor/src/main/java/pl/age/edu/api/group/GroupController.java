@@ -19,6 +19,7 @@ public class GroupController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println(response.map(Response::body).orElse(Collections.emptyList()).stream().map(g -> g.getName()));
         return response.map(Response::body).orElse(Collections.emptyList());
     }
 }
