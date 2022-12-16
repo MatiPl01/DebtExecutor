@@ -2,6 +2,7 @@ package pl.edu.agh.debtexecutor.group;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.agh.debtexecutor.user.User;
 import pl.edu.agh.debtexecutor.user.UserService;
 
 import java.util.List;
@@ -25,7 +26,9 @@ public class GroupController {
 
     @PostMapping
     public void addGroup(@RequestBody CreateGroupDTO dto) {
-        Group group = new Group(dto.name(), userService.getUsersById(dto.users()));
+        List<User> users = userService.getUsersById(dto.users());
+        Group group = new Group(dto.name(), users);
         groupService.addGroup(group);
+        users.forEach(user -> user.addToGroup(group));
     }
 }
