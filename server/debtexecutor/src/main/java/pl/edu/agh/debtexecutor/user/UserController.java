@@ -30,7 +30,4 @@ public class UserController {
         userService.addUser(user);
     }
 
-
-
-    //TODO loginUser(login) -> user; createUser, createGroup, createExpense, getExpenses, getGroups, getUsers (?)
 }
