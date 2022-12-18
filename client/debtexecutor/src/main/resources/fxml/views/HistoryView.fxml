@@ -5,5 +5,5 @@
 
 <VBox fx:id="historyWrapper" alignment="TOP_CENTER" styleClass="history"
       stylesheets="@../../css/views/HistoryView.css"
-      xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.age.edu.controllers.views.HistoryViewController"/>

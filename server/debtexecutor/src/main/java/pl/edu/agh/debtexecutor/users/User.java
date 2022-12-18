@@ -22,8 +22,7 @@ public class User {
 
     @Column(
             name = "first_name",
-            nullable = false,
-            unique = true
+            nullable = false
     )
     private String firstName;
 

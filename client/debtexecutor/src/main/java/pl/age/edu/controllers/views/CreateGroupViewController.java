@@ -5,16 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
-import pl.age.edu.api.group.CreateGroupDTO;
+import pl.age.edu.api.group.dto.CreateGroupDTO;
 import pl.age.edu.api.group.GroupController;
 import pl.age.edu.api.user.UserController;
 import pl.age.edu.controls.InputField;
 import javafx.scene.control.ListView;
 import pl.age.edu.models.User;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class CreateGroupViewController {
     @FXML

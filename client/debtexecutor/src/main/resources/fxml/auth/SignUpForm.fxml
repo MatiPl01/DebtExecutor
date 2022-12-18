@@ -10,16 +10,17 @@
 
 <VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.age.edu.controllers.views.CreateUserViewController" alignment="CENTER" spacing="20.0">
+      fx:controller="pl.age.edu.controllers.auth.SignUpFormController" alignment="CENTER" spacing="20.0">
     <children>
         <Label styleClass="h2" text="Sign up"/>
         <VBox styleClass="sign-up-form__inputs">
             <children>
+                <InputField label="Login" fx:id="loginInput"/>
                 <InputField label="First name" fx:id="firstNameInput"/>
                 <InputField label="Last name" fx:id="lastNameInput"/>
             </children>
         </VBox>
-        <Button mnemonicParsing="false" onAction="#onAddUser"
+        <Button mnemonicParsing="false" onAction="#onSignUp"
                 styleClass="button--primary" text="SIGN UP"
                 AnchorPane.bottomAnchor="0.0"
                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"

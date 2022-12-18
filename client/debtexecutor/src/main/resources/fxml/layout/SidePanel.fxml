@@ -9,51 +9,62 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.layout.SidePanelController">
+<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pl.age.edu.controllers.layout.SidePanelController">
     <children>
         <VBox styleClass="background-transparent">
             <children>
-            <VBox spacing="5.0" styleClass="menu__buttons">
-               <children>
-                        <Button fx:id="newPersonalExpenseButton" mnemonicParsing="false" onAction="#onNewPersonalExpenseClick" text="New personal expense">
-                     <styleClass>
-                        <String fx:value="button" />
-                        <String fx:value="button--gray" />
-                        <String fx:value="button--small" />
-                     </styleClass></Button>
-                   <Button fx:id="newGroupExpenseButton" mnemonicParsing="false" onAction="#onNewGroupExpenseClick" text="New group expense">
-                       <styleClass>
-                           <String fx:value="button" />
-                           <String fx:value="button--gray" />
-                           <String fx:value="button--small" />
-                       </styleClass></Button>
-                        <Button fx:id="newUserButton" mnemonicParsing="false" onAction="#onNewUserClick" text="New user">
-                     <styleClass>
-                         <String fx:value="button" />
-                         <String fx:value="button--gray" />
-                         <String fx:value="button--small" />
-                     </styleClass></Button>
-                        <Button fx:id="newGroupButton" mnemonicParsing="false" onAction="#onNewGroupClick" text="New group">
-                     <styleClass>
-                         <String fx:value="button" />
-                         <String fx:value="button--gray" />
-                         <String fx:value="button--small" />
-                     </styleClass></Button>
-               </children>
-            </VBox>
+                <VBox spacing="5.0" styleClass="menu__buttons">
+                    <children>
+                        <Button fx:id="newPersonalExpenseButton"
+                                mnemonicParsing="false"
+                                onAction="#onNewPersonalExpenseClick"
+                                text="New personal expense">
+                            <styleClass>
+                                <String fx:value="button"/>
+                                <String fx:value="button--gray"/>
+                                <String fx:value="button--small"/>
+                            </styleClass>
+                        </Button>
+                        <Button fx:id="newGroupExpenseButton"
+                                mnemonicParsing="false"
+                                onAction="#onNewGroupExpenseClick"
+                                text="New group expense">
+                            <styleClass>
+                                <String fx:value="button"/>
+                                <String fx:value="button--gray"/>
+                                <String fx:value="button--small"/>
+                            </styleClass>
+                        </Button>
+                        <Button fx:id="newGroupButton" mnemonicParsing="false"
+                                onAction="#onNewGroupClick" text="New group">
+                            <styleClass>
+                                <String fx:value="button"/>
+                                <String fx:value="button--gray"/>
+                                <String fx:value="button--small"/>
+                            </styleClass>
+                        </Button>
+                    </children>
+                </VBox>
                 <VBox fx:id="menuOptions">
                     <children>
-                        <HBox fx:id="expenseHistoryOption" onMouseClicked="#onTabSelect" styleClass="menu-row">
+                        <HBox fx:id="expenseHistoryOption"
+                              onMouseClicked="#onTabSelect"
+                              styleClass="menu-row">
                             <children>
-                                <Label styleClass="menu-option" text="Expense history" />
+                                <Label styleClass="menu-option"
+                                       text="Expense history"/>
                             </children>
                         </HBox>
-                        <HBox fx:id="expenseSummaryOption" onMouseClicked="#onTabSelect">
+                        <HBox fx:id="expenseSummaryOption"
+                              onMouseClicked="#onTabSelect">
                             <children>
-                                <Label styleClass="menu-option" text="Expense summary" />
+                                <Label styleClass="menu-option"
+                                       text="Expense summary"/>
                             </children>
                             <styleClass>
-                                <String fx:value="menu-row" />
+                                <String fx:value="menu-row"/>
                             </styleClass>
                         </HBox>
                     </children>
@@ -64,12 +75,15 @@
             <content>
                 <AnchorPane>
                     <children>
-                        <VBox fx:id="usersWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="usersWrapper" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="0.0">
                         </VBox>
                     </children>
                     <styleClass>
-                        <String fx:value="background-transparent" />
-                        <String fx:value="no-padding" />
+                        <String fx:value="background-transparent"/>
+                        <String fx:value="no-padding"/>
                     </styleClass>
                 </AnchorPane>
             </content>
@@ -78,17 +92,21 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0">
                     <children>
-                        <VBox fx:id="groupsWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <VBox fx:id="groupsWrapper"
+                              AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="0.0"
+                              AnchorPane.rightAnchor="0.0"
+                              AnchorPane.topAnchor="0.0"/>
                     </children>
                     <styleClass>
-                        <String fx:value="background-transparent" />
-                        <String fx:value="no-padding" />
+                        <String fx:value="background-transparent"/>
+                        <String fx:value="no-padding"/>
                     </styleClass>
                 </AnchorPane>
             </content>
         </TitledPane>
     </children>
     <stylesheets>
-        <URL value="@../../css/layout/SidePanel.css" />
+        <URL value="@../../css/layout/SidePanel.css"/>
     </stylesheets>
 </VBox>

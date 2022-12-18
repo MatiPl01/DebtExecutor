@@ -33,10 +33,10 @@ public class SidePanelController implements Initializable {
 
     @FXML
     private Button newGroupExpenseButton;
-    @FXML
-    private Button newUserButton;
+
     @FXML
     private Button newGroupButton;
+
     @FXML
     private VBox menuOptions;
 
@@ -67,11 +67,6 @@ public class SidePanelController implements Initializable {
     @FXML
     private void onNewGroupExpenseClick() {
         switchView(ViewType.CREATE_GROUP_EXPENSE);
-    }
-
-    @FXML
-    private void onNewUserClick() {
-        switchView(ViewType.CREATE_USER);
     }
 
     @FXML

@@ -1,4 +1,4 @@
-package pl.age.edu.api.group;
+package pl.age.edu.api.group.dto;
 
 import java.util.List;
 

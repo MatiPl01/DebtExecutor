@@ -37,7 +37,7 @@ public class GroupController {
     }
 
     @GetMapping("/{groupID}")
-    public @ResponseBody GroupDTO getGroupById(
+    public @ResponseBody GroupDTO getGroup(
             @PathVariable String groupID
     ) throws ResponseStatusException {
         return GroupDTO.from(groupService.getGroupById(UUID.fromString(groupID)));

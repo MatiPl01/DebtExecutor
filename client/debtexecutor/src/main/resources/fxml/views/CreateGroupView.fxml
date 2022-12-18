@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import pl.age.edu.controls.InputField?>
-<VBox alignment="CENTER" spacing="20.0" styleClass="create-group" stylesheets="@../../css/views/CreateGroupView.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.views.CreateGroupViewController">
+<VBox alignment="CENTER" spacing="20.0" styleClass="create-group" stylesheets="@../../css/views/CreateGroupView.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.views.CreateGroupViewController">
     <children>
         <Label text="Create group">
             <styleClass>

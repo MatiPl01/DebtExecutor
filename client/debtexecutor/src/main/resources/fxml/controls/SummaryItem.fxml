@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <HBox styleClass="card__header">
       <children>
           <Label fx:id="userLabel" text="Mateusz Łopaciński">
@@ -43,8 +43,6 @@
      </content>
    </TitledPane>
     <stylesheets>
-        <URL value="@../../css/shared.css" />
-      <URL value="@../../css/themes/light.css" />
       <URL value="@../../css/controls/SummaryItem.css" />
     </stylesheets>
 </fx:root>

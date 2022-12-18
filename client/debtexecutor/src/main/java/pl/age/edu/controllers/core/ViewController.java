@@ -37,7 +37,6 @@ public class ViewController {
         loadView(ViewType.CREATE_EXPENSE, "/fxml/views/CreatePersonalExpenseView.fxml");
         loadView(ViewType.CREATE_GROUP_EXPENSE, "/fxml/views/CreateGroupExpenseView.fxml");
         loadView(ViewType.CREATE_GROUP, "/fxml/views/CreateGroupView.fxml");
-        loadView(ViewType.CREATE_USER, "/fxml/views/CreateUserView.fxml");
         loadView(ViewType.HISTORY, "/fxml/views/HistoryView.fxml");
         loadView(ViewType.SUMMARY, "/fxml/views/SummaryView.fxml");
     }

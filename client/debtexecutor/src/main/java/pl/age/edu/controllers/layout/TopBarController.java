@@ -1,37 +1,58 @@
 package pl.age.edu.controllers.layout;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import pl.age.edu.controllers.core.ThemeController;
 import pl.age.edu.controllers.core.ThemeType;
 
-public class TopBarController {
-    private final ThemeController themeController = ThemeController.getInstance();
+import java.net.URL;
+import java.util.ResourceBundle;
 
-
-
-
-    private UserPanelController userPanelController;
+public class TopBarController implements Initializable {
+    @FXML
+    private Pane userImage;
 
     @FXML
-    private void initialize() {
+    private Button darkLightSwitch;
+
+    private final ThemeController themeController = ThemeController.getInstance();
+    private UserPanelController userPanelController;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        updateDarkLightSwitchText();
+        userImage.setOnMouseClicked(e -> openUserPanel());
+    }
+
+    @FXML
+    private void onThemeChange() {
+        if (themeController.getCurrentTheme().equals(ThemeType.LIGHT)) {
+            themeController.setTheme(ThemeType.DARK);
+        } else {
+            themeController.setTheme(ThemeType.LIGHT);
+        }
+        updateDarkLightSwitchText();
     }
 
     public void setUserPanelController(UserPanelController userPanelController) {
         this.userPanelController = userPanelController;
     }
 
-    @FXML
-    private void onThemeChange() {
-        // TODO - fix theme switching
-        ThemeType currenTheme = themeController.getCurrentTheme();
-        themeController.setTheme(
-            currenTheme == ThemeType.DARK ? ThemeType.LIGHT : ThemeType.DARK
-        );
-    }
-
     private void openUserPanel() {
         userPanelController.openPanel();
+    }
+
+    private void updateDarkLightSwitchText() {
+        String themeName;
+        if (themeController.getCurrentTheme().equals(ThemeType.DARK)) {
+            themeName = "light";
+        } else {
+            themeName = "dark";
+        }
+
+        String text = "Set " + themeName + " theme";
+        darkLightSwitch.setText(text);
     }
 }

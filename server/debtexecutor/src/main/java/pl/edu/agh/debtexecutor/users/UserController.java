@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pl.edu.agh.debtexecutor.users.dto.CreateUserDTO;
+import pl.edu.agh.debtexecutor.users.dto.LoginUserDTO;
 import pl.edu.agh.debtexecutor.users.dto.UserDTO;
 
 import java.util.List;
@@ -25,9 +26,17 @@ public class UserController {
     }
 
     @PostMapping
-    public void createUser(@RequestBody CreateUserDTO dto) {
-        User user = new User(dto.login(), dto.firstName(), dto.lastName());
-        userService.addUser(user);
+    public @ResponseBody UserDTO signUp(
+            @RequestBody CreateUserDTO dto
+    ) throws ResponseStatusException {
+        return UserDTO.from(userService.createUser(dto));
+    }
+
+    @PostMapping("/login")
+    public @ResponseBody UserDTO signIn(
+            @RequestBody LoginUserDTO dto
+    ) throws ResponseStatusException {
+        return UserDTO.from(userService.getUserByLogin(dto.login()));
     }
 
     @GetMapping("/{userId}")

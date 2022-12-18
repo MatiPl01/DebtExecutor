@@ -15,7 +15,7 @@ public class App extends Application {
         sceneController.setStage(primaryStage);
 
         // Open the authentication scene
-        sceneController.switchScene(SceneType.MAIN); // TODO - change to AUTH
+        sceneController.switchScene(SceneType.AUTH);
 
         // Show the primary stage
         primaryStage.show();

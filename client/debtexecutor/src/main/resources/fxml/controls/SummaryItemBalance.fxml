@@ -6,12 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<fx:root styleClass="balance-item" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <stylesheets>
-      <URL value="@../../css/shared.css" />
-      <URL value="@../../css/themes/light.css" />
-      <URL value="@../../css/controls/SummaryItemBalance.css" />
-   </stylesheets>
+<fx:root styleClass="balance-item" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="userLabel" text="Jakub Stępień">
          <styleClass>
@@ -30,4 +25,7 @@
          </children>
       </HBox>
    </children>
+   <stylesheets>
+      <URL value="@../../css/controls/SummaryItemBalance.css" />
+   </stylesheets>
 </fx:root>

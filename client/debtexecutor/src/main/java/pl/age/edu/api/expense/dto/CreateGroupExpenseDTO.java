@@ -1,4 +1,4 @@
-package pl.age.edu.api.expense;
+package pl.age.edu.api.expense.dto;
 
 import java.math.BigDecimal;
 

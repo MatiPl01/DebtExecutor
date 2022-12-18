@@ -1,6 +1,8 @@
 package pl.age.edu.api.expense;
 
 import pl.age.edu.api.RetrofitClient;
+import pl.age.edu.api.expense.dto.CreateExpenseDTO;
+import pl.age.edu.api.expense.dto.CreateGroupExpenseDTO;
 import pl.age.edu.models.Expense;
 import retrofit2.Response;
 

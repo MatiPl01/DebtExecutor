@@ -5,8 +5,7 @@ public enum ViewType {
     HISTORY("Expense history"),
     CREATE_EXPENSE("Create expense"),
     CREATE_GROUP_EXPENSE("Create group expense"),
-    CREATE_GROUP("Create group"),
-    CREATE_USER("Create user");
+    CREATE_GROUP("Create group");
 
     private final String viewDescription;
 
