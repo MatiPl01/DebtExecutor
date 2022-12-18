@@ -1,12 +1,11 @@
-package pl.edu.agh.debtexecutor.group;
+package pl.edu.agh.debtexecutor.groups;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.expense.Expense;
-import pl.edu.agh.debtexecutor.user.User;
+import pl.edu.agh.debtexecutor.expenses.Expense;
+import pl.edu.agh.debtexecutor.users.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Entity
@@ -14,6 +13,7 @@ import java.util.UUID;
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
     @Column(name = "group_name")
@@ -33,12 +33,11 @@ public class Group {
     public Group() {}
 
     public Group(List<User> members) {
-        this.name = "";
         this.members = members;
     }
 
     public Group(String name, List<User> members) {
-        this.name = Optional.ofNullable(name).orElse("");
+        this.name = name;
         this.members = members;
     }
 

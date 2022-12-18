@@ -1,12 +1,13 @@
-package pl.edu.agh.debtexecutor.user;
+package pl.edu.agh.debtexecutor.users.dto;
 
-import pl.edu.agh.debtexecutor.group.Group;
+import pl.edu.agh.debtexecutor.groups.Group;
+import pl.edu.agh.debtexecutor.users.User;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
-record UserDTO(
+public record UserDTO(
         UUID id,
         String firstName,
         String lastName,
@@ -14,7 +15,7 @@ record UserDTO(
         List<UserBalanceDTO> balance
 ) {
 
-    static UserDTO from(User user) {
+    public static UserDTO from(User user) {
         return new UserDTO(
                 user.getId(),
                 user.getFirstName(),
@@ -31,14 +32,14 @@ record UserDTO(
         );
     }
 
-    private record UserGroupDTO(String name) {
+    private record UserGroupDTO(UUID id, String name) {
         static UserGroupDTO from(Group group) {
-            return new UserGroupDTO(group.getName());
+            return new UserGroupDTO(group.getId(), group.getName());
         }
     }
 
     private record UserBalanceDTO(
-            UUID id,
+            UUID userId,
             String firstName,
             String lastName,
             BigDecimal balance

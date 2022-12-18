@@ -1,8 +1,8 @@
-package pl.edu.agh.debtexecutor.expense;
+package pl.edu.agh.debtexecutor.expenses;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.group.Group;
-import pl.edu.agh.debtexecutor.user.User;
+import pl.edu.agh.debtexecutor.groups.Group;
+import pl.edu.agh.debtexecutor.users.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

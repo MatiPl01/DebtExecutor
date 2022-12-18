@@ -1,11 +1,15 @@
-package pl.edu.agh.debtexecutor.group;
+package pl.edu.agh.debtexecutor.groups;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.edu.agh.debtexecutor.user.User;
-import pl.edu.agh.debtexecutor.user.UserService;
+import org.springframework.web.server.ResponseStatusException;
+import pl.edu.agh.debtexecutor.groups.dto.CreateGroupDTO;
+import pl.edu.agh.debtexecutor.groups.dto.GroupDTO;
+import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.users.UserService;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/groups")
@@ -20,15 +24,22 @@ public class GroupController {
     }
 
     @GetMapping
-    public List<GroupDTO> getGroups() {
+    public @ResponseBody List<GroupDTO> getGroups() {
         return groupService.getGroups().stream().map(GroupDTO::from).toList();
     }
 
     @PostMapping
-    public void addGroup(@RequestBody CreateGroupDTO dto) {
+    public void createGroup(@RequestBody CreateGroupDTO dto) {
         List<User> users = userService.getUsersById(dto.users());
         Group group = new Group(dto.name(), users);
         groupService.addGroup(group);
         users.forEach(user -> user.addToGroup(group));
+    }
+
+    @GetMapping("/{groupID}")
+    public @ResponseBody GroupDTO getGroupById(
+            @PathVariable String groupID
+    ) throws ResponseStatusException {
+        return GroupDTO.from(groupService.getGroupById(UUID.fromString(groupID)));
     }
 }

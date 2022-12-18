@@ -1,7 +1,7 @@
-package pl.edu.agh.debtexecutor.user;
+package pl.edu.agh.debtexecutor.users;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.group.Group;
+import pl.edu.agh.debtexecutor.groups.Group;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -12,6 +12,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
+    @Column(
+            name = "login",
+            nullable = false,
+            unique = true
+    )
+    private String login;
 
     @Column(
             name = "first_name",
@@ -43,7 +50,8 @@ public class User {
 
     public User() {}
 
-    public User(String firstName, String lastName) {
+    public User(String login, String firstName, String lastName) {
+        this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -61,6 +69,10 @@ public class User {
 
     public UUID getId() {
         return id;
+    }
+
+    public String getLogin() {
+        return login;
     }
 
     public String getFirstName() {

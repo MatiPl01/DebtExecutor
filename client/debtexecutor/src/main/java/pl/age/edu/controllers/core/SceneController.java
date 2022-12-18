@@ -40,7 +40,7 @@ public class SceneController {
 
     private void loadScenes() {
         String css = ResourceLoader.loadCSS("/css/shared.css");
-        loadScene(SceneType.AUTH, "/fxml/Auth.fxml", css);
+//        loadScene(SceneType.AUTH, "/fxml/Auth.fxml", css);
         loadScene(SceneType.MAIN, "/fxml/Main.fxml", css);
     }
 

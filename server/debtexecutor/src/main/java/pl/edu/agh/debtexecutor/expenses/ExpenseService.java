@@ -1,4 +1,4 @@
-package pl.edu.agh.debtexecutor.expense;
+package pl.edu.agh.debtexecutor.expenses;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

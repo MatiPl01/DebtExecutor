@@ -1,12 +1,12 @@
-package pl.edu.agh.debtexecutor.user;
+package pl.edu.agh.debtexecutor.users;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pl.edu.agh.debtexecutor.expense.Expense;
-import pl.edu.agh.debtexecutor.expense.ExpenseRepository;
-import pl.edu.agh.debtexecutor.group.Group;
-import pl.edu.agh.debtexecutor.group.GroupRepository;
+import pl.edu.agh.debtexecutor.expenses.Expense;
+import pl.edu.agh.debtexecutor.expenses.ExpenseRepository;
+import pl.edu.agh.debtexecutor.groups.Group;
+import pl.edu.agh.debtexecutor.groups.GroupRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -20,16 +20,19 @@ public class UserConfig {
                                         ExpenseRepository expenseRepository) {
         return args -> {
             User ewa = new User(
+                    "ewa",
                     "Ewa",
                     "Miklewska"
             );
 
             User kuba = new User(
+                    "kuba",
                     "Jakub",
                     "Stępień"
             );
 
             User mateusz = new User(
+                    "mati",
                     "Mateusz",
                     "Łopaciński"
             );
@@ -43,7 +46,7 @@ public class UserConfig {
             mateusz.addToGroup(group);
             kuba.addToGroup(group);
 
-            Expense expenseEwaKuba = new Expense(
+            Expense expenseEwaKuba =new Expense(
                     "chleb",
                     kuba,
                     ewa,
