@@ -60,6 +60,7 @@ public class ExpenseFactory {
                             dto.title(),
                             payer,
                             payee,
+                            group,
                             amount
                     );
 

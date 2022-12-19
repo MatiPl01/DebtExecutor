@@ -14,5 +14,5 @@ public interface GroupApiService {
     Call<List<Group>> getGroups();
 
     @POST("groups")
-    Call<Void> addGroup(@Body CreateGroupDTO user);
+    Call<Group> createGroup(@Body CreateGroupDTO user);
 }

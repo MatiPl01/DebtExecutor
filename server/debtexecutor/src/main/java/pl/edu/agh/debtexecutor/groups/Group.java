@@ -6,6 +6,7 @@ import pl.edu.agh.debtexecutor.users.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.UUID;
 
 @Entity
@@ -51,6 +52,13 @@ public class Group {
 
     public String getName() {
         return name;
+    }
+
+    public String getPlaceholderName() {
+        StringJoiner joiner = new StringJoiner(", ");
+        // TODO - limit to the specific number of users of number of characters
+        members.forEach(member -> joiner.add(member.getFirstName().charAt(0) + ". " + member.getLastName()));
+        return joiner.toString();
     }
 
     public List<Expense> getExpenses() {

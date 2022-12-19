@@ -35,8 +35,13 @@ public class UserPanelController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         closePanel();
 
-        // TODO - bind user name from the current user to the Label
-        username.setText("Mateusz Lopacinski");
+        userState.loggedInUserProperty().addListener(((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                username.setText(newValue.getFirstName() + " " + newValue.getLastName());
+            } else {
+                username.setText("");
+            }
+        }));
 
         // Close the user profile panel on mouse leave
         userPanel.setOnMouseExited(e -> closePanel());

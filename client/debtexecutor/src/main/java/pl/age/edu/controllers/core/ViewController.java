@@ -12,13 +12,13 @@ public class ViewController {
 
     private final Pane wrapper;
     private final Label label;
-    private final Map<ViewType, Pane> views = new HashMap<>();
+    private final Map<ViewType, String> views = new HashMap<>();
     private ViewType activeView;
 
     public ViewController(Pane wrapper, Label label) {
         this.wrapper = wrapper;
         this.label = label;
-        loadViews();
+        addViews();
         switchView(INITIAL_VIEW);
     }
 
@@ -28,20 +28,17 @@ public class ViewController {
 
     public void switchView(ViewType newView) {
         wrapper.getChildren().clear();
-        wrapper.getChildren().add(views.get(newView));
+        Pane view = ResourceLoader.loadFXML(views.get(newView));
+        wrapper.getChildren().add(view);
         label.setText(newView.toString());
         activeView = newView;
     }
 
-    private void loadViews() {
-        loadView(ViewType.CREATE_EXPENSE, "/fxml/views/CreatePersonalExpenseView.fxml");
-        loadView(ViewType.CREATE_GROUP_EXPENSE, "/fxml/views/CreateGroupExpenseView.fxml");
-        loadView(ViewType.CREATE_GROUP, "/fxml/views/CreateGroupView.fxml");
-        loadView(ViewType.HISTORY, "/fxml/views/HistoryView.fxml");
-        loadView(ViewType.SUMMARY, "/fxml/views/SummaryView.fxml");
-    }
-
-    private void loadView(ViewType viewType, String resourcePath) {
-        views.put(viewType, ResourceLoader.loadFXML(resourcePath));
+    private void addViews() {
+        views.put(ViewType.CREATE_EXPENSE, "/fxml/views/CreatePersonalExpenseView.fxml");
+        views.put(ViewType.CREATE_GROUP_EXPENSE, "/fxml/views/CreateGroupExpenseView.fxml");
+        views.put(ViewType.CREATE_GROUP, "/fxml/views/CreateGroupView.fxml");
+        views.put(ViewType.HISTORY, "/fxml/views/HistoryView.fxml");
+        views.put(ViewType.SUMMARY, "/fxml/views/SummaryView.fxml");
     }
 }

@@ -1,19 +1,22 @@
 package pl.age.edu.controllers.views;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.SelectionMode;
-import org.springframework.stereotype.Component;
-import pl.age.edu.api.group.dto.CreateGroupDTO;
-import pl.age.edu.api.group.GroupApi;
-import pl.age.edu.api.user.UserApi;
-import pl.age.edu.controls.InputField;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import pl.age.edu.api.group.GroupApi;
+import pl.age.edu.api.group.dto.CreateGroupDTO;
+import pl.age.edu.controls.InputField;
+import pl.age.edu.models.Group;
 import pl.age.edu.models.User;
+import pl.age.edu.state.GroupState;
+import pl.age.edu.state.UserState;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class CreateGroupViewController {
@@ -22,6 +25,12 @@ public class CreateGroupViewController {
 
     @FXML
     private ListView<User> userSelectList;
+
+    @Autowired
+    private UserState userState;
+
+    @Autowired
+    private GroupState groupState;
 
     @FXML
     private void onSubmit() {
@@ -32,16 +41,14 @@ public class CreateGroupViewController {
                 .map(User::getId)
                 .toList();
         CreateGroupDTO dto = new CreateGroupDTO(groupName, users);
-        GroupApi.add(dto);
+        Optional<Group> group = GroupApi.createGroup(dto);
+        group.ifPresent(value -> groupState.addGroup(value));
     }
 
     @FXML
     public void initialize() {
-        List<User> allUsers = UserApi.getAll();
-
-        ObservableList<User> users = FXCollections.observableArrayList(allUsers);
-
-
+        // TODO - maybe replace with API request to keep data updated
+        ObservableList<User> users = userState.getUsers();
         userSelectList.setItems(users);
         userSelectList.setCellFactory(param -> new ListCell<>() {
             @Override

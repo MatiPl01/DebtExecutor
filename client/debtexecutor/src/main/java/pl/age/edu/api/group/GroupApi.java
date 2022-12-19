@@ -11,25 +11,26 @@ import java.util.List;
 import java.util.Optional;
 
 public class GroupApi {
+    private final static GroupApiService groupService =
+            RetrofitClient.getRetrofitClient().create(GroupApiService.class);
+
     public static List<Group> getAll() {
-        GroupApiService service = RetrofitClient.getRetrofitClient().create(
-                GroupApiService.class);
         Optional<Response<List<Group>>> response = Optional.empty();
         try {
-            response = Optional.of(service.getGroups().execute());
+            response = Optional.of(groupService.getGroups().execute());
         } catch (IOException e) {
             e.printStackTrace();
         }
         return response.map(Response::body).orElse(Collections.emptyList());
     }
 
-    public static void add(CreateGroupDTO dto) {
-        GroupApiService service = RetrofitClient.getRetrofitClient().create(
-                GroupApiService.class);
+    public static Optional<Group> createGroup(CreateGroupDTO dto) {
+        Optional<Response<Group>> response = Optional.empty();
         try {
-           service.addGroup(dto).execute();
+            response = Optional.of(groupService.createGroup(dto).execute());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return response.map(Response::body);
     }
 }

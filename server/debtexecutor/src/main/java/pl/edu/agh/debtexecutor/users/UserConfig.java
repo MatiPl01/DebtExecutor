@@ -9,7 +9,6 @@ import pl.edu.agh.debtexecutor.groups.Group;
 import pl.edu.agh.debtexecutor.groups.GroupRepository;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Configuration
@@ -50,8 +49,7 @@ public class UserConfig {
                     "chleb",
                     kuba,
                     ewa,
-                    BigDecimal.valueOf(2),
-                    LocalDateTime.of(2022, 12, 8, 14, 15, 0)
+                    BigDecimal.valueOf(2)
             );
 
             ewa.changeBalance(kuba, BigDecimal.valueOf(2));
@@ -62,8 +60,7 @@ public class UserConfig {
                     mateusz,
                     kuba,
                     group,
-                    BigDecimal.valueOf(40),
-                    LocalDateTime.of(2022, 12, 8, 14, 15, 15)
+                    BigDecimal.valueOf(40)
             );
 
             kuba.changeBalance(mateusz, BigDecimal.valueOf(40));

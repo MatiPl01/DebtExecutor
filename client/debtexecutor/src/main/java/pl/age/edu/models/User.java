@@ -3,12 +3,11 @@ package pl.age.edu.models;
 import java.util.List;
 
 public class User {
-
-    public String id;
-    public String firstName;
-    public String lastName;
-    public List<UserGroupDTO> groups;
-    public List<UserBalance> balance;
+    private String id;
+    private String firstName;
+    private String lastName;
+    private List<UserGroupDTO> groups;
+    private List<UserBalance> balance;
 
     public User(String id, String firstName, String lastName, List<UserGroupDTO> groups, List<UserBalance> balance) {
         this.id = id;
@@ -58,7 +57,7 @@ public class User {
         this.balance = balance;
     }
 
-    public class UserGroupDTO {
+    public static class UserGroupDTO {
         String name;
 
         public UserGroupDTO(String name) {

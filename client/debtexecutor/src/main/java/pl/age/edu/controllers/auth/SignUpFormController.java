@@ -37,6 +37,7 @@ public class SignUpFormController {
         if (user.isPresent()) {
             // Load the main screen if everything is successful
             userState.setLoggedInUser(user.get());
+            userState.addUser(user.get());
             SceneController.getInstance().switchScene(SceneType.MAIN);
         } else {
             // TODO - display error message (login is already taken)

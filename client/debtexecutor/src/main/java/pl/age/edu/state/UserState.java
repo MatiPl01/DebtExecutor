@@ -3,10 +3,12 @@ package pl.age.edu.state;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import pl.age.edu.models.User;
 
-@Repository
+import java.util.List;
+
+@Component
 public class UserState {
     private final SimpleObjectProperty<User> loggedInUser =
             new SimpleObjectProperty<>();
@@ -27,5 +29,13 @@ public class UserState {
 
     public ObservableList<User> getUsers() {
         return users;
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    public void setUsers(List<User> users) {
+        this.users.setAll(users);
     }
 }

@@ -39,9 +39,17 @@ public record ExpenseDTO(
         }
     }
 
-    private record ExpenseGroupDTO(UUID id, String name) {
+    private record ExpenseGroupDTO(
+            UUID id,
+            String name,
+            String placeholderName
+    ) {
         static ExpenseGroupDTO from(Group group) {
-            return new ExpenseGroupDTO(group.getId(), group.getName());
+            return new ExpenseGroupDTO(
+                    group.getId(),
+                    group.getName(),
+                    group.getPlaceholderName()
+            );
         }
     }
 }

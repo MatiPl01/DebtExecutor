@@ -12,35 +12,36 @@ import java.util.List;
 import java.util.Optional;
 
 public class ExpenseApi {
+    private final static ExpenseApiService expenseService =
+            RetrofitClient.getRetrofitClient().create(ExpenseApiService.class);
+
     public static List<Expense> getAll() {
-        ExpenseApiService service = RetrofitClient.getRetrofitClient().create(
-                ExpenseApiService.class);
         Optional<Response<List<Expense>>> response = Optional.empty();
         try {
-            response = Optional.of(service.getExpenses().execute());
+            response = Optional.of(expenseService.getExpenses().execute());
         } catch (IOException e) {
             e.printStackTrace();
         }
         return response.map(Response::body).orElse(Collections.emptyList());
     }
 
-    public static void addPersonal(CreateExpenseDTO dto) {
-        ExpenseApiService service = RetrofitClient.getRetrofitClient().create(
-                ExpenseApiService.class);
+    public static Optional<Expense> createPersonalExpense(CreateExpenseDTO dto) {
+        Optional<Response<Expense>> response = Optional.empty();
         try {
-            service.addExpense(dto).execute();
+            response = Optional.of(expenseService.createPersonalExpense(dto).execute());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return response.map(Response::body);
     }
 
-    public static void addGroup(CreateGroupExpenseDTO dto) {
-        ExpenseApiService service = RetrofitClient.getRetrofitClient().create(
-                ExpenseApiService.class);
+    public static List<Expense> createGroupExpense(CreateGroupExpenseDTO dto) {
+        Optional<Response<List<Expense>>> response = Optional.empty();
         try {
-            service.addGroupExpense(dto).execute();
+            response = Optional.of(expenseService.createGroupExpense(dto).execute());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return response.map(Response::body).orElse(Collections.emptyList());
     }
 }

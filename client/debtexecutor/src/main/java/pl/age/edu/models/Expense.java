@@ -3,12 +3,12 @@ package pl.age.edu.models;
 import java.math.BigDecimal;
 
 public class Expense {
-    public String title;
-    public ExpenseUserDTO payer;
-    public ExpenseUserDTO payee;
-    public ExpenseGroupDTO group;
-    public BigDecimal amount;
-    public String date;
+    private String title;
+    private ExpenseUserDTO payer;
+    private ExpenseUserDTO payee;
+    private ExpenseGroupDTO group;
+    private BigDecimal amount;
+    private String date;
 
     public String getTitle() {
         return title;
@@ -34,7 +34,7 @@ public class Expense {
         return date;
     }
 
-    public class ExpenseUserDTO {
+    public static class ExpenseUserDTO {
         String firstName;
         String lastName;
 
@@ -44,11 +44,22 @@ public class Expense {
         }
     }
 
-    public class ExpenseGroupDTO {
+    public static class ExpenseGroupDTO {
         String name;
+
+        String placeholderName;
+
+        @Override
+        public String toString() {
+            return (name != null && name.length() > 0) ? name : placeholderName;
+        }
 
         public String getName() {
             return name;
+        }
+
+        public String getPlaceholderName() {
+            return placeholderName;
         }
     }
 }

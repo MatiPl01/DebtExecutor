@@ -13,7 +13,8 @@
             <VBox>
                 <children>
                     <Label styleClass="card__label"/>
-                    <Label fx:id="expenseTitle" minWidth="250.0" wrapText="true">
+                    <Label fx:id="expenseTitle" minWidth="200.0"
+                           wrapText="true">
                   <styleClass>
                      <String fx:value="card__title" />
                      <String fx:value="h4" />

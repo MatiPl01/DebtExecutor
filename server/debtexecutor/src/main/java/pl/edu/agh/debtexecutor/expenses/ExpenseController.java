@@ -33,12 +33,13 @@ public class ExpenseController {
     }
 
     @PostMapping
-    public void addExpense(
+    public @ResponseBody ExpenseDTO addExpense(
             @RequestBody CreateExpenseDTO dto
     ) throws ResponseStatusException {
         try {
             Expense expense = expenseFactory.createExpense(dto);
             expenseService.addExpense(expense);
+            return ExpenseDTO.from(expense);
         } catch (ResponseStatusException e) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
@@ -48,10 +49,13 @@ public class ExpenseController {
     }
 
     @PostMapping("/group")
-    public void addExpense(@RequestBody CreateGroupExpenseDTO dto) {
+    public @ResponseBody List<ExpenseDTO> addExpense(
+            @RequestBody CreateGroupExpenseDTO dto
+    ) throws ResponseStatusException {
         try {
             List<Expense> expenses = expenseFactory.createExpense(dto);
             expenseService.addExpenses(expenses);
+            return expenses.stream().map(ExpenseDTO::from).toList();
         } catch (ResponseStatusException e) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,

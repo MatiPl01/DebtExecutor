@@ -42,27 +42,14 @@ public class Expense {
     public Expense(String title,
                    User payer,
                    User payee,
-                   BigDecimal amount,
-                   LocalDateTime date) {
-        this.title = title;
-        this.payer = payer;
-        this.payee = payee;
-        this.amount = amount;
-        this.date = date;
-    }
-
-    public Expense(String title,
-                   User payer,
-                   User payee,
                    Group group,
-                   BigDecimal amount,
-                   LocalDateTime date) {
+                   BigDecimal amount) {
         this.title = title;
         this.payer = payer;
         this.payee = payee;
         this.group = group;
         this.amount = amount;
-        this.date = date;
+        this.date = LocalDateTime.now();
     }
 
     public Expense(String title,

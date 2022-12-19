@@ -30,8 +30,7 @@ public class GroupField extends HBox {
             throw new RuntimeException(e);
         }
 
-        // TODO - set labels based on group props
         membersCountLabel.setText(String.valueOf(group.getMembers().size()));
-        groupNameLabel.setText(group.getName());
+        groupNameLabel.setText(group.toString());
     }
 }

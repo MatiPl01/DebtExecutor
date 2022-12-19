@@ -29,11 +29,12 @@ public class GroupController {
     }
 
     @PostMapping
-    public void createGroup(@RequestBody CreateGroupDTO dto) {
+    public @ResponseBody GroupDTO createGroup(@RequestBody CreateGroupDTO dto) {
         List<User> users = userService.getUsersById(dto.users());
         Group group = new Group(dto.name(), users);
         groupService.addGroup(group);
         users.forEach(user -> user.addToGroup(group));
+        return GroupDTO.from(group);
     }
 
     @GetMapping("/{groupID}")
