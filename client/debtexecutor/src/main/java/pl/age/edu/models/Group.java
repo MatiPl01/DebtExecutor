@@ -39,7 +39,7 @@ public class Group {
 
     @Override
     public String toString() {
-        if (name != "") {
+        if (!name.equals("")) {
             return name;
         } else {
             AtomicReference<String> s = new AtomicReference<>("");

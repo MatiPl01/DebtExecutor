@@ -2,17 +2,18 @@ package pl.age.edu.utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import pl.age.edu.App;
 import pl.age.edu.controllers.core.ThemeController;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class ResourceLoader {
     public static <T extends Node> T loadFXML(String resourcePath) {
         FXMLLoader loader = new FXMLLoader(ResourceLoader.class.getResource(resourcePath));
+        loader.setControllerFactory(App.getContext()::getBean);
         try {
             return loader.load();
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

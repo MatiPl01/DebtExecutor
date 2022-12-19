@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 import java.util.List;
 
-public interface ExpenseService {
+public interface ExpenseApiService {
     @GET("expenses")
     Call<List<Expense>> getExpenses();
 

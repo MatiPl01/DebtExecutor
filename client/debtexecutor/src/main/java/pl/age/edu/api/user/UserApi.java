@@ -11,9 +11,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class UserController {
-    private final static UserService userService =
-            RetrofitClient.getRetrofitClient().create(UserService.class);
+public class UserApi {
+    private final static UserApiService userService =
+            RetrofitClient.getRetrofitClient().create(UserApiService.class);
 
     public static List<User> getAll() {
         Optional<Response<List<User>>> response = Optional.empty();

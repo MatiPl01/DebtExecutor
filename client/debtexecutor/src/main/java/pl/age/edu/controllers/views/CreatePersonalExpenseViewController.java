@@ -6,15 +6,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import org.springframework.stereotype.Component;
 import pl.age.edu.api.expense.dto.CreateExpenseDTO;
-import pl.age.edu.api.expense.ExpenseController;
-import pl.age.edu.api.user.UserController;
+import pl.age.edu.api.expense.ExpenseApi;
+import pl.age.edu.api.user.UserApi;
 import pl.age.edu.controls.InputField;
 import pl.age.edu.models.User;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Component
 public class CreatePersonalExpenseViewController {
     @FXML
     private InputField titleInput;
@@ -33,12 +35,12 @@ public class CreatePersonalExpenseViewController {
         String payer = payerSelectList.getSelectionModel().getSelectedItems().get(0).getId();
         String payee = payeeSelectList.getSelectionModel().getSelectedItems().get(0).getId();
         CreateExpenseDTO dto = new CreateExpenseDTO(title, payer, payee, amount);
-        ExpenseController.addPersonal(dto);
+        ExpenseApi.addPersonal(dto);
     }
 
     @FXML
     public void initialize() {
-        List<User> allUsers = UserController.getAll();
+        List<User> allUsers = UserApi.getAll();
         ObservableList<User> users = FXCollections.observableArrayList(allUsers);
         payerSelectList.setItems(users);
         payerSelectList.setCellFactory(param -> new ListCell<>() {

@@ -4,12 +4,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.age.edu.controllers.core.SceneController;
 import pl.age.edu.controllers.core.SceneType;
+import pl.age.edu.state.UserState;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@Component
 public class UserPanelController implements Initializable {
     @FXML
     private VBox userPanel;
@@ -17,10 +21,12 @@ public class UserPanelController implements Initializable {
     @FXML
     private Label username;
 
+    @Autowired
+    private UserState userState;
+
     @FXML
     private void onLogOut() {
-        // TODO - remove user credentials from state (think how to persist state)
-
+        userState.setLoggedInUser(null);
         // Redirect to the authentication scene
         SceneController.getInstance().switchScene(SceneType.AUTH);
     }

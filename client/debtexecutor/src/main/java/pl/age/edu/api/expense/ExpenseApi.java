@@ -11,9 +11,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class ExpenseController {
+public class ExpenseApi {
     public static List<Expense> getAll() {
-        ExpenseService service = RetrofitClient.getRetrofitClient().create(ExpenseService.class);
+        ExpenseApiService service = RetrofitClient.getRetrofitClient().create(
+                ExpenseApiService.class);
         Optional<Response<List<Expense>>> response = Optional.empty();
         try {
             response = Optional.of(service.getExpenses().execute());
@@ -24,7 +25,8 @@ public class ExpenseController {
     }
 
     public static void addPersonal(CreateExpenseDTO dto) {
-        ExpenseService service = RetrofitClient.getRetrofitClient().create(ExpenseService.class);
+        ExpenseApiService service = RetrofitClient.getRetrofitClient().create(
+                ExpenseApiService.class);
         try {
             service.addExpense(dto).execute();
         } catch (IOException e) {
@@ -33,7 +35,8 @@ public class ExpenseController {
     }
 
     public static void addGroup(CreateGroupExpenseDTO dto) {
-        ExpenseService service = RetrofitClient.getRetrofitClient().create(ExpenseService.class);
+        ExpenseApiService service = RetrofitClient.getRetrofitClient().create(
+                ExpenseApiService.class);
         try {
             service.addGroupExpense(dto).execute();
         } catch (IOException e) {

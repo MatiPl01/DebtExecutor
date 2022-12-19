@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 
 import java.util.List;
 
-public interface UserService {
+public interface UserApiService {
     @GET("users")
     Call<List<User>> getUsers();
 

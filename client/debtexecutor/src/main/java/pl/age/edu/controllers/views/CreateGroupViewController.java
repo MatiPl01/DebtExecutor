@@ -5,15 +5,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.SelectionMode;
+import org.springframework.stereotype.Component;
 import pl.age.edu.api.group.dto.CreateGroupDTO;
-import pl.age.edu.api.group.GroupController;
-import pl.age.edu.api.user.UserController;
+import pl.age.edu.api.group.GroupApi;
+import pl.age.edu.api.user.UserApi;
 import pl.age.edu.controls.InputField;
 import javafx.scene.control.ListView;
 import pl.age.edu.models.User;
 
 import java.util.List;
 
+@Component
 public class CreateGroupViewController {
     @FXML
     private InputField groupNameInput;
@@ -30,12 +32,12 @@ public class CreateGroupViewController {
                 .map(User::getId)
                 .toList();
         CreateGroupDTO dto = new CreateGroupDTO(groupName, users);
-        GroupController.add(dto);
+        GroupApi.add(dto);
     }
 
     @FXML
     public void initialize() {
-        List<User> allUsers = UserController.getAll();
+        List<User> allUsers = UserApi.getAll();
 
         ObservableList<User> users = FXCollections.observableArrayList(allUsers);
 

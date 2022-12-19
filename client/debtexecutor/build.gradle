@@ -2,10 +2,13 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.springframework.boot' version '3.0.0'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 
 group 'pl.age.edu'
 version '1.0-SNAPSHOT'
+sourceCompatibility = '17'
 
 apply plugin: 'org.openjfx.javafxplugin'
 
@@ -28,12 +31,14 @@ application {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
     implementation group: 'io.reactivex.rxjava3', name: 'rxjava', version: '3.0.6'
     implementation group: 'org.pdfsam.rxjava3', name: 'rxjavafx', version: '3.0.2'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 test {

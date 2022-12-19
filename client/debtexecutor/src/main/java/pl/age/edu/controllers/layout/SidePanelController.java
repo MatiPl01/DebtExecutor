@@ -6,19 +6,21 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import pl.age.edu.api.group.GroupController;
+import org.springframework.stereotype.Component;
+import pl.age.edu.api.group.GroupApi;
 import pl.age.edu.controllers.core.ViewController;
 import pl.age.edu.controllers.core.ViewType;
 import pl.age.edu.controls.GroupField;
 import pl.age.edu.controls.UserField;
 import pl.age.edu.models.Group;
 import pl.age.edu.models.User;
-import pl.age.edu.api.user.UserController;
+import pl.age.edu.api.user.UserApi;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+@Component
 public class SidePanelController implements Initializable {
     private static final String ACTIVE_CLASS = "active";
 
@@ -50,12 +52,11 @@ public class SidePanelController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        List<User> users = UserController.getAll();
+        List<User> users = UserApi.getAll();
 
         users.forEach(user -> usersWrapper.getChildren().add(new UserField(user)));
 
-        List<Group> groups = GroupController.getAll();
+        List<Group> groups = GroupApi.getAll();
 
         groups.forEach(group -> groupsWrapper.getChildren().add(new GroupField(group)));
     }
@@ -64,6 +65,7 @@ public class SidePanelController implements Initializable {
     private void onNewPersonalExpenseClick() {
         switchView(ViewType.CREATE_EXPENSE);
     }
+
     @FXML
     private void onNewGroupExpenseClick() {
         switchView(ViewType.CREATE_GROUP_EXPENSE);
@@ -73,6 +75,7 @@ public class SidePanelController implements Initializable {
     private void onNewGroupClick() {
         switchView(ViewType.CREATE_GROUP);
     }
+
     @FXML
     private void onTabSelect(MouseEvent mouseEvent) {
         // TODO - improve view switching

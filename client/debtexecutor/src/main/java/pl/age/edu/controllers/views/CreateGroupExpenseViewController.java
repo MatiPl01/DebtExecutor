@@ -6,10 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import org.springframework.stereotype.Component;
 import pl.age.edu.api.expense.dto.CreateGroupExpenseDTO;
-import pl.age.edu.api.expense.ExpenseController;
-import pl.age.edu.api.group.GroupController;
-import pl.age.edu.api.user.UserController;
+import pl.age.edu.api.expense.ExpenseApi;
+import pl.age.edu.api.group.GroupApi;
+import pl.age.edu.api.user.UserApi;
 import pl.age.edu.controls.InputField;
 import pl.age.edu.models.Group;
 import pl.age.edu.models.User;
@@ -17,6 +18,7 @@ import pl.age.edu.models.User;
 import java.math.BigDecimal;
 import java.util.List;
 
+@Component
 public class CreateGroupExpenseViewController {
     @FXML
     private InputField titleInput;
@@ -35,12 +37,12 @@ public class CreateGroupExpenseViewController {
         String payer = payerSelectList.getSelectionModel().getSelectedItems().get(0).getId();
         String payee = String.valueOf(groupSelectList.getSelectionModel().getSelectedItems().get(0).getId());
         CreateGroupExpenseDTO dto = new CreateGroupExpenseDTO(title, payer, payee, amount);
-        ExpenseController.addGroup(dto);
+        ExpenseApi.addGroup(dto);
     }
 
     @FXML
     public void initialize() {
-        List<User> allUsers = UserController.getAll();
+        List<User> allUsers = UserApi.getAll();
         ObservableList<User> users = FXCollections.observableArrayList(allUsers);
         payerSelectList.setItems(users);
         payerSelectList.setCellFactory(param -> new ListCell<>() {
@@ -56,7 +58,7 @@ public class CreateGroupExpenseViewController {
             }});
         payerSelectList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
-        List<Group> allGroups = GroupController.getAll();
+        List<Group> allGroups = GroupApi.getAll();
         ObservableList<Group> groups = FXCollections.observableArrayList(allGroups);
         groupSelectList.setItems(groups);
         groupSelectList.setCellFactory(param -> new ListCell<>() {

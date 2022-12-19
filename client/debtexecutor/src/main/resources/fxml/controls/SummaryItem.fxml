@@ -12,7 +12,7 @@
 <fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <HBox styleClass="card__header">
       <children>
-          <Label fx:id="userLabel" text="Mateusz Łopaciński">
+          <Label fx:id="userLabel" text="Firstname Lastname">
             <styleClass>
                <String fx:value="card__user" />
                <String fx:value="h4" />

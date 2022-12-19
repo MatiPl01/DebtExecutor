@@ -1,18 +1,17 @@
 package pl.age.edu.controllers.auth;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import pl.age.edu.controllers.core.SceneController;
-import pl.age.edu.controllers.core.SceneType;
+import org.springframework.stereotype.Component;
+import pl.age.edu.utils.ResourceLoader;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@Component
 public class AuthController implements Initializable {
     private static final String SIGN_IN_FORM_PATH = "/fxml/auth/SignInForm.fxml";
     private static final String SIGN_UP_FORM_PATH = "/fxml/auth/SignUpForm.fxml";
@@ -34,10 +33,6 @@ public class AuthController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         openSignInForm();
-    }
-
-    public void loadMainScreen() {
-        SceneController.getInstance().switchScene(SceneType.MAIN);
     }
 
     @FXML
@@ -69,13 +64,6 @@ public class AuthController implements Initializable {
 
     private void openForm(String resourcePath) {
         formWrapper.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(resourcePath));
-        try {
-            formWrapper.getChildren().add(loader.load());
-            AuthFormController authFormController = loader.getController();
-            authFormController.setParentController(this);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        formWrapper.getChildren().add(ResourceLoader.loadFXML(resourcePath));
     }
 }

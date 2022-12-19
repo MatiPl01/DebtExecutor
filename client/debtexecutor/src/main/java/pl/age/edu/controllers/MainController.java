@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import org.springframework.stereotype.Component;
 import pl.age.edu.controllers.core.ViewController;
 import pl.age.edu.controllers.layout.SidePanelController;
 import pl.age.edu.controllers.layout.TopBarController;
@@ -12,6 +13,7 @@ import pl.age.edu.controllers.layout.UserPanelController;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@Component
 public class MainController implements Initializable {
     @FXML
     private AnchorPane viewWrapper;

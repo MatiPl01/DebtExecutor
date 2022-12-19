@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 import java.util.List;
 
-public interface GroupService {
+public interface GroupApiService {
     @GET("groups")
     Call<List<Group>> getGroups();
 
