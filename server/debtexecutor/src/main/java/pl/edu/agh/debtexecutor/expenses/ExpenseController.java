@@ -1,5 +1,6 @@
 package pl.edu.agh.debtexecutor.expenses;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,6 @@ public class ExpenseController {
     private final ExpenseService expenseService;
     private final ExpenseFactory expenseFactory;
 
-    @Autowired
     public ExpenseController(ExpenseService expenseService,
                              ExpenseFactory expenseFactory) {
         this.expenseService = expenseService;
@@ -33,12 +33,14 @@ public class ExpenseController {
     }
 
     @PostMapping
+    @Transactional
     public @ResponseBody ExpenseDTO addExpense(
             @RequestBody CreateExpenseDTO dto
     ) throws ResponseStatusException {
         try {
             Expense expense = expenseFactory.createExpense(dto);
             expenseService.addExpense(expense);
+            changeBalances(expense);
             return ExpenseDTO.from(expense);
         } catch (ResponseStatusException e) {
             throw new ResponseStatusException(
@@ -49,12 +51,18 @@ public class ExpenseController {
     }
 
     @PostMapping("/group")
+    @Transactional
     public @ResponseBody List<ExpenseDTO> addExpense(
             @RequestBody CreateGroupExpenseDTO dto
     ) throws ResponseStatusException {
         try {
             List<Expense> expenses = expenseFactory.createExpense(dto);
             expenseService.addExpenses(expenses);
+            expenses.forEach(expense -> {
+                changeBalances(expense);
+                expense.getGroup().get().addExpense(expense);
+            });
+
             return expenses.stream().map(ExpenseDTO::from).toList();
         } catch (ResponseStatusException e) {
             throw new ResponseStatusException(
@@ -62,5 +70,10 @@ public class ExpenseController {
                     "Failed to add a group expense:\n" + e.getMessage()
             );
         }
+    }
+
+    private void changeBalances(Expense expense) {
+        expense.getPayer().changeBalance(expense.getPayee(), expense.getAmount());
+        expense.getPayee().changeBalance(expense.getPayer(), expense.getAmount().negate());
     }
 }

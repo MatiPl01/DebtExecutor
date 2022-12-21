@@ -27,8 +27,6 @@ public class ExpenseFactory {
         User payer = userService.getUserById(dto.payer());
 
         BigDecimal amount = dto.amount();
-        payer.changeBalance(payee, amount);
-        payee.changeBalance(payer, amount.negate());
 
         return new Expense(dto.title(), payer, payee, amount);
     }
@@ -36,7 +34,6 @@ public class ExpenseFactory {
     public List<Expense> createExpense(CreateGroupExpenseDTO dto) {
         User payer = userService.getUserById(dto.payer());
         Group group = groupService.getGroupById(dto.group());
-
         List<User> users = group
                 .getMembers()
                 .stream()
@@ -52,21 +49,13 @@ public class ExpenseFactory {
 
         return users
                 .stream()
-                .map(payee -> {
-                    payer.changeBalance(payee, amount);
-                    payee.changeBalance(payer, amount.negate());
-
-                    Expense expense = new Expense(
-                            dto.title(),
-                            payer,
-                            payee,
-                            group,
-                            amount
-                    );
-
-                    group.addExpense(expense);
-                    return expense;
-                })
+                .map(payee -> new Expense(
+                        dto.title(),
+                        payer,
+                        payee,
+                        group,
+                        amount
+                ))
                 .toList();
     }
 }
