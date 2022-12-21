@@ -10,19 +10,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.age.edu.api.group.GroupApi;
 import pl.age.edu.controllers.core.ViewController;
 import pl.age.edu.controllers.core.ViewType;
 import pl.age.edu.controls.GroupField;
 import pl.age.edu.controls.UserField;
-import pl.age.edu.api.user.UserApi;
 import pl.age.edu.models.Group;
 import pl.age.edu.models.User;
 import pl.age.edu.state.GroupState;
 import pl.age.edu.state.UserState;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -104,17 +101,17 @@ public class SidePanelController implements Initializable {
     }
 
     private void loadData() {
-        List<User> users = UserApi.getAll();
-        userState.setUsers(users);
+        userState.fetchData();
+        groupState.fetchData();
+
         usersWrapper.getChildren().addAll(
-                users.stream().map(UserField::new).toList()
+                userState.getUsers().stream().map(UserField::new).toList()
         );
 
-        List<Group> groups = GroupApi.getAll();
-        groupState.setGroups(groups);
         groupsWrapper.getChildren().addAll(
-                groups.stream().map(GroupField::new).toList()
+                groupState.getGroups().stream().map(GroupField::new).toList()
         );
+
         usersTitledPane.setExpanded(true);
         groupsTitledPane.setExpanded(true);
     }

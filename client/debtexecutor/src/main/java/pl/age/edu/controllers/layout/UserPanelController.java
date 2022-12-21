@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.age.edu.controllers.core.SceneController;
 import pl.age.edu.controllers.core.SceneType;
+import pl.age.edu.state.AuthState;
 import pl.age.edu.state.UserState;
 
 import java.net.URL;
@@ -24,9 +25,12 @@ public class UserPanelController implements Initializable {
     @Autowired
     private UserState userState;
 
+    @Autowired
+    private AuthState authState;
+
     @FXML
     private void onLogOut() {
-        userState.setLoggedInUser(null);
+        authState.setLoggedInUser(null);
         // Redirect to the authentication scene
         SceneController.getInstance().switchScene(SceneType.AUTH);
     }
@@ -35,7 +39,7 @@ public class UserPanelController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         closePanel();
 
-        userState.loggedInUserProperty().addListener(((observable, oldValue, newValue) -> {
+        authState.loggedInUserProperty().addListener(((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 username.setText(newValue.getFirstName() + " " + newValue.getLastName());
             } else {

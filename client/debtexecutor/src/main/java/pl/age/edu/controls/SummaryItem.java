@@ -34,12 +34,8 @@ public class SummaryItem extends VBox {
             throw new RuntimeException(e);
         }
 
-        BigDecimal total = user.getBalance()
-                               .stream()
-                               .map(UserBalance::getBalance)
-                               .reduce(BigDecimal.ZERO, BigDecimal::add);
-        totalBalanceLabel.setText(total.toString());
-        if (total.compareTo(BigDecimal.ZERO) < 0) totalBalanceLabel.getStyleClass().add(NEGATIVE_AMOUNT_CLASS);
+        totalBalanceLabel.setText(user.getTotalBalance().toString());
+        if (user.getTotalBalance().compareTo(BigDecimal.ZERO) < 0) totalBalanceLabel.getStyleClass().add(NEGATIVE_AMOUNT_CLASS);
 
         userLabel.setText(user.getFirstName() + " " + user.getLastName());
         user.getBalance().forEach(balance -> {

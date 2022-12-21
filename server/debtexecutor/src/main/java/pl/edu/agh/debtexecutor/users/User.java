@@ -32,6 +32,11 @@ public class User {
     )
     private String lastName;
 
+    @Column(
+            name = "totat_balance",
+            nullable = false
+    )
+    private BigDecimal totalBalance = BigDecimal.ZERO;
     @ElementCollection
     @CollectionTable(
             name = "user_balance",
@@ -102,10 +107,16 @@ public class User {
         return balance;
     }
 
+    public BigDecimal getTotalBalance() {
+        return totalBalance;
+    }
+
     public void changeBalance(User user, BigDecimal amount) {
         BigDecimal currBalance = amount
             .add(Optional.ofNullable(balance.get(user))
             .orElse(BigDecimal.ZERO));
+
+        totalBalance = totalBalance.add(amount);
 
         if (currBalance.equals(BigDecimal.ZERO)) {
             balance.remove(user);

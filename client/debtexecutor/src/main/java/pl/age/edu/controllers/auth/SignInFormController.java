@@ -8,7 +8,7 @@ import pl.age.edu.controllers.core.SceneController;
 import pl.age.edu.controllers.core.SceneType;
 import pl.age.edu.controls.InputField;
 import pl.age.edu.models.User;
-import pl.age.edu.state.UserState;
+import pl.age.edu.state.AuthState;
 
 import java.util.Optional;
 
@@ -18,16 +18,15 @@ public class SignInFormController {
     private InputField loginInput;
 
     @Autowired
-    private UserState userState;
+    private AuthState authState;
 
     @FXML
     private void onSignIn() {
         String login = loginInput.getText();
-        Optional<User> user = UserApi.signIn(login);
+        Optional<User> user = authState.signIn(login);
 
         if (user.isPresent()) {
             // Load the main screen if everything is successful
-            userState.setLoggedInUser(user.get());
             SceneController.getInstance().switchScene(SceneType.MAIN);
         } else {
             // TODO - display user not found message

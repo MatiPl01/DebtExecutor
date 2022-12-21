@@ -12,7 +12,8 @@ public record UserDTO(
         String firstName,
         String lastName,
         List<UserGroupDTO> groups,
-        List<UserBalanceDTO> balance
+        List<UserBalanceDTO> balance,
+        BigDecimal totalBalance
 ) {
 
     public static UserDTO from(User user) {
@@ -28,7 +29,8 @@ public record UserDTO(
                             entry.getKey(),
                             entry.getValue()
                     ))
-                    .toList()
+                    .toList(),
+                user.getTotalBalance()
         );
     }
 

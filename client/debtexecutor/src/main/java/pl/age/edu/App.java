@@ -2,14 +2,17 @@ package pl.age.edu;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Component;
 import pl.age.edu.controllers.core.SceneController;
 import pl.age.edu.controllers.core.SceneType;
 
 @SpringBootApplication
+@Component
 public class App extends Application {
     private static ConfigurableApplicationContext springContext;
 
@@ -17,9 +20,14 @@ public class App extends Application {
         return springContext;
     }
 
+//    @Autowired
+//    SceneController sceneController;
+
     @Override
     public void start(Stage primaryStage) {
         setupStage(primaryStage);
+
+//        System.out.println(sceneController);
 
         // Set up the scene controller
         SceneController sceneController = SceneController.getInstance();

@@ -4,27 +4,25 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.springframework.stereotype.Component;
+import pl.age.edu.api.user.UserApi;
 import pl.age.edu.models.User;
 
 import java.util.List;
 
 @Component
 public class UserState {
-    private final SimpleObjectProperty<User> loggedInUser =
-            new SimpleObjectProperty<>();
+
     private final ObservableList<User> users =
             FXCollections.observableArrayList();
 
-    public User getLoggedInUser() {
-        return loggedInUser.get();
+    private final UserApi userApi;
+
+    private UserState(UserApi userAPi) {
+        this.userApi = userAPi;
     }
 
-    public SimpleObjectProperty<User> loggedInUserProperty() {
-        return loggedInUser;
-    }
-
-    public void setLoggedInUser(User loggedInUser) {
-        this.loggedInUser.set(loggedInUser);
+    public void fetchData() {
+        users.setAll(userApi.getAll());
     }
 
     public ObservableList<User> getUsers() {

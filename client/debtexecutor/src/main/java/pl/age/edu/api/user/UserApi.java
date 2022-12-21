@@ -1,5 +1,6 @@
 package pl.age.edu.api.user;
 
+import org.springframework.stereotype.Component;
 import pl.age.edu.api.RetrofitClient;
 import pl.age.edu.api.user.dto.SignInUserDTO;
 import pl.age.edu.api.user.dto.SingUpUserDTO;
@@ -11,11 +12,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class UserApi {
-    private final static UserApiService userService =
-            RetrofitClient.getRetrofitClient().create(UserApiService.class);
+    private final  UserApiService userService;
 
-    public static List<User> getAll() {
+    public UserApi() {
+        userService = RetrofitClient.getRetrofitClient().create(UserApiService.class);
+    }
+
+    public  List<User> getAll() {
         Optional<Response<List<User>>> response = Optional.empty();
         try {
             response = Optional.of(userService.getUsers().execute());
@@ -25,7 +30,7 @@ public class UserApi {
         return response.map(Response::body).orElse(Collections.emptyList());
     }
 
-    public static Optional<User> signIn(String login) {
+    public Optional<User> signIn(String login) {
         Optional<Response<User>> response;
         try {
             SignInUserDTO dto = new SignInUserDTO(login);
@@ -36,7 +41,7 @@ public class UserApi {
         return response.map(Response::body);
     }
 
-    public static Optional<User> singUp(
+    public Optional<User> singUp(
             String login,
             String firstName,
             String lastName
