@@ -65,6 +65,13 @@ public class InputField extends StackPane implements Initializable {
         textProperty().set(text);
     }
 
+    public void clear() {
+        setText("");
+        underline.requestFocus();
+        labelBlurTransition.play();
+        underlineBlurTransition.play();
+    }
+
     public StringProperty textProperty() {
         return input.textProperty();
     }

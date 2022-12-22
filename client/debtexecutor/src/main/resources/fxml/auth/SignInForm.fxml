@@ -10,14 +10,14 @@
 <VBox alignment="CENTER" spacing="20.0" styleClass="sign-in-form"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.auth.SignInFormController">
-    <children>
-        <Label styleClass="h2" text="Sign in" />
-        <VBox alignment="CENTER">
-            <InputField label="Login" fx:id="loginInput" />
-        </VBox>
-        <Button mnemonicParsing="false" onAction="#onSignIn" styleClass="button--primary" text="SIGN IN" />
-    </children>
     <stylesheets>
-        <URL value="@../../css/auth/SignInForm.css" />
+        <URL value="@../../css/auth/SignInForm.css"/>
     </stylesheets>
+    <Label styleClass="h2" text="Sign in"/>
+    <VBox alignment="CENTER">
+        <InputField label="Login" fx:id="loginInput"/>
+    </VBox>
+    <Button mnemonicParsing="false"
+            onAction="#onSignIn"
+            styleClass="button--primary" text="SIGN IN"/>
 </VBox>

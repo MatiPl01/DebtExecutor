@@ -13,14 +13,10 @@ import java.util.Optional;
 
 @Component
 public class SignInFormController {
-    @FXML
-    private InputField loginInput;
+    @FXML private InputField loginInput;
 
-    @Autowired
-    private AuthService authService;
-
-    @Autowired
-    private SceneController sceneController;
+    @Autowired private AuthService authService;
+    @Autowired private SceneController sceneController;
 
     @FXML
     private void onSignIn() {
@@ -37,6 +33,6 @@ public class SignInFormController {
     }
 
     private void clearInput() {
-        loginInput.setText("");
+        loginInput.clear();
     }
 }
