@@ -24,7 +24,7 @@ public class TopBarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateDarkLightSwitchText();
-        userImage.setOnMouseClicked(e -> openUserPanel());
+        userImage.setOnMouseClicked(e -> userPanelController.togglePanel());
     }
 
     @FXML
@@ -39,10 +39,6 @@ public class TopBarController implements Initializable {
 
     public void setUserPanelController(UserPanelController userPanelController) {
         this.userPanelController = userPanelController;
-    }
-
-    private void openUserPanel() {
-        userPanelController.openPanel();
     }
 
     private void updateDarkLightSwitchText() {

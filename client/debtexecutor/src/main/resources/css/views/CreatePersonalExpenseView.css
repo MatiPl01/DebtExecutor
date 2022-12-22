@@ -1,0 +1,12 @@
+.personal-expense {
+    -fx-padding: 15px;
+    -fx-spacing: 25px;
+}
+
+.personal-expense__inputs {
+    -fx-spacing: 5px;
+}
+
+.personal-expense__select-lists {
+    -fx-spacing: 15px;
+}

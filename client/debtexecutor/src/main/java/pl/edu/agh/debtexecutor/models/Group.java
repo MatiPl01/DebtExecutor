@@ -14,7 +14,6 @@ public final class Group {
                  String name,
                  String placeholderName,
                  List<GroupMemberDTO> members) {
-        System.out.println("GROUP");
         this.id = id;
         this.name = name;
         this.placeholderName = placeholderName;

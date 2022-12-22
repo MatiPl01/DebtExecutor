@@ -25,13 +25,14 @@ public class CreateGroupViewController extends FormViewController {
         String groupName = groupNameInput.getText();
         List<User> users = userSelectList.getSelectionModel().getSelectedItems();
         groupService.addGroup(groupName, users);
+        // TODO - add info modal that expense was created
     }
 
     @FXML
     public void initialize() {
         userService.fetchData();
         groupService.fetchData();
-        setListEntries(userSelectList, userService.getUsers(), SelectionMode.MULTIPLE);
-        // TODO - add info modal that expense was created
+        List<User> users = userService.getUsers();
+        setListEntries(userSelectList, users, SelectionMode.MULTIPLE);
     }
 }

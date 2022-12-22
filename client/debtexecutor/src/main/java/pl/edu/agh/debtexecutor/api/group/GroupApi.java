@@ -21,7 +21,6 @@ public class GroupApi {
     public List<Group> getAll() {
         try {
             List<Group> groups = groupService.getGroups().execute().body();
-            System.out.println(groups);
             if (groups != null) return groups;
         } catch (IOException e) {
             e.printStackTrace();

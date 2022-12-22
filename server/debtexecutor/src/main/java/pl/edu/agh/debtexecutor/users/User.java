@@ -43,7 +43,7 @@ public class User {
             joinColumns = { @JoinColumn(
                     name = "user_id",
                     referencedColumnName = "id"
-            ) }
+            )}
     )
     @MapKeyColumn(name = "user_id")
     @Column(name = "balance")

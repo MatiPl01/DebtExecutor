@@ -21,6 +21,8 @@ public class UserPanelController implements Initializable {
     @Autowired private AuthService authService;
     @Autowired private SceneController sceneController;
 
+    private boolean isOpen = false;
+
     @FXML
     private void onLogOut() {
         authService.setLoggedInUser(null);
@@ -45,13 +47,20 @@ public class UserPanelController implements Initializable {
         userPanel.setOnMouseExited(e -> closePanel());
     }
 
+    public void togglePanel() {
+        if (isOpen) closePanel();
+        else openPanel();
+    }
+
     public void openPanel() {
         userPanel.setVisible(true);
         userPanel.setManaged(true);
+        isOpen = true;
     }
 
     public void closePanel() {
         userPanel.setVisible(false);
         userPanel.setManaged(false);
+        isOpen = false;
     }
 }

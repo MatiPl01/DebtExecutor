@@ -13,6 +13,7 @@ import pl.edu.agh.debtexecutor.services.GroupService;
 import pl.edu.agh.debtexecutor.services.UserService;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Component
 public class CreateGroupExpenseViewController extends FormViewController {
@@ -39,7 +40,9 @@ public class CreateGroupExpenseViewController extends FormViewController {
     public void initialize() {
         userService.fetchData();
         groupService.fetchData();
-        setListEntries(payerSelectList, userService.getUsers(), SelectionMode.SINGLE);
-        setListEntries(groupSelectList, groupService.getGroups(), SelectionMode.SINGLE);
+        List<User> users = userService.getUsers();
+        List<Group> groups = groupService.getGroups();
+        setListEntries(payerSelectList, users, SelectionMode.SINGLE);
+        setListEntries(groupSelectList, groups, SelectionMode.SINGLE);
     }
 }

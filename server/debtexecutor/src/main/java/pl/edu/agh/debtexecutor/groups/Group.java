@@ -12,7 +12,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "groups")
 public class Group {
-    private static final int MAX_PLACEHOLDER_LENGTH = 128;
+    private static final int MAX_PLACEHOLDER_LENGTH = 64;
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -61,7 +61,10 @@ public class Group {
 
         for (User member: members) {
             String name = member.getFirstName().charAt(0) + ". " + member.getLastName();
-            if (joiner.length() + name.length() > MAX_PLACEHOLDER_LENGTH) break;
+            if (joiner.length() + name.length() > MAX_PLACEHOLDER_LENGTH) {
+                joiner.add(name.substring(0, MAX_PLACEHOLDER_LENGTH - joiner.length()) + "...");
+                break;
+            }
             joiner.add(name);
         }
 

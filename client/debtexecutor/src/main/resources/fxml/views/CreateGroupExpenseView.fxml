@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Label?>
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
-<VBox minWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreateGroupExpenseViewController">
-   <children>
-      <InputField label="Title" fx:id="titleInput"/>
-      <InputField label="Amount" fx:id="amountInput"/>
-      <VBox spacing="5.0">
-         <children>
-            <Label styleClass="color-text-primary" text="Select payer:" />
+<VBox alignment="CENTER" minWidth="300.0" styleClass="group-expense"
+      stylesheets="@../../css/views/CreateGroupExpenseView.css"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreateGroupExpenseViewController">
+    <VBox styleClass="group-expense__inputs">
+        <InputField fx:id="titleInput" label="Title"/>
+        <InputField fx:id="amountInput" label="Amount"/>
+    </VBox>
+    <VBox styleClass="group-expense__select-lists">
+        <VBox spacing="10.0">
+            <Label styleClass="color-text-primary" text="Select payer:"/>
             <ListView fx:id="payerSelectList"/>
-         </children>
-      </VBox>
-      <VBox spacing="5.0">
-         <children>
-            <Label styleClass="color-text-primary" text="Select group:" />
+        </VBox>
+        <VBox spacing="10.0">
+            <Label styleClass="color-text-primary" text="Select group:"/>
             <ListView fx:id="groupSelectList"/>
-         </children>
-      </VBox>
-
-      <Button mnemonicParsing="false" onAction="#onSubmit" styleClass="button--primary" text="SUBMIT"/>
-   </children>
+        </VBox>
+    </VBox>
+    <Button mnemonicParsing="false" onAction="#onSubmit"
+            styleClass="button--primary" text="SUBMIT"/>
 </VBox>

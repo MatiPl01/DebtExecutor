@@ -10,12 +10,6 @@
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
 <VBox alignment="CENTER" spacing="20.0" styleClass="create-group" stylesheets="@../../css/views/CreateGroupView.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreateGroupViewController">
     <children>
-        <Label text="Create group">
-            <styleClass>
-                <String fx:value="heading" />
-                <String fx:value="h2" />
-            </styleClass>
-        </Label>
         <InputField label="Group name" fx:id="groupNameInput"/>
         <VBox spacing="10.0">
             <children>

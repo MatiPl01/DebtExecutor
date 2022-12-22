@@ -1,0 +1,12 @@
+.group-expense {
+    -fx-padding: 15px;
+    -fx-spacing: 25px;
+}
+
+.group-expense__inputs {
+    -fx-spacing: 5px;
+}
+
+.group-expense__select-lists {
+    -fx-spacing: 15px;
+}

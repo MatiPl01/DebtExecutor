@@ -252,3 +252,9 @@
 .color-text-primary {
     -fx-text-fill: -fx-c-black;
 }
+
+
+.list-view {
+    -fx-selection-bar: -fx-c-secondary-dark;
+    -fx-selection-bar-non-focused: -fx-c-secondary;
+}
