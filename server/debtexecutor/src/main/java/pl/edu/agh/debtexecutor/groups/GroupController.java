@@ -1,6 +1,5 @@
 package pl.edu.agh.debtexecutor.groups;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pl.edu.agh.debtexecutor.groups.dto.CreateGroupDTO;
@@ -17,7 +16,6 @@ public class GroupController {
     private final GroupService groupService;
     private final UserService userService;
 
-    @Autowired
     public GroupController(GroupService groupService, UserService userService) {
         this.groupService = groupService;
         this.userService = userService;

@@ -63,10 +63,6 @@ public class Expense {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public User getPayer() {
         return payer;
     }
@@ -81,10 +77,6 @@ public class Expense {
 
     public BigDecimal getAmount() {
         return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
     }
 
     public LocalDateTime getDate() {

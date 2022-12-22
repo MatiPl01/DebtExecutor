@@ -33,7 +33,7 @@ public class User {
     private String lastName;
 
     @Column(
-            name = "totat_balance",
+            name = "total_balance",
             nullable = false
     )
     private BigDecimal totalBalance = BigDecimal.ZERO;
@@ -83,16 +83,8 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public List<Group> getGroups() {

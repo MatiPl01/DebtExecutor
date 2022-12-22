@@ -1,7 +1,6 @@
 package pl.edu.agh.debtexecutor.expenses;
 
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -60,7 +59,7 @@ public class ExpenseController {
             expenseService.addExpenses(expenses);
             expenses.forEach(expense -> {
                 changeBalances(expense);
-                expense.getGroup().get().addExpense(expense);
+                expense.getGroup().ifPresent(group -> group.addExpense(expense));
             });
 
             return expenses.stream().map(ExpenseDTO::from).toList();

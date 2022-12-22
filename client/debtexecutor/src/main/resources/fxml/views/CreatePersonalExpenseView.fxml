@@ -7,9 +7,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Label?>
-<?import pl.age.edu.controls.InputField?>
+<?import pl.edu.agh.debtexecutor.controls.InputField?>
 <?import java.lang.String?>
-<VBox minWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.views.CreatePersonalExpenseViewController">
+<VBox minWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreatePersonalExpenseViewController">
    <children>
       <Label text="Create personal expense">
          <styleClass>

@@ -1,7 +1,5 @@
 package pl.edu.agh.debtexecutor.users;
 
-import jakarta.persistence.PersistenceException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,7 +13,6 @@ import java.util.UUID;
 public class UserService {
     private final UserRepository userRepository;
 
-    @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

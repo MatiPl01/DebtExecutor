@@ -10,7 +10,7 @@
 <HBox alignment="CENTER_RIGHT" spacing="5.0"
       styleClass="background-secondary-dark" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.age.edu.controllers.layout.TopBarController">
+      fx:controller="pl.edu.agh.debtexecutor.controllers.layout.TopBarController">
     <children>
         <Button fx:id="darkLightSwitch" mnemonicParsing="false"
                 onAction="#onThemeChange" text="Set dark theme">

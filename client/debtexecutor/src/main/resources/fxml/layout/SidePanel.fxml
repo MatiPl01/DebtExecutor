@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.layout.SidePanelController">
+<VBox styleClass="background-secondary" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.debtexecutor.controllers.layout.SidePanelController">
     <children>
         <VBox styleClass="background-transparent">
             <children>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="userPanel" prefWidth="200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.age.edu.controllers.layout.UserPanelController">
+<VBox fx:id="userPanel" prefWidth="200.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.edu.agh.debtexecutor.controllers.layout.UserPanelController">
     <children>
         <HBox alignment="CENTER_LEFT" spacing="10.0">
             <children>

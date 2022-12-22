@@ -12,6 +12,8 @@ import java.util.UUID;
 @Entity
 @Table(name = "groups")
 public class Group {
+    private static final int MAX_PLACEHOLDER_LENGTH = 128;
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", updatable = false, nullable = false)
@@ -56,8 +58,13 @@ public class Group {
 
     public String getPlaceholderName() {
         StringJoiner joiner = new StringJoiner(", ");
-        // TODO - limit to the specific number of users of number of characters
-        members.forEach(member -> joiner.add(member.getFirstName().charAt(0) + ". " + member.getLastName()));
+
+        for (User member: members) {
+            String name = member.getFirstName().charAt(0) + ". " + member.getLastName();
+            if (joiner.length() + name.length() > MAX_PLACEHOLDER_LENGTH) break;
+            joiner.add(name);
+        }
+
         return joiner.toString();
     }
 
