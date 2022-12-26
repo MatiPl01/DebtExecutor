@@ -11,6 +11,7 @@ import java.util.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
     @Column(
@@ -43,7 +44,7 @@ public class User {
             joinColumns = { @JoinColumn(
                     name = "user_id",
                     referencedColumnName = "id"
-            )}
+            ) }
     )
     @MapKeyColumn(name = "user_id")
     @Column(name = "balance")
@@ -105,8 +106,8 @@ public class User {
 
     public void changeBalance(User user, BigDecimal amount) {
         BigDecimal currBalance = amount
-            .add(Optional.ofNullable(balance.get(user))
-            .orElse(BigDecimal.ZERO));
+                .add(Optional.ofNullable(balance.get(user))
+                             .orElse(BigDecimal.ZERO));
 
         totalBalance = totalBalance.add(amount);
 

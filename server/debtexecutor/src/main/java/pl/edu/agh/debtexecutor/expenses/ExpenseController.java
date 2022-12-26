@@ -40,6 +40,8 @@ public class ExpenseController {
             Expense expense = expenseFactory.createExpense(dto);
             expenseService.addExpense(expense);
             changeBalances(expense);
+            expense.getCategories()
+                   .forEach(category -> category.addExpense(expense));
             return ExpenseDTO.from(expense);
         } catch (ResponseStatusException e) {
             throw new ResponseStatusException(
@@ -59,7 +61,10 @@ public class ExpenseController {
             expenseService.addExpenses(expenses);
             expenses.forEach(expense -> {
                 changeBalances(expense);
-                expense.getGroup().ifPresent(group -> group.addExpense(expense));
+                expense.getGroup()
+                       .ifPresent(group -> group.addExpense(expense));
+                expense.getCategories()
+                       .forEach(category -> category.addExpense(expense));
             });
 
             return expenses.stream().map(ExpenseDTO::from).toList();
@@ -72,7 +77,9 @@ public class ExpenseController {
     }
 
     private void changeBalances(Expense expense) {
-        expense.getPayer().changeBalance(expense.getPayee(), expense.getAmount());
-        expense.getPayee().changeBalance(expense.getPayer(), expense.getAmount().negate());
+        expense.getPayer()
+               .changeBalance(expense.getPayee(), expense.getAmount());
+        expense.getPayee()
+               .changeBalance(expense.getPayer(), expense.getAmount().negate());
     }
 }

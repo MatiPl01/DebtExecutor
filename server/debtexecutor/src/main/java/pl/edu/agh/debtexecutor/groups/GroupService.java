@@ -21,10 +21,10 @@ public class GroupService {
 
     public Group getGroupById(UUID id) throws ResponseStatusException {
         return groupRepository.findById(id).orElseThrow(
-            () -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND,
-                "Group with id " + id + " does not exist"
-            )
+                () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Group with id " + id + " does not exist"
+                )
         );
     }
 

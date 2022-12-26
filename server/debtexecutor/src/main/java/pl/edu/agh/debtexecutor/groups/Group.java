@@ -59,10 +59,15 @@ public class Group {
     public String getPlaceholderName() {
         StringJoiner joiner = new StringJoiner(", ");
 
-        for (User member: members) {
-            String name = member.getFirstName().charAt(0) + ". " + member.getLastName();
+        for (User member : members) {
+            String name = member.getFirstName().charAt(0) +
+                          ". " +
+                          member.getLastName();
             if (joiner.length() + name.length() > MAX_PLACEHOLDER_LENGTH) {
-                joiner.add(name.substring(0, MAX_PLACEHOLDER_LENGTH - joiner.length()) + "...");
+                joiner.add(name.substring(0,
+                                          MAX_PLACEHOLDER_LENGTH -
+                                          joiner.length()
+                ) + "...");
                 break;
             }
             joiner.add(name);

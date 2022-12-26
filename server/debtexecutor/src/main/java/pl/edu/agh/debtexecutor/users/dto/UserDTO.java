@@ -15,7 +15,6 @@ public record UserDTO(
         List<UserBalanceDTO> balance,
         BigDecimal totalBalance
 ) {
-
     public static UserDTO from(User user) {
         return new UserDTO(
                 user.getId(),
