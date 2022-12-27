@@ -1,7 +1,7 @@
 package pl.edu.agh.debtexecutor.users.dto;
 
-import pl.edu.agh.debtexecutor.groups.Group;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -33,9 +33,13 @@ public record UserDTO(
         );
     }
 
-    private record UserGroupDTO(UUID id, String name) {
+    private record UserGroupDTO(UUID id, String name, String placeholderName) {
         static UserGroupDTO from(Group group) {
-            return new UserGroupDTO(group.getId(), group.getName());
+            return new UserGroupDTO(
+                    group.getId(),
+                    group.getName(),
+                    group.getPlaceholderName()
+            );
         }
     }
 

@@ -4,7 +4,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pl.edu.agh.debtexecutor.groups.dto.CreateGroupDTO;
 import pl.edu.agh.debtexecutor.groups.dto.GroupDTO;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.users.model.User;
 import pl.edu.agh.debtexecutor.users.UserService;
 
 import java.util.List;
@@ -28,10 +29,10 @@ public class GroupController {
 
     @PostMapping
     public @ResponseBody GroupDTO createGroup(@RequestBody CreateGroupDTO dto) {
-        List<User> users = userService.getUsersById(dto.users());
-        Group group = new Group(dto.name(), users);
+        List<User> members = userService.getUsersById(dto.members());
+        Group group = new Group(dto.name(), members);
         groupService.addGroup(group);
-        users.forEach(user -> user.addToGroup(group));
+        members.forEach(user -> user.addToGroup(group));
         return GroupDTO.from(group);
     }
 

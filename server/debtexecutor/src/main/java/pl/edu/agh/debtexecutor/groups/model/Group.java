@@ -1,8 +1,8 @@
-package pl.edu.agh.debtexecutor.groups;
+package pl.edu.agh.debtexecutor.groups.model;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.expenses.Expense;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.expenses.model.Expense;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

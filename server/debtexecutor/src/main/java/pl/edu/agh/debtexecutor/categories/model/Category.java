@@ -1,10 +1,12 @@
-package pl.edu.agh.debtexecutor.categories;
+package pl.edu.agh.debtexecutor.categories.model;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.expenses.Expense;
+import pl.edu.agh.debtexecutor.expenses.model.Expense;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -22,13 +24,24 @@ public class Category {
     )
     private String name;
 
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private final List<Expense> expenses = new ArrayList<>();
 
     public Category() {}
 
     public Category(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!getClass().isInstance(obj)) return false;
+        return id.equals(((Category) obj).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), id);
     }
 
     public UUID getId() {

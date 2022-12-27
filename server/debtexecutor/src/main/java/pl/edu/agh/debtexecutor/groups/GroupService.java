@@ -3,6 +3,8 @@ package pl.edu.agh.debtexecutor.groups;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.groups.repository.GroupRepository;
 
 import java.util.List;
 import java.util.UUID;

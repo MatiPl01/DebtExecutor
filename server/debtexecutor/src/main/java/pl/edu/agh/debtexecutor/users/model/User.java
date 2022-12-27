@@ -1,7 +1,7 @@
-package pl.edu.agh.debtexecutor.users;
+package pl.edu.agh.debtexecutor.users.model;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.groups.Group;
+import pl.edu.agh.debtexecutor.groups.model.Group;
 
 import java.math.BigDecimal;
 import java.util.*;

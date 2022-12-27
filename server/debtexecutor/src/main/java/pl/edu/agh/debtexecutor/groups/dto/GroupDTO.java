@@ -1,7 +1,7 @@
 package pl.edu.agh.debtexecutor.groups.dto;
 
-import pl.edu.agh.debtexecutor.groups.Group;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.util.List;
 import java.util.UUID;

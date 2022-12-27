@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import pl.edu.agh.debtexecutor.users.dto.CreateUserDTO;
+import pl.edu.agh.debtexecutor.users.model.User;
+import pl.edu.agh.debtexecutor.users.repository.UserRepository;
 
 import java.util.List;
 import java.util.StringJoiner;

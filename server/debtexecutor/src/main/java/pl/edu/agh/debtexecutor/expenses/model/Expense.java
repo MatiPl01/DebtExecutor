@@ -1,13 +1,12 @@
-package pl.edu.agh.debtexecutor.expenses;
+package pl.edu.agh.debtexecutor.expenses.model;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.categories.Category;
-import pl.edu.agh.debtexecutor.groups.Group;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.categories.model.Category;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -40,52 +39,48 @@ public class Expense {
     @Column(name = "date", nullable = false)
     private LocalDateTime date;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "Expense_Category",
-            joinColumns = { @JoinColumn(name = "category_id") },
-            inverseJoinColumns = { @JoinColumn(name = "expense_id") }
-    )
-    private List<Category> categories;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     public Expense() {}
 
     public Expense(String title,
                    User payer,
                    User payee,
+                   BigDecimal amount,
                    Group group,
-                   List<Category> categories,
-                   BigDecimal amount) {
+                   Category category) {
         this.title = title;
         this.payer = payer;
         this.payee = payee;
-        this.group = group;
         this.amount = amount;
-        this.categories = categories;
+        this.group = group;
+        this.category = category;
         this.date = LocalDateTime.now();
     }
 
     public Expense(String title,
                    User payer,
                    User payee,
-                   Group group,
-                   BigDecimal amount) {
-        this(title, payer, payee, group, List.of(), amount);
+                   BigDecimal amount,
+                   Group group) {
+        this(title, payer, payee, amount, group, null);
     }
 
     public Expense(String title,
                    User payer,
                    User payee,
-                   List<Category> categories,
-                   BigDecimal amount) {
-        this(title, payer, payee, null, categories, amount);
+                   BigDecimal amount,
+                   Category category) {
+        this(title, payer, payee, amount, null, category);
     }
 
     public Expense(String title,
                    User payer,
                    User payee,
                    BigDecimal amount) {
-        this(title, payer, payee, null, List.of(), amount);
+        this(title, payer, payee, amount, null, null);
     }
 
     public UUID getId() {
@@ -108,8 +103,8 @@ public class Expense {
         return Optional.ofNullable(group);
     }
 
-    public List<Category> getCategories() {
-        return categories;
+    public Optional<Category> getCategory() {
+        return Optional.ofNullable(category);
     }
 
     public BigDecimal getAmount() {

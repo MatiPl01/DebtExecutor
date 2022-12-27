@@ -1,13 +1,12 @@
 package pl.edu.agh.debtexecutor.expenses.dto;
 
 import pl.edu.agh.debtexecutor.categories.dto.CategoryDTO;
-import pl.edu.agh.debtexecutor.expenses.Expense;
-import pl.edu.agh.debtexecutor.groups.Group;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.expenses.model.Expense;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -16,10 +15,10 @@ public record ExpenseDTO(
         String title,
         ExpenseUserDTO payer,
         ExpenseUserDTO payee,
-        Optional<ExpenseGroupDTO> group,
         BigDecimal amount,
         LocalDateTime date,
-        List<CategoryDTO> categories
+        Optional<ExpenseGroupDTO> group,
+        Optional<CategoryDTO> category
 ) {
     public static ExpenseDTO from(Expense expense) {
         return new ExpenseDTO(
@@ -27,10 +26,10 @@ public record ExpenseDTO(
                 expense.getTitle(),
                 ExpenseUserDTO.from(expense.getPayer()),
                 ExpenseUserDTO.from(expense.getPayee()),
-                expense.getGroup().map(ExpenseGroupDTO::from),
                 expense.getAmount(),
                 expense.getDate(),
-                expense.getCategories().stream().map(CategoryDTO::from).toList()
+                expense.getGroup().map(ExpenseGroupDTO::from),
+                expense.getCategory().map(CategoryDTO::from)
         );
     }
 

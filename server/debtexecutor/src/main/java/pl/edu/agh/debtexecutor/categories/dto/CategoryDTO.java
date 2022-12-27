@@ -1,6 +1,6 @@
 package pl.edu.agh.debtexecutor.categories.dto;
 
-import pl.edu.agh.debtexecutor.categories.Category;
+import pl.edu.agh.debtexecutor.categories.model.Category;
 
 import java.util.UUID;
 
