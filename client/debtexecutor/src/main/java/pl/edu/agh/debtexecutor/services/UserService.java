@@ -16,11 +16,12 @@ import java.util.Optional;
 public class UserService {
     private static final int FETCH_INTERVAL = 10000; // 10s
 
-    private final ObservableList<User> users =
-            FXCollections.observableArrayList();
     private final UserApi userApi;
     private final AuthService authService;
+
     private final Interval reFetchInterval;
+    private final ObservableList<User> users =
+            FXCollections.observableArrayList();
 
     private UserService(UserApi userAPi, AuthService authService) {
         this.userApi = userAPi;

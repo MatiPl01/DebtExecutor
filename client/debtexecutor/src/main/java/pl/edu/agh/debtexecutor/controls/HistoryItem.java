@@ -7,6 +7,8 @@ import javafx.scene.layout.VBox;
 import pl.edu.agh.debtexecutor.models.Expense;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class HistoryItem extends VBox {
     private static final String HIDDEN_CLASS_NAME = "hidden";
@@ -18,6 +20,7 @@ public class HistoryItem extends VBox {
     @FXML private Label groupName;
     @FXML private Label expenseAmount;
     @FXML private Label expenseDate;
+    @FXML private Label category;
 
     public HistoryItem(Expense expense) {
         // TODO - improve FXML loading
@@ -35,9 +38,15 @@ public class HistoryItem extends VBox {
         expenseTitle.setText(expense.getTitle());
         payerName.setText(expense.getPayer().toString());
         payeeName.setText(expense.getPayee().toString());
-        if (expense.getGroup() != null) groupName.setText(expense.getGroup().toString());
+        if (expense.getGroup().isPresent()) groupName.setText(expense.getGroup().get().toString());
         else groupName.getStyleClass().add(HIDDEN_CLASS_NAME);
         expenseAmount.setText(expense.getAmount().toString());
-        expenseDate.setText(expense.getDate());
+        expenseDate.setText(formatDate(expense.getDate()));
+        if (expense.getCategory().isPresent()) category.setText(expense.getCategory().get().getName());
+    }
+
+    private String formatDate(LocalDateTime date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return date.format(formatter);
     }
 }

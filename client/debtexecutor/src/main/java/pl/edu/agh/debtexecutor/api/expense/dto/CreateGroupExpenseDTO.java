@@ -1,9 +1,11 @@
 package pl.edu.agh.debtexecutor.api.expense.dto;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public record CreateGroupExpenseDTO(
         String title,
-        String payer,
-        String group,
+        UUID payer,
+        UUID group,
+        UUID category,
         BigDecimal amount) {}

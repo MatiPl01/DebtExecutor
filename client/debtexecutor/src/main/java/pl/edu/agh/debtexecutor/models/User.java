@@ -2,16 +2,17 @@ package pl.edu.agh.debtexecutor.models;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 public class User {
-    private final String id;
+    private final UUID id;
     private final String firstName;
     private final String lastName;
     private final List<UserGroupDTO> groups;
     private final List<UserBalance> balance;
     private final BigDecimal totalBalance;
 
-    public User(String id,
+    public User(UUID id,
                 String firstName,
                 String lastName,
                 List<UserGroupDTO> groups,
@@ -30,7 +31,7 @@ public class User {
         return firstName + " " + lastName;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -40,6 +41,10 @@ public class User {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public List<UserGroupDTO> getGroups() {
+        return groups;
     }
 
     public List<UserBalance> getBalance() {

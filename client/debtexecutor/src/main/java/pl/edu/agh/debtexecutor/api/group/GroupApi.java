@@ -12,15 +12,15 @@ import java.util.Optional;
 
 @Component
 public class GroupApi {
-    private final  GroupApiService groupService;
+    private final GroupApiService groupApiService;
 
     public GroupApi(RetrofitClient retrofitClient) {
-        groupService = retrofitClient.getClient().create(GroupApiService.class);
+        groupApiService = retrofitClient.getClient().create(GroupApiService.class);
     }
 
     public List<Group> getAll() {
         try {
-            List<Group> groups = groupService.getGroups().execute().body();
+            List<Group> groups = groupApiService.getGroups().execute().body();
             if (groups != null) return groups;
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,7 +30,7 @@ public class GroupApi {
 
     public Optional<Group> createGroup(CreateGroupDTO dto) {
         try {
-            return Optional.ofNullable(groupService.createGroup(dto).execute().body());
+            return Optional.ofNullable(groupApiService.createGroup(dto).execute().body());
         } catch (IOException e) {
             e.printStackTrace();
         }

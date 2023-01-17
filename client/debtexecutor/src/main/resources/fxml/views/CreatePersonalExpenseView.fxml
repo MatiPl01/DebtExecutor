@@ -24,6 +24,11 @@
                    text="Select payee:"/>
             <ListView fx:id="payeeSelectList"/>
         </VBox>
+        <VBox spacing="10.0">
+            <Label styleClass="color-text-primary"
+                   text="Select category:"/>
+            <ListView fx:id="categorySelectList"/>
+        </VBox>
     </VBox>
     <Button mnemonicParsing="false" onAction="#onSubmit"
             styleClass="button--primary" text="SUBMIT"/>

@@ -1,6 +1,6 @@
 package pl.edu.agh.debtexecutor.expenses.dto;
 
-import pl.edu.agh.debtexecutor.categories.dto.CategoryDTO;
+import pl.edu.agh.debtexecutor.categories.model.Category;
 import pl.edu.agh.debtexecutor.expenses.model.Expense;
 import pl.edu.agh.debtexecutor.groups.model.Group;
 import pl.edu.agh.debtexecutor.users.model.User;
@@ -18,7 +18,7 @@ public record ExpenseDTO(
         BigDecimal amount,
         LocalDateTime date,
         Optional<ExpenseGroupDTO> group,
-        Optional<CategoryDTO> category
+        Optional<ExpenseCategoryDTO> category
 ) {
     public static ExpenseDTO from(Expense expense) {
         return new ExpenseDTO(
@@ -29,7 +29,7 @@ public record ExpenseDTO(
                 expense.getAmount(),
                 expense.getDate(),
                 expense.getGroup().map(ExpenseGroupDTO::from),
-                expense.getCategory().map(CategoryDTO::from)
+                expense.getCategory().map(ExpenseCategoryDTO::from)
         );
     }
 
@@ -53,6 +53,18 @@ public record ExpenseDTO(
                     group.getId(),
                     group.getName(),
                     group.getPlaceholderName()
+            );
+        }
+    }
+
+    private record ExpenseCategoryDTO(
+            UUID id,
+            String name
+    ) {
+        static ExpenseCategoryDTO from(Category category) {
+            return new ExpenseCategoryDTO(
+                    category.getId(),
+                    category.getName()
             );
         }
     }

@@ -11,6 +11,7 @@ import pl.edu.agh.debtexecutor.models.Expense;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class ExpenseService {
@@ -27,18 +28,19 @@ public class ExpenseService {
     }
 
     public void fetchData() {
-        storedExpenses.setAll(expenseApi.getAll());
+        // TODO - fix this (add pagination)
+//        storedExpenses.setAll(expenseApi.getAll());
     }
 
-    public Optional<Expense> addPersonalExpense(String title, BigDecimal amount, String payer, String payee) {
-        CreateExpenseDTO dto = new CreateExpenseDTO(title, payer, payee, amount);
+    public Optional<Expense> addPersonalExpense(String title, BigDecimal amount, UUID payerId, UUID payeeId, UUID categoryId) {
+        CreateExpenseDTO dto = new CreateExpenseDTO(title, payerId, payeeId, categoryId, amount);
         Optional<Expense> expense = expenseApi.createPersonalExpense(dto);
         expense.ifPresent(storedExpenses::add);
         return expense;
     }
 
-    public List<Expense> addGroupExpense(String title, BigDecimal amount, String payer, String group) {
-        CreateGroupExpenseDTO dto = new CreateGroupExpenseDTO(title, payer, group, amount);
+    public List<Expense> addGroupExpense(String title, BigDecimal amount, UUID payerId, UUID groupId, UUID categoryId) {
+        CreateGroupExpenseDTO dto = new CreateGroupExpenseDTO(title, payerId, groupId, categoryId, amount);
         List<Expense> expenses = expenseApi.createGroupExpense(dto);
         storedExpenses.addAll(expenses);
         return expenses;

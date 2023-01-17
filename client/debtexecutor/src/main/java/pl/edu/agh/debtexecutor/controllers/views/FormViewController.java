@@ -28,4 +28,6 @@ public abstract class FormViewController {
         listView.getSelectionModel().setSelectionMode(selectionMode);
         listView.setPrefHeight(Math.min(MAX_LIST_HEIGHT, 2 + LIST_ROW_HEIGHT * entries.size()));
     }
+
+    protected abstract void clearInputs();
 }

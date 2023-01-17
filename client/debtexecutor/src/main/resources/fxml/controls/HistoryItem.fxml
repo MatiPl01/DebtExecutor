@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
-<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" stylesheets="@../../css/controls/HistoryItem.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <HBox alignment="CENTER_LEFT">
         <children>
             <VBox>
                 <children>
-                    <Label styleClass="card__label"/>
-                    <Label fx:id="expenseTitle" minWidth="200.0"
-                           wrapText="true">
+                    <Label styleClass="card__label" />
+                    <Label fx:id="expenseTitle" minWidth="200.0" wrapText="true">
                   <styleClass>
                      <String fx:value="card__title" />
                      <String fx:value="h4" />
@@ -22,7 +20,7 @@
                 </children>
             </VBox>
             <Region HBox.hgrow="ALWAYS" />
-            <Label fx:id="groupName" styleClass="card__group"/>
+            <Label fx:id="groupName" styleClass="card__group" />
         </children>
     </HBox>
     <HBox alignment="BOTTOM_CENTER" spacing="10.0" styleClass="card__body">
@@ -60,8 +58,11 @@
             </VBox>
         </children>
     </HBox>
-    <Label fx:id="expenseDate" styleClass="card__date" text="2022-09-01 22:10:11" />
-    <stylesheets>
-        <URL value="@../../css/controls/HistoryItem.css" />
-    </stylesheets>
+   <HBox alignment="CENTER">
+      <children>
+          <Label fx:id="expenseDate" styleClass="card__date" text="2022-09-01 22:10:11" />
+         <Region HBox.hgrow="ALWAYS" />
+         <Label fx:id="category" styleClass="card__category" text="Beverages" />
+      </children>
+   </HBox>
 </fx:root>

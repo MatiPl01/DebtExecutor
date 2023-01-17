@@ -231,6 +231,11 @@
     -fx-text-fill: -fx-c-white;
 }
 
+.card__category {
+    -fx-background-color: linear-gradient(to top right, -fx-c-secondary, -fx-c-secondary-dark);
+    -fx-text-fill: -fx-c-white;
+}
+
 
 .balance-item__user {
     -fx-text-fill: -fx-c-black;

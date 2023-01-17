@@ -4,7 +4,8 @@
     -fx-padding: 10px 15px;
 }
 
-.card__group {
+.card__group,
+.card__category {
     -fx-padding: 5px 10px;
     -fx-background-radius: 25px;
 }

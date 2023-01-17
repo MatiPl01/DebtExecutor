@@ -15,6 +15,7 @@ public class ViewController {
     private final Map<ViewType, String> views = new HashMap<>() {{
         put(ViewType.CREATE_EXPENSE, "/fxml/views/CreatePersonalExpenseView.fxml");
         put(ViewType.CREATE_GROUP_EXPENSE, "/fxml/views/CreateGroupExpenseView.fxml");
+        put(ViewType.CREATE_CATEGORY, "/fxml/views/CreateCategoryView.fxml");
         put(ViewType.CREATE_GROUP, "/fxml/views/CreateGroupView.fxml");
         put(ViewType.HISTORY, "/fxml/views/HistoryView.fxml");
         put(ViewType.SUMMARY, "/fxml/views/SummaryView.fxml");

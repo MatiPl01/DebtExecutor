@@ -13,6 +13,7 @@ import pl.edu.agh.debtexecutor.utils.Interval;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class GroupService {
@@ -39,7 +40,7 @@ public class GroupService {
     }
 
     public Optional<Group> addGroup(String groupName, List<User> users) {
-        List<String> userIds = users
+        List<UUID> userIds = users
                 .stream()
                 .map(User::getId)
                 .toList();

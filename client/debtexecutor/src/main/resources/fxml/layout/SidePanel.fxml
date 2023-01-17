@@ -15,21 +15,30 @@
             <children>
                 <VBox spacing="5.0" styleClass="menu__buttons">
                     <children>
-                        <Button fx:id="newPersonalExpenseButton" mnemonicParsing="false" onAction="#onNewPersonalExpenseClick" text="New personal expense">
+                        <Button mnemonicParsing="false" onAction="#onNewPersonalExpenseClick" text="New personal expense">
                             <styleClass>
                                 <String fx:value="button" />
                                 <String fx:value="button--gray" />
                                 <String fx:value="button--small" />
                             </styleClass>
                         </Button>
-                        <Button fx:id="newGroupExpenseButton" mnemonicParsing="false" onAction="#onNewGroupExpenseClick" text="New group expense">
+                        <Button mnemonicParsing="false" onAction="#onNewGroupExpenseClick" text="New group expense">
                             <styleClass>
                                 <String fx:value="button" />
                                 <String fx:value="button--gray" />
                                 <String fx:value="button--small" />
                             </styleClass>
                         </Button>
-                        <Button fx:id="newGroupButton" mnemonicParsing="false" onAction="#onNewGroupClick" text="New group">
+                        <Button mnemonicParsing="false"
+                                onAction="#onNewCategoryClick"
+                                text="New category">
+                            <styleClass>
+                                <String fx:value="button" />
+                                <String fx:value="button--gray" />
+                                <String fx:value="button--small" />
+                            </styleClass>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#onNewGroupClick" text="New group">
                             <styleClass>
                                 <String fx:value="button" />
                                 <String fx:value="button--gray" />
