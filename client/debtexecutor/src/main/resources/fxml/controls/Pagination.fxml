@@ -7,8 +7,6 @@
 
 <fx:root alignment="CENTER" styleClass="pagination" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../../css/shared.css" />
-        <URL value="@../../css/themes/light.css" />
         <URL value="@../../css/controls/Pagination.css" />
     </stylesheets>
     <Button fx:id="firstPageButton" mnemonicParsing="false" styleClass="pagination__button" text="&lt;&lt;" />

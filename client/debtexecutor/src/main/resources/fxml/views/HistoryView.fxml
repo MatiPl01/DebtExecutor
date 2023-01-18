@@ -4,11 +4,15 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import pl.edu.agh.debtexecutor.controls.Pagination?>
+<?import pl.edu.agh.debtexecutor.controls.sorting.Sorting?>
+
 <VBox alignment="TOP_CENTER" styleClass="history"
       stylesheets="@../../css/views/HistoryView.css"
       xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.views.HistoryViewController">
-    <HBox fx:id="topPanel"/>
+    <HBox fx:id="topPanel">
+        <Sorting fx:id="sorting" />
+    </HBox>
     <VBox styleClass="history__content" fx:id="historyWrapper"/>
     <HBox styleClass="history__footer">
         <Pagination fx:id="pagination" />

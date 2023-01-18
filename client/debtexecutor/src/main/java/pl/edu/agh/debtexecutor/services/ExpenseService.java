@@ -22,7 +22,7 @@ import java.util.*;
 public class ExpenseService implements Paginable, Sortable, Filterable {
     private final static int DEFAULT_PAGE_SIZE = 10;
 
-    private final SortOptions sortOptions = new SortOptions("date");
+    private final SortOptions sortOptions = new SortOptions();
     private final FilterOptions filterOptions = new FilterOptions(List.of("category"));
     private final PaginationOptions paginationOptions =
             new PaginationOptions(DEFAULT_PAGE_SIZE);

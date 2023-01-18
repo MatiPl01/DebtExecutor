@@ -1,0 +1,21 @@
+/* TODO - add more styles */
+
+.sort {
+
+}
+
+.sort__label {
+
+}
+
+.sort__combobox {
+
+}
+
+.sort__combobox--sort-by {
+    -fx-pref-width: 100px;
+}
+
+.sort__combobox--sort-direction {
+    -fx-pref-width: 75px;
+}

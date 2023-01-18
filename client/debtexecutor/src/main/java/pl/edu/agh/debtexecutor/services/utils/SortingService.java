@@ -1,14 +1,17 @@
 package pl.edu.agh.debtexecutor.services.utils;
 
+import pl.edu.agh.debtexecutor.controls.sorting.SortSettings;
 import pl.edu.agh.debtexecutor.services.options.SortDirection;
 import pl.edu.agh.debtexecutor.services.options.SortOptions;
 import pl.edu.agh.debtexecutor.services.options.Sortable;
 
-public class SortService {
+import java.util.List;
+
+public class SortingService {
     private final Sortable sortable;
     private final SortOptions sortOptions;
 
-    public SortService(Sortable sortable) {
+    public SortingService(Sortable sortable) {
         this.sortable = sortable;
         this.sortOptions = sortable.getSortOptions();
     }

@@ -280,3 +280,8 @@
 .pagination__total {
     -fx-text-fill: -fx-c-primary;
 }
+
+
+.sort__label {
+    -fx-text-fill: -fx-c-gray-dark-3;
+}

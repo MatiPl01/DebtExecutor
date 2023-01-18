@@ -1,19 +1,17 @@
 package pl.edu.agh.debtexecutor.controls;
 
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import pl.edu.agh.debtexecutor.services.options.PaginationOptions;
 import pl.edu.agh.debtexecutor.services.utils.PaginationService;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 
 public class Pagination extends HBox implements Initializable {
     private static final String FXML_PATH = "/fxml/controls/Pagination.fxml";
@@ -39,16 +37,9 @@ public class Pagination extends HBox implements Initializable {
         }
     }
 
-    public StringProperty currentPageNumberProperty() {
-        return currentPageNumber.textProperty();
-    }
-
-    public StringProperty totalPagesNumberProperty() {
-        return totalPagesNumber.textProperty();
-    }
-
     public void setPaginationService(PaginationService paginationService) {
         this.paginationService = paginationService;
+        setBindings();
     }
 
     @Override
@@ -57,5 +48,11 @@ public class Pagination extends HBox implements Initializable {
         prevPageButton.setOnAction((v) -> paginationService.prevPage());
         nextPageButton.setOnAction((v) -> paginationService.nextPage());
         lastPageButton.setOnAction((v) -> paginationService.lastPage());
+    }
+
+    private void setBindings() {
+        PaginationOptions options = paginationService.getPaginationOptions();
+        currentPageNumber.textProperty().bind(options.pageNumberProperty().asString());
+        totalPagesNumber.textProperty().bind(options.totalPagesProperty().asString());
     }
 }

@@ -4,10 +4,6 @@ public class SortOptions {
     private SortDirection sortDirection = SortDirection.DESC;
     private String sortBy;
 
-    public SortOptions(String sortBy) {
-        this.sortBy = sortBy;
-    }
-
     public SortDirection getSortDirection() {
         return sortDirection;
     }
