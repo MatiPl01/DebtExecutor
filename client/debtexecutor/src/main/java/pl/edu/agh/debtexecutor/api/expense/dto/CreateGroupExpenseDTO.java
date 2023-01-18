@@ -8,4 +8,5 @@ public record CreateGroupExpenseDTO(
         UUID payer,
         UUID group,
         UUID category,
-        BigDecimal amount) {}
+        BigDecimal amount
+) {}

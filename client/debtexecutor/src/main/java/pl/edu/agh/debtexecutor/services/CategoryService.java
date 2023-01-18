@@ -1,9 +1,10 @@
 package pl.edu.agh.debtexecutor.services;
 
+import jakarta.annotation.PreDestroy;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.edu.agh.debtexecutor.api.category.CategoryApi;
 import pl.edu.agh.debtexecutor.api.category.dto.CreateCategoryDTO;
 import pl.edu.agh.debtexecutor.models.Category;
@@ -13,7 +14,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class CategoryService {
     private static final int FETCH_INTERVAL = 10000; // 10s
 
@@ -27,6 +28,11 @@ public class CategoryService {
         this.categoryApi = categoryApi;
         reFetchInterval = new Interval(this::reFetch, FETCH_INTERVAL);
         reFetchInterval.start();
+    }
+
+    @PreDestroy
+    public void beforeDestroy() {
+        reFetchInterval.clear();
     }
 
     public ObservableList<Category> getCategories() {

@@ -22,7 +22,7 @@ public class HistoryViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         expenseService.fetchData();
-        ObservableList<Expense> expenses = expenseService.getExpenses();
+        ObservableList<Expense> expenses = expenseService.getDisplayedExpenses();
         historyWrapper.getChildren().setAll(expenses.stream().map(HistoryItem::new).toList());
     }
 }

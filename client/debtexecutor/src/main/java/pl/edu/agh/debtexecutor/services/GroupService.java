@@ -1,9 +1,10 @@
 package pl.edu.agh.debtexecutor.services;
 
+import jakarta.annotation.PreDestroy;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.edu.agh.debtexecutor.api.group.GroupApi;
 import pl.edu.agh.debtexecutor.api.group.dto.CreateGroupDTO;
 import pl.edu.agh.debtexecutor.models.User;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Component
+@Service
 public class GroupService {
     private static final int FETCH_INTERVAL = 10000; // 10s
 
@@ -28,6 +29,11 @@ public class GroupService {
         this.groupApi = groupApi;
         reFetchInterval = new Interval(this::reFetch, FETCH_INTERVAL);
         reFetchInterval.start();
+    }
+
+    @PreDestroy
+    public void beforeDestroy() {
+        reFetchInterval.clear();
     }
 
     public void fetchData() {

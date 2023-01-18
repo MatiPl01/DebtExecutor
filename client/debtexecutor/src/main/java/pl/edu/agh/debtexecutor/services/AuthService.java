@@ -1,7 +1,7 @@
 package pl.edu.agh.debtexecutor.services;
 
 import javafx.beans.property.SimpleObjectProperty;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.edu.agh.debtexecutor.api.user.UserApi;
 import pl.edu.agh.debtexecutor.api.user.dto.SignInUserDTO;
 import pl.edu.agh.debtexecutor.api.user.dto.SingUpUserDTO;
@@ -9,7 +9,7 @@ import pl.edu.agh.debtexecutor.models.User;
 
 import java.util.Optional;
 
-@Component
+@Service
 public class AuthService {
     private final UserApi userApi;
 
