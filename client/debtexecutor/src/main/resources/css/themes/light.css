@@ -263,3 +263,20 @@
     -fx-selection-bar: -fx-c-secondary-dark;
     -fx-selection-bar-non-focused: -fx-c-secondary;
 }
+
+.pagination {
+    -fx-background-color: -fx-c-gray-light-0;
+}
+
+.pagination__button {
+    -fx-background-color: -fx-c-white;
+    -fx-text-fill: -fx-c-gray-dark-2;
+}
+
+.pagination__slash {
+    -fx-text-fill: -fx-c-gray-dark-2;
+}
+
+.pagination__total {
+    -fx-text-fill: -fx-c-primary;
+}

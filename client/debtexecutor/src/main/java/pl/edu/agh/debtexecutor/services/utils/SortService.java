@@ -1,27 +1,29 @@
 package pl.edu.agh.debtexecutor.services.utils;
 
-import javafx.beans.property.SimpleObjectProperty;
 import pl.edu.agh.debtexecutor.services.options.SortDirection;
 import pl.edu.agh.debtexecutor.services.options.SortOptions;
+import pl.edu.agh.debtexecutor.services.options.Sortable;
 
 public class SortService {
-    private final SimpleObjectProperty<SortDirection> sortDirectionProperty = new SimpleObjectProperty<>();
-    private final SimpleObjectProperty<String> sortByProperty = new SimpleObjectProperty<>();
+    private final Sortable sortable;
     private final SortOptions sortOptions;
 
-    public SortService(Sortable service) {
-        sortOptions = service.getSortOptions();
-        sortDirectionProperty.set(sortOptions.getSortDirection());
-        sortByProperty.set(sortOptions.getSortBy());
+    public SortService(Sortable sortable) {
+        this.sortable = sortable;
+        this.sortOptions = sortable.getSortOptions();
+    }
+
+    public SortOptions getSortOptions() {
+        return sortOptions;
     }
 
     public void sortBy(String sortBy) {
         sortOptions.setSortBy(sortBy);
-        sortByProperty.set(sortBy);
+        sortable.update();
     }
 
     public void setSortDirection(SortDirection sortDirection) {
         sortOptions.setSortDirection(sortDirection);
-        sortDirectionProperty.set(sortDirection);
+        sortable.update();
     }
 }

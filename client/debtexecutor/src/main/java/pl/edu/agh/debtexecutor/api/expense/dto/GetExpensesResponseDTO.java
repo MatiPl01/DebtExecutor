@@ -6,4 +6,5 @@ import java.util.List;
 
 public class GetExpensesResponseDTO {
     public List<Expense> content;
+    public int totalPages;
 }

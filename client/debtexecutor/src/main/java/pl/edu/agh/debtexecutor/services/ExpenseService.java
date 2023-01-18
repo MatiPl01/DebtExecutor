@@ -6,13 +6,14 @@ import org.springframework.stereotype.Service;
 import pl.edu.agh.debtexecutor.api.expense.ExpenseApi;
 import pl.edu.agh.debtexecutor.api.expense.dto.CreateExpenseDTO;
 import pl.edu.agh.debtexecutor.api.expense.dto.CreateGroupExpenseDTO;
+import pl.edu.agh.debtexecutor.api.expense.dto.GetExpensesResponseDTO;
 import pl.edu.agh.debtexecutor.models.Expense;
 import pl.edu.agh.debtexecutor.services.options.FilterOptions;
 import pl.edu.agh.debtexecutor.services.options.PaginationOptions;
 import pl.edu.agh.debtexecutor.services.options.SortOptions;
-import pl.edu.agh.debtexecutor.services.utils.Filterable;
-import pl.edu.agh.debtexecutor.services.utils.Paginable;
-import pl.edu.agh.debtexecutor.services.utils.Sortable;
+import pl.edu.agh.debtexecutor.services.options.Filterable;
+import pl.edu.agh.debtexecutor.services.options.Paginable;
+import pl.edu.agh.debtexecutor.services.options.Sortable;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -22,7 +23,7 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
     private final static int DEFAULT_PAGE_SIZE = 10;
 
     private final SortOptions sortOptions = new SortOptions("date");
-    private final FilterOptions filterOptions = new FilterOptions();
+    private final FilterOptions filterOptions = new FilterOptions(List.of("category"));
     private final PaginationOptions paginationOptions =
             new PaginationOptions(DEFAULT_PAGE_SIZE);
     private final ObservableList<Expense> displayedExpenses =
@@ -50,14 +51,22 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
     }
 
     @Override
+    public void update() {
+        fetchData();
+    }
+
     public void fetchData() {
-        displayedExpenses.setAll(expenseApi.getExpenses(
+        Optional<GetExpensesResponseDTO> response = expenseApi.getExpenses(
                 paginationOptions.getPageSize(),
                 paginationOptions.getPageNumber(),
                 sortOptions.getSortBy(),
                 sortOptions.getSortDirection(),
-                filterOptions.getFilter("category")
-        ));
+                filterOptions.getAppliedFilterValues("category")
+        );
+        if (response.isPresent()) {
+            displayedExpenses.setAll(response.get().content);
+            paginationOptions.setTotalPages(response.get().totalPages);
+        }
     }
 
     public ObservableList<Expense> getDisplayedExpenses() {

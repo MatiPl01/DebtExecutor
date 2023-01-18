@@ -34,7 +34,6 @@ public class Interval {
             while (!isInterrupted()) {
                 try {
                     callback.run();
-                    System.out.println("SLEEP " + millis);
                     TimeUnit.MILLISECONDS.sleep(millis);
                 } catch (InterruptedException e) {
                     return;

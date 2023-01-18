@@ -3,47 +3,60 @@ package pl.edu.agh.debtexecutor.services.utils;
 import javafx.beans.binding.ListExpression;
 import javafx.beans.property.SimpleListProperty;
 import pl.edu.agh.debtexecutor.services.options.FilterOptions;
+import pl.edu.agh.debtexecutor.services.options.Filterable;
+import pl.edu.agh.debtexecutor.utils.Timeout;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 public class FilterService {
-    private final Map<String, SimpleListProperty<String>> filters =
-            new HashMap<>();
+    private static final int UPDATE_TIMEOUT = 2000; // ms
+    private Timeout updateTimeout;
+
+    private final Filterable filterable;
     private final FilterOptions filterOptions;
 
-    public FilterService(Filterable service, List<String> filterProperties) {
-        filterOptions = service.getFilterOptions();
-        filterProperties.forEach(property -> {
-            SimpleListProperty<String> filterValues =
-                    new SimpleListProperty<>();
-            if (filters.get(property) != null) {
-                filterValues.addAll(filters.get(property));
-            }
-            filters.put(property, filterValues);
-        });
+    public FilterService(Filterable filterable) {
+        this.filterable = filterable;
+        this.filterOptions = filterable.getFilterOptions();
     }
 
-    public List<String> getFilterValues(String filterProperty) {
-        return filters.get(filterProperty).getValue();
+    public FilterOptions getFilterOptions() {
+        return filterOptions;
     }
 
-    public SimpleListProperty<String> filterValuesProperty(String filterProperty) {
-        return filters.get(filterProperty);
-    }
-
-    public void setFilterValues(String filterProperty, List<String> values) {
-        if (filters.get(filterProperty) == null) {
-            throw new IllegalArgumentException(filterProperty +
-                                               " is not a valid filter property");
+    public void addFilter(String filterName, String value) {
+        Optional<SimpleListProperty<String>> values = filterOptions.appliedFilterValuesProperty(filterName);
+        if (values.isEmpty()) return;
+        Optional<List<String>> availableValues = filterOptions.getAvailableFilterValues(filterName);
+        if (availableValues.isPresent() && availableValues.get().contains(value)) {
+            values.get().add(value);
         }
-        filters.get(filterProperty).setAll(values);
-        filterOptions.setFilter(filterProperty, values);
+        startUpdateTimeout();
+    }
+
+    public void removeFilter(String filterName, String value) {
+        Optional<SimpleListProperty<String>> values = filterOptions.appliedFilterValuesProperty(filterName);
+        if (values.isEmpty()) return;
+        Optional<List<String>> availableValues = filterOptions.getAvailableFilterValues(filterName);
+        if (availableValues.isPresent() && availableValues.get().contains(value)) {
+            values.get().remove(value);
+        }
+        startUpdateTimeout();
+    }
+
+    public void clearFilter(String filterName) {
+        filterOptions.appliedFilterValuesProperty(filterName).ifPresent(ListExpression::clear);
+        startUpdateTimeout();
     }
 
     public void clearFilters() {
-        filterOptions.clear();
-        filters.values().forEach(ListExpression::clear);
+        filterOptions.getAppliedFilters().values().forEach(ListExpression::clear);
+        startUpdateTimeout();
+    }
+
+    private void startUpdateTimeout() {
+        if (updateTimeout != null) updateTimeout.clear();
+        updateTimeout = new Timeout(filterable::update, UPDATE_TIMEOUT);
     }
 }

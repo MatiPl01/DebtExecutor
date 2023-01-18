@@ -1,66 +1,56 @@
 package pl.edu.agh.debtexecutor.services.utils;
 
-import javafx.beans.property.SimpleIntegerProperty;
+import pl.edu.agh.debtexecutor.services.options.Paginable;
 import pl.edu.agh.debtexecutor.services.options.PaginationOptions;
 
 public class PaginationService {
-    private final SimpleIntegerProperty pageSize = new SimpleIntegerProperty();
-    private final SimpleIntegerProperty pageNumber = new SimpleIntegerProperty();
-    private final SimpleIntegerProperty totalPages = new SimpleIntegerProperty();
+    private final Paginable paginable;
     private final PaginationOptions paginationOptions;
 
-    public PaginationService(Paginable service) {
-        paginationOptions = service.getPaginationOptions();
+    public PaginationService(Paginable paginable) {
+        this.paginable = paginable;
+        this.paginationOptions = paginable.getPaginationOptions();
     }
 
-    public int getPageSize() {
-        return pageSize.get();
+    public PaginationOptions getPaginationOptions() {
+        return paginationOptions;
     }
 
-    public SimpleIntegerProperty pageSizeProperty() {
-        return pageSize;
+    public void setPageSize(int pageSize) {
+        paginationOptions.setPageSize(Math.max(1, pageSize));
     }
 
-    public int getPageNumber() {
-        return pageNumber.get();
-    }
-
-    public SimpleIntegerProperty pageNumberProperty() {
-        return pageNumber;
-    }
-
-    public int getTotalPages() {
-        return totalPages.get();
-    }
-
-    public SimpleIntegerProperty totalPagesProperty() {
-        return totalPages;
+    public void setCurrentPage(int pageNumber) {
+        paginationOptions.setPageNumber(Math.min(
+                Math.max(0, pageNumber),
+                paginationOptions.getTotalPages()
+        ));
+        paginable.update();
     }
 
     public void nextPage() {
-        int value = Math.min(totalPages.get(), pageNumber.get() + 1);
-        pageNumber.set(value);
-        paginationOptions.setPageNumber(value);
+        paginationOptions.setPageNumber(Math.min(
+                paginationOptions.getPageNumber() + 1,
+                paginationOptions.getTotalPages()
+        ));
+        paginable.update();
     }
 
     public void prevPage() {
-        int value = Math.max(0, pageNumber.get() - 1);
-        pageNumber.set(value);
-        paginationOptions.setPageNumber(value);
+        paginationOptions.setPageNumber(Math.max(
+                paginationOptions.getPageNumber() - 1,
+                1
+        ));
+        paginable.update();
     }
 
     public void lastPage() {
-        pageNumber.set(totalPages.get());
-        paginationOptions.setPageNumber(totalPages.get());
+        paginationOptions.setPageNumber(paginationOptions.getTotalPages());
+        paginable.update();
     }
 
     public void firstPage() {
-        pageNumber.set(0);
-        paginationOptions.setPageNumber(0);
-    }
-
-    public void setPageSize(int size) {
-        pageSize.set(size);
-        paginationOptions.setPageSize(size);
+        paginationOptions.setPageNumber(1);
+        paginable.update();
     }
 }

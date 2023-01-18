@@ -1,9 +1,9 @@
-package pl.edu.agh.debtexecutor.services.utils;
+package pl.edu.agh.debtexecutor.services.options;
 
 import pl.edu.agh.debtexecutor.services.options.FilterOptions;
 
 public interface Filterable {
     FilterOptions getFilterOptions();
 
-    void fetchData();
+    void update();
 }

@@ -8,19 +8,19 @@ public class SortOptions {
         this.sortBy = sortBy;
     }
 
-    public void setSortDirection(SortDirection sortDirection) {
-        this.sortDirection = sortDirection;
-    }
-
-    public void setSortBy(String sortBy) {
-        this.sortBy = sortBy;
-    }
-
     public SortDirection getSortDirection() {
         return sortDirection;
     }
 
+    public void setSortDirection(SortDirection sortDirection) {
+        this.sortDirection = sortDirection;
+    }
+
     public String getSortBy() {
         return sortBy;
+    }
+
+    public void setSortBy(String sortBy) {
+        this.sortBy = sortBy;
     }
 }

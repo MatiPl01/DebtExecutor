@@ -1,0 +1,21 @@
+.pagination {
+    -fx-padding: 5px;
+    -fx-spacing: 2px;
+    -fx-background-radius: 25px;
+}
+
+.pagination__button {
+    -fx-padding: 0;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.pagination__slash {
+    -fx-font-weight: bold;
+}
+
+.pagination__total {
+    -fx-pref-width: 15px;
+}

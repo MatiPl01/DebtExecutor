@@ -22,36 +22,32 @@ public class ExpenseApi {
                 retrofitClient.getClient().create(ExpenseApiService.class);
     }
 
-    public List<Expense> getExpenses(int pageSize,
+    public Optional<GetExpensesResponseDTO> getExpenses(int pageSize,
                                      int pageNumber,
                                      String sortBy,
                                      SortDirection sortDirection,
-                                     List<String> categories) {
+                                     Optional<List<String>> categories) {
         try {
-            GetExpensesResponseDTO response;
-
-            if (categories.isEmpty()) {
-                response = expenseApiService.getExpenses(
+            if (categories.isPresent()) {
+                return Optional.ofNullable(expenseApiService.getExpenses(
                         pageSize,
-                        pageNumber,
-                        sortBy,
-                        sortDirection.toString()
-                ).execute().body();
-            } else {
-                response = expenseApiService.getExpenses(
-                        pageSize,
-                        pageNumber,
+                        pageNumber - 1,
                         sortBy,
                         sortDirection.toString(),
-                        String.join(",", categories)
-                ).execute().body();
+                        String.join(",", categories.get())
+                ).execute().body());
             }
 
-            if (response != null) return response.content;
+            return Optional.ofNullable(expenseApiService.getExpenses(
+                    pageSize,
+                    pageNumber - 1,
+                    sortBy,
+                    sortDirection.toString()
+            ).execute().body());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return Collections.emptyList();
+        return Optional.empty();
     }
 
     public Optional<Expense> createPersonalExpense(CreateExpenseDTO dto) {
