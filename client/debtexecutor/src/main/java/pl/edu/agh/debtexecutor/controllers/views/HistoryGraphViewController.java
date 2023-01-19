@@ -1,13 +1,13 @@
 package pl.edu.agh.debtexecutor.controllers.views;
 
-import com.brunomnsilva.smartgraph.graph.Graph;
-import com.brunomnsilva.smartgraph.graph.GraphEdgeList;
+import com.brunomnsilva.smartgraph.graphview.SmartGraphPanel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import pl.edu.agh.debtexecutor.services.ExpenseService;
+import pl.edu.agh.debtexecutor.controls.GraphVisualization;
+import pl.edu.agh.debtexecutor.services.GraphService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,13 +18,11 @@ public class HistoryGraphViewController extends HistoryViewAbstractController
 
     @FXML private AnchorPane graphWrapper;
 
-    @Autowired
-    private ExpenseService expenseService;
+    @Autowired private GraphService graphService;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        expenseService.fetchAllData();
-
-        Graph<String, String> g = new GraphEdgeList<>();
+        SmartGraphPanel<String, String>
+                graphVisualization = new GraphVisualization(graphService.getGraph()).createGraph();
     }
 }
