@@ -1,15 +1,14 @@
 package pl.edu.agh.debtexecutor.controls;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import pl.edu.agh.debtexecutor.services.options.PaginationOptions;
 import pl.edu.agh.debtexecutor.services.utils.PaginationService;
+import pl.edu.agh.debtexecutor.utils.ResourceLoader;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,15 +25,7 @@ public class Pagination extends HBox implements Initializable {
     private PaginationService paginationService;
 
     public Pagination() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_PATH));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        ResourceLoader.loadControlFXML(FXML_PATH, this);
     }
 
     public void setPaginationService(PaginationService paginationService) {

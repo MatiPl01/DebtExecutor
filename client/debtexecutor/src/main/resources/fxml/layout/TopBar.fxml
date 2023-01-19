@@ -16,7 +16,7 @@
                 onAction="#onThemeChange" text="Set dark theme">
             <styleClass>
                 <String fx:value="button"/>
-                <String fx:value="button--gray"/>
+                <String fx:value="button--white"/>
                 <String fx:value="button--small"/>
             </styleClass>
         </Button>

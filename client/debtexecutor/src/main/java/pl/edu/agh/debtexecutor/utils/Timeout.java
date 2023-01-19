@@ -1,5 +1,7 @@
 package pl.edu.agh.debtexecutor.utils;
 
+import javafx.application.Platform;
+
 import java.util.concurrent.TimeUnit;
 
 public class Timeout {
@@ -24,7 +26,7 @@ public class Timeout {
         public void run() {
             try {
                 TimeUnit.MILLISECONDS.sleep(millis);
-                callback.run();
+                Platform.runLater(callback);
             } catch (InterruptedException ignored) {}
         }
     }

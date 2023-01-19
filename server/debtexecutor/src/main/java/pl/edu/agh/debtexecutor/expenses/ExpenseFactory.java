@@ -33,13 +33,8 @@ public class ExpenseFactory {
         User payee = userService.getUserById(dto.payee());
         User payer = userService.getUserById(dto.payer());
         BigDecimal amount = dto.amount();
-
-        if (dto.category() != null) {
-            Category category = categoryService.getCategoryById(dto.category());
-            return new Expense(dto.title(), payer, payee, amount, category);
-        }
-
-        return new Expense(dto.title(), payer, payee, amount);
+        Category category = categoryService.getCategoryById(dto.category());
+        return new Expense(dto.title(), payer, payee, amount, category);
     }
 
     public List<Expense> createExpense(CreateGroupExpenseDTO dto) {

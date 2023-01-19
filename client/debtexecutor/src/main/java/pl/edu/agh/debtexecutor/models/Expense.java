@@ -53,8 +53,8 @@ public class Expense {
         return Optional.ofNullable(group);
     }
 
-    public Optional<ExpenseCategoryDTO> getCategory() {
-        return Optional.ofNullable(category);
+    public ExpenseCategoryDTO getCategory() {
+        return category;
     }
 
     public BigDecimal getAmount() {

@@ -64,23 +64,8 @@ public class Expense {
                    User payer,
                    User payee,
                    BigDecimal amount,
-                   Group group) {
-        this(title, payer, payee, amount, group, null);
-    }
-
-    public Expense(String title,
-                   User payer,
-                   User payee,
-                   BigDecimal amount,
                    Category category) {
         this(title, payer, payee, amount, null, category);
-    }
-
-    public Expense(String title,
-                   User payer,
-                   User payee,
-                   BigDecimal amount) {
-        this(title, payer, payee, amount, null, null);
     }
 
     public UUID getId() {

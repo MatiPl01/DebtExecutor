@@ -52,6 +52,7 @@ public class UserConfig {
             Category food = addCategory("food");
             Category beverages = addCategory("beverages");
             Category entertainment = addCategory("entertainment");
+            Category finances = addCategory("finances");
             List<Category> categories = List.of(food, beverages, entertainment);
 
             // Create expenses
@@ -59,7 +60,7 @@ public class UserConfig {
             addExpense("Coffee", ewa, mateusz, new BigDecimal("8.00"), beverages);
             addExpense("Bread", kuba, ewa, new BigDecimal("5.00"), food);
             addExpense("Cinema ticket", kuba, mateusz, new BigDecimal("25.00"), entertainment);
-            addExpense("Cash loan", mateusz, ewa, new BigDecimal("10.00"));
+            addExpense("Cash loan", mateusz, ewa, new BigDecimal("10.00"), finances);
 
             addExpense("Pizza", mateusz, allGroup, new BigDecimal("75.00"), food);
             addExpense("Bowling", kuba, ewaKubaAndrzej, new BigDecimal("50.00"), entertainment);
@@ -134,20 +135,6 @@ public class UserConfig {
 
         expenseRepository.saveAll(expenses);
         return expenses;
-    }
-
-    private Expense addExpense(String title,
-                               User payer,
-                               User payee,
-                               BigDecimal amount) {
-        return addExpense(title, payer, payee, amount, null);
-    }
-
-    private List<Expense> addExpense(String title,
-                                     User payer,
-                                     Group group,
-                                     BigDecimal amount) {
-        return addExpense(title, payer, group, amount, null);
     }
 
     private Category addCategory(String name) {

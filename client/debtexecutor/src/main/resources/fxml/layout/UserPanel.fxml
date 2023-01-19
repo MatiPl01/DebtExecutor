@@ -26,7 +26,7 @@
             <children>
                 <Button mnemonicParsing="false" onAction="#onLogOut" text="Log out">
                <styleClass>
-                  <String fx:value="button--gray" />
+                  <String fx:value="button--white" />
                   <String fx:value="button--small" />
                </styleClass></Button>
             </children>

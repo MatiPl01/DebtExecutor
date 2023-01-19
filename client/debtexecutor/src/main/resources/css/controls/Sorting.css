@@ -5,7 +5,7 @@
 }
 
 .sort__label {
-
+    -fx-padding: 0 0 5px 0;
 }
 
 .sort__combobox {

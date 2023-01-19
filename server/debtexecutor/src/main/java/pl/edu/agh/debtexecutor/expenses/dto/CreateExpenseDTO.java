@@ -9,5 +9,4 @@ public record CreateExpenseDTO(
         UUID payee,
         BigDecimal amount,
         UUID category
-) {
-}
+) {}

@@ -46,13 +46,22 @@
     -fx-background-color: -fx-c-primary-dark;
 }
 
-.button--gray {
+.button--white {
     -fx-background-color: -fx-c-white;
     -fx-text-fill: -fx-c-black;
 }
 
-.button--gray:hover {
+.button--white:hover {
     -fx-background-color: -fx-c-gray-light-2;
+}
+
+.button--gray {
+    -fx-background-color: -fx-c-gray-light-1;
+    -fx-text-fill: -fx-c-black;
+}
+
+.button--gray:hover {
+    -fx-background-color: -fx-c-gray-light-3;
 }
 
 .button--transparent-white {
@@ -284,4 +293,17 @@
 
 .sort__label {
     -fx-text-fill: -fx-c-gray-dark-3;
+}
+
+
+.history__filter-label {
+    -fx-text-fill: -fx-c-gray-dark-3;
+}
+
+.multiselect__item.selected {
+    -fx-background-color: -fx-c-secondary;
+}
+
+.multiselect__item-label {
+    -fx-text-fill: -fx-c-gray-dark-1;
 }

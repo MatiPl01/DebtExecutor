@@ -25,7 +25,7 @@ public class PaginationService {
                 Math.max(0, pageNumber),
                 paginationOptions.getTotalPages()
         ));
-        paginable.update();
+        paginable.updatePagination();
     }
 
     public void nextPage() {
@@ -33,7 +33,7 @@ public class PaginationService {
                 paginationOptions.getPageNumber() + 1,
                 paginationOptions.getTotalPages()
         ));
-        paginable.update();
+        paginable.updatePagination();
     }
 
     public void prevPage() {
@@ -41,16 +41,16 @@ public class PaginationService {
                 paginationOptions.getPageNumber() - 1,
                 1
         ));
-        paginable.update();
+        paginable.updatePagination();
     }
 
     public void lastPage() {
         paginationOptions.setPageNumber(paginationOptions.getTotalPages());
-        paginable.update();
+        paginable.updatePagination();
     }
 
     public void firstPage() {
         paginationOptions.setPageNumber(1);
-        paginable.update();
+        paginable.updatePagination();
     }
 }

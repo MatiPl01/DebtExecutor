@@ -18,14 +18,14 @@
                         <Button mnemonicParsing="false" onAction="#onNewPersonalExpenseClick" text="New personal expense">
                             <styleClass>
                                 <String fx:value="button" />
-                                <String fx:value="button--gray" />
+                                <String fx:value="button--white" />
                                 <String fx:value="button--small" />
                             </styleClass>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#onNewGroupExpenseClick" text="New group expense">
                             <styleClass>
                                 <String fx:value="button" />
-                                <String fx:value="button--gray" />
+                                <String fx:value="button--white" />
                                 <String fx:value="button--small" />
                             </styleClass>
                         </Button>
@@ -34,14 +34,14 @@
                                 text="New category">
                             <styleClass>
                                 <String fx:value="button" />
-                                <String fx:value="button--gray" />
+                                <String fx:value="button--white" />
                                 <String fx:value="button--small" />
                             </styleClass>
                         </Button>
                         <Button mnemonicParsing="false" onAction="#onNewGroupClick" text="New group">
                             <styleClass>
                                 <String fx:value="button" />
-                                <String fx:value="button--gray" />
+                                <String fx:value="button--white" />
                                 <String fx:value="button--small" />
                             </styleClass>
                         </Button>

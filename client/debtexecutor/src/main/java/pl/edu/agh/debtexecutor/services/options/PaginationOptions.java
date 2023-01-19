@@ -2,6 +2,7 @@ package pl.edu.agh.debtexecutor.services.options;
 
 import javafx.beans.property.SimpleIntegerProperty;
 
+// TODO - add page size changing
 public class PaginationOptions {
     private final SimpleIntegerProperty pageSize = new SimpleIntegerProperty();
     private final SimpleIntegerProperty pageNumber = new SimpleIntegerProperty(1);

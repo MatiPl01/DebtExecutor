@@ -1,12 +1,11 @@
 package pl.edu.agh.debtexecutor.controls;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import pl.edu.agh.debtexecutor.models.User;
+import pl.edu.agh.debtexecutor.utils.ResourceLoader;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 
 public class SummaryItem extends VBox {
@@ -18,16 +17,7 @@ public class SummaryItem extends VBox {
     @FXML private VBox detailsWrapper;
 
     public SummaryItem(User user) {
-        // TODO - improve resource loading
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(getClass().getResource(FXML_PATH));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-        try {
-            fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        ResourceLoader.loadControlFXML(FXML_PATH, this);
 
         totalBalanceLabel.setText(user.getTotalBalance().toString());
         if (user.getTotalBalance().compareTo(BigDecimal.ZERO) < 0) {

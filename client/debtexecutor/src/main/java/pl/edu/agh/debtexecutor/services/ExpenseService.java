@@ -1,22 +1,21 @@
 package pl.edu.agh.debtexecutor.services;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.debtexecutor.api.expense.ExpenseApi;
 import pl.edu.agh.debtexecutor.api.expense.dto.CreateExpenseDTO;
 import pl.edu.agh.debtexecutor.api.expense.dto.CreateGroupExpenseDTO;
 import pl.edu.agh.debtexecutor.api.expense.dto.GetExpensesResponseDTO;
+import pl.edu.agh.debtexecutor.models.Category;
 import pl.edu.agh.debtexecutor.models.Expense;
-import pl.edu.agh.debtexecutor.services.options.FilterOptions;
-import pl.edu.agh.debtexecutor.services.options.PaginationOptions;
-import pl.edu.agh.debtexecutor.services.options.SortOptions;
-import pl.edu.agh.debtexecutor.services.options.Filterable;
-import pl.edu.agh.debtexecutor.services.options.Paginable;
-import pl.edu.agh.debtexecutor.services.options.Sortable;
+import pl.edu.agh.debtexecutor.services.options.*;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ExpenseService implements Paginable, Sortable, Filterable {
@@ -30,9 +29,12 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
             FXCollections.observableArrayList();
 
     private final ExpenseApi expenseApi;
+    private final CategoryService categoryService;
 
-    private ExpenseService(ExpenseApi expenseApi) {
+    private ExpenseService(ExpenseApi expenseApi, CategoryService categoryService) {
         this.expenseApi = expenseApi;
+        this.categoryService = categoryService;
+        initializeFilterHandler();
     }
 
     @Override
@@ -51,7 +53,18 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
     }
 
     @Override
-    public void update() {
+    public void updateSorting() {
+        fetchData();
+    }
+
+    @Override
+    public void updateFilters() {
+        paginationOptions.setPageNumber(1);
+        fetchData();
+    }
+
+    @Override
+    public void updatePagination() {
         fetchData();
     }
 
@@ -99,5 +112,13 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
                                                               amount
         );
         return expenseApi.createGroupExpense(dto);
+    }
+
+    private void initializeFilterHandler() {
+        categoryService.getCategories().addListener((ListChangeListener<Category>) change -> {
+            filterOptions.setAvailableFilter(
+                    "category",
+                    categoryService.getCategories().stream().map(Category::getName).toList());
+        });
     }
 }

@@ -1,11 +1,8 @@
 package pl.edu.agh.debtexecutor.services.utils;
 
-import pl.edu.agh.debtexecutor.controls.sorting.SortSettings;
 import pl.edu.agh.debtexecutor.services.options.SortDirection;
 import pl.edu.agh.debtexecutor.services.options.SortOptions;
 import pl.edu.agh.debtexecutor.services.options.Sortable;
-
-import java.util.List;
 
 public class SortingService {
     private final Sortable sortable;
@@ -22,11 +19,11 @@ public class SortingService {
 
     public void sortBy(String sortBy) {
         sortOptions.setSortBy(sortBy);
-        sortable.update();
+        sortable.updateSorting();
     }
 
     public void setSortDirection(SortDirection sortDirection) {
         sortOptions.setSortDirection(sortDirection);
-        sortable.update();
+        sortable.updateSorting();
     }
 }
