@@ -3,6 +3,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="pl.edu.agh.debtexecutor.controllers.views.SummaryGraphViewController">
-
+            fx:controller="pl.edu.agh.debtexecutor.controllers.views.SummaryGraphViewController"
+            fx:id="graphWrapper">
 </AnchorPane>
