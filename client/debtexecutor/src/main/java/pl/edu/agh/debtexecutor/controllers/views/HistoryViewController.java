@@ -5,11 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import pl.edu.agh.debtexecutor.controls.HistoryItem;
-import pl.edu.agh.debtexecutor.controls.multiSelect.MultiSelectCombobox;
 import pl.edu.agh.debtexecutor.controls.Pagination;
+import pl.edu.agh.debtexecutor.controls.multiSelect.MultiSelectCombobox;
 import pl.edu.agh.debtexecutor.controls.multiSelect.MultiselectItem;
 import pl.edu.agh.debtexecutor.controls.sorting.SortSettings;
 import pl.edu.agh.debtexecutor.controls.sorting.SortValueType;
@@ -27,8 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-@Component
-public class HistoryViewController implements Initializable {
+@Controller
+public class HistoryViewController extends HistoryViewAbstractController implements Initializable {
     private final static String FILTER_FIELD = "category";
     private static final List<SortSettings> settings = new ArrayList<>() {{
         add(new SortSettings("Date", "date", SortValueType.ORDINAL));
@@ -53,7 +53,8 @@ public class HistoryViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addExpenseHistoryChangeListener();
-        expenseService.fetchData();
+        expenseService.clearFetchSettings();
+        expenseService.fetchFilteredData();
         categoryService.fetchData();
         initializePagination();
         initializeSorting();

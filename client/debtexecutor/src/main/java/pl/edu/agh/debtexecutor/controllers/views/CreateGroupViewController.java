@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.controls.InputField;
 import pl.edu.agh.debtexecutor.models.User;
 import pl.edu.agh.debtexecutor.services.GroupService;
@@ -12,7 +12,7 @@ import pl.edu.agh.debtexecutor.services.UserService;
 
 import java.util.List;
 
-@Component
+@Controller
 public class CreateGroupViewController extends FormViewController {
     @FXML private InputField groupNameInput;
     @FXML private ListView<User> userSelectList;

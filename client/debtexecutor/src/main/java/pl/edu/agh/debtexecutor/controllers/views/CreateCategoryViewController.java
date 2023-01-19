@@ -2,11 +2,11 @@ package pl.edu.agh.debtexecutor.controllers.views;
 
 import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.controls.InputField;
 import pl.edu.agh.debtexecutor.services.CategoryService;
 
-@Component
+@Controller
 public class CreateCategoryViewController extends FormViewController {
     @FXML private InputField categoryName;
 

@@ -19,4 +19,9 @@ public class SortOptions {
     public void setSortBy(String sortBy) {
         this.sortBy = sortBy;
     }
+
+    public void clear() {
+        sortDirection = SortDirection.DESC;
+        sortBy = null;
+    }
 }

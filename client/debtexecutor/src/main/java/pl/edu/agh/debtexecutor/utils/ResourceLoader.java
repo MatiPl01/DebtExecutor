@@ -22,6 +22,19 @@ public class ResourceLoader {
         }
     }
 
+    public static <T extends Node, C> FXMLWithController<T, C> loadFXMLWithController(String resourcePath) {
+        FXMLLoader loader =
+                new FXMLLoader(ResourceLoader.class.getResource(resourcePath));
+        loader.setControllerFactory(App.getContext()::getBean);
+        try {
+            T node = loader.load();
+            C controller = loader.getController();
+            return new FXMLWithController<>(node, controller);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static <T extends Node> void loadControlFXML(String resourcePath, T controlClass) {
         FXMLLoader fxmlLoader = new FXMLLoader(getResource(resourcePath));
         fxmlLoader.setRoot(controlClass);

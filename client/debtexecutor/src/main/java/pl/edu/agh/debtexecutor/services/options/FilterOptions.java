@@ -46,4 +46,8 @@ public class FilterOptions {
     public void removeAppliedFilter(String filterName) {
         appliedFilters.remove(filterName);
     }
+
+    public void clear() {
+        appliedFilters.clear();
+    }
 }

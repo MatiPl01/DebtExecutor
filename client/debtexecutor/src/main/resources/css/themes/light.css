@@ -307,3 +307,19 @@
 .multiselect__item-label {
     -fx-text-fill: -fx-c-gray-dark-1;
 }
+
+
+.view-switch__button {
+    -fx-background-color: -fx-c-white;
+    -fx-border-color: -fx-c-gray-light-2;
+}
+
+.view-switch__button:hover {
+    -fx-text-fill: -fx-c-white;
+    -fx-background-color: -fx-c-primary-dark;
+}
+
+.view-switch__button.active {
+    -fx-text-fill: -fx-c-white;
+    -fx-background-color: -fx-c-primary;
+}

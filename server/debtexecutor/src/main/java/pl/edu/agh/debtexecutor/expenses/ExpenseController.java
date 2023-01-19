@@ -34,6 +34,11 @@ public class ExpenseController {
                 .map(ExpenseDTO::from);
     }
 
+    @GetMapping("/all")
+    public List<ExpenseDTO> getAllExpenses() {
+        return expenseService.getAllExpenses().stream().map(ExpenseDTO::from).toList();
+    }
+
     @PostMapping
     @Transactional
     public @ResponseBody ExpenseDTO addExpense(

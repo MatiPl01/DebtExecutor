@@ -25,6 +25,7 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
     private final FilterOptions filterOptions = new FilterOptions(List.of("category"));
     private final PaginationOptions paginationOptions =
             new PaginationOptions(DEFAULT_PAGE_SIZE);
+
     private final ObservableList<Expense> displayedExpenses =
             FXCollections.observableArrayList();
 
@@ -54,21 +55,21 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
 
     @Override
     public void updateSorting() {
-        fetchData();
+        fetchFilteredData();
     }
 
     @Override
     public void updateFilters() {
         paginationOptions.setPageNumber(1);
-        fetchData();
+        fetchFilteredData();
     }
 
     @Override
     public void updatePagination() {
-        fetchData();
+        fetchFilteredData();
     }
 
-    public void fetchData() {
+    public void fetchFilteredData() {
         Optional<GetExpensesResponseDTO> response = expenseApi.getExpenses(
                 paginationOptions.getPageSize(),
                 paginationOptions.getPageNumber(),
@@ -80,6 +81,10 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
             displayedExpenses.setAll(response.get().content);
             paginationOptions.setTotalPages(response.get().totalPages);
         }
+    }
+
+    public void fetchAllData() {
+        displayedExpenses.setAll(expenseApi.getAllExpenses());
     }
 
     public ObservableList<Expense> getDisplayedExpenses() {
@@ -112,6 +117,12 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
                                                               amount
         );
         return expenseApi.createGroupExpense(dto);
+    }
+
+    public void clearFetchSettings() {
+        sortOptions.clear();
+        filterOptions.clear();
+        paginationOptions.clear();
     }
 
     private void initializeFilterHandler() {

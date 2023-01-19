@@ -50,6 +50,16 @@ public class ExpenseApi {
         return Optional.empty();
     }
 
+    public List<Expense> getAllExpenses() {
+        try {
+            List<Expense> expenses = expenseApiService.getAllExpenses().execute().body();
+            if (expenses != null) return expenses;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Collections.emptyList();
+    }
+
     public Optional<Expense> createPersonalExpense(CreateExpenseDTO dto) {
         try {
             return Optional.ofNullable(expenseApiService.createPersonalExpense(

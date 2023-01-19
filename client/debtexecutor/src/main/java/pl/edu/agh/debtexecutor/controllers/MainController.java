@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import org.springframework.stereotype.Component;
 import pl.edu.agh.debtexecutor.controllers.core.ViewController;
 import pl.edu.agh.debtexecutor.controllers.layout.SidePanelController;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     @FXML private AnchorPane viewWrapper;
     @FXML private Label viewLabel;
+    @FXML private HBox headerContent;
     @FXML private SidePanelController sidePanelController;
     @FXML private TopBarController topBarController;
     @FXML private UserPanelController userPanelController;
@@ -28,7 +30,7 @@ public class MainController implements Initializable {
     }
 
     private void setUpControllers() {
-        viewController = new ViewController(viewWrapper, viewLabel);
+        viewController = new ViewController(viewWrapper, viewLabel, headerContent);
         topBarController.setUserPanelController(userPanelController);
         sidePanelController.setViewController(viewController);
     }
