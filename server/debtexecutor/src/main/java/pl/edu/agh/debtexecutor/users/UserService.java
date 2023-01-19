@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import pl.edu.agh.debtexecutor.users.dto.CreateUserDTO;
+import pl.edu.agh.debtexecutor.users.model.User;
+import pl.edu.agh.debtexecutor.users.repository.UserRepository;
 
 import java.util.List;
 import java.util.StringJoiner;
@@ -30,8 +32,8 @@ public class UserService {
 
         if (joiner.toString().length() > 0) {
             throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST,
-                "Failed to create a user. Missing fields: " + joiner
+                    HttpStatus.BAD_REQUEST,
+                    "Failed to create a user. Missing fields: " + joiner
             );
         }
 
@@ -49,19 +51,19 @@ public class UserService {
 
     public User getUserById(UUID id) throws ResponseStatusException {
         return userRepository.findById(id).orElseThrow(
-            () -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND,
-                "User with id " + id + " does not exist"
-            )
+                () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "User with id " + id + " does not exist"
+                )
         );
     }
 
     public User getUserByLogin(String login) throws ResponseStatusException {
         return userRepository.findByLogin(login).orElseThrow(
-            () -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND,
-                "User with login " + login + " does not exist"
-            )
+                () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "User with login " + login + " does not exist"
+                )
         );
     }
 

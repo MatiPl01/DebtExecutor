@@ -7,5 +7,6 @@ public record CreateExpenseDTO(
         String title,
         UUID payer,
         UUID payee,
-        BigDecimal amount
+        BigDecimal amount,
+        UUID category
 ) {}

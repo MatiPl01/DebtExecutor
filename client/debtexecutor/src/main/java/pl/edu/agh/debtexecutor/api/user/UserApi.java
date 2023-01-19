@@ -13,15 +13,15 @@ import java.util.Optional;
 
 @Component
 public class UserApi {
-    private final  UserApiService userService;
+    private final UserApiService userApiService;
 
     public UserApi(RetrofitClient retrofitClient) {
-        userService = retrofitClient.getClient().create(UserApiService.class);
+        userApiService = retrofitClient.getClient().create(UserApiService.class);
     }
 
     public List<User> getAll() {
         try {
-            List<User> users = userService.getUsers().execute().body();
+            List<User> users = userApiService.getUsers().execute().body();
             if (users != null) return users;
         } catch (IOException e) {
             e.printStackTrace();
@@ -31,7 +31,7 @@ public class UserApi {
 
     public Optional<User> signIn(SignInUserDTO dto) {
         try {
-            return Optional.ofNullable(userService.singInUser(dto).execute().body());
+            return Optional.ofNullable(userApiService.singInUser(dto).execute().body());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +40,7 @@ public class UserApi {
 
     public Optional<User> singUp(SingUpUserDTO dto) {
         try {
-            return Optional.ofNullable(userService.signUpUser(dto).execute().body());
+            return Optional.ofNullable(userApiService.signUpUser(dto).execute().body());
         } catch (IOException e) {
             e.printStackTrace();
         }

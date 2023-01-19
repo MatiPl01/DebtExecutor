@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -30,9 +29,6 @@ public class SidePanelController implements Initializable {
 
     @FXML private HBox expenseSummaryOption;
     @FXML private HBox expenseHistoryOption;
-    @FXML private Button newPersonalExpenseButton;
-    @FXML private Button newGroupExpenseButton;
-    @FXML private Button newGroupButton;
     @FXML private VBox menuOptions;
     @FXML private VBox groupsWrapper;
     @FXML private VBox usersWrapper;
@@ -58,6 +54,11 @@ public class SidePanelController implements Initializable {
     @FXML
     private void onNewGroupExpenseClick() {
         switchView(ViewType.CREATE_GROUP_EXPENSE);
+    }
+
+    @FXML
+    private void onNewCategoryClick() {
+        switchView(ViewType.CREATE_CATEGORY);
     }
 
     @FXML

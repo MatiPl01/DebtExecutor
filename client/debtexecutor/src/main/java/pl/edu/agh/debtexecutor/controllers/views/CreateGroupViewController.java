@@ -25,6 +25,8 @@ public class CreateGroupViewController extends FormViewController {
         String groupName = groupNameInput.getText();
         List<User> users = userSelectList.getSelectionModel().getSelectedItems();
         groupService.addGroup(groupName, users);
+        clearInputs();
+
         // TODO - add info modal that expense was created
     }
 
@@ -34,5 +36,11 @@ public class CreateGroupViewController extends FormViewController {
         groupService.fetchData();
         List<User> users = userService.getUsers();
         setListEntries(userSelectList, users, SelectionMode.MULTIPLE);
+    }
+
+    @Override
+    protected void clearInputs() {
+        groupNameInput.setText("");
+        userSelectList.getSelectionModel().clearSelection();
     }
 }

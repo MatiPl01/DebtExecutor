@@ -2,3 +2,19 @@
     -fx-padding: 15px;
     -fx-spacing: 10px;
 }
+
+.history__filter-label {
+    -fx-padding: 0 0 5px 0;
+}
+
+.history__content {
+    -fx-spacing: 10px;
+}
+
+.history__header {
+
+}
+
+.history__footer {
+
+}

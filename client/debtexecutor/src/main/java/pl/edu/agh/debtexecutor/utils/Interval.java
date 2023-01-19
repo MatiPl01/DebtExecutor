@@ -14,17 +14,7 @@ public class Interval {
 
     public void start() {
         if (thread != null) return;
-        thread = new Thread(() -> {
-            while (true) {
-                try {
-                    callback.run();
-                    TimeUnit.MILLISECONDS.sleep(millis);
-                } catch (InterruptedException e) {
-                    clear();
-                    return;
-                }
-            }
-        });
+        thread = new IntervalThread();
         thread.start();
     }
 
@@ -36,5 +26,19 @@ public class Interval {
     public void reset() {
         clear();
         start();
+    }
+
+    private class IntervalThread extends Thread {
+        @Override
+        public void run() {
+            while (!isInterrupted()) {
+                try {
+                    callback.run();
+                    TimeUnit.MILLISECONDS.sleep(millis);
+                } catch (InterruptedException e) {
+                    return;
+                }
+            }
+        }
     }
 }

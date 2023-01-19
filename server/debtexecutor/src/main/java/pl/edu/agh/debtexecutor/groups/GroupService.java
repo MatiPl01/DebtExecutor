@@ -3,6 +3,8 @@ package pl.edu.agh.debtexecutor.groups;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.groups.repository.GroupRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,10 +23,10 @@ public class GroupService {
 
     public Group getGroupById(UUID id) throws ResponseStatusException {
         return groupRepository.findById(id).orElseThrow(
-            () -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND,
-                "Group with id " + id + " does not exist"
-            )
+                () -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Group with id " + id + " does not exist"
+                )
         );
     }
 

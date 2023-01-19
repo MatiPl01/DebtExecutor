@@ -1,12 +1,16 @@
 package pl.edu.agh.debtexecutor.expenses;
 
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pl.edu.agh.debtexecutor.expenses.dto.CreateExpenseDTO;
 import pl.edu.agh.debtexecutor.expenses.dto.CreateGroupExpenseDTO;
 import pl.edu.agh.debtexecutor.expenses.dto.ExpenseDTO;
+import pl.edu.agh.debtexecutor.expenses.model.Expense;
+import pl.edu.agh.debtexecutor.expenses.model.ExpensePage;
+import pl.edu.agh.debtexecutor.expenses.model.ExpenseSearchCriteria;
 
 import java.util.List;
 
@@ -23,12 +27,11 @@ public class ExpenseController {
     }
 
     @GetMapping
-    public List<ExpenseDTO> getExpenses() {
+    public Page<ExpenseDTO> getExpenses(ExpensePage expensePage,
+                                        ExpenseSearchCriteria expenseSearchCriteria) {
         return expenseService
-                .getExpenses()
-                .stream()
-                .map(ExpenseDTO::from)
-                .toList();
+                .getExpenses(expensePage, expenseSearchCriteria)
+                .map(ExpenseDTO::from);
     }
 
     @PostMapping
@@ -40,6 +43,8 @@ public class ExpenseController {
             Expense expense = expenseFactory.createExpense(dto);
             expenseService.addExpense(expense);
             changeBalances(expense);
+            expense.getCategory()
+                   .ifPresent(category -> category.addExpense(expense));
             return ExpenseDTO.from(expense);
         } catch (ResponseStatusException e) {
             throw new ResponseStatusException(
@@ -59,7 +64,10 @@ public class ExpenseController {
             expenseService.addExpenses(expenses);
             expenses.forEach(expense -> {
                 changeBalances(expense);
-                expense.getGroup().ifPresent(group -> group.addExpense(expense));
+                expense.getGroup()
+                       .ifPresent(group -> group.addExpense(expense));
+                expense.getCategory()
+                       .ifPresent(category -> category.addExpense(expense));
             });
 
             return expenses.stream().map(ExpenseDTO::from).toList();
@@ -72,7 +80,9 @@ public class ExpenseController {
     }
 
     private void changeBalances(Expense expense) {
-        expense.getPayer().changeBalance(expense.getPayee(), expense.getAmount());
-        expense.getPayee().changeBalance(expense.getPayer(), expense.getAmount().negate());
+        expense.getPayer()
+               .changeBalance(expense.getPayee(), expense.getAmount());
+        expense.getPayee()
+               .changeBalance(expense.getPayer(), expense.getAmount().negate());
     }
 }

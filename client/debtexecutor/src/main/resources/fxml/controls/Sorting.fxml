@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root alignment="CENTER" styleClass="sort" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@../../css/controls/Sorting.css" />
+        <URL value="@../../css/themes/light.css" />
+        <URL value="@../../css/shared.css" />
+    </stylesheets>
+    <VBox>
+        <Label styleClass="sort__label" text="Sort by" />
+        <ComboBox fx:id="sortByCombobox">
+            <styleClass>
+                <String fx:value="sort__combobox" />
+                <String fx:value="sort__combobox--sort-by" />
+            </styleClass>
+        </ComboBox>
+    </VBox>
+    <VBox>
+        <Label styleClass="sort__label" text="Sort direction" />
+        <ComboBox fx:id="sortDirectionCombobox">
+            <styleClass>
+                <String fx:value="sort__combobox" />
+                <String fx:value="sort__combobox--sort-direction" />
+            </styleClass>
+        </ComboBox>
+    </VBox>
+</fx:root>

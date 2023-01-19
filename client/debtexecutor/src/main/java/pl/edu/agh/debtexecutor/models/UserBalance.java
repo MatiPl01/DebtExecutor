@@ -1,21 +1,22 @@
 package pl.edu.agh.debtexecutor.models;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class UserBalance {
-    String id;
+    UUID id;
     String firstName;
     String lastName;
     BigDecimal balance;
 
-    public UserBalance(String id, String firstName, String lastName, BigDecimal balance) {
+    public UserBalance(UUID id, String firstName, String lastName, BigDecimal balance) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.balance = balance;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 

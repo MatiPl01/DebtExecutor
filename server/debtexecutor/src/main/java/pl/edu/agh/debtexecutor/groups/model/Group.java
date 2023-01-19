@@ -1,8 +1,8 @@
-package pl.edu.agh.debtexecutor.groups;
+package pl.edu.agh.debtexecutor.groups.model;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.expenses.Expense;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.expenses.model.Expense;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,10 +59,15 @@ public class Group {
     public String getPlaceholderName() {
         StringJoiner joiner = new StringJoiner(", ");
 
-        for (User member: members) {
-            String name = member.getFirstName().charAt(0) + ". " + member.getLastName();
+        for (User member : members) {
+            String name = member.getFirstName().charAt(0) +
+                          ". " +
+                          member.getLastName();
             if (joiner.length() + name.length() > MAX_PLACEHOLDER_LENGTH) {
-                joiner.add(name.substring(0, MAX_PLACEHOLDER_LENGTH - joiner.length()) + "...");
+                joiner.add(name.substring(0,
+                                          MAX_PLACEHOLDER_LENGTH -
+                                          joiner.length()
+                ) + "...");
                 break;
             }
             joiner.add(name);

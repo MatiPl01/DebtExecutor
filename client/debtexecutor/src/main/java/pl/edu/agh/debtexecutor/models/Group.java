@@ -1,11 +1,11 @@
 package pl.edu.agh.debtexecutor.models;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public final class Group {
     private final UUID id;
-    // TODO - make name field optional
     private final String name;
     private final String placeholderName;
     private final List<GroupMemberDTO> members;
@@ -29,8 +29,8 @@ public final class Group {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public Optional<String> getName() {
+        return Optional.ofNullable(name);
     }
 
     public String getPlaceholderName() {

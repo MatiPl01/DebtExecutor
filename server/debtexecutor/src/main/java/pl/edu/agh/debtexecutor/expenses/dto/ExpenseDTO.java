@@ -1,8 +1,9 @@
 package pl.edu.agh.debtexecutor.expenses.dto;
 
-import pl.edu.agh.debtexecutor.expenses.Expense;
-import pl.edu.agh.debtexecutor.groups.Group;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.categories.model.Category;
+import pl.edu.agh.debtexecutor.expenses.model.Expense;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -10,22 +11,25 @@ import java.util.Optional;
 import java.util.UUID;
 
 public record ExpenseDTO(
+        UUID id,
         String title,
         ExpenseUserDTO payer,
         ExpenseUserDTO payee,
-        Optional<ExpenseGroupDTO> group,
         BigDecimal amount,
-        LocalDateTime date
+        LocalDateTime date,
+        Optional<ExpenseGroupDTO> group,
+        Optional<ExpenseCategoryDTO> category
 ) {
-
     public static ExpenseDTO from(Expense expense) {
         return new ExpenseDTO(
+                expense.getId(),
                 expense.getTitle(),
                 ExpenseUserDTO.from(expense.getPayer()),
                 ExpenseUserDTO.from(expense.getPayee()),
-                expense.getGroup().map(ExpenseGroupDTO::from),
                 expense.getAmount(),
-                expense.getDate()
+                expense.getDate(),
+                expense.getGroup().map(ExpenseGroupDTO::from),
+                expense.getCategory().map(ExpenseCategoryDTO::from)
         );
     }
 
@@ -49,6 +53,18 @@ public record ExpenseDTO(
                     group.getId(),
                     group.getName(),
                     group.getPlaceholderName()
+            );
+        }
+    }
+
+    private record ExpenseCategoryDTO(
+            UUID id,
+            String name
+    ) {
+        static ExpenseCategoryDTO from(Category category) {
+            return new ExpenseCategoryDTO(
+                    category.getId(),
+                    category.getName()
             );
         }
     }

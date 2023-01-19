@@ -1,9 +1,10 @@
 package pl.edu.agh.debtexecutor.services;
 
+import jakarta.annotation.PreDestroy;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import pl.edu.agh.debtexecutor.api.user.UserApi;
 import pl.edu.agh.debtexecutor.models.User;
 import pl.edu.agh.debtexecutor.utils.Interval;
@@ -12,21 +13,27 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class UserService {
     private static final int FETCH_INTERVAL = 10000; // 10s
 
-    private final ObservableList<User> users =
-            FXCollections.observableArrayList();
     private final UserApi userApi;
     private final AuthService authService;
+
     private final Interval reFetchInterval;
+    private final ObservableList<User> users =
+            FXCollections.observableArrayList();
 
     private UserService(UserApi userAPi, AuthService authService) {
         this.userApi = userAPi;
         this.authService = authService;
         reFetchInterval = new Interval(this::reFetch, FETCH_INTERVAL);
         reFetchInterval.start();
+    }
+
+    @PreDestroy
+    public void beforeDestroy() {
+        reFetchInterval.clear();
     }
 
     public void fetchData() {

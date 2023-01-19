@@ -1,8 +1,9 @@
-package pl.edu.agh.debtexecutor.expenses;
+package pl.edu.agh.debtexecutor.expenses.model;
 
 import jakarta.persistence.*;
-import pl.edu.agh.debtexecutor.groups.Group;
-import pl.edu.agh.debtexecutor.users.User;
+import pl.edu.agh.debtexecutor.categories.model.Category;
+import pl.edu.agh.debtexecutor.groups.model.Group;
+import pl.edu.agh.debtexecutor.users.model.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.UUID;
 public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", updatable = false, nullable = false)
     private UUID id;
 
     @Column(name = "title", nullable = false)
@@ -37,26 +39,37 @@ public class Expense {
     @Column(name = "date", nullable = false)
     private LocalDateTime date;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     public Expense() {}
 
     public Expense(String title,
                    User payer,
                    User payee,
+                   BigDecimal amount,
                    Group group,
-                   BigDecimal amount) {
+                   Category category) {
         this.title = title;
         this.payer = payer;
         this.payee = payee;
-        this.group = group;
         this.amount = amount;
+        this.group = group;
+        this.category = category;
         this.date = LocalDateTime.now();
     }
 
     public Expense(String title,
                    User payer,
                    User payee,
-                   BigDecimal amount) {
-        this(title, payer, payee, null, amount);
+                   BigDecimal amount,
+                   Category category) {
+        this(title, payer, payee, amount, null, category);
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -73,6 +86,10 @@ public class Expense {
 
     public Optional<Group> getGroup() {
         return Optional.ofNullable(group);
+    }
+
+    public Optional<Category> getCategory() {
+        return Optional.ofNullable(category);
     }
 
     public BigDecimal getAmount() {

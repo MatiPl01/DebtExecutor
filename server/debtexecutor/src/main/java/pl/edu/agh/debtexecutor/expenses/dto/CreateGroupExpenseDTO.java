@@ -7,5 +7,7 @@ public record CreateGroupExpenseDTO(
         String title,
         UUID payer,
         UUID group,
-        BigDecimal amount
-) {}
+        BigDecimal amount,
+        UUID category
+) {
+}
