@@ -33,6 +33,9 @@ public interface ExpenseApiService {
     @POST("expenses")
     Call<Expense> createPersonalExpense(@Body CreateExpenseDTO dto);
 
+    @GET("expenses/all")
+    Call<List<Expense>> getAllExpenses();
+
     @POST("expenses/group")
     Call<List<Expense>> createGroupExpense(@Body CreateGroupExpenseDTO dto);
 }

@@ -3,6 +3,8 @@ package pl.edu.agh.debtexecutor.controllers.core;
 public enum ViewType {
     SUMMARY("Expense summary"),
     HISTORY("Expense history"),
+    SUMMARY_GRAPH("Expense summary"),
+    HISTORY_GRAPH("Expense history"),
     CREATE_EXPENSE("Create personal expense"),
     CREATE_GROUP_EXPENSE("Create group expense"),
     CREATE_CATEGORY("Create category"),

@@ -4,11 +4,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 // TODO - add page size changing
 public class PaginationOptions {
+    private final int initialPageSize;
     private final SimpleIntegerProperty pageSize = new SimpleIntegerProperty();
     private final SimpleIntegerProperty pageNumber = new SimpleIntegerProperty(1);
     private final SimpleIntegerProperty totalPages = new SimpleIntegerProperty(1);
 
     public PaginationOptions(int pageSize) {
+        initialPageSize = pageSize;
         this.pageSize.set(pageSize);
     }
 
@@ -46,5 +48,11 @@ public class PaginationOptions {
 
     public void setTotalPages(int totalPages) {
         this.totalPages.set(totalPages);
+    }
+
+    public void clear() {
+        pageSize.set(initialPageSize);
+        pageNumber.set(1);
+        totalPages.set(1);
     }
 }

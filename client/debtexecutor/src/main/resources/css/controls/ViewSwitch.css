@@ -1,0 +1,12 @@
+.view-switch {
+
+}
+
+.view-switch__button {
+    -fx-pref-width: 50px;
+    -fx-font-size: 12px;
+    -fx-padding: 2px 4px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+

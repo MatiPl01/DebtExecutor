@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 
 <fx:root fx:id="menuButton" type="javafx.scene.control.MenuButton"
-         xmlns="http://javafx.com/javafx/19"
+         xmlns="http://javafx.com/javafx/17"
          xmlns:fx="http://javafx.com/fxml/1" styleClass="multiselect">
    <items>
       <CustomMenuItem mnemonicParsing="false" text="Unspecified Action"

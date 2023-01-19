@@ -5,7 +5,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.controls.InputField;
 import pl.edu.agh.debtexecutor.models.Category;
 import pl.edu.agh.debtexecutor.models.Expense;
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Component
+@Controller
 public class CreatePersonalExpenseViewController extends FormViewController {
     private final static String FORM_TITLE = "Create Personal Expense";
 
