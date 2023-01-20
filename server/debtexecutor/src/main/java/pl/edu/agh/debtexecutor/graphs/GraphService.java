@@ -25,12 +25,12 @@ public class GraphService {
     public Graph getHistoryGraph() {
         BasicGraph graph = new BasicGraph();
         userService.getUsers().forEach(graph::addVertex);
-        expenseService.getAllExpenses()
-                      .forEach(expense -> graph.addEdge(
-                              expense.getPayer(),
-                              expense.getPayee(),
-                              expense.getAmount()
-                      ));
+        expenseService.getAllExpenses().forEach(expense ->
+            graph.addEdge(
+                expense.getPayer(),
+                expense.getPayee(),
+                expense.getAmount()
+            ));
         return graph;
     }
 

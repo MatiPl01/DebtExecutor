@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
-public class Expense {
+public final class Expense {
     private final UUID id;
     private final String title;
     private final ExpenseUserDTO payer;

@@ -48,50 +48,50 @@
                     </children>
                 </VBox>
                 <VBox fx:id="menuOptions">
-                    <children>
-                        <HBox fx:id="expenseHistoryOption" onMouseClicked="#onTabSelect" styleClass="menu-row">
-                            <children>
-                                <Label styleClass="menu-option" text="Expense history" />
-                            </children>
-                        </HBox>
-                        <HBox fx:id="expenseSummaryOption" onMouseClicked="#onTabSelect">
-                            <children>
-                                <Label styleClass="menu-option" text="Expense summary" />
-                            </children>
-                            <styleClass>
-                                <String fx:value="menu-row" />
-                            </styleClass>
-                        </HBox>
-                    </children>
+                    <HBox fx:id="expenseHistoryOption"
+                          onMouseClicked="#onTabSelect" styleClass="menu-row">
+                        <Label styleClass="menu-option"
+                               text="Expense history"/>
+                    </HBox>
+                    <HBox fx:id="expenseSummaryOption"
+                          onMouseClicked="#onTabSelect" styleClass="menu-row">
+                        <Label styleClass="menu-option"
+                               text="Expense summary"/>
+                    </HBox>
+                    <HBox fx:id="expenseSimplificationGraph"
+                          onMouseClicked="#onTabSelect" styleClass="menu-row">
+                        <Label styleClass="menu-option"
+                               text="Simplified expenses graph"/>
+                    </HBox>
                 </VBox>
             </children>
         </VBox>
-        <TitledPane fx:id="usersTitledPane" styleClass="menu-option" text="Users">
-            <content>
-                <AnchorPane>
-                    <children>
-                        <VBox fx:id="usersWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        </VBox>
-                    </children>
-                    <styleClass>
-                        <String fx:value="background-transparent" />
-                        <String fx:value="no-padding" />
-                    </styleClass>
-                </AnchorPane>
-            </content>
+        <TitledPane fx:id="usersTitledPane" styleClass="menu-option"
+                    text="Users">
+            <AnchorPane>
+                <styleClass>
+                    <String fx:value="background-transparent"/>
+                    <String fx:value="no-padding"/>
+                </styleClass>
+                <VBox fx:id="usersWrapper" AnchorPane.bottomAnchor="0.0"
+                      AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0">
+                </VBox>
+            </AnchorPane>
         </TitledPane>
-        <TitledPane fx:id="groupsTitledPane" styleClass="menu-option" text="Groups">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0">
-                    <children>
-                        <VBox fx:id="groupsWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                    </children>
-                    <styleClass>
-                        <String fx:value="background-transparent" />
-                        <String fx:value="no-padding" />
-                    </styleClass>
-                </AnchorPane>
-            </content>
+        <TitledPane fx:id="groupsTitledPane" styleClass="menu-option"
+                    text="Groups">
+            <AnchorPane minHeight="0.0" minWidth="0.0">
+                <styleClass>
+                    <String fx:value="background-transparent"/>
+                    <String fx:value="no-padding"/>
+                </styleClass>
+                <VBox fx:id="groupsWrapper" AnchorPane.bottomAnchor="0.0"
+                      AnchorPane.leftAnchor="0.0"
+                      AnchorPane.rightAnchor="0.0"
+                      AnchorPane.topAnchor="0.0"/>
+            </AnchorPane>
         </TitledPane>
     </children>
     <stylesheets>
