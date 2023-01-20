@@ -61,7 +61,7 @@
                     <HBox fx:id="expenseSimplificationGraph"
                           onMouseClicked="#onTabSelect" styleClass="menu-row">
                         <Label styleClass="menu-option"
-                               text="Simplified expenses graph"/>
+                               text="Simplified expense graph"/>
                     </HBox>
                 </VBox>
             </children>
