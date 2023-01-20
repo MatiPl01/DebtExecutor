@@ -323,3 +323,13 @@
     -fx-text-fill: -fx-c-white;
     -fx-background-color: -fx-c-primary;
 }
+
+
+.vertex {
+    -fx-stroke: -fx-c-primary-dark;
+    -fx-fill: -fx-c-primary;
+}
+
+.edge, .arrow {
+    -fx-stroke: -fx-c-secondary;
+}
