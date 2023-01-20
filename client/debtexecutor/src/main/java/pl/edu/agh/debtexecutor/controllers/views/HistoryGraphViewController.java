@@ -1,28 +1,28 @@
 package pl.edu.agh.debtexecutor.controllers.views;
 
-import com.brunomnsilva.smartgraph.graphview.SmartGraphPanel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import pl.edu.agh.debtexecutor.api.graph.GraphApi;
 import pl.edu.agh.debtexecutor.controls.GraphVisualization;
-import pl.edu.agh.debtexecutor.services.GraphService;
+import pl.edu.agh.debtexecutor.models.graph.GraphModel;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 @Controller
 public class HistoryGraphViewController extends HistoryViewAbstractController
         implements Initializable {
 
-    @FXML private AnchorPane graphWrapper;
+    @FXML private GraphVisualization graphVisualization;
 
-    @Autowired private GraphService graphService;
+    @Autowired private GraphApi graphApi;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        SmartGraphPanel<String, String>
-                graphVisualization = new GraphVisualization(graphService.getGraph()).createGraph();
+        Optional<GraphModel> graph = graphApi.getExpenseHistoryGraph();
+        graph.ifPresent(value -> graphVisualization.setGraph(value));
     }
 }

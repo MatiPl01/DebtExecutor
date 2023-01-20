@@ -17,20 +17,15 @@ public class ViewController {
     private final Label label;
     private final HBox headerContent;
     private final Map<ViewType, String> views = new HashMap<>() {{
-        put(
-                ViewType.CREATE_EXPENSE,
-                "/fxml/views/CreatePersonalExpenseView.fxml"
-        );
-        put(
-                ViewType.CREATE_GROUP_EXPENSE,
-                "/fxml/views/CreateGroupExpenseView.fxml"
-        );
+        put(ViewType.CREATE_EXPENSE, "/fxml/views/CreatePersonalExpenseView.fxml");
+        put(ViewType.CREATE_GROUP_EXPENSE, "/fxml/views/CreateGroupExpenseView.fxml");
         put(ViewType.CREATE_CATEGORY, "/fxml/views/CreateCategoryView.fxml");
         put(ViewType.CREATE_GROUP, "/fxml/views/CreateGroupView.fxml");
         put(ViewType.HISTORY, "/fxml/views/HistoryView.fxml");
         put(ViewType.SUMMARY, "/fxml/views/SummaryView.fxml");
         put(ViewType.HISTORY_GRAPH, "/fxml/views/HistoryGraphView.fxml");
         put(ViewType.SUMMARY_GRAPH, "/fxml/views/SummaryGraphView.fxml");
+        put(ViewType.SIMPLIFIED_GRAPH, "/fxml/views/SimplifiedGraphView.fxml");
     }};
     private ViewType activeView;
 

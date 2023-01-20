@@ -9,7 +9,11 @@ public class Vertex {
         this.user = user;
     }
 
-    public String getLabel() {
+    public String getUserLogin() {
+        return user.getLogin();
+    }
+
+    public String getUserName() {
         return user.getFirstName() + " " + user.getLastName();
     }
 }

@@ -23,6 +23,14 @@ public class ViewSwitch extends HBox implements Initializable {
         ResourceLoader.loadControlFXML(FXML_PATH, this);
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        listViewButton.getStyleClass().add(ACTIVE_CLASS);
+
+        listViewButton.setOnAction(a -> setButtonActive(listViewButton));
+        graphViewButton.setOnAction(a -> setButtonActive(graphViewButton));
+    }
+
     public void setOnListViewClick(Runnable callback) {
         onListViewClick = callback;
     }
@@ -31,21 +39,26 @@ public class ViewSwitch extends HBox implements Initializable {
         onGraphViewClick = callback;
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        listViewButton.getStyleClass().add(ACTIVE_CLASS);
+    public void reset() {
+        setButtonActive(listViewButton);
+    }
 
-        listViewButton.setOnAction(a -> {
-            if (listViewButton.getStyleClass().contains(ACTIVE_CLASS)) return;
-            graphViewButton.getStyleClass().remove(ACTIVE_CLASS);
-            listViewButton.getStyleClass().add(ACTIVE_CLASS);
-            onListViewClick.run();
-        });
-        graphViewButton.setOnAction(a -> {
-            if (graphViewButton.getStyleClass().contains(ACTIVE_CLASS)) return;
-            listViewButton.getStyleClass().remove(ACTIVE_CLASS);
-            graphViewButton.getStyleClass().add(ACTIVE_CLASS);
-            onGraphViewClick.run();
-        });
+    private void setButtonActive(Button button) {
+        if (button.getStyleClass().contains(ACTIVE_CLASS)) return;
+
+        Button otherButton;
+        Runnable runnable;
+
+        if (button == listViewButton) {
+            otherButton = graphViewButton;
+            runnable = onListViewClick;
+        } else {
+            otherButton = listViewButton;
+            runnable = onGraphViewClick;
+        }
+
+        button.getStyleClass().add(ACTIVE_CLASS);
+        otherButton.getStyleClass().remove(ACTIVE_CLASS);
+        runnable.run();
     }
 }

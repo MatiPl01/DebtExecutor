@@ -2,7 +2,7 @@ package pl.edu.agh.debtexecutor.models;
 
 import java.util.UUID;
 
-public class Category {
+public final class Category {
     private final UUID id;
     private final String name;
 

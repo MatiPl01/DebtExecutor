@@ -43,4 +43,3 @@ record SimplifiedVertex(User user, Map<SimplifiedVertex, SimplifiedEdge> edges) 
         return edges.values().stream().min(new EdgeComparator());
     }
 }
-

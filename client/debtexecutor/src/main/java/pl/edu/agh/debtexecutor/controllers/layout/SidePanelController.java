@@ -29,6 +29,7 @@ public class SidePanelController implements Initializable {
 
     @FXML private HBox expenseSummaryOption;
     @FXML private HBox expenseHistoryOption;
+    @FXML private HBox expenseSimplificationGraph;
     @FXML private VBox menuOptions;
     @FXML private VBox groupsWrapper;
     @FXML private VBox usersWrapper;
@@ -73,6 +74,8 @@ public class SidePanelController implements Initializable {
             switchView(ViewType.SUMMARY);
         } else if (mouseEvent.getSource().equals(expenseHistoryOption)) {
             switchView(ViewType.HISTORY);
+        } else if (mouseEvent.getSource().equals(expenseSimplificationGraph)) {
+            switchView(ViewType.SIMPLIFIED_GRAPH);
         }
     }
 
@@ -159,6 +162,7 @@ public class SidePanelController implements Initializable {
         switch (viewType) {
             case HISTORY -> setOptionActive(expenseHistoryOption);
             case SUMMARY -> setOptionActive(expenseSummaryOption);
+            case SIMPLIFIED_GRAPH -> setOptionActive(expenseSimplificationGraph);
         }
     }
 }

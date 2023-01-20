@@ -83,10 +83,6 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
         }
     }
 
-    public void fetchAllData() {
-        displayedExpenses.setAll(expenseApi.getAllExpenses());
-    }
-
     public ObservableList<Expense> getDisplayedExpenses() {
         return displayedExpenses;
     }

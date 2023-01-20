@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
-public class User {
+public final class User {
     private final UUID id;
     private final String firstName;
     private final String lastName;

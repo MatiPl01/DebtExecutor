@@ -3,7 +3,7 @@ package pl.edu.agh.debtexecutor.models;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class UserBalance {
+public final class UserBalance {
     UUID id;
     String firstName;
     String lastName;
