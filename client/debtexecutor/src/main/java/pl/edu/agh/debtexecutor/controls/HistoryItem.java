@@ -10,8 +10,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class HistoryItem extends VBox {
-    private static final String HIDDEN_CLASS_NAME = "hidden";
     private static final String FXML_PATH = "/fxml/controls/HistoryItem.fxml";
+    private static final String HIDDEN_CLASS_NAME = "hidden";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     @FXML private Label expenseTitle;
     @FXML private Label payerName;
@@ -35,7 +36,7 @@ public class HistoryItem extends VBox {
     }
 
     private String formatDate(LocalDateTime date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
         return date.format(formatter);
     }
 }

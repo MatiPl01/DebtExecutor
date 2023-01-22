@@ -19,12 +19,9 @@ import java.util.UUID;
 
 @Service
 public class ExpenseService implements Paginable, Sortable, Filterable {
-    private final static int DEFAULT_PAGE_SIZE = 10;
-
     private final SortOptions sortOptions = new SortOptions();
     private final FilterOptions filterOptions = new FilterOptions(List.of("category"));
-    private final PaginationOptions paginationOptions =
-            new PaginationOptions(DEFAULT_PAGE_SIZE);
+    private final PaginationOptions paginationOptions = new PaginationOptions();
 
     private final ObservableList<Expense> displayedExpenses =
             FXCollections.observableArrayList();
@@ -101,11 +98,11 @@ public class ExpenseService implements Paginable, Sortable, Filterable {
         return expenseApi.createPersonalExpense(dto);
     }
 
-    public List<Expense> addGroupExpense(String title,
-                                         BigDecimal amount,
-                                         UUID payerId,
-                                         UUID groupId,
-                                         UUID categoryId) {
+    public Optional<List<Expense>> addGroupExpense(String title,
+                                                   BigDecimal amount,
+                                                   UUID payerId,
+                                                   UUID groupId,
+                                                   UUID categoryId) {
         CreateGroupExpenseDTO dto = new CreateGroupExpenseDTO(title,
                                                               payerId,
                                                               groupId,

@@ -84,11 +84,11 @@
     -fx-text-fill: -fx-c-white;
 }
 
-.menu-row.active {
+.menu-row:selected {
     -fx-background-color: -fx-c-secondary;
 }
 
-.menu-row.active .menu-option {
+.menu-row:selected .menu-option {
     -fx-text-fill: -fx-c-white;
 }
 

@@ -3,7 +3,7 @@ package pl.edu.agh.debtexecutor.controllers.core;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import pl.edu.agh.debtexecutor.controllers.views.SwitchableViewController;
+import pl.edu.agh.debtexecutor.controllers.views.tabs.SwitchableViewController;
 import pl.edu.agh.debtexecutor.utils.FXMLWithController;
 import pl.edu.agh.debtexecutor.utils.ResourceLoader;
 

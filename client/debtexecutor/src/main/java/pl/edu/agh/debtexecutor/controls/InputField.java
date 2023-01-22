@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import pl.edu.agh.debtexecutor.utils.NumberUtils;
 import pl.edu.agh.debtexecutor.utils.ResourceLoader;
 
 import java.net.URL;
@@ -18,7 +19,10 @@ import java.util.ResourceBundle;
 
 public class InputField extends StackPane implements Initializable {
     private static final String FXML_PATH = "/fxml/controls/InputField.fxml";
+
     private static final Duration TRANSITION_DURATION = Duration.millis(300);
+    private static final String TYPE_TEXT = "text";
+    private static final String TYPE_MONEY = "money";
 
     @FXML private Pane underline;
     @FXML private StackPane labelWrapper;
@@ -27,15 +31,20 @@ public class InputField extends StackPane implements Initializable {
     @FXML private TextField input;
 
     private final String labelText;
+    private final String inputType;
     private Transition labelFocusTransition;
     private Transition labelBlurTransition;
     private Transition underlineFocusTransition;
     private Transition underlineBlurTransition;
 
-    public InputField(@NamedArg("label") String labelText) {
+    public InputField(@NamedArg("label") String labelText, @NamedArg("type") String inputType) {
         this.labelText = labelText;
-
+        this.inputType = inputType;
         ResourceLoader.loadControlFXML(FXML_PATH, this);
+    }
+
+    public InputField(@NamedArg("label") String labelText) {
+        this(labelText, TYPE_TEXT);
     }
 
     @Override
@@ -46,6 +55,7 @@ public class InputField extends StackPane implements Initializable {
         createUnderlineFocusTransition();
         createUnderlineBlurTransition();
         addEventListeners();
+        setupMask();
     }
 
     public String getText() {
@@ -136,5 +146,22 @@ public class InputField extends StackPane implements Initializable {
                 underlineBlurTransition.play();
             }
         }));
+    }
+
+    private void setupMask() {
+        if (inputType.equals(TYPE_MONEY)) {
+            input.textProperty().addListener(
+                (observable, oldValue, newValue) -> maskMoney(oldValue, newValue)
+            );
+        }
+    }
+
+    private void maskMoney(String oldValue, String newValue) {
+        if (newValue.isEmpty()) return;
+        if (NumberUtils.isPositive(newValue)) {
+            String[] parts = newValue.split("\\.");
+            if (parts.length < 2 || parts[1].length() <= 2) return;
+        }
+        input.textProperty().set(oldValue);
     }
 }

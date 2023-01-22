@@ -109,13 +109,13 @@
     -fx-text-fill: -fx-c-white;
 }
 
-.menu-row.active {
+.menu-row:selected {
     -fx-background-color: -fx-c-secondary;
 }
 
-.menu-row.active .user-label,
-.menu-row.active .group-label,
-.menu-row.active .menu-option {
+.menu-row:selected .user-label,
+.menu-row:selected .group-label,
+.menu-row:selected .menu-option {
     -fx-text-fill: -fx-c-white;
 }
 
@@ -300,7 +300,7 @@
     -fx-text-fill: -fx-c-gray-dark-3;
 }
 
-.multiselect__item.selected {
+.multiselect__item:selected {
     -fx-background-color: -fx-c-secondary;
 }
 

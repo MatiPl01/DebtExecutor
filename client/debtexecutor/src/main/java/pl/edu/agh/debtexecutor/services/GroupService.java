@@ -65,8 +65,6 @@ public class GroupService {
     }
 
     private void reFetch() {
-        Platform.runLater(() -> {
-            setGroups(groupApi.getAll());
-        });
+        Platform.runLater(() -> setGroups(groupApi.getAll()));
     }
 }

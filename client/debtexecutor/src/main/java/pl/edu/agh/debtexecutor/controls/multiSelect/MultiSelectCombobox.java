@@ -2,6 +2,7 @@ package pl.edu.agh.debtexecutor.controls.multiSelect;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -19,10 +20,10 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class MultiSelectCombobox extends MenuButton implements Initializable {
-    private static final String FXML_PATH =
-            "/fxml/controls/MultiSelectCombobox.fxml";
-    private final static String SELECTED_CLASS = "selected";
-    private final ObservableList<String> selectedValues = FXCollections.observableArrayList();
+    private static final String FXML_PATH = "/fxml/controls/MultiSelectCombobox.fxml";
+    private final static PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
+    private final ObservableList<String> selectedValues =
+            FXCollections.observableArrayList();
     private final Map<String, String> itemValuesMap = new HashMap<>();
     private Runnable clearHandler;
 
@@ -54,7 +55,7 @@ public class MultiSelectCombobox extends MenuButton implements Initializable {
         clearButton.setOnAction((e) -> {
             menuButton.getItems().forEach(item -> {
                 HBox wrapper = (HBox) ((CustomMenuItem) item).getContent();
-                wrapper.getStyleClass().remove(SELECTED_CLASS);
+                wrapper.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, false);
             });
             selectedValues.clear();
             if (clearHandler != null) clearHandler.run();
@@ -62,7 +63,10 @@ public class MultiSelectCombobox extends MenuButton implements Initializable {
     }
 
     private void createMenuItemsMap(List<MultiselectItem> items) {
-        items.forEach(item -> itemValuesMap.put(item.displayedValue(), item.value()));
+        items.forEach(item -> itemValuesMap.put(
+                item.displayedValue(),
+                item.value()
+        ));
     }
 
     private CustomMenuItem createMenuItem(MultiselectItem item) {
@@ -88,14 +92,13 @@ public class MultiSelectCombobox extends MenuButton implements Initializable {
             Label label = (Label) wrapper.getChildren().get(0);
             String displayedValue = label.getText();
             String value = itemValuesMap.get(displayedValue);
-            List<String> classes = wrapper.getStyleClass();
 
-            if (classes.contains(SELECTED_CLASS)) {
+            if (wrapper.getPseudoClassStates().contains(SELECTED_PSEUDO_CLASS)) {
                 selectedValues.remove(value);
-                classes.remove(SELECTED_CLASS);
+                wrapper.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, false);
             } else {
                 selectedValues.add(value);
-                classes.add(SELECTED_CLASS);
+                wrapper.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, true);
             }
         });
     }

@@ -1,8 +1,9 @@
-package pl.edu.agh.debtexecutor.controllers.views;
+package pl.edu.agh.debtexecutor.controllers.views.tabs.expenseHistory;
 
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,28 +24,28 @@ import pl.edu.agh.debtexecutor.services.utils.PaginationService;
 import pl.edu.agh.debtexecutor.services.utils.SortingService;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 @Controller
-public class HistoryViewController extends HistoryViewAbstractController implements Initializable {
+public class HistoryViewController extends HistoryViewAbstractController
+        implements Initializable {
     private final static String FILTER_FIELD = "category";
-    private static final List<SortSettings> settings = new ArrayList<>() {{
-        add(new SortSettings("Date", "date", SortValueType.ORDINAL));
-        add(new SortSettings("Amount", "amount", SortValueType.ORDINAL));
-        add(new SortSettings("Title", "title", SortValueType.LEXICAL));
-    }};
+    private final static List<Integer> PAGE_SIZES = List.of(5, 10, 20, 50);
+    private static final List<SortSettings> settings = List.of(
+        new SortSettings("Date", "date", SortValueType.ORDINAL),
+        new SortSettings("Amount", "amount", SortValueType.ORDINAL),
+        new SortSettings("Title", "title", SortValueType.LEXICAL)
+    );
 
     @FXML private VBox historyWrapper;
     @FXML private Pagination pagination;
-    @FXML private Sorting sorting;
     @FXML private MultiSelectCombobox categoryFilterCombobox;
+    @FXML private Sorting sorting;
+    @FXML private ComboBox<Integer> pageSizeCombobox;
 
-    @Autowired
-    private ExpenseService expenseService;
-    @Autowired
-    private CategoryService categoryService;
+    @Autowired private ExpenseService expenseService;
+    @Autowired private CategoryService categoryService;
 
     private PaginationService paginationService;
     private SortingService sortingService;
@@ -75,6 +76,13 @@ public class HistoryViewController extends HistoryViewAbstractController impleme
     private void initializePagination() {
         paginationService = new PaginationService(expenseService);
         pagination.setPaginationService(paginationService);
+
+        pageSizeCombobox.getItems().setAll(PAGE_SIZES);
+        pageSizeCombobox.setValue(PAGE_SIZES.get(0));
+        paginationService.setPageSize(PAGE_SIZES.get(0));
+        pageSizeCombobox.setOnAction((v) -> {
+           paginationService.setPageSize(pageSizeCombobox.getValue());
+        });
     }
 
     private void initializeSorting() {

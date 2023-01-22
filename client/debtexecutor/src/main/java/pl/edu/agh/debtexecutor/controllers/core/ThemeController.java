@@ -1,21 +1,21 @@
 package pl.edu.agh.debtexecutor.controllers.core;
 
 import javafx.scene.Scene;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.utils.ResourceLoader;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+@Controller
 public class ThemeController {
-    private static Scene scene;
-    private static ThemeType currentTheme = ThemeType.LIGHT;
-    private static final Map<ThemeType, String> themes = new HashMap<>();
+    private static final Map<ThemeType, String> themes = new HashMap<>() {{
+        put(ThemeType.LIGHT, ResourceLoader.loadCSS("/css/themes/light.css"));
+        put(ThemeType.DARK, ResourceLoader.loadCSS("/css/themes/dark.css"));
+    }};
 
-    private ThemeController() {
-        loadThemes();
-    }
+    private static ThemeType currentTheme = ThemeType.LIGHT;
+    private static Scene scene;
 
     public void setScene(Scene scene) {
         ThemeController.scene = scene;
@@ -30,14 +30,5 @@ public class ThemeController {
         scene.getStylesheets().remove(themes.get(currentTheme));
         scene.getStylesheets().add(themes.get(themeType));
         currentTheme = themeType;
-    }
-
-    private void loadThemes() {
-        loadTheme(ThemeType.LIGHT, "/css/themes/light.css");
-        loadTheme(ThemeType.DARK, "/css/themes/dark.css");
-    }
-
-    private void loadTheme(ThemeType themeType, String resourcePath) {
-        themes.put(themeType, ResourceLoader.loadCSS(resourcePath));
     }
 }

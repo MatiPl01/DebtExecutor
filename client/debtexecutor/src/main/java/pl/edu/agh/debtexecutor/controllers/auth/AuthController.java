@@ -5,16 +5,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.utils.ResourceLoader;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@Component
+@Controller
 public class AuthController implements Initializable {
     private static final String SIGN_IN_FORM_PATH = "/fxml/auth/SignInForm.fxml";
     private static final String SIGN_UP_FORM_PATH = "/fxml/auth/SignUpForm.fxml";
+
+    private static final SidePanelText signInText = new SidePanelText(
+        "SIGN IN",
+        "Sign in",
+        "Already have an account? Press the button below to sign in"
+    );
+    private static final SidePanelText signUpText = new SidePanelText(
+        "SIGN UP",
+        "Sign up",
+        "Don't have an account? Press the button below to create a new one"
+    );
 
     @FXML private StackPane formWrapper;
     @FXML private Label formChangeText;
@@ -41,18 +52,16 @@ public class AuthController implements Initializable {
 
     private void openSignInForm() {
         openForm(SIGN_IN_FORM_PATH);
-        // TODO - improve text content changing
-        formChangeButton.setText("SIGN UP");
-        formChangeHeading.setText("Sign up");
-        formChangeText.setText("Don't have an account? Press the button below to create a new one");
+        formChangeButton.setText(signUpText.buttonText());
+        formChangeHeading.setText(signInText.headingText());
+        formChangeText.setText(signUpText.infoText());
     }
 
     private void openSignUpForm() {
         openForm(SIGN_UP_FORM_PATH);
-        // TODO - improve text content changing
-        formChangeButton.setText("SIGN IN");
-        formChangeHeading.setText("Sign in");
-        formChangeText.setText("Already have an account? Press the button below to sign in");
+        formChangeButton.setText(signInText.buttonText());
+        formChangeHeading.setText(signInText.headingText());
+        formChangeText.setText(signInText.infoText());
     }
 
     private void openForm(String resourcePath) {

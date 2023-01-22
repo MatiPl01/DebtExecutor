@@ -11,7 +11,7 @@
       styleClass="create-group"
       stylesheets="@../../css/views/CreateGroupView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreateGroupViewController">
+      fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createGroup.CreateGroupViewController">
     <children>
         <InputField label="Group name" fx:id="groupNameInput"/>
         <VBox spacing="10.0">

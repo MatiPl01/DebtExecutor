@@ -14,6 +14,9 @@ import java.util.ResourceBundle;
 
 @Component
 public class TopBarController implements Initializable {
+    private final static String LIGHT_THEME_NAME = "light";
+    private final static String DARK_THEME_NAME = "dark";
+
     @FXML private Pane userImage;
     @FXML private Button darkLightSwitch;
 
@@ -44,9 +47,9 @@ public class TopBarController implements Initializable {
     private void updateDarkLightSwitchText() {
         String themeName;
         if (themeController.getCurrentTheme().equals(ThemeType.DARK)) {
-            themeName = "light";
+            themeName = LIGHT_THEME_NAME;
         } else {
-            themeName = "dark";
+            themeName = DARK_THEME_NAME;
         }
 
         String text = "Set " + themeName + " theme";

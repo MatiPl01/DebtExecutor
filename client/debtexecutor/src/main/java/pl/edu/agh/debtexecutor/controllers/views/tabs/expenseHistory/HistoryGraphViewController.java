@@ -1,4 +1,4 @@
-package pl.edu.agh.debtexecutor.controllers.views;
+package pl.edu.agh.debtexecutor.controllers.views.tabs.expenseHistory;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

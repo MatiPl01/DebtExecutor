@@ -9,10 +9,10 @@
 <VBox alignment="CENTER" minWidth="300.0" styleClass="personal-expense"
       stylesheets="@../../css/views/CreatePersonalExpenseView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreatePersonalExpenseViewController">
+      fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createPersonalExpense.CreatePersonalExpenseViewController">
     <VBox styleClass="personal-expense__inputs">
         <InputField fx:id="titleInput" label="Title"/>
-        <InputField fx:id="amountInput" label="Amount"/>
+        <InputField fx:id="amountInput" label="Amount" type="money"/>
     </VBox>
     <VBox styleClass="personal-expense__select-lists">
         <VBox spacing="10.0">

@@ -27,8 +27,8 @@ public class ViewSwitch extends HBox implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         listViewButton.getStyleClass().add(ACTIVE_CLASS);
 
-        listViewButton.setOnAction(a -> setButtonActive(listViewButton));
-        graphViewButton.setOnAction(a -> setButtonActive(graphViewButton));
+        listViewButton.setOnAction(a -> setButtonActive(listViewButton, true));
+        graphViewButton.setOnAction(a -> setButtonActive(graphViewButton, true));
     }
 
     public void setOnListViewClick(Runnable callback) {
@@ -40,10 +40,10 @@ public class ViewSwitch extends HBox implements Initializable {
     }
 
     public void reset() {
-        setButtonActive(listViewButton);
+        setButtonActive(listViewButton, false);
     }
 
-    private void setButtonActive(Button button) {
+    private void setButtonActive(Button button, boolean execEvent) {
         if (button.getStyleClass().contains(ACTIVE_CLASS)) return;
 
         Button otherButton;
@@ -59,6 +59,6 @@ public class ViewSwitch extends HBox implements Initializable {
 
         button.getStyleClass().add(ACTIVE_CLASS);
         otherButton.getStyleClass().remove(ACTIVE_CLASS);
-        runnable.run();
+        if (execEvent) runnable.run();
     }
 }

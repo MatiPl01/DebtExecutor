@@ -1,4 +1,4 @@
-package pl.edu.agh.debtexecutor.controllers.views;
+package pl.edu.agh.debtexecutor.controllers.views.tabs.expenseSummary;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 @Controller
-public class SummaryViewController extends SummaryViewAbstractController implements Initializable {
+public class SummaryViewController extends SummaryViewAbstractController
+        implements Initializable {
     @FXML private VBox summariesWrapper;
 
     @Autowired private UserService userService;

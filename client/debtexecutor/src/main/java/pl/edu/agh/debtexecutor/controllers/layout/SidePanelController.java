@@ -2,6 +2,7 @@ package pl.edu.agh.debtexecutor.controllers.layout;
 
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -10,7 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.controllers.core.ViewController;
 import pl.edu.agh.debtexecutor.controllers.core.ViewType;
 import pl.edu.agh.debtexecutor.controls.GroupField;
@@ -23,14 +24,13 @@ import pl.edu.agh.debtexecutor.services.UserService;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@Component
+@Controller
 public class SidePanelController implements Initializable {
-    private static final String ACTIVE_CLASS = "active";
+    private final static String SELECTED_PSEUDO_CLASS = "selected";
 
     @FXML private HBox expenseSummaryOption;
     @FXML private HBox expenseHistoryOption;
     @FXML private HBox expenseSimplificationGraph;
-    @FXML private VBox menuOptions;
     @FXML private VBox groupsWrapper;
     @FXML private VBox usersWrapper;
     @FXML private TitledPane groupsTitledPane;
@@ -39,6 +39,7 @@ public class SidePanelController implements Initializable {
     @Autowired private UserService userService;
     @Autowired private GroupService groupService;
 
+    private HBox selectedOption;
     private ViewController viewController;
 
     @Override
@@ -101,7 +102,6 @@ public class SidePanelController implements Initializable {
     }
 
     private void addEventListeners() {
-        // TODO - refactor repeated code below
         userService.getUsers().addListener((ListChangeListener<User>) change -> {
             while (change.next()) {
                 ObservableList<Node> children = usersWrapper.getChildren();
@@ -143,26 +143,24 @@ public class SidePanelController implements Initializable {
         });
     }
 
-    private void setOptionActive(HBox option) {
-        setOptionsInactive();
-        option.getStyleClass().add(ACTIVE_CLASS);
-    }
-
-    private void setOptionsInactive() {
-        menuOptions.getChildren().forEach(child -> {
-            child.getStyleClass().remove(ACTIVE_CLASS);
-        });
+    private void changeOptionSelected(HBox option, boolean isActive) {
+        if (option == null) return;
+        selectedOption = option;
+        option.pseudoClassStateChanged(
+            PseudoClass.getPseudoClass(SELECTED_PSEUDO_CLASS),
+            isActive
+        );
     }
 
     private void switchView(ViewType viewType) {
         viewController.switchView(viewType);
-        setOptionsInactive();
+        changeOptionSelected(selectedOption, false);
 
         // Set the proper option in the menu active
         switch (viewType) {
-            case HISTORY -> setOptionActive(expenseHistoryOption);
-            case SUMMARY -> setOptionActive(expenseSummaryOption);
-            case SIMPLIFIED_GRAPH -> setOptionActive(expenseSimplificationGraph);
+            case HISTORY -> changeOptionSelected(expenseHistoryOption, true);
+            case SUMMARY -> changeOptionSelected(expenseSummaryOption, true);
+            case SIMPLIFIED_GRAPH -> changeOptionSelected(expenseSimplificationGraph, true);
         }
     }
 }

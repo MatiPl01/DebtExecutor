@@ -2,7 +2,7 @@ package pl.edu.agh.debtexecutor.controllers.core;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.services.GroupService;
 import pl.edu.agh.debtexecutor.services.UserService;
 import pl.edu.agh.debtexecutor.utils.ResourceLoader;
@@ -10,10 +10,9 @@ import pl.edu.agh.debtexecutor.utils.ResourceLoader;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+@Controller
 public class SceneController {
     private Stage stage;
-    private Scene currentScene;
     private final Map<SceneType, Scene> scenes = new HashMap<>();
     private final String SHARED_CSS = ResourceLoader.loadCSS(
             "/css/shared.css"
@@ -37,10 +36,10 @@ public class SceneController {
     }
 
     public void switchScene(SceneType newScene) {
-        currentScene = scenes.get(newScene);
-        stage.setScene(currentScene);
+        Scene scene = scenes.get(newScene);
+        stage.setScene(scene);
         // Load theme
-        themeController.setScene(currentScene);
+        themeController.setScene(scene);
 
         // Fetch users and groups on main scene render
         if (newScene == SceneType.MAIN) {

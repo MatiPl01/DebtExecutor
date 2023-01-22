@@ -5,7 +5,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.edu.agh.debtexecutor.controllers.core.SceneController;
 import pl.edu.agh.debtexecutor.controllers.core.ViewController;
 import pl.edu.agh.debtexecutor.controllers.layout.SidePanelController;
 import pl.edu.agh.debtexecutor.controllers.layout.TopBarController;
@@ -23,6 +25,8 @@ public class MainController implements Initializable {
     @FXML private TopBarController topBarController;
     @FXML private UserPanelController userPanelController;
     @FXML private ViewController viewController;
+
+    @Autowired private SceneController sceneController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

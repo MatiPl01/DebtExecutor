@@ -6,4 +6,4 @@
       alignment="TOP_CENTER" styleClass="summary"
       stylesheets="@../../css/views/SummaryView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.edu.agh.debtexecutor.controllers.views.SummaryViewController"/>
+      fx:controller="pl.edu.agh.debtexecutor.controllers.views.tabs.expenseSummary.SummaryViewController"/>

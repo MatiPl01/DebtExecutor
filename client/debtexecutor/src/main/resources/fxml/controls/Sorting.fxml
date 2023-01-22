@@ -10,8 +10,6 @@
 <fx:root alignment="CENTER" styleClass="sort" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@../../css/controls/Sorting.css" />
-        <URL value="@../../css/themes/light.css" />
-        <URL value="@../../css/shared.css" />
     </stylesheets>
     <VBox>
         <Label styleClass="sort__label" text="Sort by" />

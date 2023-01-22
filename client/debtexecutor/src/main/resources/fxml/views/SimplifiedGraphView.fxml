@@ -4,6 +4,6 @@
 <?import pl.edu.agh.debtexecutor.controls.GraphVisualization?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="pl.edu.agh.debtexecutor.controllers.views.SimplifiedGraphViewController">
+            fx:controller="pl.edu.agh.debtexecutor.controllers.views.tabs.simplifiedGraph.SimplifiedGraphViewController">
     <GraphVisualization fx:id="graphVisualization" />
 </AnchorPane>

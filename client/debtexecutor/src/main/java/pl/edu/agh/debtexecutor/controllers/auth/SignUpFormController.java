@@ -2,7 +2,7 @@ package pl.edu.agh.debtexecutor.controllers.auth;
 
 import javafx.fxml.FXML;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import pl.edu.agh.debtexecutor.controllers.core.SceneController;
 import pl.edu.agh.debtexecutor.controllers.core.SceneType;
 import pl.edu.agh.debtexecutor.controls.InputField;
@@ -11,7 +11,7 @@ import pl.edu.agh.debtexecutor.services.AuthService;
 
 import java.util.Optional;
 
-@Component
+@Controller
 public class SignUpFormController {
     @FXML
     private InputField loginInput;
@@ -31,9 +31,9 @@ public class SignUpFormController {
     @FXML
     private void onSignUp() {
         Optional<User> user = authService.singUp(
-                loginInput.getText(),
-                firstNameInput.getText(),
-                lastNameInput.getText()
+            loginInput.getText(),
+            firstNameInput.getText(),
+            lastNameInput.getText()
         );
 
         if (user.isPresent()) {

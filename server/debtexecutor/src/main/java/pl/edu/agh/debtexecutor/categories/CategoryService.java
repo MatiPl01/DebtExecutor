@@ -27,7 +27,7 @@ public class CategoryService {
         if (dto.name().isEmpty()) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,
-                    "Failed to create a category. Missing fields: " + dto.name()
+                    "Failed to create a category. Missing fields: name"
             );
         }
 

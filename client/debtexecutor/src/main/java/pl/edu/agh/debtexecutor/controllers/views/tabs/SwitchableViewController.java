@@ -1,4 +1,4 @@
-package pl.edu.agh.debtexecutor.controllers.views;
+package pl.edu.agh.debtexecutor.controllers.views.tabs;
 
 import javafx.scene.layout.HBox;
 import pl.edu.agh.debtexecutor.controllers.core.ViewController;
@@ -20,9 +20,9 @@ public abstract class SwitchableViewController {
         updateViewSwitch(prevView);
     }
 
-    abstract void onListViewSwitch();
+    protected abstract void onListViewSwitch();
 
-    abstract void onGraphViewSwitch();
+    protected abstract void onGraphViewSwitch();
 
     private void updateViewSwitch(ViewType prevView) {
         if (prevView == ViewType.HISTORY_GRAPH || prevView == ViewType.SUMMARY_GRAPH) {

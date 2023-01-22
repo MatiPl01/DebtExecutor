@@ -1,4 +1,4 @@
-package pl.edu.agh.debtexecutor.controllers.views;
+package pl.edu.agh.debtexecutor.controllers.views.tabs.expenseSummary;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,14 +13,15 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 @Controller
-public class SimplifiedGraphViewController implements Initializable {
+public class SummaryGraphViewController extends SummaryViewAbstractController
+        implements Initializable {
     @FXML private GraphVisualization graphVisualization;
 
     @Autowired private GraphApi graphApi;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Optional<GraphModel> graph = graphApi.getSimplifiedExpenseGraph();
+        Optional<GraphModel> graph = graphApi.getExpenseSummaryGraph();
         graph.ifPresent(value -> graphVisualization.setGraph(value));
     }
 }

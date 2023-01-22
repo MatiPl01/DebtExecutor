@@ -1,6 +1,5 @@
 package pl.edu.agh.debtexecutor.api;
 
-
 import okhttp3.OkHttpClient;
 import org.springframework.stereotype.Component;
 import retrofit2.Retrofit;

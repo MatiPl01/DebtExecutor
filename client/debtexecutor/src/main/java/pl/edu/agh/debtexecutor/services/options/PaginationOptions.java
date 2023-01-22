@@ -2,17 +2,11 @@ package pl.edu.agh.debtexecutor.services.options;
 
 import javafx.beans.property.SimpleIntegerProperty;
 
-// TODO - add page size changing
 public class PaginationOptions {
-    private final int initialPageSize;
-    private final SimpleIntegerProperty pageSize = new SimpleIntegerProperty();
+    private int initialPageSize = 1;
+    private final SimpleIntegerProperty pageSize = new SimpleIntegerProperty(initialPageSize);
     private final SimpleIntegerProperty pageNumber = new SimpleIntegerProperty(1);
     private final SimpleIntegerProperty totalPages = new SimpleIntegerProperty(1);
-
-    public PaginationOptions(int pageSize) {
-        initialPageSize = pageSize;
-        this.pageSize.set(pageSize);
-    }
 
     public int getPageSize() {
         return pageSize.get();
@@ -34,6 +28,10 @@ public class PaginationOptions {
         return pageNumber;
     }
 
+    public void setInitialPageSize(int pageSize) {
+        initialPageSize = pageSize;
+    }
+
     public void setPageNumber(int pageNumber) {
         this.pageNumber.set(pageNumber);
     }
@@ -47,7 +45,11 @@ public class PaginationOptions {
     }
 
     public void setTotalPages(int totalPages) {
-        this.totalPages.set(totalPages);
+        int totalPagesNumber = Math.max(totalPages, 1);
+        this.totalPages.set(totalPagesNumber);
+        if (pageNumber.get() > totalPagesNumber) {
+            pageNumber.set(totalPagesNumber);
+        }
     }
 
     public void clear() {

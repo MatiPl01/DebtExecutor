@@ -9,10 +9,10 @@
 <VBox alignment="CENTER" minWidth="300.0" styleClass="group-expense"
       stylesheets="@../../css/views/CreateGroupExpenseView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreateGroupExpenseViewController">
+      fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createGroupExpense.CreateGroupExpenseViewController">
     <VBox styleClass="group-expense__inputs">
         <InputField fx:id="titleInput" label="Title"/>
-        <InputField fx:id="amountInput" label="Amount"/>
+        <InputField fx:id="amountInput" label="Amount" type="money"/>
     </VBox>
     <VBox styleClass="group-expense__select-lists">
         <VBox spacing="10.0">

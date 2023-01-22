@@ -62,7 +62,7 @@ public class UserService {
         return userRepository.findByLogin(login).orElseThrow(
                 () -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
-                        "User with login " + login + " does not exist"
+                        "User with login '" + login + "' does not exist"
                 )
         );
     }

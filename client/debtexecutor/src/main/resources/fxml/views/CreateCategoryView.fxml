@@ -7,7 +7,7 @@
       stylesheets="@../../css/views/CreatePersonalExpenseView.css"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="pl.edu.agh.debtexecutor.controllers.views.CreateCategoryViewController">
+      fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createCategory.CreateCategoryViewController">
     <VBox styleClass="personal-expense__inputs">
         <InputField fx:id="categoryName" label="Category Name"/>
     </VBox>
