@@ -26,7 +26,8 @@ import java.util.ResourceBundle;
 
 @Controller
 public class SidePanelController implements Initializable {
-    private final static String SELECTED_PSEUDO_CLASS = "selected";
+    private final static PseudoClass SELECTED_PSEUDO_CLASS =
+            PseudoClass.getPseudoClass("selected");
 
     @FXML private HBox expenseSummaryOption;
     @FXML private HBox expenseHistoryOption;
@@ -146,10 +147,7 @@ public class SidePanelController implements Initializable {
     private void changeOptionSelected(HBox option, boolean isActive) {
         if (option == null) return;
         selectedOption = option;
-        option.pseudoClassStateChanged(
-            PseudoClass.getPseudoClass(SELECTED_PSEUDO_CLASS),
-            isActive
-        );
+        option.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, isActive);
     }
 
     private void switchView(ViewType viewType) {

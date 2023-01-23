@@ -1,3 +1,11 @@
-.personal-expense {
-    -fx-padding: 15px;
+.category {
+    -fx-padding: 15px 0 30px 0;
+    -fx-alignment: center;
+}
+
+.category__content {
+    -fx-min-width: 200px;
+    -fx-max-width: 350px;
+    -fx-spacing: 20px;
+    -fx-alignment: center;
 }

@@ -2,4 +2,11 @@
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-padding: 10px 15px;
+    -fx-min-width: 400px;
+    -fx-spacing: 5px;
+}
+
+.card__total {
+    -fx-alignment: bottom-right;
+    -fx-spacing: 5px;
 }

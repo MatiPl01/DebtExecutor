@@ -5,19 +5,21 @@
 <?import javafx.scene.control.Label?>
 <?import java.net.URL?>
 
+<?import java.lang.String?>
+
 <fx:root xmlns="http://javafx.com/javafx"
-         xmlns:fx="http://javafx.com/fxml" type="javafx.scene.layout.HBox"
-         alignment="CENTER_LEFT" spacing="7.5" styleClass="menu-row">
-    <Pane maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0"
-          prefHeight="20.0" prefWidth="20.0" styleClass="group-image">
-        <HBox alignment="CENTER" layoutX="10.0" layoutY="7.5"
-              maxHeight="12.5" maxWidth="20.0" minHeight="12.5"
-              minWidth="12.5" prefHeight="12.5" prefWidth="12.5"
-              styleClass="group-counter">
-            <Label fx:id="membersCountLabel" text="3"/>
+         xmlns:fx="http://javafx.com/fxml" type="javafx.scene.layout.HBox">
+    <styleClass>
+        <String fx:value="menu-row"/>
+        <String fx:value="group-field"/>
+    </styleClass>
+    <Pane styleClass="group-field__image">
+        <HBox layoutX="10.0" layoutY="7.5"
+              styleClass="group-field__counter">
+            <Label fx:id="membersCountLabel"/>
         </HBox>
     </Pane>
-    <Label fx:id="groupNameLabel" styleClass="group-label"/>
+    <Label fx:id="groupNameLabel"/>
     <stylesheets>
         <URL value="@../../css/controls/GroupField.css"/>
     </stylesheets>

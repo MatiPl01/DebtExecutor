@@ -1,5 +1,6 @@
 package pl.edu.agh.debtexecutor.categories;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pl.edu.agh.debtexecutor.categories.dto.CategoryDTO;
@@ -29,6 +30,13 @@ public class CategoryController {
     public @ResponseBody CategoryDTO createCategory(
             @RequestBody CreateCategoryDTO dto
     ) throws ResponseStatusException {
+        if (dto.name().isEmpty()) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Failed to create a category. Missing fields: name"
+            );
+        }
+
         return CategoryDTO.from(categoryService.createCategory(dto));
     }
 

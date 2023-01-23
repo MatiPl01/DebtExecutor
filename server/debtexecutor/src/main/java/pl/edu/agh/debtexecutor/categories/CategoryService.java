@@ -24,13 +24,6 @@ public class CategoryService {
 
     public Category createCategory(CreateCategoryDTO dto)
             throws ResponseStatusException {
-        if (dto.name().isEmpty()) {
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST,
-                    "Failed to create a category. Missing fields: name"
-            );
-        }
-
         if (categoryRepository.findByName(dto.name()).isPresent()) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST,

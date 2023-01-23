@@ -2,6 +2,7 @@
     -fx-padding: 5px;
     -fx-spacing: 2px;
     -fx-background-radius: 25px;
+    -fx-alignment: center;
 }
 
 .pagination__button {
@@ -16,6 +17,14 @@
     -fx-font-weight: bold;
 }
 
-.pagination__total {
+.pagination__current, .pagination__total {
     -fx-pref-width: 15px;
+}
+
+.pagination__current {
+    -fx-alignment: center-right;
+}
+
+.pagination__total {
+    -fx-alignment: center-left;
 }

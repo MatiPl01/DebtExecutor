@@ -39,6 +39,7 @@ public class DialogUtils {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle(title);
         confirmationDialog.setHeaderText(header);
+        loadCSS(confirmationDialog, Alert.AlertType.CONFIRMATION);
         return confirmationDialog.showAndWait();
     }
 
@@ -47,6 +48,7 @@ public class DialogUtils {
         errorDialog.setTitle(title);
         errorDialog.setHeaderText(header);
         errorDialog.showAndWait();
+        loadCSS(errorDialog, Alert.AlertType.ERROR);
     }
 
     private static void loadCSS(Alert alert, Alert.AlertType dialogType) {

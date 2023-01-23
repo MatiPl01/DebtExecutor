@@ -27,10 +27,8 @@ public class MultiSelectCombobox extends MenuButton implements Initializable {
     private final Map<String, String> itemValuesMap = new HashMap<>();
     private Runnable clearHandler;
 
-    @FXML
-    private MenuButton menuButton;
-    @FXML
-    private Button clearButton;
+    @FXML private MenuButton menuButton;
+    @FXML private Button clearButton;
 
     public MultiSelectCombobox() {
         ResourceLoader.loadControlFXML(FXML_PATH, this);

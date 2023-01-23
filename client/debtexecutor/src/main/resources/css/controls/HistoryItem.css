@@ -2,12 +2,32 @@
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-padding: 10px 15px;
+    -fx-min-width: 400px;
+    -fx-spacing: 5px;
+}
+
+.card__header {
+    -fx-alignment: center-left;
+}
+
+.card__title {
+    -fx-min-width: 200;
+    -fx-wrap-text: true;
 }
 
 .card__group,
 .card__category {
     -fx-padding: 5px 10px;
     -fx-background-radius: 25px;
+}
+
+.card__user {
+    -fx-wrap-text: true;
+}
+
+.card__paid-for {
+    -fx-alignment: bottom-center;
+    -fx-spacing: 10px;
 }
 
 .card__group.hidden {
@@ -17,6 +37,8 @@
 .card__body {
     -fx-border-style: solid none solid none;
     -fx-padding: 5px 0;
+    -fx-spacing: 10px;
+    -fx-alignment: bottom-center;
 }
 
 .card__date {

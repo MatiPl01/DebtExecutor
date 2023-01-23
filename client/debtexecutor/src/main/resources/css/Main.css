@@ -1,3 +1,27 @@
+.main {
+    -fx-pref-width: 600px;
+    -fx-pref-height: 400px;
+}
+
+.main__top {
+    -fx-pref-height: 36px;
+}
+
+.main__center {
+    -fx-alignment: center;
+}
+
+.main__left-side {
+    -fx-max-width: 400px;
+    -fx-min-width: 200px;
+    -fx-min-height: 0;
+}
+
+.main__right-side {
+    -fx-min-height: 0;
+    -fx-min-width: 0;
+}
+
 .main__view-header {
     -fx-border-width: 2px;
     -fx-border-style: solid none solid none;

@@ -6,28 +6,31 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
-<VBox alignment="CENTER" minWidth="300.0" styleClass="group-expense"
+
+<VBox styleClass="group-expense"
       stylesheets="@../../css/views/CreateGroupExpenseView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createGroupExpense.CreateGroupExpenseViewController">
-    <VBox styleClass="group-expense__inputs">
-        <InputField fx:id="titleInput" label="Title"/>
-        <InputField fx:id="amountInput" label="Amount" type="money"/>
+    <VBox styleClass="group-expense__content">
+        <VBox styleClass="group-expense__inputs">
+            <InputField fx:id="titleInput" label="Title"/>
+            <InputField fx:id="amountInput" label="Amount" type="money"/>
+        </VBox>
+        <VBox styleClass="group-expense__select-lists">
+            <VBox styleClass="group-expense__select-list-group">
+                <Label styleClass="color-text-primary" text="Select payer:"/>
+                <ListView fx:id="payerSelectList"/>
+            </VBox>
+            <VBox styleClass="group-expense__select-list-group">
+                <Label styleClass="color-text-primary" text="Select group:"/>
+                <ListView fx:id="groupSelectList"/>
+            </VBox>
+            <VBox styleClass="group-expense__select-list-group">
+                <Label styleClass="color-text-primary" text="Select category:"/>
+                <ListView fx:id="categorySelectList"/>
+            </VBox>
+        </VBox>
+        <Button mnemonicParsing="false" onAction="#onSubmit"
+                styleClass="button--primary" text="SUBMIT"/>
     </VBox>
-    <VBox styleClass="group-expense__select-lists">
-        <VBox spacing="10.0">
-            <Label styleClass="color-text-primary" text="Select payer:"/>
-            <ListView fx:id="payerSelectList"/>
-        </VBox>
-        <VBox spacing="10.0">
-            <Label styleClass="color-text-primary" text="Select group:"/>
-            <ListView fx:id="groupSelectList"/>
-        </VBox>
-        <VBox spacing="10.0">
-            <Label styleClass="color-text-primary" text="Select category:"/>
-            <ListView fx:id="categorySelectList"/>
-        </VBox>
-    </VBox>
-    <Button mnemonicParsing="false" onAction="#onSubmit"
-            styleClass="button--primary" text="SUBMIT"/>
 </VBox>

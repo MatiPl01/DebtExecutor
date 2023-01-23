@@ -7,13 +7,19 @@
 
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
 
-<VBox alignment="CENTER" spacing="20.0" styleClass="sign-in-form"
+<?import java.lang.String?>
+<VBox styleClass="sign-in-form"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.auth.SignInFormController">
     <stylesheets>
         <URL value="@../../css/auth/SignInForm.css"/>
     </stylesheets>
-    <Label styleClass="h2" text="Sign in"/>
+    <Label text="Sign in">
+        <styleClass>
+            <String fx:value="h2" />
+            <String fx:value="heading" />
+        </styleClass>
+    </Label>
     <VBox alignment="CENTER">
         <InputField label="Login" fx:id="loginInput"/>
     </VBox>

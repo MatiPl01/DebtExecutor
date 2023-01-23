@@ -1,0 +1,4 @@
+.balance-item__amount-wrapper {
+    -fx-alignment: bottom-right;
+    -fx-spacing: 5px;
+}

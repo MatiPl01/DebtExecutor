@@ -1,15 +1,5 @@
-/* TODO - add more styles */
-
-.sort {
-
-}
-
 .sort__label {
     -fx-padding: 0 0 5px 0;
-}
-
-.sort__combobox {
-
 }
 
 .sort__combobox--sort-by {

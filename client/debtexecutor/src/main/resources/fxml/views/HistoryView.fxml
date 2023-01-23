@@ -11,23 +11,25 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ComboBox?>
 
-<VBox alignment="TOP_CENTER" styleClass="history"
+<VBox styleClass="history"
       stylesheets="@../../css/views/HistoryView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.views.tabs.expenseHistory.HistoryViewController">
-    <HBox styleClass="history__header">
-        <VBox>
-            <Label styleClass="history__filter-label" text="Category" />
-            <MultiSelectCombobox text="Filter categories"
-                                 fx:id="categoryFilterCombobox" />
-        </VBox>
-        <Region HBox.hgrow="ALWAYS"/>
-        <Sorting fx:id="sorting" />
-    </HBox>
-    <VBox styleClass="history__content" fx:id="historyWrapper"/>
-    <HBox styleClass="history__footer">
-        <Pagination fx:id="pagination" />
-        <Region HBox.hgrow="ALWAYS"/>
-        <ComboBox fx:id="pageSizeCombobox" styleClass="history__page-size-combobox"/>
-    </HBox>
+    <VBox styleClass="history__content">
+        <HBox>
+            <VBox>
+                <Label styleClass="history__filter-label" text="Category" />
+                <MultiSelectCombobox text="Filter categories"
+                                     fx:id="categoryFilterCombobox" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Sorting fx:id="sorting" />
+        </HBox>
+        <VBox styleClass="history__list" fx:id="historyWrapper"/>
+        <HBox>
+            <Pagination fx:id="pagination" />
+            <Region HBox.hgrow="ALWAYS"/>
+            <ComboBox fx:id="pageSizeCombobox" />
+        </HBox>
+    </VBox>
 </VBox>

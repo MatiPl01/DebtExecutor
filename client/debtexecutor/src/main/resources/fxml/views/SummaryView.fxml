@@ -2,8 +2,9 @@
 
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="summariesWrapper"
-      alignment="TOP_CENTER" styleClass="summary"
+<VBox alignment="TOP_CENTER" styleClass="summary"
       stylesheets="@../../css/views/SummaryView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.edu.agh.debtexecutor.controllers.views.tabs.expenseSummary.SummaryViewController"/>
+      fx:controller="pl.edu.agh.debtexecutor.controllers.views.tabs.expenseSummary.SummaryViewController">
+    <VBox fx:id="summariesWrapper" styleClass="summary__content" />
+</VBox>

@@ -1,7 +1,23 @@
 .user-panel {
     -fx-background-radius: 5px;
+    -fx-pref-width: 200px;
+    -fx-padding: 10px 10px 5px;
 }
 
-.user-image {
+.user-panel__header {
+    -fx-alignment: center-left;
+    -fx-spacing: 10px;
+    -fx-padding: 10px 0 10px 0;
+}
+
+.user-panel__user-image {
     -fx-background-radius: 5px;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;
+    -fx-min-width: 30px;
+}
+
+.user-panel__footer {
+    -fx-alignment: center-left;
+    -fx-padding: 10px 0 10px 0;
 }

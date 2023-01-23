@@ -25,7 +25,7 @@ public abstract class SwitchableViewController {
     protected abstract void onGraphViewSwitch();
 
     private void updateViewSwitch(ViewType prevView) {
-        if (prevView == ViewType.HISTORY_GRAPH || prevView == ViewType.SUMMARY_GRAPH) {
+        if (prevView != ViewType.SUMMARY && prevView != ViewType.HISTORY) {
             viewSwitch.reset();
         }
     }

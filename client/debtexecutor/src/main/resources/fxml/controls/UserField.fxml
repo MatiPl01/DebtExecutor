@@ -5,14 +5,15 @@
 <?import javafx.scene.layout.Pane?>
 <?import java.net.URL?>
 
+<?import java.lang.String?>
 <fx:root xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.layout.HBox" alignment="CENTER_LEFT"
-         spacing="7.5" styleClass="menu-row">
-    <Pane maxHeight="20.0" maxWidth="20.0"
-          minHeight="20.0" minWidth="20.0"
-          prefHeight="20.0" prefWidth="20.0"
-          styleClass="user-image"/>
+         type="javafx.scene.layout.HBox">
+        <styleClass>
+            <String fx:value="user-field" />
+            <String fx:value="menu-row" />
+        </styleClass>
+    <Pane styleClass="user-field__image"/>
     <Label fx:id="userLabel" styleClass="user-label"/>
     <stylesheets>
         <URL value="@../../css/controls/UserField.css"/>

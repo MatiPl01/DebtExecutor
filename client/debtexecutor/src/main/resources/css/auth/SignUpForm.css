@@ -1,5 +1,7 @@
 .sign-up-form {
     -fx-padding: 30px;
+    -fx-spacing: 20px;
+    -fx-alignment: center;
 }
 
 .sign-up-form__inputs {

@@ -8,25 +8,28 @@
 
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
 
+<?import java.lang.String?>
 <VBox styleClass="sign-up-form" xmlns="http://javafx.com/javafx/17"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="pl.edu.agh.debtexecutor.controllers.auth.SignUpFormController" alignment="CENTER" spacing="20.0">
-    <children>
-        <Label styleClass="h2" text="Sign up"/>
-        <VBox styleClass="sign-up-form__inputs">
-            <children>
-                <InputField label="Login" fx:id="loginInput"/>
-                <InputField label="First name" fx:id="firstNameInput"/>
-                <InputField label="Last name" fx:id="lastNameInput"/>
-            </children>
-        </VBox>
-        <Button mnemonicParsing="false" onAction="#onSignUp"
-                styleClass="button--primary" text="SIGN UP"
-                AnchorPane.bottomAnchor="0.0"
-                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                AnchorPane.topAnchor="0.0"/>
-    </children>
+      fx:controller="pl.edu.agh.debtexecutor.controllers.auth.SignUpFormController">
     <stylesheets>
         <URL value="@../../css/auth/SignUpForm.css"/>
     </stylesheets>
+    <Label text="Sign up">
+        <styleClass>
+            <String fx:value="h2" />
+            <String fx:value="heading" />
+        </styleClass>
+    </Label>
+    <VBox styleClass="sign-up-form__inputs">
+        <InputField label="Login" fx:id="loginInput"/>
+        <InputField label="First name" fx:id="firstNameInput"/>
+        <InputField label="Last name" fx:id="lastNameInput"/>
+    </VBox>
+    <Button mnemonicParsing="false" onAction="#onSignUp"
+            styleClass="button--primary" text="SIGN UP"
+            AnchorPane.bottomAnchor="0.0"
+            AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0"/>
 </VBox>

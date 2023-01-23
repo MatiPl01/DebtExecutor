@@ -3,14 +3,17 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.VBox?>
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
-<VBox alignment="CENTER" minWidth="300.0" spacing="20.0" styleClass="personal-expense"
-      stylesheets="@../../css/views/CreatePersonalExpenseView.css"
+
+<VBox styleClass="category"
+      stylesheets="@../../css/views/CreateCategoryView.css"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createCategory.CreateCategoryViewController">
-    <VBox styleClass="personal-expense__inputs">
-        <InputField fx:id="categoryName" label="Category Name"/>
+    <VBox styleClass="category__content">
+        <VBox styleClass="personal-expense__inputs">
+            <InputField fx:id="categoryName" label="Category Name"/>
+        </VBox>
+        <Button mnemonicParsing="false" onAction="#onSubmit"
+                styleClass="button--primary" text="SUBMIT"/>
     </VBox>
-    <Button mnemonicParsing="false" onAction="#onSubmit"
-            styleClass="button--primary" text="SUBMIT"/>
 </VBox>

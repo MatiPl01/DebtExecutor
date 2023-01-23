@@ -6,26 +6,27 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<fx:root styleClass="balance-item" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="userLabel" text="Jakub Stępień">
-         <styleClass>
-            <String fx:value="balance-item__user" />
-            <String fx:value="h5" />
-         </styleClass></Label>
-      <Region minWidth="10.0" HBox.hgrow="ALWAYS" />
-      <HBox alignment="BOTTOM_RIGHT" spacing="5.0">
-         <children>
-            <Label fx:id="owesLabel" styleClass="balance-item__label" text="owes you" />
-            <Label fx:id="amountLabel" text="80">
-               <styleClass>
-                  <String fx:value="balance-item__amount" />
-                  <String fx:value="h5" />
-               </styleClass></Label>
-         </children>
-      </HBox>
-   </children>
+<fx:root styleClass="balance-item" type="javafx.scene.layout.HBox"
+         xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
-      <URL value="@../../css/controls/SummaryItemBalance.css" />
+      <URL value="@../../css/controls/SummaryItemBalance.css"/>
    </stylesheets>
+   <Label fx:id="userLabel">
+      <styleClass>
+         <String fx:value="balance-item__user"/>
+         <String fx:value="h5"/>
+      </styleClass>
+   </Label>
+   <Region minWidth="10.0" HBox.hgrow="ALWAYS"/>
+   <HBox styleClass="balance-item__amount-wrapper">
+      <Label fx:id="owesLabel" styleClass="balance-item__label"
+             text="owes you"/>
+      <Label fx:id="amountLabel">
+         <styleClass>
+            <String fx:value="balance-item__amount"/>
+            <String fx:value="h5"/>
+         </styleClass>
+      </Label>
+   </HBox>
 </fx:root>

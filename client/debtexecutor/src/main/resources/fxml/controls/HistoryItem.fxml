@@ -6,11 +6,13 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" stylesheets="@../../css/controls/HistoryItem.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <HBox alignment="CENTER_LEFT">
+<fx:root styleClass="card"
+         stylesheets="@../../css/controls/HistoryItem.css"
+         type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <HBox styleClass="card__header">
         <VBox>
-            <Label styleClass="card__label"/>
-            <Label fx:id="expenseTitle" minWidth="200.0" wrapText="true">
+            <Label fx:id="expenseTitle">
                 <styleClass>
                     <String fx:value="card__title"/>
                     <String fx:value="h4"/>
@@ -20,17 +22,17 @@
         <Region HBox.hgrow="ALWAYS"/>
         <Label fx:id="groupName" styleClass="card__group"/>
     </HBox>
-    <HBox alignment="BOTTOM_CENTER" spacing="10.0" styleClass="card__body">
+    <HBox styleClass="card__body">
         <VBox>
             <Label styleClass="card__label" text="Payer"/>
-            <Label fx:id="payerName" wrapText="true">
+            <Label fx:id="payerName">
                 <styleClass>
                     <String fx:value="card__user"/>
                     <String fx:value="h5"/>
                 </styleClass>
             </Label>
         </VBox>
-        <HBox alignment="BOTTOM_CENTER" spacing="10.0">
+        <HBox styleClass="card__paid-for">
             <Label styleClass="card__label" text="paid"/>
             <Label fx:id="expenseAmount">
                 <styleClass>
@@ -42,7 +44,7 @@
         </HBox>
         <VBox>
             <Label styleClass="card__label" text="Payee"/>
-            <Label fx:id="payeeName" wrapText="true">
+            <Label fx:id="payeeName">
                 <styleClass>
                     <String fx:value="card__user"/>
                     <String fx:value="h5"/>
@@ -50,7 +52,7 @@
             </Label>
         </VBox>
     </HBox>
-    <HBox alignment="CENTER">
+    <HBox>
         <Label fx:id="expenseDate" styleClass="card__date"
                text="2022-09-01 22:10:11"/>
         <Region HBox.hgrow="ALWAYS"/>

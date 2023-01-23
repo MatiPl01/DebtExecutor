@@ -7,25 +7,27 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root alignment="CENTER" styleClass="sort" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" styleClass="sort" type="javafx.scene.layout.HBox"
+         xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../../css/controls/Sorting.css" />
+        <URL value="@../../css/controls/Sorting.css"/>
     </stylesheets>
     <VBox>
-        <Label styleClass="sort__label" text="Sort by" />
+        <Label styleClass="sort__label" text="Sort by"/>
         <ComboBox fx:id="sortByCombobox">
             <styleClass>
-                <String fx:value="sort__combobox" />
-                <String fx:value="sort__combobox--sort-by" />
+                <String fx:value="sort__combobox"/>
+                <String fx:value="sort__combobox--sort-by"/>
             </styleClass>
         </ComboBox>
     </VBox>
     <VBox>
-        <Label styleClass="sort__label" text="Sort direction" />
+        <Label styleClass="sort__label" text="Sort direction"/>
         <ComboBox fx:id="sortDirectionCombobox">
             <styleClass>
-                <String fx:value="sort__combobox" />
-                <String fx:value="sort__combobox--sort-direction" />
+                <String fx:value="sort__combobox"/>
+                <String fx:value="sort__combobox--sort-direction"/>
             </styleClass>
         </ComboBox>
     </VBox>

@@ -1,25 +1,77 @@
-/*TODO - fix scrollbar*/
-
 * {
     -fx-c-white: #fff;
     -fx-c-black: #000;
 
     /* Gray */
+    -fx-c-gray-light-0: #F0F0F0;
     -fx-c-gray-light-1: #E0E0E0;
     -fx-c-gray-light-2: #B0B0BA;
+    -fx-c-gray-light-3: #909090;
 
+    -fx-c-gray-dark-0: #0F0F0F;
     -fx-c-gray-dark-1: #1B1D21;
     -fx-c-gray-dark-2: #272727;
     -fx-c-gray-dark-3: #383838;
 
     /* Primary */
-    -fx-c-primary: #1E3337;
-    /*-fx-c-primary-light: #014B59;*/
+    -fx-c-primary-light: #397C82;
+    -fx-c-primary: #2B545B;
     -fx-c-primary-dark: #1A292C;
 
     /* Secondary */
     -fx-c-secondary: #E0A578;
     -fx-c-secondary-dark: #BD8377;
+}
+
+/*
+ * TYPOGRAPHY
+ */
+.heading--white {
+    -fx-text-fill: -fx-c-white;
+}
+
+.heading {
+    -fx-text-fill: -fx-c-white;
+}
+
+/*
+ * BUTTONS
+ */
+.button--primary {
+    -fx-background-color: -fx-c-primary-dark;
+    -fx-text-fill: -fx-c-white;
+}
+
+.button--primary:hover {
+    -fx-background-color: -fx-c-primary-light;
+}
+
+.button--white {
+    -fx-background-color: -fx-c-black;
+    -fx-text-fill: -fx-c-white;
+}
+
+.button--white:hover {
+    -fx-background-color: -fx-c-gray-dark-2;
+}
+
+.button--gray {
+    -fx-background-color: -fx-c-gray-dark-1;
+    -fx-text-fill: -fx-c-white;
+}
+
+.button--gray:hover {
+    -fx-background-color: -fx-c-gray-dark-3;
+}
+
+.button--transparent-white {
+    -fx-border-color: -fx-c-black;
+    -fx-text-fill: -fx-c-black;
+}
+
+.button--transparent-white:hover {
+    -fx-background-color: -fx-c-black;
+    -fx-text-fill: -fx-c-white;
 }
 
 /*
@@ -34,52 +86,327 @@
 }
 
 .background-primary {
-    -fx-background-color: -fx-c-gray-dark-1;
+    -fx-background-color: -fx-c-gray-dark-0;
+}
+
+.color-text-primary {
+    -fx-text-fill: -fx-c-white;
 }
 
 /*
- * BUTTONS
+ * BUILT-INS OVERRIDE
  */
-.button-gray {
-    -fx-background-color: -fx-c-white;
-    -fx-text-fill: -fx-c-black;
+/* Titled pane */
+.titled-pane > .title > .arrow-button .arrow {
+    -fx-background-color: transparent, -fx-c-gray-light-2;
 }
 
-.button-gray:hover {
+/* Scrollbar */
+.scroll-bar {
+    -fx-background-color: -fx-c-gray-dark-1;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-background-color: -fx-c-gray-dark-1;
+    -fx-border-color: -fx-c-gray-dark-3;
+}
+
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button,
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: -fx-c-gray-dark-1;
+    -fx-border-color: -fx-c-gray-dark-1;
+}
+
+.scroll-bar:horizontal .increment-arrow,
+.scroll-bar:horizontal .decrement-arrow,
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow {
+    -fx-text-fill: -fx-c-white;
     -fx-background-color: -fx-c-gray-light-1;
 }
 
-.button-secondary {
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-c-gray-light-3;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: -fx-c-gray-light-2;
+}
+
+.scroll-bar:horizontal .thumb:pressed,
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: -fx-c-gray-light-3;
+}
+
+/* Scroll pane */
+.scroll-pane > .corner {
+    -fx-background-color: -fx-c-gray-dark-1;
+}
+
+/* Split pane */
+.split-pane-divider {
+    -fx-background-color: -fx-c-gray-dark-3;
+}
+
+/* List view */
+.list-view {
+    -fx-background-color: -fx-c-black;
+}
+
+.list-view .list-cell:hover {
     -fx-background-color: -fx-c-secondary-dark;
     -fx-text-fill: -fx-c-white;
 }
 
-.button-secondary:hover {
+.list-view .list-cell {
+    -fx-text-fill: -fx-c-gray-light-2;
+    -fx-background-color: -fx-c-gray-dark-1;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: -fx-c-gray-dark-2;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: -fx-c-secondary;
+    -fx-text-fill: -fx-c-white;
+}
+
+/* Combobox */
+/* TODO - change combobox label color */
+.combo-box-base {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-black;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: -fx-c-black;
+    -fx-text-fill: -fx-c-gray-light-1;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: -fx-c-secondary-dark;
+    -fx-text-fill: -fx-c-white;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: -fx-c-secondary;
+    -fx-text-fill: -fx-c-white;
+}
+
+.combo-box-base:showing,
+.combo-box-base:focused {
+    -fx-color: -fx-c-black;
+}
+
+/* Menu button */
+.menu-button, .combo-box-base:focused {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;
+}
+
+.context-menu {
+    -fx-background-color: -fx-c-black;
+}
+
+/*
+ * CONTROLS
+ */
+/* Graph visualization */
+/* TODO - fix labels in dark mode */
+.vertex {
+    -fx-stroke: -fx-c-primary-dark;
+    -fx-fill: -fx-c-primary;
+}
+
+.edge, .arrow {
+    -fx-stroke: -fx-c-secondary;
+}
+
+/* Group field */
+.group-field__image {
     -fx-background-color: -fx-c-secondary;
 }
 
-/*
- * TYPOGRAPHY
- */
-.heading-primary {
+.group-field__counter {
+    -fx-background-color: -fx-c-gray-dark-3;
+    -fx-border-color: -fx-c-black;
+}
+
+.group-field__counter Label {
     -fx-text-fill: -fx-c-white;
 }
 
-.heading-white {
+/* History item */
+.card {
+    -fx-background-color: -fx-c-gray-dark-1;
+}
+
+.card__body {
+    -fx-border-color: -fx-c-gray-dark-3;
+}
+
+.card__label, .card__date, .card__details {
+    -fx-text-fill: -fx-c-gray-light-3;
+}
+
+.card__title, .card__user {
     -fx-text-fill: -fx-c-white;
 }
 
+.card__amount {
+    -fx-text-fill: -fx-c-primary-light;
+}
+
+.card__amount.negative {
+    -fx-text-fill: -fx-c-secondary;
+}
+
+.card__group {
+    -fx-background-color: linear-gradient(to top right, -fx-c-primary, -fx-c-primary-dark);
+    -fx-text-fill: -fx-c-white;
+}
+
+.card__category {
+    -fx-background-color: linear-gradient(to top right, -fx-c-secondary, -fx-c-secondary-dark);
+    -fx-text-fill: -fx-c-white;
+}
+
+/* Input field */
+.input-field__input {
+    -fx-text-fill: -fx-c-white;
+}
+
+.input-field-background-color-blur {
+    -fx-background-color: -fx-c-gray-light-2 !important;
+}
+
+.input-field-background-color-focus {
+    -fx-background-color: -fx-c-primary-light !important;
+}
+
+.input-field-text-color-blur {
+    -fx-text-fill: -fx-c-gray-light-2 !important;
+}
+
+.input-field-text-color-focus {
+    -fx-text-fill: -fx-c-primary-light !important;
+}
+
+/* Multiselect combobox */
+.multiselect, .multiselect__item {
+    -fx-background-color: -fx-c-black;
+}
+
+.multiselect__item:hover {
+    -fx-background-color: -fx-c-secondary-dark;
+}
+
+.multiselect__item Label {
+    -fx-text-fill: -fx-c-white !important;
+}
+
+.multiselect__item:hover Label {
+    -fx-text-fill: -fx-c-bleck;
+}
+
+.multiselect__item:selected {
+    -fx-background-color: -fx-c-secondary;
+}
+
+.multiselect__item:selected Label {
+    -fx-text-fill: -fx-c-black !important;
+}
+
+.multiselect__item-label {
+    -fx-text-fill: -fx-c-gray-dark-1;
+}
+
+/* Pagination */
+.pagination {
+    -fx-background-color: -fx-c-gray-dark-1;
+}
+
+.pagination__button {
+    -fx-background-color: -fx-c-black;
+    -fx-text-fill: -fx-c-gray-light-2;
+}
+
+.pagination__slash {
+    -fx-text-fill: -fx-c-gray-light-2;
+}
+
+.pagination__current {
+    -fx-text-fill: -fx-c-gray-light-1;
+}
+
+.pagination__total {
+    -fx-text-fill: -fx-c-primary-light;
+}
+
+/* Sorting */
+.sort__label {
+    -fx-text-fill: -fx-c-gray-light-1;
+}
+
+/* Summary item balance */
+.balance-item__user {
+    -fx-text-fill: -fx-c-white;
+}
+
+.balance-item__label {
+    -fx-text-fill: -fx-c-gray-light-3;
+}
+
+.balance-item__amount {
+    -fx-text-fill: -fx-c-primary-light;
+}
+
+.balance-item__amount.negative {
+    -fx-text-fill: -fx-c-secondary;
+}
+
+/* User field */
+.user-field__image {
+    -fx-background-color: -fx-c-secondary;
+}
+
+/* View switch */
+.view-switch__button {
+    -fx-background-color: -fx-c-black;
+    -fx-border-color: -fx-c-gray-dark-2;
+    -fx-text-fill: -fx-c-white;
+}
+
+.view-switch__button:hover {
+    -fx-text-fill: -fx-c-black;
+    -fx-background-color: -fx-c-primary-light;
+}
+
+.view-switch__button:selected {
+    -fx-text-fill: -fx-c-white;
+    -fx-background-color: -fx-c-primary;
+}
+
 /*
- * MENU
+ * LAYOUT
  */
+/* Side panel */
 .menu-row:hover {
     -fx-background-color: -fx-c-secondary-dark;
 }
 
-.menu-option {
+.menu-option, .group-label, .user-label {
     -fx-text-fill: -fx-c-gray-light-2;
 }
 
+.menu-row:hover .user-label,
+.menu-row:hover .group-label,
 .menu-row:hover .menu-option {
     -fx-text-fill: -fx-c-white;
 }
@@ -88,69 +415,86 @@
     -fx-background-color: -fx-c-secondary;
 }
 
+.menu-row:selected .user-label,
+.menu-row:selected .group-label,
 .menu-row:selected .menu-option {
     -fx-text-fill: -fx-c-white;
 }
 
-/* TODO - remove temporary style below */
-.group-image, .user-image {
+/* Top bar */
+.top-bar {
+    -fx-background-color: -fx-c-primary-dark;
+}
+
+.top-bar__user-image {
     -fx-background-color: -fx-c-secondary;
 }
 
-.group-counter {
-    -fx-background-color: -fx-c-gray-dark-3;
-    -fx-border-color: -fx-c-black;
+/* User panel */
+.user-panel {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
 }
 
-.group-counter Label {
-    -fx-text-fill: -fx-c-white;
-}
-
-/*
- * TITLED PANE
- */
-.titled-pane > .title > .arrow-button .arrow {
-    -fx-background-color: transparent, -fx-c-gray-light-2;
-}
-
-.titled-pane:hover {
-    -fx-text-fill: -fx-c-white;
-}
-
-.titled-pane > .title:hover {
-    -fx-background-color: -fx-c-secondary-dark;
-}
-
-.titled-pane > .title:hover > .arrow-button .arrow {
-    -fx-background-color: transparent, -fx-c-white;
-}
-
-/*
- * INPUT FIELD
- */
-.input-field-background-color-blur {
-    -fx-background-color: -fx-c-gray-dark-3;
-}
-
-.input-field-background-color-focus {
+.user-panel__user-image {
     -fx-background-color: -fx-c-secondary;
 }
 
-.input-field-text-color-blur {
-    -fx-text-fill: -fx-c-gray-dark-3;
+/*
+ * VIEWS
+ */
+/* Auth */
+.auth__side--left {
+    -fx-background-color: -fx-c-black;
 }
 
-.input-field-text-color-focus {
-    -fx-text-fill: -fx-c-secondary;
+.auth__side--right {
+    -fx-background-color: linear-gradient(to top right, -fx-c-primary-light, -fx-c-primary);
+}
+
+.auth__heading--left {
+    -fx-text-fill: -fx-c-primary-light;
+}
+
+.auth__heading--right {
+    -fx-text-fill: -fx-c-black;
+}
+
+.auth__heading--sub {
+    -fx-text-fill: -fx-c-gray-dark-1;
+}
+
+/* Main */
+.main__view-header {
+    -fx-background-color: -fx-c-gray-dark-1;
+    -fx-border-color: -fx-c-gray-dark-3;
+}
+
+.main__view-header Label {
+    -fx-text-fill: -fx-c-white;
+}
+
+/* Expense history */
+.history__filter-label {
+    -fx-text-fill: -fx-c-gray-light-3;
 }
 
 /*
  * OTHERS
  */
 .separator {
-    -fx-background-color: -fx-c-gray-dark-3;
+    -fx-background-color: -fx-c-dark-dark-3;
 }
 
-.auth-view__background-gradient {
-    -fx-background-color: linear-gradient(to top right, -fx-c-primary, -fx-c-primary-dark);
+/* Dialog */
+.dialog, .dialog *.header-panel {
+    -fx-background-color: -fx-c-gray-dark-0;
+}
+
+.dialog > *.button-bar > *.container {
+    -fx-background-color: -fx-c-gray-dark-1;
+}
+
+.dialog .button {
+    -fx-background-color: -fx-c-black;
 }

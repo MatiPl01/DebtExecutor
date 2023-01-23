@@ -5,15 +5,21 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<fx:root alignment="CENTER" styleClass="pagination" type="javafx.scene.layout.HBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root styleClass="pagination" type="javafx.scene.layout.HBox"
+         xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
-        <URL value="@../../css/controls/Pagination.css" />
+        <URL value="@../../css/controls/Pagination.css"/>
     </stylesheets>
-    <Button fx:id="firstPageButton" mnemonicParsing="false" styleClass="pagination__button" text="&lt;&lt;" />
-    <Button fx:id="prevPageButton" mnemonicParsing="false" styleClass="pagination__button" text="&lt;" />
-   <Label fx:id="currentPageNumber" alignment="CENTER_RIGHT" styleClass="pagination__total" text="1" />
-    <Label styleClass="pagination__slash" text="/" />
-    <Label fx:id="totalPagesNumber" styleClass="pagination__total" text="2" />
-    <Button fx:id="nextPageButton" mnemonicParsing="false" styleClass="pagination__button" text="&gt;" />
-    <Button fx:id="lastPageButton" mnemonicParsing="false" styleClass="pagination__button" text="&gt;&gt;" />
+    <Button fx:id="firstPageButton" mnemonicParsing="false"
+            styleClass="pagination__button" text="&lt;&lt;"/>
+    <Button fx:id="prevPageButton" mnemonicParsing="false"
+            styleClass="pagination__button" text="&lt;"/>
+    <Label fx:id="currentPageNumber" styleClass="pagination__current" text="1"/>
+    <Label styleClass="pagination__slash" text="/"/>
+    <Label fx:id="totalPagesNumber" styleClass="pagination__total" text="2"/>
+    <Button fx:id="nextPageButton" mnemonicParsing="false"
+            styleClass="pagination__button" text="&gt;"/>
+    <Button fx:id="lastPageButton" mnemonicParsing="false"
+            styleClass="pagination__button" text="&gt;&gt;"/>
 </fx:root>

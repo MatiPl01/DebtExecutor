@@ -1,13 +1,28 @@
-.group-image {
-    -fx-background-radius: 5px;
+.group-field {
+    -fx-alignment: center-left;
+    -fx-spacing: 8px;
 }
 
-.group-counter {
+.group-field__image {
+    -fx-background-radius: 5px;
+    -fx-pref-height: 20px;
+    -fx-pref-width: 20px;
+    -fx-min-width: 20px;
+}
+
+.group-field__counter {
     -fx-background-radius: 3px;
     -fx-border-radius: 3px;
     -fx-border-width: 1px;
+    -fx-alignment: center;
+    -fx-min-width: 13px;
+    -fx-min-height: 13px;
+    -fx-pref-width: 13px;
+    -fx-pref-height: 13px;
+    -fx-max-width: 20px;
+    -fx-max-height: 13px;
 }
 
-.group-counter Label {
+.group-field__counter Label {
     -fx-font-size: 11px;
 }

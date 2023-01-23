@@ -1,6 +1,7 @@
 package pl.edu.agh.debtexecutor.controllers.core;
 
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import pl.edu.agh.debtexecutor.controllers.views.tabs.SwitchableViewController;
@@ -48,6 +49,10 @@ public class ViewController {
         headerContent.getChildren().clear();
         wrapper.getChildren().clear();
         Pane pane = loadView(newView);
+        AnchorPane.setTopAnchor(pane, 0.0);
+        AnchorPane.setLeftAnchor(pane, 0.0);
+        AnchorPane.setRightAnchor(pane, 0.0);
+        AnchorPane.setBottomAnchor(pane, 0.0);
         wrapper.getChildren().add(pane);
         label.setText(newView.toString());
         activeView = newView;

@@ -9,40 +9,38 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root prefWidth="400.0" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <HBox styleClass="card__header">
-      <children>
-          <Label fx:id="userLabel" text="Firstname Lastname">
+<fx:root styleClass="card"
+         type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/17"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <HBox styleClass="card__header">
+        <Label fx:id="userLabel" text="Firstname Lastname">
             <styleClass>
-               <String fx:value="card__user" />
-               <String fx:value="h4" />
+                <String fx:value="card__user"/>
+                <String fx:value="h4"/>
             </styleClass>
-         </Label>
-         <Region HBox.hgrow="ALWAYS" />
-         <HBox alignment="BOTTOM_RIGHT" spacing="5.0">
-            <children>
-               <Label fx:id="totalBalanceLabel" text="+80.00">
-                  <styleClass>
-                     <String fx:value="card__amount" />
-                     <String fx:value="h4" />
-                  </styleClass>
-               </Label>
-               <Label styleClass="card__label" text="in total" />
-            </children>
-         </HBox>
-      </children>
-   </HBox>
-    <VBox fx:id="balancesWrapper" />
-   <TitledPane expanded="false" styleClass="card__details" text="Details">
-     <content>
-       <AnchorPane>
-            <children>
-               <VBox fx:id="detailsWrapper" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            </children>
-         </AnchorPane>
-     </content>
-   </TitledPane>
+        </Label>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox styleClass="card__total">
+            <Label fx:id="totalBalanceLabel">
+                <styleClass>
+                    <String fx:value="card__amount"/>
+                    <String fx:value="h4"/>
+                </styleClass>
+            </Label>
+            <Label styleClass="card__label" text="in total"/>
+        </HBox>
+    </HBox>
+    <VBox fx:id="balancesWrapper"/>
+    <TitledPane styleClass="card__details" expanded="false" text="Details">
+        <AnchorPane>
+            <VBox fx:id="detailsWrapper"
+                  AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0"/>
+        </AnchorPane>
+    </TitledPane>
     <stylesheets>
-      <URL value="@../../css/controls/SummaryItem.css" />
+        <URL value="@../../css/controls/SummaryItem.css"/>
     </stylesheets>
 </fx:root>

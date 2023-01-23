@@ -55,7 +55,7 @@ public class GraphVisualization extends AnchorPane {
         graphView.setPrefHeight(360);
         graphView.setAutomaticLayout(true);
 
-        new Timeout(graphView::init, 200);
+        new Timeout(graphView::init, 0);
     }
 
     private Graph<String, String> buildGraph() {
@@ -68,8 +68,8 @@ public class GraphVisualization extends AnchorPane {
         for (int i = 0; i < graphModel.getEdges().size(); i++) {
             Edge edge = edges.get(i);
             graph.insertEdge(
-                    edge.getFromVertex().toString(),
                     edge.getToVertex().toString(),
+                    edge.getFromVertex().toString(),
                     String.format("%s (%d)", edge.getAmount(), i + 1)
             );
         }

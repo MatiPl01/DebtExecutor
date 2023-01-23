@@ -24,9 +24,9 @@ public class SummaryItemBalance extends HBox {
         amountLabel.setText(amount.toString());
 
         if (isPayee) {
-            owesLabel.setText("owes you");
+            owesLabel.setText("is owed");
         } else {
-            owesLabel.setText("you owe");
+            owesLabel.setText("owes to");
             amountLabel.getStyleClass().add(NEGATIVE_AMOUNT_CLASS);
         }
     }

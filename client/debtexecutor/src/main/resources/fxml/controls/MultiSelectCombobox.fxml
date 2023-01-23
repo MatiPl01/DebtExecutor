@@ -13,7 +13,8 @@
          xmlns:fx="http://javafx.com/fxml/1" styleClass="multiselect">
    <items>
       <CustomMenuItem mnemonicParsing="false" text="Unspecified Action"
-                      styleClass="multiselect__clear-item" hideOnClick="false">
+                      styleClass="multiselect__clear-item"
+                      hideOnClick="false">
          <content>
             <HBox>
                <Button mnemonicParsing="false" text="Clear"

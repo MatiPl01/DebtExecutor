@@ -1,5 +1,3 @@
-/*TODO - fix scrollbar*/
-
 * {
     -fx-c-white: #fff;
     -fx-c-black: #000;
@@ -74,9 +72,6 @@
     -fx-text-fill: -fx-c-black;
 }
 
-
-
-
 /*
  * UTILITY CLASSES
  */
@@ -92,126 +87,120 @@
     -fx-background-color: -fx-c-white;
 }
 
+.color-text-primary {
+    -fx-text-fill: -fx-c-black;
+}
+
 /*
- * MENU COLORS
+ * BUILT-INS OVERRIDE
  */
-.menu-row:hover {
+/* Combobox */
+.combo-box-popup .list-view .list-cell:hover {
     -fx-background-color: -fx-c-secondary-dark;
 }
 
-.menu-option, .group-label, .user-label {
-    -fx-text-fill: -fx-c-gray-light-2;
-}
-
-.menu-row:hover .user-label,
-.menu-row:hover .group-label,
-.menu-row:hover .menu-option {
-    -fx-text-fill: -fx-c-white;
-}
-
-.menu-row:selected {
+.combo-box-popup .list-view .list-cell:selected {
     -fx-background-color: -fx-c-secondary;
 }
 
-.menu-row:selected .user-label,
-.menu-row:selected .group-label,
-.menu-row:selected .menu-option {
-    -fx-text-fill: -fx-c-white;
+.menu-button:focused, .combo-box-base:focused {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;
 }
 
-/* TODO - remove temporary style below */
-.group-image, .user-image {
-    -fx-background-color: -fx-c-secondary;
-}
-
-.group-counter {
-    -fx-background-color: -fx-c-gray-dark-3;
-    -fx-border-color: -fx-c-black;
-}
-
-.group-counter Label {
-    -fx-text-fill: -fx-c-white;
-}
-
-/*
- * TITLED PANE
- */
+/* Titled pane */
 .titled-pane > .title > .arrow-button .arrow {
     -fx-background-color: transparent, -fx-c-gray-light-2;
 }
 
-.titled-pane:hover {
-    -fx-text-fill: -fx-c-white;
+/* Scrollbar */
+.scroll-bar {
+    -fx-background-color: -fx-c-gray-light-1;
 }
 
-.titled-pane > .title:hover {
-    -fx-background-color: -fx-c-secondary-dark;
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-background-color: -fx-c-gray-lighr-1;
+    -fx-border-color: transparent;
 }
 
-.titled-pane > .title:hover > .arrow-button .arrow {
-    -fx-background-color: transparent, -fx-c-white;
+.scroll-bar:horizontal .increment-button,
+.scroll-bar:horizontal .decrement-button,
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: -fx-c-gray-light-1;
+    -fx-border-color: transparent;
 }
 
-/*
- * INPUT FIELD
- */
-.input-field-background-color-blur {
-    -fx-background-color: -fx-c-gray-light-2 !important;
+.scroll-bar:horizontal .increment-arrow,
+.scroll-bar:horizontal .decrement-arrow,
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow {
+    -fx-text-fill: -fx-c-black;
+    -fx-background-color: -fx-c-gray-dark-1;
 }
 
-.input-field-background-color-focus {
-    -fx-background-color: -fx-c-primary !important;
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: -fx-c-gray-light-3;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
 }
 
-.input-field-text-color-blur {
-    -fx-text-fill: -fx-c-gray-light-2 !important;
-}
-
-.input-field-text-color-focus {
-    -fx-text-fill: -fx-c-primary !important;
-}
-
-/*
- * OTHERS
- */
-.separator {
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
     -fx-background-color: -fx-c-gray-dark-3;
 }
 
-
-
-.auth__side--left {
-    -fx-background-color: -fx-c-white;
+.scroll-bar:horizontal .thumb:pressed,
+.scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: -fx-c-gray-light-3;
 }
 
-.auth__side--right {
-    -fx-background-color: linear-gradient(to top right, -fx-c-primary, -fx-c-primary-dark);
+/* Scroll pane */
+.scroll-pane > .corner {
+    -fx-background-color: -fx-c-gray-light-1;
 }
 
-.auth__heading--left {
-    -fx-text-fill: -fx-c-primary;
-}
-
-.auth__heading--right {
+/* List view */
+.list-view .list-cell:selected {
+    -fx-background-color: -fx-c-secondary;
     -fx-text-fill: -fx-c-white;
 }
 
-.auth__heading--sub {
-    -fx-text-fill: -fx-c-gray-light-1;
+.list-view .list-cell:hover {
+    -fx-background-color: -fx-c-secondary-dark;
+    -fx-text-fill: -fx-c-white;
 }
 
-
-.main__view-header {
-    -fx-border-color: -fx-c-gray-light-2;
+/*
+ * CONTROLS
+ */
+/* Graph visualization */
+.vertex {
+    -fx-stroke: -fx-c-primary-dark;
+    -fx-fill: -fx-c-primary;
 }
 
-
-.history {
-    /*-fx-background-color: -fx-gray-light-2;*/
+.edge, .arrow {
+    -fx-stroke: -fx-c-secondary;
 }
 
+/* Group field */
+.group-field__image {
+    -fx-background-color: -fx-c-secondary;
+}
+
+.group-field__counter {
+    -fx-background-color: -fx-c-gray-dark-3;
+    -fx-border-color: -fx-c-black;
+}
+
+.group-field__counter Label {
+    -fx-text-fill: -fx-c-white;
+}
+
+/* History item */
 .card {
-    /*-fx-background-color: -fx-c-white;*/
     -fx-background-color: -fx-c-gray-light-0;
 }
 
@@ -245,7 +234,76 @@
     -fx-text-fill: -fx-c-white;
 }
 
+/* Input field */
+.input-field-background-color-blur {
+    -fx-background-color: -fx-c-gray-light-2 !important;
+}
 
+.input-field-background-color-focus {
+    -fx-background-color: -fx-c-primary !important;
+}
+
+.input-field-text-color-blur {
+    -fx-text-fill: -fx-c-gray-light-2 !important;
+}
+
+.input-field-text-color-focus {
+    -fx-text-fill: -fx-c-primary !important;
+}
+
+/* Multiselect combobox */
+.multiselect__item {
+    -fx-background-color: -fx-c-white;
+}
+
+.multiselect__item:hover {
+    -fx-background-color: -fx-c-secondary-dark;
+}
+
+.multiselect__item:hover Label {
+    -fx-text-fill: -fx-c-white;
+}
+
+.multiselect__item:selected {
+    -fx-background-color: -fx-c-secondary;
+}
+
+.multiselect__item:selected Label {
+    -fx-text-fill: -fx-c-white;
+}
+
+.multiselect__item-label {
+    -fx-text-fill: -fx-c-gray-dark-1;
+}
+
+/* Pagination */
+.pagination {
+    -fx-background-color: -fx-c-gray-light-0;
+}
+
+.pagination__button {
+    -fx-background-color: -fx-c-white;
+    -fx-text-fill: -fx-c-gray-dark-2;
+}
+
+.pagination__slash {
+    -fx-text-fill: -fx-c-gray-dark-2;
+}
+
+.pagination__current {
+    -fx-text-fill: -fx-c-gray-dark-1;
+}
+
+.pagination__total {
+    -fx-text-fill: -fx-c-primary;
+}
+
+/* Sorting */
+.sort__label {
+    -fx-text-fill: -fx-c-gray-dark-3;
+}
+
+/* Summary item balance */
 .balance-item__user {
     -fx-text-fill: -fx-c-black;
 }
@@ -262,53 +320,12 @@
     -fx-text-fill: -fx-c-secondary-dark;
 }
 
-
-.color-text-primary {
-    -fx-text-fill: -fx-c-black;
-}
-
-
-.list-view {
-    -fx-selection-bar: -fx-c-secondary-dark;
-    -fx-selection-bar-non-focused: -fx-c-secondary;
-}
-
-.pagination {
-    -fx-background-color: -fx-c-gray-light-0;
-}
-
-.pagination__button {
-    -fx-background-color: -fx-c-white;
-    -fx-text-fill: -fx-c-gray-dark-2;
-}
-
-.pagination__slash {
-    -fx-text-fill: -fx-c-gray-dark-2;
-}
-
-.pagination__total {
-    -fx-text-fill: -fx-c-primary;
-}
-
-
-.sort__label {
-    -fx-text-fill: -fx-c-gray-dark-3;
-}
-
-
-.history__filter-label {
-    -fx-text-fill: -fx-c-gray-dark-3;
-}
-
-.multiselect__item:selected {
+/* User field */
+.user-field__image {
     -fx-background-color: -fx-c-secondary;
 }
 
-.multiselect__item-label {
-    -fx-text-fill: -fx-c-gray-dark-1;
-}
-
-
+/* View switch */
 .view-switch__button {
     -fx-background-color: -fx-c-white;
     -fx-border-color: -fx-c-gray-light-2;
@@ -319,17 +336,103 @@
     -fx-background-color: -fx-c-primary-dark;
 }
 
-.view-switch__button.active {
+.view-switch__button:selected {
     -fx-text-fill: -fx-c-white;
     -fx-background-color: -fx-c-primary;
 }
 
-
-.vertex {
-    -fx-stroke: -fx-c-primary-dark;
-    -fx-fill: -fx-c-primary;
+/*
+ * LAYOUT
+ */
+/* Side panel */
+.menu-row:hover {
+    -fx-background-color: -fx-c-secondary-dark;
 }
 
-.edge, .arrow {
-    -fx-stroke: -fx-c-secondary;
+.menu-option, .group-label, .user-label {
+    -fx-text-fill: -fx-c-gray-light-2;
+}
+
+.menu-row:hover .user-label,
+.menu-row:hover .group-label,
+.menu-row:hover .menu-option {
+    -fx-text-fill: -fx-c-white;
+}
+
+.menu-row:selected {
+    -fx-background-color: -fx-c-secondary;
+}
+
+.menu-row:selected .user-label,
+.menu-row:selected .group-label,
+.menu-row:selected .menu-option {
+    -fx-text-fill: -fx-c-white;
+}
+
+/* Top bar */
+.top-bar {
+    -fx-background-color: -fx-c-primary-dark;
+}
+
+.top-bar__user-image {
+    -fx-background-color: -fx-c-secondary;
+}
+
+/* User panel */
+.user-panel__user-image {
+    -fx-background-color: -fx-c-secondary;
+}
+
+/*
+ * VIEWS
+ */
+/* Auth */
+.auth__side--left {
+    -fx-background-color: -fx-c-white;
+}
+
+.auth__side--right {
+    -fx-background-color: linear-gradient(to top right, -fx-c-primary, -fx-c-primary-dark);
+}
+
+.auth__heading--left {
+    -fx-text-fill: -fx-c-primary;
+}
+
+.auth__heading--right {
+    -fx-text-fill: -fx-c-white;
+}
+
+.auth__heading--sub {
+    -fx-text-fill: -fx-c-gray-light-1;
+}
+
+/* Main */
+.main__view-header {
+    -fx-border-color: -fx-c-gray-light-2;
+}
+
+/* Expense history */
+.history__filter-label {
+    -fx-text-fill: -fx-c-gray-dark-3;
+}
+
+/*
+ * OTHERS
+ */
+.separator {
+    -fx-background-color: -fx-c-gray-dark-3;
+}
+
+/* Dialog */
+.dialog, .dialog *.header-panel {
+    -fx-background-color: -fx-c-gray-light-0;
+}
+
+.dialog > *.button-bar > *.container {
+    -fx-background-color: -fx-c-gray-light-1;
+}
+
+.dialog .button {
+    -fx-background-color: -fx-c-white;
 }

@@ -1,5 +1,6 @@
 package pl.edu.agh.debtexecutor.controls;
 
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -10,7 +11,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ViewSwitch extends HBox implements Initializable {
-    private final static String ACTIVE_CLASS = "active";
+    private final static PseudoClass SELECTED_PSEUDO_CLASS = PseudoClass.getPseudoClass("selected");
     private static final String FXML_PATH = "/fxml/controls/ViewSwitch.fxml";
 
     private Runnable onListViewClick;
@@ -25,7 +26,7 @@ public class ViewSwitch extends HBox implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        listViewButton.getStyleClass().add(ACTIVE_CLASS);
+        listViewButton.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, true);
 
         listViewButton.setOnAction(a -> setButtonActive(listViewButton, true));
         graphViewButton.setOnAction(a -> setButtonActive(graphViewButton, true));
@@ -44,7 +45,7 @@ public class ViewSwitch extends HBox implements Initializable {
     }
 
     private void setButtonActive(Button button, boolean execEvent) {
-        if (button.getStyleClass().contains(ACTIVE_CLASS)) return;
+        if (button.getPseudoClassStates().contains(SELECTED_PSEUDO_CLASS)) return;
 
         Button otherButton;
         Runnable runnable;
@@ -57,8 +58,8 @@ public class ViewSwitch extends HBox implements Initializable {
             runnable = onGraphViewClick;
         }
 
-        button.getStyleClass().add(ACTIVE_CLASS);
-        otherButton.getStyleClass().remove(ACTIVE_CLASS);
+        button.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, true);
+        otherButton.pseudoClassStateChanged(SELECTED_PSEUDO_CLASS, false);
         if (execEvent) runnable.run();
     }
 }

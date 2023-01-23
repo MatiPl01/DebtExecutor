@@ -1,3 +1,11 @@
-.user-image {
+.user-field {
+    -fx-spacing: 8px;
+    -fx-alignment: center-left;
+}
+
+.user-field__image {
     -fx-background-radius: 5px;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+    -fx-min-width: 20px;
 }
