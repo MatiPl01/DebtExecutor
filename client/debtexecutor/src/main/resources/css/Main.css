@@ -22,6 +22,11 @@
     -fx-min-width: 0;
 }
 
+.main__left-side,
+.main__right-side {
+    -fx-border-width: 0;
+}
+
 .main__view-header {
     -fx-border-width: 2px;
     -fx-border-style: solid none solid none;

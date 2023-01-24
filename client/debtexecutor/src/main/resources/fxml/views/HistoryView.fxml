@@ -11,10 +11,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ComboBox?>
 
-<VBox styleClass="history"
-      stylesheets="@../../css/views/HistoryView.css"
+<?import java.lang.String?>
+
+<VBox stylesheets="@../../css/views/HistoryView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.views.tabs.expenseHistory.HistoryViewController">
+    <styleClass>
+        <String fx:value="history"/>
+        <String fx:value="view"/>
+    </styleClass>
     <VBox styleClass="history__content">
         <HBox>
             <VBox>

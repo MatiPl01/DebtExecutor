@@ -8,10 +8,15 @@
 
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
 
-<VBox styleClass="create-group"
-      stylesheets="@../../css/views/CreateGroupView.css"
+<?import java.lang.String?>
+
+<VBox stylesheets="@../../css/views/CreateGroupView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createGroup.CreateGroupViewController">
+    <styleClass>
+        <String fx:value="create-group"/>
+        <String fx:value="view"/>
+    </styleClass>
     <VBox styleClass="create-group__content">
         <InputField label="Group name" fx:id="groupNameInput"/>
         <VBox styleClass="create-group__list-group">

@@ -6,7 +6,7 @@
 
 .top-bar__user-image {
     -fx-background-radius: 5px;
-    -fx-pref-height: 25px;
-    -fx-pref-width: 25px;
-    -fx-min-width: 25px;
+    -fx-pref-height: 20px;
+    -fx-pref-width: 20px;
+    -fx-min-width: 20px;
 }

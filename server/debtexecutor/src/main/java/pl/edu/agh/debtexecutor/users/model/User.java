@@ -62,6 +62,11 @@ public class User {
     }
 
     @Override
+    public String toString() {
+        return String.format("%s %s (%s)", firstName, lastName, login);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (!getClass().isInstance(obj)) return false;
         return id.equals(((User) obj).id);

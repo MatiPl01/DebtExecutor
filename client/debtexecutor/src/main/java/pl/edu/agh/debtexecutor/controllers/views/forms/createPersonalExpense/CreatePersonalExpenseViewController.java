@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.StringJoiner;
 
-// TODO - extract similar code to the abstract class
 @Controller
 public class CreatePersonalExpenseViewController extends FormViewController {
     private final static String FORM_NAME = "Create personal expense";

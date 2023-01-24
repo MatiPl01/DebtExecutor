@@ -160,11 +160,6 @@
     -fx-background-color: -fx-c-black;
 }
 
-.list-view .list-cell:hover {
-    -fx-background-color: -fx-c-secondary-dark;
-    -fx-text-fill: -fx-c-white;
-}
-
 .list-view .list-cell {
     -fx-text-fill: -fx-c-gray-light-2;
     -fx-background-color: -fx-c-gray-dark-1;
@@ -174,13 +169,21 @@
     -fx-background-color: -fx-c-gray-dark-2;
 }
 
+.list-view .list-cell:hover {
+    -fx-background-color: -fx-c-secondary-dark;
+    -fx-text-fill: -fx-c-white;
+}
+
 .list-view .list-cell:selected {
     -fx-background-color: -fx-c-secondary;
     -fx-text-fill: -fx-c-white;
 }
 
 /* Combobox */
-/* TODO - change combobox label color */
+.combo-box .list-cell {
+    -fx-text-fill: -fx-c-white;
+}
+
 .combo-box-base {
     -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-black;
 }
@@ -197,7 +200,7 @@
 
 .combo-box-popup .list-view .list-cell:selected {
     -fx-background-color: -fx-c-secondary;
-    -fx-text-fill: -fx-c-white;
+    -fx-text-fill: -fx-c-black;
 }
 
 .combo-box-base:showing,
@@ -218,14 +221,25 @@
  * CONTROLS
  */
 /* Graph visualization */
-/* TODO - fix labels in dark mode */
 .vertex {
-    -fx-stroke: -fx-c-primary-dark;
-    -fx-fill: -fx-c-primary;
+    -fx-stroke: -fx-c-primary;
+    -fx-fill: -fx-c-primary-light;
 }
 
 .edge, .arrow {
     -fx-stroke: -fx-c-secondary;
+}
+
+.vertex-label {
+    -fx-fill: -fx-c-white;
+}
+
+.edge-label {
+    -fx-fill: -fx-c-gray-light-1;
+}
+
+.content-zoom-pane Text {
+    -fx-fill: -fx-c-white;
 }
 
 /* Group field */
@@ -299,6 +313,10 @@
 }
 
 /* Multiselect combobox */
+.menu-button .label {
+    -fx-text-fill: -fx-c-white;
+}
+
 .multiselect, .multiselect__item {
     -fx-background-color: -fx-c-black;
 }
@@ -342,7 +360,7 @@
 }
 
 .pagination__current {
-    -fx-text-fill: -fx-c-gray-light-1;
+    -fx-text-fill: -fx-c-white;
 }
 
 .pagination__total {
@@ -397,27 +415,27 @@
  * LAYOUT
  */
 /* Side panel */
-.menu-row:hover {
+.menu__row:hover {
     -fx-background-color: -fx-c-secondary-dark;
 }
 
-.menu-option, .group-label, .user-label {
+.menu__option, .group-field__label, .user-field__label {
     -fx-text-fill: -fx-c-gray-light-2;
 }
 
-.menu-row:hover .user-label,
-.menu-row:hover .group-label,
-.menu-row:hover .menu-option {
+.menu__row:hover .user-field__label,
+.menu__row:hover .group-field__label,
+.menu__row:hover .menu__option {
     -fx-text-fill: -fx-c-white;
 }
 
-.menu-row:selected {
+.menu__row:selected {
     -fx-background-color: -fx-c-secondary;
 }
 
-.menu-row:selected .user-label,
-.menu-row:selected .group-label,
-.menu-row:selected .menu-option {
+.menu__row:selected .user-field__label,
+.menu__row:selected .group-field__label,
+.menu__row:selected .menu__option {
     -fx-text-fill: -fx-c-white;
 }
 

@@ -71,7 +71,6 @@ public class SidePanelController implements Initializable {
 
     @FXML
     private void onTabSelect(MouseEvent mouseEvent) {
-        // TODO - improve view switching
         if (mouseEvent.getSource().equals(expenseSummaryOption)) {
             switchView(ViewType.SUMMARY);
         } else if (mouseEvent.getSource().equals(expenseHistoryOption)) {

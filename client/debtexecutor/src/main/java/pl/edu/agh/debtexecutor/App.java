@@ -8,6 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import pl.edu.agh.debtexecutor.controllers.core.SceneController;
 import pl.edu.agh.debtexecutor.controllers.core.SceneType;
+import pl.edu.agh.debtexecutor.utils.DialogUtils;
 
 @SpringBootApplication
 public class App extends Application {

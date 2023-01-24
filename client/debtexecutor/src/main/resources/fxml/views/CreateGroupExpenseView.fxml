@@ -7,10 +7,15 @@
 
 <?import pl.edu.agh.debtexecutor.controls.InputField?>
 
-<VBox styleClass="group-expense"
-      stylesheets="@../../css/views/CreateGroupExpenseView.css"
+<?import java.lang.String?>
+
+<VBox stylesheets="@../../css/views/CreateGroupExpenseView.css"
       xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="pl.edu.agh.debtexecutor.controllers.views.forms.createGroupExpense.CreateGroupExpenseViewController">
+    <styleClass>
+        <String fx:value="group-expense"/>
+        <String fx:value="view"/>
+    </styleClass>
     <VBox styleClass="group-expense__content">
         <VBox styleClass="group-expense__inputs">
             <InputField fx:id="titleInput" label="Title"/>

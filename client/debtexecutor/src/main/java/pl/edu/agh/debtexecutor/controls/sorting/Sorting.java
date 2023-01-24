@@ -14,6 +14,11 @@ import java.util.Map;
 
 public class Sorting extends HBox {
     private static final String FXML_PATH = "/fxml/controls/Sorting.fxml";
+    private static final String SORT_LEXICAL_ASC = "A-Z";
+    private static final String SORT_LEXICAL_DESC = "Z-A";
+    private static final String SORT_ORDINAL_ASC = "ASC";
+    private static final String SORT_ORDINAL_DESC = "DESC";
+
     private final Map<String, String> propNamesMap = new HashMap<>();
     private final Map<String, SortValueType> valueTypesMap = new HashMap<>();
     private List<SortSettings> settings;
@@ -73,9 +78,9 @@ public class Sorting extends HBox {
         if (idx == -1) idx = 0;
         if (valueTypesMap.get(sortByCombobox.getValue()) ==
             SortValueType.LEXICAL) {
-            sortDirectionCombobox.getItems().setAll("A-Z", "Z-A");
+            sortDirectionCombobox.getItems().setAll(SORT_LEXICAL_ASC, SORT_LEXICAL_DESC);
         } else {
-            sortDirectionCombobox.getItems().setAll("DESC", "ASC");
+            sortDirectionCombobox.getItems().setAll(SORT_ORDINAL_DESC, SORT_ORDINAL_ASC);
         }
         sortDirectionCombobox.setValue(sortDirectionCombobox.getItems().get(idx));
     }

@@ -1,23 +1,60 @@
 package pl.edu.agh.debtexecutor.graphs.model.simplifiedGraph;
 
 import pl.edu.agh.debtexecutor.graphs.model.Edge;
-import pl.edu.agh.debtexecutor.graphs.model.Vertex;
 
 import java.math.BigDecimal;
-import java.util.Comparator;
+import java.util.Objects;
 
-record SimplifiedEdge(SimplifiedVertex vFrom, SimplifiedVertex vTo, BigDecimal value) {
+public class SimplifiedEdge {
+    private final SimplifiedVertex fromVertex;
+    private final SimplifiedVertex toVertex;
+    private BigDecimal value;
+
+    public SimplifiedEdge(SimplifiedVertex fromVertex,
+                          SimplifiedVertex toVertex,
+                          BigDecimal value) {
+        this.fromVertex = fromVertex;
+        this.toVertex = toVertex;
+        this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SimplifiedEdge edge = (SimplifiedEdge) o;
+        return Objects.equals(fromVertex, edge.fromVertex) &&
+               Objects.equals(toVertex, edge.toVertex) &&
+               Objects.equals(value, edge.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fromVertex, toVertex, value);
+    }
 
     public Edge toEdge() {
-        return new Edge(new Vertex(vFrom.user()), new Vertex(vTo.user()), value);
+        return new Edge(fromVertex.toVertex(), toVertex.toVertex(), value);
     }
 
-    public static class EdgeComparator implements Comparator<SimplifiedEdge> {
-        @Override
-        public int compare(SimplifiedEdge o1, SimplifiedEdge o2) {
-            return o1.value.compareTo(o2.value());
-        }
+    public SimplifiedVertex getFromVertex() {
+        return fromVertex;
+    }
+
+    public SimplifiedVertex getToVertex() {
+        return toVertex;
+    }
+
+    public BigDecimal getValue() {
+        return value;
+    }
+
+    public void updateValue(BigDecimal updateBy) {
+        value = value.add(updateBy);
+    }
+
+    public void remove() {
+        fromVertex.removeEdge(this);
+        toVertex.removeEdge(this);
     }
 }
-
-

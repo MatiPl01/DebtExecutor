@@ -10,119 +10,163 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class SimplifiedGraph implements Graph {
-    Map<User, SimplifiedVertex> vertexes = new HashMap<>();
+    private final Map<User, SimplifiedVertex> userVertexMap = new HashMap<>();
 
-    public void addUser(User user) {
-        vertexes.put(user, new SimplifiedVertex(user, new HashMap<>()));
-    }
-
-    public void addExpense(Expense expense) {
-        SimplifiedVertex payerVertex = vertexes.get(expense.getPayer());
-        SimplifiedVertex payeeVertex = vertexes.get(expense.getPayee());
-
-        BigDecimal amount = edgeAlreadyExists(payerVertex, payeeVertex, expense.getAmount());
-        if (!amount.equals(BigDecimal.ZERO)) {
-            addEdge(payeeVertex, payeeVertex, amount);
-        }
-    }
-
-    //ALGORYTM dodania krawędzi A --> B
-
-    //KROK 0
-    //Jeżeli taka krawędź już istnieje:
-    //zwiększyc ją adekwatne
-    //jeżeli istnieje krawędź przeciwna:
-    //zmniejszyć ją lub usunąć i zmniejszyć wagę do dodania
-
-    public BigDecimal edgeAlreadyExists(SimplifiedVertex vFrom, SimplifiedVertex vTo, BigDecimal amount){
-        if (amount.equals(BigDecimal.ZERO)) {
-            return BigDecimal.ZERO;
-        }
-        if (vFrom.edges().containsKey(vTo)) {
-            vFrom.increaseEdge(vTo, amount);
-            return BigDecimal.ZERO;
-        }
-        if (vTo.edges().containsKey(vFrom)) {
-            BigDecimal currentEdgeValue = vTo.getEdgeValue(vFrom);
-            if (currentEdgeValue.compareTo(amount) >= 0) {
-                vTo.decreaseEdge(vFrom, amount);
-                return BigDecimal.ZERO;
-            } else {
-                vTo.removeEdge(vFrom);
-                return amount.subtract(currentEdgeValue);
-            }
-        }
-        return amount;
-    }
-
-    //pobrać najniższą krawędź docelowego (B-->C)
-        //jeżeli jej wartość jest większa od wartości dodawanej:
-            //zmniejsz jej wartość o w. d.
-            //dodaj krawędź A-->C o wartośći dodawaniej
-        //jeżeli jej wartość e jest mniejsza od wartości dodawanej:
-            //dodaj krawędź A-->C o wartośći e
-            //usuń krawędź B--> C
-            //dodać krawędź A-->B o wartości (w. d. - e) (zgodnie z algorytmem)
-    //jeżeli B nie ma krawędzi wychodzących:
-        //znajdź najmniejszą krawędź wchodzącą do A (D--> A)
-            //jeżeli jej wartość jest mniejsza od wartości dodawanej:
-                //zmniejsz jej wartość o w. d.
-                //dodaj krawędź A-->C o wartośći dodawaniej
-            //jeżeli jej wartość e jest większa od wartości dodawanej:
-                //dodaj krawędź A-->C o wartośći e
-                //usuń krawędź B--> C
-                //dodać krawędź A-->B o wartości (w. d. - e) (zgodnie z algorytmem)
-
-    public void addEdge(SimplifiedVertex A, SimplifiedVertex B, BigDecimal weight) {
-        if (weight.equals(BigDecimal.ZERO)) return;
-
-        Optional<SimplifiedEdge> lowestEdge = B.getLowestEdge();
-        if (lowestEdge.isPresent()) {
-            if (lowestEdge.get().value().compareTo(weight) >= 0) {
-                B.decreaseEdge(lowestEdge.get().vTo(), weight);
-                A.increaseEdge(lowestEdge.get().vTo(), weight);
-            } else {
-                B.removeEdge(lowestEdge.get().vTo());
-                A.increaseEdge(lowestEdge.get().vTo(), lowestEdge.get().value());
-                addEdge(A, B, weight.subtract(lowestEdge.get().value()));
-            }
-        } else {
-            Optional<SimplifiedEdge> edge = getLowestEdgeTo(A);
-            if (edge.isPresent()) {
-                if (edge.get().value().compareTo(weight) < 0) {
-                    B.decreaseEdge(edge.get().vTo(), weight);
-                    A.increaseEdge(edge.get().vTo(), weight);
-                } else {
-                    B.removeEdge(edge.get().vTo());
-                    A.increaseEdge(edge.get().vTo(), edge.get().value());
-                    addEdge(A, B, weight.subtract(edge.get().value()));
-                }
-            } else {
-                A.addEdge(B, weight);
-            }
-        }
-    }
-
-    public Optional<SimplifiedEdge> getLowestEdgeTo(SimplifiedVertex vertex) {
-        return vertexes.values().stream()
-                .flatMap(v -> Optional.ofNullable(v.edges().get(vertex)).stream())
-                .min(new SimplifiedEdge.EdgeComparator());
-    }
     @Override
     public List<Edge> getEdges() {
-      return vertexes.values().stream()
-                     .flatMap(v -> v.edges().values().stream())
-                     .map(SimplifiedEdge::toEdge)
-                     .toList();
+        Set<SimplifiedEdge> edges = new HashSet<>();
+        userVertexMap.values().forEach(vertex -> edges.addAll(vertex.getOutEdges()));
+        return edges.stream().map(SimplifiedEdge::toEdge).toList();
     }
 
     @Override
     public List<Vertex> getVertices() {
-        return vertexes.keySet().stream()
-                       .map(Vertex::new)
-                       .toList();
+        return userVertexMap.values().stream().map(SimplifiedVertex::toVertex).toList();
     }
 
+    public void addExpense(Expense expense) {
+        SimplifiedVertex fromVertex = getVertex(expense.getPayer());
+        SimplifiedVertex toVertex = getVertex(expense.getPayee());
+        insertEdge(fromVertex, toVertex, expense.getAmount());
+    }
 
+    public void addUser(User user) {
+        if (userVertexMap.containsKey(user)) return;
+        userVertexMap.put(user, new SimplifiedVertex(user));
+    }
 
+    private SimplifiedVertex getVertex(User user) {
+        if (userVertexMap.get(user) == null) {
+            userVertexMap.put(user, new SimplifiedVertex(user));
+        }
+        return userVertexMap.get(user);
+    }
+
+    private void insertEdge(SimplifiedVertex fromVertex,
+                            SimplifiedVertex toVertex,
+                            BigDecimal value) {
+        // If there is already an edge between vertices directed the same as the new edge
+        Optional<SimplifiedEdge> matchingEdge = fromVertex.getEdgeTo(toVertex);
+        if (matchingEdge.isPresent()) {
+            insertEdgeMatching(matchingEdge.get(), value);
+            return;
+        }
+        // If there is already an edge in the opposite direction
+        Optional<SimplifiedEdge> oppositeEdge = toVertex.getEdgeTo(fromVertex);
+        if (oppositeEdge.isPresent()) {
+            insertEdgeOpposite(oppositeEdge.get(), value);
+            return;
+        }
+        // Otherwise, if there is no edge, add a new one
+        insertNewEdge(new SimplifiedEdge(fromVertex, toVertex, value));
+    }
+
+    private void insertEdgeMatching(SimplifiedEdge matchingEdge,
+                                    BigDecimal updateValue) {
+        System.out.println("normal");
+        matchingEdge.updateValue(updateValue);
+    }
+
+    private void insertEdgeOpposite(SimplifiedEdge oppositeEdge,
+                                    BigDecimal updateValue) {
+        System.out.println("opposite");
+        int valueDiff = updateValue.compareTo(oppositeEdge.getValue());
+        // Change edge direction if the new value is greater than the value of the opposite edge
+        if (valueDiff > 0) {
+            BigDecimal newValue = updateValue.subtract(oppositeEdge.getValue());
+            System.out.println("update value " + updateValue + ", opposite value " + oppositeEdge.getValue() +  ", new value " + newValue);
+            oppositeEdge.remove();
+            insertNewEdge(new SimplifiedEdge(
+                    oppositeEdge.getToVertex(),
+                    oppositeEdge.getFromVertex(),
+                    newValue
+            ));
+        // Decrease the edge value id the new value is lower than the value of the opposite edge
+        } else if (valueDiff < 0) {
+            oppositeEdge.updateValue(updateValue.negate());
+        // Remove the edge if values are the same
+        } else {
+            oppositeEdge.remove();
+        }
+    }
+
+    private void insertNewEdge(SimplifiedEdge newEdge) {
+        System.out.println("new: " + newEdge.toEdge());
+        newEdge.getFromVertex().addEdge(newEdge);
+        newEdge.getToVertex().addEdge(newEdge);
+        simplifyPaths(newEdge.getFromVertex());
+        simplifyPaths(newEdge.getToVertex());
+    }
+
+    private void simplifyPaths(SimplifiedVertex middleVertex) {
+        for (SimplifiedEdge inEdge: middleVertex.getInEdges()) {
+            for (SimplifiedEdge outEdge: middleVertex.getOutEdges()) {
+                simplifyEdges(inEdge, outEdge);
+            }
+        }
+    }
+
+    private void simplifyEdges(SimplifiedEdge firstEdge, SimplifiedEdge secondEdge) {
+        System.out.println("First edge: " + firstEdge.toEdge());
+        System.out.println("Second edge: " + secondEdge.toEdge());
+        int valueDiff = firstEdge.getValue().compareTo(secondEdge.getValue());
+        SimplifiedEdge newEdge;
+
+        /* The first edge has greater value than the second edge (a > b)
+         *                 a - b  |----|
+         *                        |    v
+         *   A -> B -> C    ->    A    B    C
+         *     a    b             |    b    ^
+         *                        |---------|
+         */
+        if (valueDiff > 0) {
+            System.out.println("diff > 0");
+            firstEdge.updateValue(secondEdge.getValue().negate()); // a - b
+            secondEdge.remove(); // B -> C
+
+            newEdge = new SimplifiedEdge( // A -> C
+                firstEdge.getFromVertex(),
+                secondEdge.getToVertex(),
+                secondEdge.getValue() // b
+            );
+        /* The first edge has lower value than the second edge (a < b)
+         *                      b - a  |----|
+         *                             |    v
+         *   A -> B -> C    ->    A    B    C
+         *     a    b             |    a    ^
+         *                        |---------|
+         */
+        } else if (valueDiff < 0) {
+            System.out.println("diff < 0");
+            secondEdge.updateValue(firstEdge.getValue().negate()); // b - a
+            firstEdge.remove(); // A -> B
+
+            newEdge = new SimplifiedEdge( // A -> C
+                firstEdge.getFromVertex(),
+                secondEdge.getToVertex(),
+                firstEdge.getValue()
+            );
+        /* Both edges have the same values (a == b)
+         *   A -> B -> C    ->    A    B    C
+         *     a    b             |    a    ^
+         *                        |---------|
+         */
+        } else {
+            System.out.println("diff == 0");
+            firstEdge.remove(); // A -> B
+            secondEdge.remove(); // B -> C
+
+            newEdge = new SimplifiedEdge( // A -> C
+                firstEdge.getFromVertex(),
+                secondEdge.getToVertex(),
+                firstEdge.getValue()
+            );
+        }
+
+        insertEdge(
+            newEdge.getFromVertex(),
+            newEdge.getToVertex(),
+            newEdge.getValue()
+        );
+    }
 }

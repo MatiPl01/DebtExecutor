@@ -13,20 +13,12 @@ import java.util.Optional;
 
 @Controller
 public class SignUpFormController {
-    @FXML
-    private InputField loginInput;
+    @FXML private InputField loginInput;
+    @FXML private InputField firstNameInput;
+    @FXML private InputField lastNameInput;
 
-    @FXML
-    private InputField firstNameInput;
-
-    @FXML
-    private InputField lastNameInput;
-
-    @Autowired
-    private AuthService authService;
-
-    @Autowired
-    private SceneController sceneController;
+    @Autowired private AuthService authService;
+    @Autowired private SceneController sceneController;
 
     @FXML
     private void onSignUp() {
@@ -40,8 +32,6 @@ public class SignUpFormController {
             clearInput();
             // Load the main screen if everything is successful
             sceneController.switchScene(SceneType.MAIN);
-        } else {
-            // TODO - display error message (login is already taken)
         }
     }
 

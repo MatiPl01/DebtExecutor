@@ -13,7 +13,6 @@ public final class Edge {
 
     @Override
     public String toString() {
-        // TODO
         return label;
     }
 

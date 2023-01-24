@@ -11,10 +11,10 @@
          type="javafx.scene.layout.HBox">
         <styleClass>
             <String fx:value="user-field" />
-            <String fx:value="menu-row" />
+            <String fx:value="menu__row" />
         </styleClass>
     <Pane styleClass="user-field__image"/>
-    <Label fx:id="userLabel" styleClass="user-label"/>
+    <Label fx:id="userLabel" styleClass="user-field__label"/>
     <stylesheets>
         <URL value="@../../css/controls/UserField.css"/>
     </stylesheets>

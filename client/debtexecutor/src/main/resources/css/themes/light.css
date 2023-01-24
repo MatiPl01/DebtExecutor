@@ -95,6 +95,10 @@
  * BUILT-INS OVERRIDE
  */
 /* Combobox */
+.combo-box .list-cell {
+    -fx-text-fill: -fx-c-black;
+}
+
 .combo-box-popup .list-view .list-cell:hover {
     -fx-background-color: -fx-c-secondary-dark;
 }
@@ -162,13 +166,21 @@
 }
 
 /* List view */
-.list-view .list-cell:selected {
-    -fx-background-color: -fx-c-secondary;
-    -fx-text-fill: -fx-c-white;
+.list-view {
+    -fx-background-color: -fx-c-gray-light-0;
+}
+
+.list-view .list-cell:even {
+    -fx-background-color: -fx-c-gray-light-1;
 }
 
 .list-view .list-cell:hover {
     -fx-background-color: -fx-c-secondary-dark;
+    -fx-text-fill: -fx-c-white;
+}
+
+.list-view .list-cell:selected {
+    -fx-background-color: -fx-c-secondary;
     -fx-text-fill: -fx-c-white;
 }
 
@@ -183,6 +195,18 @@
 
 .edge, .arrow {
     -fx-stroke: -fx-c-secondary;
+}
+
+.vertex-label {
+    -fx-fill: -fx-c-black;
+}
+
+.edge-label {
+    -fx-fill: -fx-c-gray-dark-1;
+}
+
+.content-zoom-pane .slider Text {
+    -fx-fill: -fx-c-black;
 }
 
 /* Group field */
@@ -345,27 +369,27 @@
  * LAYOUT
  */
 /* Side panel */
-.menu-row:hover {
+.menu__row:hover {
     -fx-background-color: -fx-c-secondary-dark;
 }
 
-.menu-option, .group-label, .user-label {
+.menu__option, .group-field__label, .user-field__label {
     -fx-text-fill: -fx-c-gray-light-2;
 }
 
-.menu-row:hover .user-label,
-.menu-row:hover .group-label,
-.menu-row:hover .menu-option {
+.menu__row:hover .user-field__label,
+.menu__row:hover .group-field__label,
+.menu__row:hover .menu__option {
     -fx-text-fill: -fx-c-white;
 }
 
-.menu-row:selected {
+.menu__row:selected {
     -fx-background-color: -fx-c-secondary;
 }
 
-.menu-row:selected .user-label,
-.menu-row:selected .group-label,
-.menu-row:selected .menu-option {
+.menu__row:selected .user-field__label,
+.menu__row:selected .group-field__label,
+.menu__row:selected .menu__option {
     -fx-text-fill: -fx-c-white;
 }
 

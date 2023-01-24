@@ -1,45 +1,76 @@
 package pl.edu.agh.debtexecutor.graphs.model.simplifiedGraph;
 
+import pl.edu.agh.debtexecutor.graphs.model.Vertex;
 import pl.edu.agh.debtexecutor.users.model.User;
 
-import java.math.BigDecimal;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
-import static pl.edu.agh.debtexecutor.graphs.model.simplifiedGraph.SimplifiedEdge.*;
+public class SimplifiedVertex {
+    // Edges from vertices that are keys
+    private final Map<SimplifiedVertex, SimplifiedEdge> inEdges = new HashMap<>();
+    // Edges to vertices that are keys
+    private final Map<SimplifiedVertex, SimplifiedEdge> outEdges = new HashMap<>();
 
-record SimplifiedVertex(User user, Map<SimplifiedVertex, SimplifiedEdge> edges) {
-    public void addEdge(SimplifiedVertex vertex, BigDecimal value) {
-        if (value.equals(BigDecimal.ZERO)) {
-            edges.remove(vertex);
+    private final User user;
+
+    public SimplifiedVertex(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SimplifiedVertex that = (SimplifiedVertex) o;
+        return Objects.equals(user, that.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user);
+    }
+
+    public Vertex toVertex() {
+        return new Vertex(user);
+    }
+
+    public void addEdge(SimplifiedEdge edge) {
+        if (edge.getFromVertex() == this) {
+            outEdges.put(edge.getToVertex(), edge);
+        } else if (edge.getToVertex() == this) {
+            inEdges.put(edge.getFromVertex(), edge);
         } else {
-            SimplifiedEdge edge = new SimplifiedEdge(this, vertex, value);
-            edges.put(vertex, edge);
+            throw new IllegalArgumentException(
+                "Edge is not connected with the current vertex"
+            );
         }
     }
 
-    public void increaseEdge(SimplifiedVertex vertex, BigDecimal value) {
-        if (edges.containsKey(vertex)) {
-            SimplifiedEdge edge = new SimplifiedEdge(this, vertex, edges.get(vertex).value().add(value));
-            edges.put(vertex, edge);
+    public void removeEdge(SimplifiedEdge edge) {
+        if (edge.getFromVertex() == this) {
+            outEdges.remove(edge.getToVertex());
+        } else if (edge.getToVertex() == this) {
+            inEdges.remove(edge.getFromVertex());
         } else {
-            addEdge(vertex, value);
+            throw new IllegalArgumentException(
+                "Edge is not connected with the current vertex"
+            );
         }
     }
 
-    public void decreaseEdge(SimplifiedVertex vertex, BigDecimal value) {
-        addEdge(vertex, edges.get(vertex).value().subtract(value));
+    public Optional<SimplifiedEdge> getEdgeTo(SimplifiedVertex vertex) {
+        return Optional.ofNullable(outEdges.get(vertex));
     }
 
-    public BigDecimal getEdgeValue(SimplifiedVertex vertex) {
-        return edges.get(vertex).value();
+    public Optional<SimplifiedEdge> getEdgeFrom(SimplifiedVertex vertex) {
+        return Optional.ofNullable(inEdges.get(vertex));
     }
 
-    public void removeEdge(SimplifiedVertex vertex) {
-        edges.remove(vertex);
+    public List<SimplifiedEdge> getInEdges() {
+        return inEdges.values().stream().toList();
     }
 
-    public Optional<SimplifiedEdge> getLowestEdge() {
-        return edges.values().stream().min(new EdgeComparator());
+    public List<SimplifiedEdge> getOutEdges() {
+        return outEdges.values().stream().toList();
     }
 }

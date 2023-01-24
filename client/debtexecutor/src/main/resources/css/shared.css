@@ -43,7 +43,7 @@
 /*
  * CUSTOM STYLES
  */
-.menu-row:selected .menu-option {
+.menu__row:selected .menu__option {
     -fx-font-weight: bold;
 }
 
@@ -107,4 +107,16 @@
     -fx-border-color: 25px;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
+}
+
+/*
+ * VIEWS
+ */
+.view {
+    -fx-padding: 15px 15px 30px 15px;
+    -fx-alignment: top-center;
+}
+
+.graph-view {
+    -fx-alignment: center-top;
 }

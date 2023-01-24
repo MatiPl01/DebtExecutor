@@ -55,23 +55,23 @@
         </VBox>
         <VBox>
             <HBox fx:id="expenseHistoryOption"
-                  onMouseClicked="#onTabSelect" styleClass="menu-row">
-                <Label styleClass="menu-option"
+                  onMouseClicked="#onTabSelect" styleClass="menu__row">
+                <Label styleClass="menu__option"
                        text="Expense history"/>
             </HBox>
             <HBox fx:id="expenseSummaryOption"
-                  onMouseClicked="#onTabSelect" styleClass="menu-row">
-                <Label styleClass="menu-option"
+                  onMouseClicked="#onTabSelect" styleClass="menu__row">
+                <Label styleClass="menu__option"
                        text="Expense summary"/>
             </HBox>
             <HBox fx:id="expenseSimplificationGraph"
-                  onMouseClicked="#onTabSelect" styleClass="menu-row">
-                <Label styleClass="menu-option"
+                  onMouseClicked="#onTabSelect" styleClass="menu__row">
+                <Label styleClass="menu__option"
                        text="Simplified expense graph"/>
             </HBox>
         </VBox>
     </VBox>
-    <TitledPane fx:id="usersTitledPane" styleClass="menu-option"
+    <TitledPane fx:id="usersTitledPane" styleClass="menu__option"
                 text="Users">
         <AnchorPane>
             <styleClass>
@@ -86,7 +86,7 @@
             </VBox>
         </AnchorPane>
     </TitledPane>
-    <TitledPane fx:id="groupsTitledPane" styleClass="menu-option"
+    <TitledPane fx:id="groupsTitledPane" styleClass="menu__option"
                 text="Groups">
         <AnchorPane minHeight="0.0" minWidth="0.0">
             <styleClass>

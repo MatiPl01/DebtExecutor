@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
 <?import java.net.URL?>
+
 <fx:root xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
-         type="javafx.scene.layout.AnchorPane"
+         type="javafx.scene.layout.VBox"
+         styleClass="graph-visualization"
          fx:id="graphWrapper">
     <stylesheets>
         <URL value="@../../css/controls/GraphVisualization.css"/>

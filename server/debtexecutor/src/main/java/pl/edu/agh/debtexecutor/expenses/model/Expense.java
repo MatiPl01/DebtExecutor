@@ -68,6 +68,11 @@ public class Expense {
         this(title, payer, payee, amount, null, category);
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s paid %.2f for %s", payer, amount, payee);
+    }
+
     public UUID getId() {
         return id;
     }

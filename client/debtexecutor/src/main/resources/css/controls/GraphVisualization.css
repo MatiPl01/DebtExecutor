@@ -23,3 +23,8 @@
     -fx-stroke-width: 2;
     -fx-opacity: 0.8;
 }
+
+.graph-visualization {
+    -fx-alignment: center;
+    -fx-padding: 30px;
+}

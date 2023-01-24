@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
 <?import pl.edu.agh.debtexecutor.controls.GraphVisualization?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+            AnchorPane.bottomAnchor="0.0"
+            AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0"
             fx:controller="pl.edu.agh.debtexecutor.controllers.views.tabs.expenseSummary.SummaryGraphViewController">
-    <GraphVisualization fx:id="graphVisualization" />
+    <VBox styleClass="graph-view"
+          AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <GraphVisualization fx:id="graphVisualization" />
+    </VBox>
 </AnchorPane>

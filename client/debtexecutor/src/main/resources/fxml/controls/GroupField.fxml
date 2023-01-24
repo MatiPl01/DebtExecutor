@@ -10,7 +10,7 @@
 <fx:root xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml" type="javafx.scene.layout.HBox">
     <styleClass>
-        <String fx:value="menu-row"/>
+        <String fx:value="menu__row"/>
         <String fx:value="group-field"/>
     </styleClass>
     <Pane styleClass="group-field__image">
@@ -19,7 +19,7 @@
             <Label fx:id="membersCountLabel"/>
         </HBox>
     </Pane>
-    <Label fx:id="groupNameLabel"/>
+    <Label fx:id="groupNameLabel" styleClass="group-field__label" />
     <stylesheets>
         <URL value="@../../css/controls/GroupField.css"/>
     </stylesheets>

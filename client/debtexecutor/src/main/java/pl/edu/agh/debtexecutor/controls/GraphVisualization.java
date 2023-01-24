@@ -8,6 +8,7 @@ import com.brunomnsilva.smartgraph.graphview.SmartGraphPanel;
 import com.brunomnsilva.smartgraph.graphview.SmartPlacementStrategy;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import pl.edu.agh.debtexecutor.models.graph.Edge;
 import pl.edu.agh.debtexecutor.models.graph.GraphModel;
 import pl.edu.agh.debtexecutor.utils.ResourceLoader;
@@ -15,12 +16,11 @@ import pl.edu.agh.debtexecutor.utils.Timeout;
 
 import java.util.List;
 
-public class GraphVisualization extends AnchorPane {
+public class GraphVisualization extends VBox {
     private static final String FXML_PATH =
             "/fxml/controls/GraphVisualization.fxml";
 
-    @FXML
-    private AnchorPane graphWrapper;
+    @FXML private VBox graphWrapper;
 
     private GraphModel graphModel;
 
@@ -50,9 +50,13 @@ public class GraphVisualization extends AnchorPane {
         SmartGraphPanel<String, String> graphView =
                 new SmartGraphPanel<>(graph, strategy);
 
-        graphWrapper.getChildren().setAll(new ContentZoomPane(graphView));
-        graphView.setPrefWidth(380);
-        graphView.setPrefHeight(360);
+        ContentZoomPane contentZoomPane = new ContentZoomPane(graphView);
+        contentZoomPane.getStyleClass().add("content-zoom-pane");
+        graphWrapper.getChildren().setAll(contentZoomPane);
+        AnchorPane.setLeftAnchor(graphWrapper, 0.0);
+        AnchorPane.setLeftAnchor(graphWrapper, 0.0);
+        AnchorPane.setRightAnchor(graphWrapper, 0.0);
+        AnchorPane.setTopAnchor(graphWrapper, 0.0);
         graphView.setAutomaticLayout(true);
 
         new Timeout(graphView::init, 0);
