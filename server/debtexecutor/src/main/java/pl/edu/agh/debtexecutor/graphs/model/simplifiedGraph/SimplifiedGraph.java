@@ -63,18 +63,15 @@ public class SimplifiedGraph implements Graph {
 
     private void insertEdgeMatching(SimplifiedEdge matchingEdge,
                                     BigDecimal updateValue) {
-        System.out.println("normal");
         matchingEdge.updateValue(updateValue);
     }
 
     private void insertEdgeOpposite(SimplifiedEdge oppositeEdge,
                                     BigDecimal updateValue) {
-        System.out.println("opposite");
         int valueDiff = updateValue.compareTo(oppositeEdge.getValue());
         // Change edge direction if the new value is greater than the value of the opposite edge
         if (valueDiff > 0) {
             BigDecimal newValue = updateValue.subtract(oppositeEdge.getValue());
-            System.out.println("update value " + updateValue + ", opposite value " + oppositeEdge.getValue() +  ", new value " + newValue);
             oppositeEdge.remove();
             insertNewEdge(new SimplifiedEdge(
                     oppositeEdge.getToVertex(),
@@ -91,7 +88,6 @@ public class SimplifiedGraph implements Graph {
     }
 
     private void insertNewEdge(SimplifiedEdge newEdge) {
-        System.out.println("new: " + newEdge.toEdge());
         newEdge.getFromVertex().addEdge(newEdge);
         newEdge.getToVertex().addEdge(newEdge);
         simplifyPaths(newEdge.getFromVertex());
@@ -107,8 +103,6 @@ public class SimplifiedGraph implements Graph {
     }
 
     private void simplifyEdges(SimplifiedEdge firstEdge, SimplifiedEdge secondEdge) {
-        System.out.println("First edge: " + firstEdge.toEdge());
-        System.out.println("Second edge: " + secondEdge.toEdge());
         int valueDiff = firstEdge.getValue().compareTo(secondEdge.getValue());
         SimplifiedEdge newEdge;
 
@@ -120,7 +114,6 @@ public class SimplifiedGraph implements Graph {
          *                        |---------|
          */
         if (valueDiff > 0) {
-            System.out.println("diff > 0");
             firstEdge.updateValue(secondEdge.getValue().negate()); // a - b
             secondEdge.remove(); // B -> C
 
@@ -137,7 +130,6 @@ public class SimplifiedGraph implements Graph {
          *                        |---------|
          */
         } else if (valueDiff < 0) {
-            System.out.println("diff < 0");
             secondEdge.updateValue(firstEdge.getValue().negate()); // b - a
             firstEdge.remove(); // A -> B
 
@@ -152,7 +144,6 @@ public class SimplifiedGraph implements Graph {
          *                        |---------|
          */
         } else {
-            System.out.println("diff == 0");
             firstEdge.remove(); // A -> B
             secondEdge.remove(); // B -> C
 

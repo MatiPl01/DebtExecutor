@@ -7,12 +7,14 @@ import pl.edu.agh.debtexecutor.categories.model.Category;
 import pl.edu.agh.debtexecutor.categories.repository.CategoryRepository;
 import pl.edu.agh.debtexecutor.expenses.model.Expense;
 import pl.edu.agh.debtexecutor.expenses.repository.ExpenseRepository;
+import pl.edu.agh.debtexecutor.graphs.SimplifiedGraphService;
 import pl.edu.agh.debtexecutor.groups.model.Group;
 import pl.edu.agh.debtexecutor.groups.repository.GroupRepository;
 import pl.edu.agh.debtexecutor.users.model.User;
 import pl.edu.agh.debtexecutor.users.repository.UserRepository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +29,8 @@ public class UserConfig {
     CommandLineRunner commandLineRunner(UserRepository userRepository,
                                         GroupRepository groupRepository,
                                         ExpenseRepository expenseRepository,
-                                        CategoryRepository categoryRepository) {
+                                        CategoryRepository categoryRepository,
+                                        SimplifiedGraphService simplifiedGraphService) {
         this.userRepository = userRepository;
         this.groupRepository = groupRepository;
         this.expenseRepository = expenseRepository;
@@ -56,16 +59,22 @@ public class UserConfig {
             List<Category> categories = List.of(food, beverages, entertainment);
 
             // Create expenses
-            addExpense("Water", ewa, kuba, new BigDecimal("2.50"), beverages);
-            addExpense("Coffee", ewa, mateusz, new BigDecimal("8.00"), beverages);
-            addExpense("Bread", kuba, ewa, new BigDecimal("5.00"), food);
-            addExpense("Cinema ticket", kuba, mateusz, new BigDecimal("25.00"), entertainment);
-            addExpense("Cash loan", mateusz, ewa, new BigDecimal("10.00"), finances);
+            List<Expense> expenses = new ArrayList<>();
+            expenses.add(addExpense("Water", ewa, kuba, new BigDecimal("2.50"), beverages));
+            expenses.add(addExpense("Coffee", ewa, mateusz, new BigDecimal("8.00"), beverages));
+            expenses.add(addExpense("Bread", kuba, ewa, new BigDecimal("5.00"), food));
+            expenses.add(addExpense("Cinema ticket", kuba, mateusz, new BigDecimal("25.00"), entertainment));
+            expenses.add(addExpense("Cash loan", mateusz, ewa, new BigDecimal("10.00"), finances));
 
-            addExpense("Pizza", mateusz, allGroup, new BigDecimal("75.00"), food);
-            addExpense("Bowling", kuba, ewaKubaAndrzej, new BigDecimal("50.00"), entertainment);
-            addExpense("Paintball", andrzej, menGroup, new BigDecimal("100.00"), entertainment);
+            expenses.addAll(addExpense("Pizza", mateusz, allGroup, new BigDecimal("75.00"), food));
+            expenses.addAll(addExpense("Bowling", kuba, ewaKubaAndrzej, new BigDecimal("50.00"), entertainment));
+            expenses.addAll(addExpense("Paintball", andrzej, menGroup, new BigDecimal("100.00"), entertainment));
 
+            // Add expenses to the simplified expense graph
+            simplifiedGraphService.addUsers(users);
+            simplifiedGraphService.addExpenses(expenses);
+
+            // Save data in the database
             categoryRepository.saveAll(categories);
             groupRepository.saveAll(groups);
             userRepository.saveAll(users);

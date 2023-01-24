@@ -74,7 +74,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), id);
+        return id.hashCode();
     }
 
     public UUID getId() {

@@ -3,6 +3,7 @@ package pl.edu.agh.debtexecutor.users;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import pl.edu.agh.debtexecutor.graphs.SimplifiedGraphService;
 import pl.edu.agh.debtexecutor.users.dto.CreateUserDTO;
 import pl.edu.agh.debtexecutor.users.model.User;
 import pl.edu.agh.debtexecutor.users.repository.UserRepository;
@@ -14,9 +15,14 @@ import java.util.UUID;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final SimplifiedGraphService simplifiedGraphService;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository,
+                       SimplifiedGraphService simplifiedGraphService) {
         this.userRepository = userRepository;
+        this.simplifiedGraphService = simplifiedGraphService;
+        // Add existing users to the simplifies expenses graph
+        simplifiedGraphService.addUsers(userRepository.findAll());
     }
 
     public List<User> getUsers() {
@@ -46,6 +52,7 @@ public class UserService {
 
         User user = new User(dto.login(), dto.firstName(), dto.lastName());
         userRepository.save(user);
+        simplifiedGraphService.addUser(user);
         return user;
     }
 

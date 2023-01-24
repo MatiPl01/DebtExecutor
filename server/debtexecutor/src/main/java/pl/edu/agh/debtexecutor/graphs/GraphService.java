@@ -9,11 +9,14 @@ import pl.edu.agh.debtexecutor.users.UserService;
 public class GraphService {
     private final UserService userService;
     private final ExpenseService expenseService;
+    private final SimplifiedGraphService simplifiedGraphService;
 
-    public GraphService(ExpenseService expenseService,
-                        UserService userService) {
-        this.expenseService = expenseService;
+    public GraphService(UserService userService,
+                        ExpenseService expenseService,
+                        SimplifiedGraphService simplifiedGraphService) {
         this.userService = userService;
+        this.expenseService = expenseService;
+        this.simplifiedGraphService = simplifiedGraphService;
     }
 
     public Graph getHistoryGraph() {
@@ -30,9 +33,6 @@ public class GraphService {
     }
 
     public Graph getSimplifiedGraph() {
-        return GraphFactory.createSimplifiedGraph(
-            userService.getUsers(),
-            expenseService.getAllExpenses()
-        );
+        return simplifiedGraphService.getGraph();
     }
 }
