@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 public class DebtexecutorApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(DebtexecutorApplication.class, args);
     }
