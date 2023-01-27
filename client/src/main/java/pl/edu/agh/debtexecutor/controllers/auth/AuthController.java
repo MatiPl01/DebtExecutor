@@ -53,7 +53,7 @@ public class AuthController implements Initializable {
     private void openSignInForm() {
         openForm(SIGN_IN_FORM_PATH);
         formChangeButton.setText(signUpText.buttonText());
-        formChangeHeading.setText(signInText.headingText());
+        formChangeHeading.setText(signUpText.headingText());
         formChangeText.setText(signUpText.infoText());
     }
 
